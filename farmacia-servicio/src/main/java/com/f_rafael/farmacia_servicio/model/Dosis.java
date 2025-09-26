@@ -17,7 +17,7 @@ public class Dosis {
     private Long id;
     private Float cantidad;
     @ManyToOne
-    private Unidad unidad;
+    private UnidadDeMedida unidad;
     @Column(name = "intervalo_horas")
     private Integer intervaloHoras;
 }

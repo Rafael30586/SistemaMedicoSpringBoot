@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "unidades")
-public class Unidad {
+public class UnidadDeMedida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
