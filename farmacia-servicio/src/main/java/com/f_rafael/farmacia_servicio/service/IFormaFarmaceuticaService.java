@@ -12,4 +12,5 @@ public interface IFormaFarmaceuticaService {
     public FormaFarmaceutica guardar(FormaFarmaceutica formaFarmaceutica);
     public FormaFarmaceutica actualizar(FormaFarmaceutica formaFarmaceutica);
     public void borrarPorId(Long id);
+    public Optional<FormaFarmaceutica> buscarPorNombre(String nombre);
 }

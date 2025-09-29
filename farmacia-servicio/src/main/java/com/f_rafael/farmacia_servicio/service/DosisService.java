@@ -38,4 +38,9 @@ public class DosisService implements IDosisService{
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<Dosis> buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervalo) {
+        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo);
+    }
 }

@@ -35,4 +35,14 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<UnidadDeMedida> buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
+
+    @Override
+    public Optional<UnidadDeMedida> buscarPorSimbolo(String simbolo) {
+        return repository.findBySimbolo(simbolo);
+    }
 }

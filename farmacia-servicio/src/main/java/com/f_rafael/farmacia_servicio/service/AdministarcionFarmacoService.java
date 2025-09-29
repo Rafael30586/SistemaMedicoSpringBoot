@@ -38,4 +38,9 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<AdministracionFarmaco> buscarPorVia(String via) {
+        return repository.findByVia(via);
+    }
 }

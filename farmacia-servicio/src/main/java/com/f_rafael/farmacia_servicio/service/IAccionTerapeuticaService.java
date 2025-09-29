@@ -11,4 +11,6 @@ public interface IAccionTerapeuticaService {
     public AccionTerapeutica guardar(AccionTerapeutica accionTerapeutica);
     public AccionTerapeutica actualizar(AccionTerapeutica accionTerapeutica);
     public void borrarPorId(Long id);
+    public Optional<AccionTerapeutica> buscarPorNombre(String nombre);
+    public List<AccionTerapeutica> buscarPorSecuenciaEnDescripcion(String secuencia);
 }

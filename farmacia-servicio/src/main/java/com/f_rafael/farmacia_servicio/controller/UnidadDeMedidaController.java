@@ -1,5 +1,6 @@
-package com.f_rafael.farmacia_servicio.model;
+package com.f_rafael.farmacia_servicio.controller;
 
+import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.service.IUnidadDeMedidaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;

@@ -36,4 +36,9 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<FormaFarmaceutica> buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
 }

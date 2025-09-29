@@ -38,4 +38,16 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<AccionTerapeutica> buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
+
+    @Override
+    public List<AccionTerapeutica> buscarPorSecuenciaEnDescripcion(String secuencia) {
+        return repository.buscarPorSecuenciaEnDescripcion(secuencia);
+    }
+
+
 }

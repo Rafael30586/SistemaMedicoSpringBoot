@@ -11,4 +11,5 @@ public interface IPrincipioActivoService {
     public PrincipioActivo guardar(PrincipioActivo principioActivo);
     public PrincipioActivo actualizar(PrincipioActivo principioActivo);
     public void borrarPorId(Long id);
+    public List<PrincipioActivo> buscarPorAccionTerapeutica(String nombreAccionTerapeutica);
 }

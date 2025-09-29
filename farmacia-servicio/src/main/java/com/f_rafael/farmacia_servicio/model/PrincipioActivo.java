@@ -19,7 +19,6 @@ public class PrincipioActivo {
     private Long id;
     @Column(unique = true)
     private String nombre;
-    @Column(name = "accion_terapeutica")
     @ManyToMany
     @JoinTable(
             name = "principios_activos_acciones_terapeuticas",

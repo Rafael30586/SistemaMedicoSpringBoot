@@ -15,10 +15,19 @@ public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "principio_activo")
+    @ManyToOne
+    @JoinColumn(
+            name = "principio_activo_id",
+            nullable = false
+    )
     private PrincipioActivo principioActivo;
-    @Column(name = "forma_farmaceutica")
+    @ManyToOne
+    @JoinColumn(
+            name = "forma_farmaceutica"
+    )
     private FormaFarmaceutica formaFarmaceutica;
+    @ManyToOne
     private AdministracionFarmaco administracion;
+    @ManyToOne
     private MarcaMedicamento marca;
 }

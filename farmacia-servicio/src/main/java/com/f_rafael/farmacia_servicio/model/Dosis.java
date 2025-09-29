@@ -15,9 +15,13 @@ public class Dosis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private Float cantidad;
     @ManyToOne
+    @JoinColumn(
+            nullable = false
+    )
     private UnidadDeMedida unidad;
-    @Column(name = "intervalo_horas")
+    @Column(name = "intervalo_horas", nullable = false)
     private Integer intervaloHoras;
 }

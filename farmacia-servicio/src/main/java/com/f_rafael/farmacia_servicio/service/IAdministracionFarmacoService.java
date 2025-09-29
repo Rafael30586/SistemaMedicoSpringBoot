@@ -12,4 +12,5 @@ public interface IAdministracionFarmacoService {
     public AdministracionFarmaco guardar(AdministracionFarmaco administracion);
     public AdministracionFarmaco actualizar(AdministracionFarmaco administracion);
     public void borrarPorId(Long id);
+    public Optional<AdministracionFarmaco> buscarPorVia(String via);
 }

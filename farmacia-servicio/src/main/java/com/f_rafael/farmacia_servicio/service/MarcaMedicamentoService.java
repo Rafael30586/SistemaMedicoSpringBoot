@@ -37,4 +37,9 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     public void borrarPorId(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Optional<MarcaMedicamento> buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
 }

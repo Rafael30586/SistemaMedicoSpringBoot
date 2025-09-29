@@ -1,11 +1,14 @@
 package com.f_rafael.farmacia_servicio.service;
 
+import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.repository.IPrincipioActivoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PrincipioActivoService implements IPrincipioActivoService{
@@ -34,5 +37,31 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     @Override
     public void borrarPorId(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<PrincipioActivo> buscarPorAccionTerapeutica(String nombreAccionTerapeutica) {
+        List<PrincipioActivo> principiosActivosARetornar = new LinkedList<>();
+        List<PrincipioActivo> todosLosPrincipiosActivos = repository.findAll();
+        Set<AccionTerapeutica> accionesTerapeuticas;
+        boolean tieneLaAccionTerapeutica;
+
+        for(PrincipioActivo pa : todosLosPrincipiosActivos){
+            tieneLaAccionTerapeutica = false;
+
+            accionesTerapeuticas = pa.getAccionesTerapeuticas();
+/*
+            accionesTerapeuticas.stream().parallel().forEach(at -> {
+                if(at.getNombre().equals(nombreAccionTerapeutica)) tieneLaAccionTerapeutica = true;
+            });*/
+
+            for(AccionTerapeutica at : accionesTerapeuticas){
+                if(at.getNombre().equals(nombreAccionTerapeutica)) tieneLaAccionTerapeutica = true;
+            }
+
+            if(tieneLaAccionTerapeutica) principiosActivosARetornar.add(pa);
+        }
+
+        return principiosActivosARetornar;
     }
 }
