@@ -17,7 +17,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     }
 
     @Override
-    public List<PrincipioActivo> buscarTodas() {
+    public List<PrincipioActivo> buscarTodos() {
         return repository.findAll();
     }
 

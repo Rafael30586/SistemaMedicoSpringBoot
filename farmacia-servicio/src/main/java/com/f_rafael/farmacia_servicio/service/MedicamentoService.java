@@ -18,7 +18,7 @@ public class MedicamentoService implements IMedicamentoService{
     }
 
     @Override
-    public List<Medicamento> buscarTodas() {
+    public List<Medicamento> buscarTodos() {
         return repository.findAll();
     }
 
