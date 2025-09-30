@@ -4,6 +4,7 @@ import com.f_rafael.lugares_servicio.model.Direccion;
 import com.f_rafael.lugares_servicio.service.IDireccionService;
 import com.f_rafael.lugares_servicio.utils.Transform;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,9 @@ public class DireccionController {
     @PutMapping
     public ResponseEntity<Direccion> actualizar(@RequestBody Direccion direccion){
         if(direccion.getId() == null){
-            return ResponseEntity.ok(new Direccion(-999999L,"El id no puede ser nulo",null,null,null));
+            //return ResponseEntity.ok(new Direccion(-999999L,"El id no puede ser nulo",null,null,null));
+            return new ResponseEntity<>(new Direccion(-9999L,"El id no debe ser nulo",null,null,null),
+                    HttpStatusCode.valueOf(204));
         }
 
         if(service.buscarPorId(direccion.getId()).isPresent()){
@@ -58,7 +61,7 @@ public class DireccionController {
             service.borrarPorId(id);
             return ResponseEntity.ok("Entidad borrada correctamente");
         }else{
-            return ResponseEntity.ok("Entidad no encontrada");
+            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
         }
     }
 
@@ -68,7 +71,9 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            // return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            return new ResponseEntity<>(new Direccion(-9999l,"Entidad no encontrada",null,null,null),
+                    HttpStatusCode.valueOf(204));
         }
 
         direccionAEditar = service.buscarPorId(id).get();
@@ -82,7 +87,9 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            // return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            return new ResponseEntity<>(new Direccion(-9999l,"Entidad no encontrada",null,null,null),
+                    HttpStatusCode.valueOf(204));
         }
 
         direccionAEditar = service.buscarPorId(id).get();
@@ -96,7 +103,9 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            // return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
+            return new ResponseEntity<>(new Direccion(-9999l,"Entidad no encontrada",null,null,null),
+                    HttpStatusCode.valueOf(204));
         }
 
         direccionAEditar = service.buscarPorId(id).get();

@@ -3,6 +3,7 @@ package com.f_rafael.lugares_servicio.controller;
 import com.f_rafael.lugares_servicio.model.Provincia;
 import com.f_rafael.lugares_servicio.service.IProvinciaService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,8 @@ public class ProvinciaController {
         if(service.buscarPorId(id).isPresent()){
             return ResponseEntity.ok(service.buscarPorId(id).get());
         }else{
-            return ResponseEntity.ok(new Provincia(-99999999L,"Entidad no encontrada"));
+            // return ResponseEntity.ok(new Provincia(-99999999L,"Entidad no encontrada"));
+            return new ResponseEntity<>(new Provincia(-9999L,"Entidad no encontrada"), HttpStatusCode.valueOf(204));
         }
     }
 
@@ -39,13 +41,15 @@ public class ProvinciaController {
         Long id = provincia.getId();
 
         if(id == null){
-            return ResponseEntity.ok(new Provincia(-99999999L,"El id no puede ser nulo"));
+            // return ResponseEntity.ok(new Provincia(-99999999L,"El id no puede ser nulo"));
+            return new ResponseEntity<>(new Provincia(-9999L,"El id no debe ser nulo"), HttpStatusCode.valueOf(204));
         }
 
         if(service.buscarPorId(id).isPresent()){
             return ResponseEntity.ok(service.actualizar(provincia));
         }else{
-            return ResponseEntity.ok(new Provincia(-999999L,"Entidad no encontrada"));
+            // return ResponseEntity.ok(new Provincia(-999999L,"Entidad no encontrada"));
+            return new ResponseEntity<>(new Provincia(-9999L,"Entidad no encontrada"), HttpStatusCode.valueOf(204));
         }
 
     }
@@ -56,7 +60,8 @@ public class ProvinciaController {
             service.borrarPorId(id);
             return ResponseEntity.ok("Entidad borrada correctamente");
         }else{
-            return ResponseEntity.ok("Entidad no encontrada");
+            // return ResponseEntity.ok("Entidad no encontrada");
+            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
         }
 
     }
