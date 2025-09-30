@@ -45,7 +45,7 @@ public class LocalidadController {
         if(service.buscarPorId(id).isPresent()){
             return ResponseEntity.ok(service.actualizar(localidad));
         }else{
-            return ResponseEntity.ok(new Localidad(-99999L,"localidad no encontrada",null));
+            return ResponseEntity.ok(new Localidad(-99999L,"Entidad no encontrada",null));
         }
 
     }
@@ -55,9 +55,9 @@ public class LocalidadController {
 
         if(service.buscarPorId(id).isPresent()){
             service.borrarPorId(id);
-            return ResponseEntity.ok("Localidad borrada correctamente");
+            return ResponseEntity.ok("Entidad borrada correctamente");
         }else{
-            return ResponseEntity.ok("Localidad no encontrada");
+            return ResponseEntity.ok("Entidad no encontrada");
         }
 
     }

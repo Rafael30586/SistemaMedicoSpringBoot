@@ -20,7 +20,7 @@ public class ProvinciaController {
         if(service.buscarPorId(id).isPresent()){
             return ResponseEntity.ok(service.buscarPorId(id).get());
         }else{
-            return ResponseEntity.ok(new Provincia(-99999999L,"Provincia no encontrada"));
+            return ResponseEntity.ok(new Provincia(-99999999L,"Entidad no encontrada"));
         }
     }
 
@@ -45,7 +45,7 @@ public class ProvinciaController {
         if(service.buscarPorId(id).isPresent()){
             return ResponseEntity.ok(service.actualizar(provincia));
         }else{
-            return ResponseEntity.ok(new Provincia(-999999L,"Provicnia no enconmtrada"));
+            return ResponseEntity.ok(new Provincia(-999999L,"Entidad no encontrada"));
         }
 
     }
@@ -54,9 +54,9 @@ public class ProvinciaController {
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         if(service.buscarPorId(id).isPresent()){
             service.borrarPorId(id);
-            return ResponseEntity.ok("Provincia borrada correctamente");
+            return ResponseEntity.ok("Entidad borrada correctamente");
         }else{
-            return ResponseEntity.ok("Provincia no encontrada");
+            return ResponseEntity.ok("Entidad no encontrada");
         }
 
     }

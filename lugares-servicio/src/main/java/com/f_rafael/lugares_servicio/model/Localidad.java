@@ -16,7 +16,11 @@ public class Localidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String nombre;
     @ManyToOne
+    @JoinColumn(
+            nullable = false
+    )
     private Provincia provincia;
 }

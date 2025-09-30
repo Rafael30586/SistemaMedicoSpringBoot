@@ -46,7 +46,7 @@ public class DireccionController {
         if(service.buscarPorId(direccion.getId()).isPresent()){
             return ResponseEntity.ok(service.actualizar(direccion));
         }else{
-            return ResponseEntity.ok(new Direccion(-99999L,"Direccion no encontrada",null,null,null));
+            return ResponseEntity.ok(new Direccion(-99999L,"Entidad no encontrada",null,null,null));
         }
 
     }
@@ -56,9 +56,9 @@ public class DireccionController {
 
         if(service.buscarPorId(id).isPresent()){
             service.borrarPorId(id);
-            return ResponseEntity.ok("Direccion borrada correctamente");
+            return ResponseEntity.ok("Entidad borrada correctamente");
         }else{
-            return ResponseEntity.ok("Direccion no encontrada");
+            return ResponseEntity.ok("Entidad no encontrada");
         }
     }
 
@@ -68,7 +68,7 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Direccion no encontrada",null,null,null));
+            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
         }
 
         direccionAEditar = service.buscarPorId(id).get();
@@ -82,7 +82,7 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Direccion no encontrada",null,null,null));
+            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
         }
 
         direccionAEditar = service.buscarPorId(id).get();
@@ -96,7 +96,7 @@ public class DireccionController {
         Direccion direccionAEditar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return ResponseEntity.ok(new Direccion(-999999L,"Direccion no encontrada",null,null,null));
+            return ResponseEntity.ok(new Direccion(-999999L,"Entidad no encontrada",null,null,null));
         }
 
         direccionAEditar = service.buscarPorId(id).get();

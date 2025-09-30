@@ -19,5 +19,8 @@ public class Direccion {
     private Integer altura;
     private String departamento;
     @ManyToOne
+    @JoinColumn(
+            nullable = false
+    )
     private Localidad localidad;
 }
