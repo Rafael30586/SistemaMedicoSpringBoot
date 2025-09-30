@@ -32,6 +32,17 @@ public class FormaFarmaceuticaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<FormaFarmaceutica> buscarPorNombre(@RequestParam String nombre){
+
+        if(service.buscarPorNombre(nombre).isEmpty()){
+            return new ResponseEntity<>(new FormaFarmaceutica(-9999L,"Entidad no encontrada"),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorNombre(nombre).get());
+    }
+
     @PostMapping
     public ResponseEntity<FormaFarmaceutica> guardar(@RequestBody FormaFarmaceutica formaFarmaceutica){
         return ResponseEntity.ok(service.guardar(formaFarmaceutica));

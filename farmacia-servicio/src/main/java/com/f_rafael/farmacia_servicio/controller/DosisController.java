@@ -32,6 +32,20 @@ public class DosisController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<Dosis> buscarPorCantidadUnidadEIntervalo(@RequestParam float cantidad,
+                                                                   @RequestParam String nombreUnidad,
+                                                                   @RequestParam int intervalo){
+        if(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).isEmpty()){
+            return new ResponseEntity<>(new Dosis(-99999L,null,
+                    new UnidadDeMedida(-99999L,"Entidad no encontrada",null),
+                    null),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).get());
+    }
+
     @PostMapping
     public ResponseEntity<Dosis> guardar(@RequestBody Dosis dosis){
         return new ResponseEntity<>(service.guardar(dosis),

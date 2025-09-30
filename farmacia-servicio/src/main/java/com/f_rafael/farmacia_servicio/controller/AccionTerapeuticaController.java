@@ -1,13 +1,16 @@
 package com.f_rafael.farmacia_servicio.controller;
 
+import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.service.IAccionTerapeuticaService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/acciones-terapeuteicas")
@@ -17,41 +20,74 @@ public class AccionTerapeuticaController {
     private IAccionTerapeuticaService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<AccionTerapeutica> buscarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isPresent()){
-            return new ResponseEntity<>(service.buscarPorId(id).get(), HttpStatusCode.valueOf(201));
-        }else{
-            return ResponseEntity.ok(new AccionTerapeutica(-99999L,
-                    "El id no corresponde a ninguna acción terapéutica",
-                    null));
+    public ResponseEntity<AccionTerapeuticaDto> buscarPorId(@PathVariable Long id){
+        AccionTerapeuticaDto dtoARetornar;
+        Optional<AccionTerapeutica> accionTerapeuticaOptional = service.buscarPorId(id);
+
+        if(accionTerapeuticaOptional.isEmpty()){
+            return new ResponseEntity<>(new AccionTerapeuticaDto(-999999L,"Entidad no encontrada",null),
+                    HttpStatusCode.valueOf(204));
         }
+
+        dtoARetornar = Transformacion.deAccionTerapeuticaADto(accionTerapeuticaOptional.get());
+
+        return ResponseEntity.ok(dtoARetornar);
     }
 
     @GetMapping
-    public ResponseEntity<List<AccionTerapeutica>> buscarTodas(){
-        return ResponseEntity.ok(service.buscarTodas());
+    public ResponseEntity<List<AccionTerapeuticaDto>> buscarTodas(){
+        List<AccionTerapeuticaDto> dtosARetornar = Transformacion.obtenerListaDeAccionesTerapeuticasDto(service.buscarTodas());
+        return ResponseEntity.ok(dtosARetornar);
+    }
+
+    @GetMapping
+    public ResponseEntity<AccionTerapeuticaDto> buscarPorNombre(@RequestParam String nombre){
+        AccionTerapeuticaDto dtoARetornar;
+        AccionTerapeutica informacionAccionTerapeutica;
+
+        if(service.buscarPorNombre(nombre).isEmpty()){
+            return new ResponseEntity<>(new AccionTerapeuticaDto(-9999L,"Entidad no encontrada",null),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        informacionAccionTerapeutica = service.buscarPorNombre(nombre).get();
+        dtoARetornar = Transformacion.deAccionTerapeuticaADto(informacionAccionTerapeutica);
+        return ResponseEntity.ok(dtoARetornar);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
+        List<AccionTerapeutica> informacionAccionesTerapeuticas = service.buscarPorSecuenciaEnDescripcion(secuencia);
+
+        return ResponseEntity.ok(Transformacion.obtenerListaDeAccionesTerapeuticasDto(informacionAccionesTerapeuticas));
     }
 
     @PostMapping
-    public ResponseEntity<AccionTerapeutica> guardar(@RequestBody AccionTerapeutica accionTerapeutica){
-        return ResponseEntity.ok(service.guardar(accionTerapeutica));
+    public ResponseEntity<AccionTerapeuticaDto> guardar(@RequestBody AccionTerapeutica accionTerapeutica){
+        AccionTerapeutica informacionAccionTerapeutica = service.guardar(accionTerapeutica);
+        AccionTerapeuticaDto dtoARetornar = Transformacion.deAccionTerapeuticaADto(informacionAccionTerapeutica);
+        return ResponseEntity.ok(dtoARetornar);
     }
 
     @PutMapping
-    public ResponseEntity<AccionTerapeutica> actualizar(@RequestBody AccionTerapeutica accionTerapeutica){
+    public ResponseEntity<AccionTerapeuticaDto> actualizar(@RequestBody AccionTerapeutica accionTerapeutica){
         Long id = accionTerapeutica.getId();
+        AccionTerapeuticaDto dtoARetornar;
+        Optional<AccionTerapeutica> accionTerapeuticaOptional = service.buscarPorId(id);
 
         if(id == null){
-            return new ResponseEntity<>(new AccionTerapeutica(-9999L,"El id no debe ser nulo",null),
+            return new ResponseEntity<>(new AccionTerapeuticaDto(-9999L,"El id no debe ser nulo",null),
                     HttpStatusCode.valueOf(204));
         }
 
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new AccionTerapeutica(-99999999L,"Accion terapéutica no encontrada",null),
+        if(accionTerapeuticaOptional.isEmpty()){
+            return new ResponseEntity<>(new AccionTerapeuticaDto(-99999999L,"Accion terapéutica no encontrada",null),
                     HttpStatusCode.valueOf(204));
         }
 
-        return ResponseEntity.ok(service.actualizar(accionTerapeutica));
+        dtoARetornar = Transformacion.deAccionTerapeuticaADto(accionTerapeuticaOptional.get());
+
+        return ResponseEntity.ok(dtoARetornar);
     }
 
     @DeleteMapping("/{id}")
@@ -65,5 +101,25 @@ public class AccionTerapeuticaController {
                     HttpStatusCode.valueOf(200));
         }
 
+    }
+
+    @PatchMapping("/cambiar-nombre/{id}")
+    public ResponseEntity<AccionTerapeuticaDto> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        AccionTerapeutica accionTerapeuticaAEditar;
+        AccionTerapeuticaDto dtoARetornar;
+        AccionTerapeutica informacionAccinTerapeutica;
+
+
+        if(service.buscarPorId(id).isEmpty()){
+            return new ResponseEntity<>(new AccionTerapeuticaDto(-99999L,"Entidad no encontrada",null),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        accionTerapeuticaAEditar = service.buscarPorId(id).get();
+        accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
+        informacionAccinTerapeutica = service.actualizar(accionTerapeuticaAEditar);
+
+        return ResponseEntity.ok(Transformacion.deAccionTerapeuticaADto(informacionAccinTerapeutica));
     }
 }

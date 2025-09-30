@@ -37,6 +37,26 @@ public class MedicamentoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
+    @GetMapping
+    public ResponseEntity<List<Medicamento>> buscarPorPrincipioActivo(@RequestParam("nombre-principio-activo") String nombrePrincipioActivo){
+        return ResponseEntity.ok(service.buscarPorPrincipioActivo(nombrePrincipioActivo));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Medicamento>> buscarPorFormaFarmaceutica(@RequestParam("nombre-forma-farmaceutica") String nombreFormaFarmaceutica){
+        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica(nombreFormaFarmaceutica));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Medicamento>> buscarPorAdminiastracion(@RequestParam("via") String via){
+        return ResponseEntity.ok(service.buscarPorAdministracion(via));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Medicamento>> buscarPorMarca(@RequestParam("nombre-marca") String nombreMarca){
+        return ResponseEntity.ok(service.buscarPorMarca(nombreMarca));
+    }
+
     @PostMapping
     public ResponseEntity<Medicamento> guardar(@RequestBody Medicamento medicamento){
         return ResponseEntity.ok(service.guardar(medicamento));

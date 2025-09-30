@@ -1,5 +1,6 @@
 package com.f_rafael.farmacia_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,11 +24,17 @@ public class Medicamento {
     private PrincipioActivo principioActivo;
     @ManyToOne
     @JoinColumn(
-            name = "forma_farmaceutica"
+            name = "forma_farmaceutica_id"
     )
     private FormaFarmaceutica formaFarmaceutica;
     @ManyToOne
+    @JoinColumn(
+            name = "administracion_id"
+    )
     private AdministracionFarmaco administracion;
     @ManyToOne
+    @JoinColumn(
+            name = "marca_id"
+    )
     private MarcaMedicamento marca;
 }

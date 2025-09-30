@@ -1,5 +1,6 @@
 package com.f_rafael.farmacia_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class Dosis {
     )
     private UnidadDeMedida unidad;
     @Column(name = "intervalo_horas", nullable = false)
+    @JsonProperty("intervalo_en_horas")
     private Integer intervaloHoras;
 }

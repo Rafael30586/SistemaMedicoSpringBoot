@@ -1,5 +1,6 @@
 package com.f_rafael.farmacia_servicio.service;
 
+import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 
 import java.util.List;

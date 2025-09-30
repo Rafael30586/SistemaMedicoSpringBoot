@@ -32,6 +32,17 @@ public class MarcaMedicamentoController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<MarcaMedicamento> buscarPorNombre(@RequestParam String nombre){
+
+        if(service.buscarPorNombre(nombre).isEmpty()){
+            return new ResponseEntity<>(new MarcaMedicamento(-99999L,"Entidad no encontrada"),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorNombre(nombre).get());
+    }
+
     @PostMapping
     public ResponseEntity<MarcaMedicamento> guardar(@RequestBody MarcaMedicamento marcaMedicamento){
         return ResponseEntity.ok(service.guardar(marcaMedicamento));

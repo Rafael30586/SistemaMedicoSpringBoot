@@ -1,7 +1,9 @@
 package com.f_rafael.farmacia_servicio.service;
 
+import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +48,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public List<AccionTerapeutica> buscarPorSecuenciaEnDescripcion(String secuencia) {
-        return repository.buscarPorSecuenciaEnDescripcion(secuencia);
+        return repository.findAll();
     }
 
 

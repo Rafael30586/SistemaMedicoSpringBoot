@@ -32,6 +32,17 @@ public class AdministracionFarmacoController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<AdministracionFarmaco> buscarPorVia(@RequestParam String via){
+
+        if(service.buscarPorVia(via).isEmpty()){
+            return new ResponseEntity<>(new AdministracionFarmaco(-9999L,"Entidad no encontrada"),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorVia(via).get());
+    }
+
     @PostMapping
     public ResponseEntity<AdministracionFarmaco> guardar(@RequestBody AdministracionFarmaco administracionFarmaco){
         return new ResponseEntity<>(service.guardar(administracionFarmaco),

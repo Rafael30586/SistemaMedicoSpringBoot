@@ -32,6 +32,28 @@ public class UnidadDeMedidaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<UnidadDeMedida> buscarPorNombre(@RequestParam String nombre){
+
+        if(service.buscarPorNombre(nombre).isEmpty()){
+            return new ResponseEntity<>(new UnidadDeMedida(-99999L,null,null),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorNombre(nombre).get());
+    }
+
+    @GetMapping
+    public ResponseEntity<UnidadDeMedida> buscarPorSimbolo(@RequestParam String simbolo){
+
+        if(service.buscarPorSimbolo(simbolo).isEmpty()){
+            return new ResponseEntity<>(new UnidadDeMedida(-99999L,"Entidad no encontrada", null),
+                    HttpStatusCode.valueOf(204));
+        }
+
+        return ResponseEntity.ok(service.buscarPorSimbolo(simbolo).get());
+    }
+
     @PostMapping
     public ResponseEntity<UnidadDeMedida> guardar(@RequestBody UnidadDeMedida unidad){
         return ResponseEntity.ok(service.guardar(unidad));

@@ -1,5 +1,6 @@
 package com.f_rafael.farmacia_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class PrincipioActivo {
     private Long id;
     @Column(unique = true)
     private String nombre;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "principios_activos_acciones_terapeuticas",
             joinColumns = @JoinColumn(name = "principio_activo_id"),
