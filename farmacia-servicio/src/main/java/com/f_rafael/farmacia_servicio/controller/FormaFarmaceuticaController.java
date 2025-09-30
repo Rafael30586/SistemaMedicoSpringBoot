@@ -39,7 +39,12 @@ public class FormaFarmaceuticaController {
 
     @PutMapping
     public ResponseEntity<FormaFarmaceutica> actualizar(@RequestBody FormaFarmaceutica formaFarmaceutica){
-        long id = formaFarmaceutica.getId();
+        Long id = formaFarmaceutica.getId();
+
+        if(id == null){
+            return new ResponseEntity<>(new FormaFarmaceutica(-9999L,"El id no debe ser nulo"),
+                    HttpStatusCode.valueOf(204));
+        }
 
         if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>(new FormaFarmaceutica(-99999L,"Entidad no encontrada"),

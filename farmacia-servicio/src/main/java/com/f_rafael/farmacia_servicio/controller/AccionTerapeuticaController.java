@@ -41,6 +41,11 @@ public class AccionTerapeuticaController {
     public ResponseEntity<AccionTerapeutica> actualizar(@RequestBody AccionTerapeutica accionTerapeutica){
         Long id = accionTerapeutica.getId();
 
+        if(id == null){
+            return new ResponseEntity<>(new AccionTerapeutica(-9999L,"El id no debe ser nulo",null),
+                    HttpStatusCode.valueOf(204));
+        }
+
         if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>(new AccionTerapeutica(-99999999L,"Accion terapéutica no encontrada",null),
                     HttpStatusCode.valueOf(204));

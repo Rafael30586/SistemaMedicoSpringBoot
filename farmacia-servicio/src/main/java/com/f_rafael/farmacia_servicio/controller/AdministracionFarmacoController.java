@@ -40,7 +40,12 @@ public class AdministracionFarmacoController {
 
     @PutMapping
     public ResponseEntity<AdministracionFarmaco> actualizar(@RequestBody AdministracionFarmaco administracionFarmaco){
-        long id = administracionFarmaco.getId();
+        Long id = administracionFarmaco.getId();
+
+        if(id == null){
+            return new ResponseEntity<>(new AdministracionFarmaco(-999999L,"El id no debe ser nulo"),
+                    HttpStatusCode.valueOf(204));
+        }
 
         if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>(new AdministracionFarmaco(-999999L,"Entidad no encontrada"),

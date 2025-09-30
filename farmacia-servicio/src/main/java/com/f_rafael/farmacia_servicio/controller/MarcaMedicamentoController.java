@@ -39,7 +39,12 @@ public class MarcaMedicamentoController {
 
     @PutMapping
     public ResponseEntity<MarcaMedicamento> actualizar(@RequestBody MarcaMedicamento marcaMedicamento){
-        long id = marcaMedicamento.getId();
+        Long id = marcaMedicamento.getId();
+
+        if(id == null){
+            return new ResponseEntity<>(new MarcaMedicamento(-99999L,"El id no debe ser nulo"),
+                    HttpStatusCode.valueOf(204));
+        }
 
         if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>(new MarcaMedicamento(-9999999L, "Entidad no encontrada"),

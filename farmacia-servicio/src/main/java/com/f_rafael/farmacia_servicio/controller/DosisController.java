@@ -1,6 +1,7 @@
 package com.f_rafael.farmacia_servicio.controller;
 
 import com.f_rafael.farmacia_servicio.model.Dosis;
+import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.service.IDosisService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
@@ -39,7 +40,14 @@ public class DosisController {
 
     @PutMapping
     public ResponseEntity<Dosis> actualizar(@RequestBody Dosis dosis){
-        long id = dosis.getId();
+        Long id = dosis.getId();
+
+        if(id == null){
+            return new ResponseEntity<>(new Dosis(-99999L,
+                    null,
+                    new UnidadDeMedida(-9999L,"El id no debe ser nulo",null),
+                    null),HttpStatusCode.valueOf(204));
+        }
 
         if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>(new Dosis(-99999L,null,null,null),
