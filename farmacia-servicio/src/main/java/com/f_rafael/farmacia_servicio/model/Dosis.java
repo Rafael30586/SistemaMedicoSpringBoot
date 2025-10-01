@@ -24,6 +24,5 @@ public class Dosis {
     )
     private UnidadDeMedida unidad;
     @Column(name = "intervalo_horas", nullable = false)
-    @JsonProperty("intervalo_en_horas")
     private Integer intervaloHoras;
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
@@ -17,4 +19,6 @@ public class FormaFarmaceutica {
     private Long id;
     @Column(unique = true ,nullable = false)
     private String nombre;
+    @OneToMany(mappedBy = "formaFarmaceutica")
+    private Set<Medicamento> medicamentos;
 }

@@ -1,6 +1,5 @@
 package com.f_rafael.farmacia_servicio.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -27,5 +27,7 @@ public class PrincipioActivo {
             inverseJoinColumns = @JoinColumn(name = "accion_terapeutica_id")
     )
     private Set<AccionTerapeutica> accionesTerapeuticas;
+    @OneToMany(mappedBy = "principioActivo")
+    private Set<Medicamento> medicamentos;
 
 }

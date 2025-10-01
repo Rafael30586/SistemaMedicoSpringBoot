@@ -3,7 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.service.IPrincipioActivoService;
-import com.f_rafael.farmacia_servicio.utils.Transformacion;
+import com.f_rafael.farmacia_servicio.utils.TransformacionPrincipioActivo;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +23,16 @@ public class PrincipioActivoController {
         PrincipioActivoDto dtoARetornar;
 
         if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null),
+            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null,null),
                     HttpStatusCode.valueOf(204));
         }
 
-        return ResponseEntity.ok(Transformacion.dePrincipioActivoADto(service.buscarPorId(id).get()));
+        return ResponseEntity.ok(TransformacionPrincipioActivo.obtenerDto(service.buscarPorId(id).get()));
     }
 
     @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarTodos(){
-        return ResponseEntity.ok(Transformacion.obtenerListaDePrincipioActivoDto(service.buscarTodos()));
+        return ResponseEntity.ok(TransformacionPrincipioActivo.obtenerListaDto(service.buscarTodos()));
     }
 
     @GetMapping
@@ -44,7 +44,7 @@ public class PrincipioActivoController {
     public ResponseEntity<PrincipioActivoDto> guardar(@RequestBody PrincipioActivo principioActivo){
         PrincipioActivoDto dtoARetornar;
         PrincipioActivo informacionPrincipioActivo = service.guardar(principioActivo);
-        dtoARetornar = Transformacion.dePrincipioActivoADto(informacionPrincipioActivo);
+        dtoARetornar = TransformacionPrincipioActivo.obtenerDto(informacionPrincipioActivo);
         return ResponseEntity.ok(dtoARetornar);
     }
 
@@ -55,17 +55,17 @@ public class PrincipioActivoController {
         PrincipioActivoDto dtoARetornar;
 
         if(id == null){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"El id no puede ser nulo",null),
+            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"El id no puede ser nulo",null,null),
                     HttpStatusCode.valueOf(204));
         }
 
         if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null),
+            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null,null),
                     HttpStatusCode.valueOf(204));
         }
 
         informacionPrincipioActivo = service.actualizar(principioActivo);
-        dtoARetornar = Transformacion.dePrincipioActivoADto(informacionPrincipioActivo);
+        dtoARetornar = TransformacionPrincipioActivo.obtenerDto(informacionPrincipioActivo);
 
         return ResponseEntity.ok(dtoARetornar);
     }

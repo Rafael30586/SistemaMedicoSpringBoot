@@ -1,7 +1,9 @@
 package com.f_rafael.farmacia_servicio.controller;
 
+import com.f_rafael.farmacia_servicio.dto.MarcaMedicamentoDto;
 import com.f_rafael.farmacia_servicio.model.MarcaMedicamento;
 import com.f_rafael.farmacia_servicio.service.IMarcaMedicamentoService;
+import com.f_rafael.farmacia_servicio.utils.TransformacionMarcaMedicamento;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -17,52 +19,52 @@ public class MarcaMedicamentoController {
     private IMarcaMedicamentoService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<MarcaMedicamento> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<MarcaMedicamentoDto> buscarPorId(@PathVariable Long id){
 
         if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new MarcaMedicamento(-99999L, null),
+            return new ResponseEntity<>(TransformacionMarcaMedicamento.obtenerDto(new MarcaMedicamento(-99999L, null,null)),
                     HttpStatusCode.valueOf(204));
         }
 
-        return ResponseEntity.ok(service.buscarPorId(id).get());
+        return ResponseEntity.ok(TransformacionMarcaMedicamento.obtenerDto(service.buscarPorId(id).get()));
     }
 
     @GetMapping
-    public ResponseEntity<List<MarcaMedicamento>> buscarTodas(){
-        return ResponseEntity.ok(service.buscarTodas());
+    public ResponseEntity<List<MarcaMedicamentoDto>> buscarTodas(){
+        return ResponseEntity.ok(TransformacionMarcaMedicamento.obtenerListaDtos(service.buscarTodas()));
     }
 
     @GetMapping
-    public ResponseEntity<MarcaMedicamento> buscarPorNombre(@RequestParam String nombre){
+    public ResponseEntity<MarcaMedicamentoDto> buscarPorNombre(@RequestParam String nombre){
 
         if(service.buscarPorNombre(nombre).isEmpty()){
-            return new ResponseEntity<>(new MarcaMedicamento(-99999L,"Entidad no encontrada"),
+            return new ResponseEntity<>(TransformacionMarcaMedicamento.obtenerDto(new MarcaMedicamento(-99999L,"Entidad no encontrada",null)),
                     HttpStatusCode.valueOf(204));
         }
 
-        return ResponseEntity.ok(service.buscarPorNombre(nombre).get());
+        return ResponseEntity.ok(TransformacionMarcaMedicamento.obtenerDto(service.buscarPorNombre(nombre).get()));
     }
 
     @PostMapping
-    public ResponseEntity<MarcaMedicamento> guardar(@RequestBody MarcaMedicamento marcaMedicamento){
-        return ResponseEntity.ok(service.guardar(marcaMedicamento));
+    public ResponseEntity<MarcaMedicamentoDto> guardar(@RequestBody MarcaMedicamento marcaMedicamento){
+        return ResponseEntity.ok(TransformacionMarcaMedicamento.obtenerDto(service.guardar(marcaMedicamento)));
     }
 
     @PutMapping
-    public ResponseEntity<MarcaMedicamento> actualizar(@RequestBody MarcaMedicamento marcaMedicamento){
+    public ResponseEntity<MarcaMedicamentoDto> actualizar(@RequestBody MarcaMedicamento marcaMedicamento){
         Long id = marcaMedicamento.getId();
 
         if(id == null){
-            return new ResponseEntity<>(new MarcaMedicamento(-99999L,"El id no debe ser nulo"),
+            return new ResponseEntity<>(TransformacionMarcaMedicamento.obtenerDto(new MarcaMedicamento(-99999L,"El id no debe ser nulo",null)),
                     HttpStatusCode.valueOf(204));
         }
 
         if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new MarcaMedicamento(-9999999L, "Entidad no encontrada"),
+            return new ResponseEntity<>(TransformacionMarcaMedicamento.obtenerDto(new MarcaMedicamento(-9999999L, "Entidad no encontrada",null)),
                     HttpStatusCode.valueOf(204));
         }
 
-        return ResponseEntity.ok(service.actualizar(marcaMedicamento));
+        return ResponseEntity.ok(TransformacionMarcaMedicamento.obtenerDto(service.actualizar(marcaMedicamento)));
     }
 
     @DeleteMapping("/{id}")

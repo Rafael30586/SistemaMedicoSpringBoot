@@ -4,6 +4,7 @@ import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.service.IAccionTerapeuticaService;
 import com.f_rafael.farmacia_servicio.utils.Transformacion;
+import com.f_rafael.farmacia_servicio.utils.TransformacionAccionTerapeutica;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +30,14 @@ public class AccionTerapeuticaController {
                     HttpStatusCode.valueOf(204));
         }
 
-        dtoARetornar = Transformacion.deAccionTerapeuticaADto(accionTerapeuticaOptional.get());
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());
 
         return ResponseEntity.ok(dtoARetornar);
     }
 
     @GetMapping
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarTodas(){
-        List<AccionTerapeuticaDto> dtosARetornar = Transformacion.obtenerListaDeAccionesTerapeuticasDto(service.buscarTodas());
+        List<AccionTerapeuticaDto> dtosARetornar = TransformacionAccionTerapeutica.obtenerListaDtos(service.buscarTodas());
         return ResponseEntity.ok(dtosARetornar);
     }
 
@@ -51,7 +52,7 @@ public class AccionTerapeuticaController {
         }
 
         informacionAccionTerapeutica = service.buscarPorNombre(nombre).get();
-        dtoARetornar = Transformacion.deAccionTerapeuticaADto(informacionAccionTerapeutica);
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
         return ResponseEntity.ok(dtoARetornar);
     }
 
@@ -59,13 +60,13 @@ public class AccionTerapeuticaController {
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
         List<AccionTerapeutica> informacionAccionesTerapeuticas = service.buscarPorSecuenciaEnDescripcion(secuencia);
 
-        return ResponseEntity.ok(Transformacion.obtenerListaDeAccionesTerapeuticasDto(informacionAccionesTerapeuticas));
+        return ResponseEntity.ok(TransformacionAccionTerapeutica.obtenerListaDtos(informacionAccionesTerapeuticas));
     }
 
     @PostMapping
     public ResponseEntity<AccionTerapeuticaDto> guardar(@RequestBody AccionTerapeutica accionTerapeutica){
         AccionTerapeutica informacionAccionTerapeutica = service.guardar(accionTerapeutica);
-        AccionTerapeuticaDto dtoARetornar = Transformacion.deAccionTerapeuticaADto(informacionAccionTerapeutica);
+        AccionTerapeuticaDto dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
         return ResponseEntity.ok(dtoARetornar);
     }
 
@@ -85,7 +86,7 @@ public class AccionTerapeuticaController {
                     HttpStatusCode.valueOf(204));
         }
 
-        dtoARetornar = Transformacion.deAccionTerapeuticaADto(accionTerapeuticaOptional.get());
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());
 
         return ResponseEntity.ok(dtoARetornar);
     }
@@ -120,6 +121,6 @@ public class AccionTerapeuticaController {
         accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
         informacionAccinTerapeutica = service.actualizar(accionTerapeuticaAEditar);
 
-        return ResponseEntity.ok(Transformacion.deAccionTerapeuticaADto(informacionAccinTerapeutica));
+        return ResponseEntity.ok(TransformacionAccionTerapeutica.obtenerDto(informacionAccinTerapeutica));
     }
 }
