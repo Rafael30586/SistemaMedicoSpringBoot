@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.f-rafael</groupId>
-	<artifactId>lugares-servicio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>lugares-servicio</name>
-	<description>microservicio de lugares</description>
+	<artifactId>contacto-servicio</artifactId>
+	<version>1.0.0</version>
+	<name>contacto-servicio</name>
+	<description>microservicio de lugares y teléfonos</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -12,5 +12,7 @@ public interface IDireccionService {
     public Direccion guardar(Direccion direccion);
     public Direccion actualizar(Direccion direccion);
     public void borrarPorId(Long id);
+    public List<Direccion> buscarPorLocalidad(String localidad);
+    public List<Direccion> buscarPorProvincia(String provincia);
 
 }

@@ -33,6 +33,16 @@ public class DireccionController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<List<Direccion>> buscarPorLocalidad(@RequestParam String localidad){
+        return ResponseEntity.ok(service.buscarPorLocalidad(localidad));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Direccion>> buscarPorProvincia(@RequestParam String provincia){
+        return ResponseEntity.ok(service.buscarPorProvincia(provincia));
+    }
+
     @PostMapping
     public ResponseEntity<Direccion> guardar(@RequestBody Direccion direccion){
         return ResponseEntity.ok(service.guardar(direccion));
@@ -65,7 +75,7 @@ public class DireccionController {
         }
     }
 
-    @PatchMapping("/editar-calle/{id}") // La calle va con guiones bajos en lugar de espacios vacíos
+    @PatchMapping("/{id}") // La calle va con guiones bajos en lugar de espacios vacíos
     public ResponseEntity<Direccion> editarCalle(@PathVariable Long id,
                                                  @RequestParam("calle") String calle){
         Direccion direccionAEditar;
@@ -81,7 +91,7 @@ public class DireccionController {
         return ResponseEntity.ok(service.actualizar(direccionAEditar));
     }
 
-    @PatchMapping("/editar-altura/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Direccion> editarAltura(@PathVariable Long id,
                                                  @RequestParam("altura") Integer altura){
         Direccion direccionAEditar;
@@ -97,7 +107,7 @@ public class DireccionController {
         return ResponseEntity.ok(service.actualizar(direccionAEditar));
     }
 
-    @PatchMapping("/editar-departamento/{id}") // El departamento va con guiones bajos en lugar de espacios vacíos
+    @PatchMapping("/{id}") // El departamento va con guiones bajos en lugar de espacios vacíos
     public ResponseEntity<Direccion> editarDepartamento(@PathVariable Long id,
                                                  @RequestParam("departamento") String departamento){
         Direccion direccionAEditar;
