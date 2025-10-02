@@ -20,12 +20,7 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
     private IAdministarcionFarmacoRepository repository;
 
     @Override
-    public Optional<AdministracionFarmaco> buscarPorId(Long id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public AdministracionFarmacoDto buscarPorId2(Long id) {
+    public AdministracionFarmacoDto buscarPorId(Long id) {
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -35,23 +30,12 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
     }
 
     @Override
-    public List<AdministracionFarmaco> buscarTodas() {
-
-        return repository.findAll();
-    }
-
-    @Override
-    public List<AdministracionFarmacoDto> buscarTodas2() {
+    public List<AdministracionFarmacoDto> buscarTodas() {
         return TransformacionAdministracionFarmaco.obtenerListaDtos(repository.findAll());
     }
 
     @Override
-    public AdministracionFarmaco guardar(AdministracionFarmaco administracion) {
-        return repository.save(administracion);
-    }
-
-    @Override
-    public AdministracionFarmacoDto guardar2(AdministracionFarmaco administracion) {
+    public AdministracionFarmacoDto guardar(AdministracionFarmaco administracion) {
         if(administracion.getVia() == null){
             throw new CampoNuloException("La via no puede swer nula");
         }
@@ -59,20 +43,16 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
         return TransformacionAdministracionFarmaco.obtenerDto(repository.save(administracion));
     }
 
-    @Override
-    public AdministracionFarmaco actualizar(AdministracionFarmaco administracion) {
-        return this.guardar(administracion);
-    }
 
     @Override
-    public AdministracionFarmacoDto actualizar2(AdministracionFarmaco administracion) {
+    public AdministracionFarmacoDto actualizar(AdministracionFarmaco administracion) {
         Long id = administracion.getId();
 
         if(id == null || administracion.getVia() == null){
             throw new CampoNuloException("Ni el id ni la via pueden ser nulos");
         }
 
-        return this.guardar2(administracion);
+        return this.guardar(administracion);
     }
 
     @Override
@@ -84,12 +64,7 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
     }
 
     @Override
-    public Optional<AdministracionFarmaco> buscarPorVia(String via) {
-        return repository.findByVia(via);
-    }
-
-    @Override
-    public AdministracionFarmacoDto buscarPorVia2(String via) {
+    public AdministracionFarmacoDto buscarPorVia(String via) {
 
         if(repository.findByVia(via).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

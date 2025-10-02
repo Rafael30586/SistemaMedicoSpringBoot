@@ -2,9 +2,7 @@ package com.f_rafael.farmacia_servicio.controller;
 
 import com.f_rafael.farmacia_servicio.dto.MedicamentoDto;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
-import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.service.IMedicamentoService;
-import com.f_rafael.farmacia_servicio.utils.TransformacionMedicamento;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -21,47 +19,47 @@ public class MedicamentoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MedicamentoDto> buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerDto(service.buscarPorId(id).get()));
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarTodos(){
-        return ResponseEntity.ok(service.buscarTodos2());
+        return ResponseEntity.ok(service.buscarTodos());
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorPrincipioActivo(@RequestParam("nombre-principio-activo") String nombrePrincipioActivo){
-        return ResponseEntity.ok(service.buscarPorPrincipioActivo2(nombrePrincipioActivo));
+        return ResponseEntity.ok(service.buscarPorPrincipioActivo(nombrePrincipioActivo));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorFormaFarmaceutica(@RequestParam("nombre-forma-farmaceutica") String nombreFormaFarmaceutica){
-        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica2(nombreFormaFarmaceutica));
+        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica(nombreFormaFarmaceutica));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorAdminiastracion(@RequestParam("via") String via){
-        return ResponseEntity.ok(service.buscarPorAdministracion2(via));
+        return ResponseEntity.ok(service.buscarPorAdministracion(via));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorMarca(@RequestParam("nombre-marca") String nombreMarca){
-        return ResponseEntity.ok(service.buscarPorMarca2(nombreMarca));
+        return ResponseEntity.ok(service.buscarPorMarca(nombreMarca));
     }
 
     @PostMapping
     public ResponseEntity<MedicamentoDto> guardar(@RequestBody Medicamento medicamento){
-        return new ResponseEntity<>(service.guardar2(medicamento),HttpStatusCode.valueOf(201));
+        return new ResponseEntity<>(service.guardar(medicamento),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<MedicamentoDto> actualizar(@RequestBody Medicamento medicamento){
-        return ResponseEntity.ok(service.actualizar2(medicamento));
+        return ResponseEntity.ok(service.actualizar(medicamento));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        service.borrarPorId2(id);
+        service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 }

@@ -19,13 +19,9 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     private IAccionTerapeuticaRepository repository;
 
-    @Override
-    public Optional<AccionTerapeutica> buscarPorId(Long id) {
-        return repository.findById(id);
-    }
 
     @Override
-    public AccionTerapeuticaDto buscartPorId2(Long id) {
+    public AccionTerapeuticaDto buscarPorId(Long id) {
         AccionTerapeutica informacionAccionTerapeutica;
         AccionTerapeuticaDto dtoARetornar;
 
@@ -39,13 +35,8 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     }
 
     @Override
-    public List<AccionTerapeutica> buscarTodas() {
-        return repository.findAll();
-    }
-
-    @Override
-    public AccionTerapeutica guardar(AccionTerapeutica accionTerapeutica) {
-        return repository.save(accionTerapeutica);
+    public List<AccionTerapeuticaDto> buscarTodas() {
+        return TransformacionAccionTerapeutica.obtenerListaDtos(repository.findAll());
     }
 
     @Override
@@ -59,10 +50,6 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         return TransformacionAccionTerapeutica.obtenerDto(repository.save(accionTerapeutica));
     }
 
-    @Override
-    public AccionTerapeutica actualizar(AccionTerapeutica accionTerapeutica) {
-        return this.guardar(accionTerapeutica);
-    }
 
     @Override
     public AccionTerapeuticaDto actualizar2(AccionTerapeutica accionTerapeutica) {
@@ -79,10 +66,6 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         return this.guardar2(accionTerapeutica);
     }
 
-    @Override
-    public void borrarPorId(Long id) {
-        repository.deleteById(id);
-    }
 
     @Override
     public void borrarPorId2(Long id) {
@@ -92,11 +75,6 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         repository.deleteById(id);
-    }
-
-    @Override
-    public Optional<AccionTerapeutica> buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre);
     }
 
     @Override
@@ -113,10 +91,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         return dtoARetornar;
     }
 
-    @Override
-    public List<AccionTerapeutica> buscarPorSecuenciaEnDescripcion(String secuencia) {
-        return repository.findAll();
-    }
+
 
     @Override
     public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion2(String secuencia) {

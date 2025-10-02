@@ -19,7 +19,7 @@ public class DosisController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Dosis> buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(service.buscarPorId2(id));
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping
@@ -31,7 +31,7 @@ public class DosisController {
     public ResponseEntity<Dosis> buscarPorCantidadUnidadEIntervalo(@RequestParam float cantidad,
                                                                    @RequestParam String nombreUnidad,
                                                                    @RequestParam int intervalo){
-        return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo2(cantidad,nombreUnidad,intervalo));
+        return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo));
     }
 
     @PostMapping

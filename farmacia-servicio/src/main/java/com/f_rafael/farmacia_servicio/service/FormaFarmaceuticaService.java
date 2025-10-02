@@ -9,7 +9,6 @@ import com.f_rafael.farmacia_servicio.utils.TransformacionFormaFarmaceutica;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
@@ -17,12 +16,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     private IFormaFarmaceuticaRepository repository;
 
     @Override
-    public Optional<FormaFarmaceutica> buscarPorId(Long id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public FormaFarmaceuticaDto buscarPorId2(Long id) {
+    public FormaFarmaceuticaDto buscarPorId(Long id) {
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -32,22 +26,12 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     }
 
     @Override
-    public List<FormaFarmaceutica> buscarTodas() {
-        return repository.findAll();
-    }
-
-    @Override
-    public List<FormaFarmaceuticaDto> buscarTodas2() {
+    public List<FormaFarmaceuticaDto> buscarTodas() {
         return TransformacionFormaFarmaceutica.obtenerListaDtos(repository.findAll());
     }
 
     @Override
-    public FormaFarmaceutica guardar(FormaFarmaceutica formaFarmaceutica) {
-        return repository.save(formaFarmaceutica);
-    }
-
-    @Override
-    public FormaFarmaceuticaDto guardar2(FormaFarmaceutica formaFarmaceutica) {
+    public FormaFarmaceuticaDto guardar(FormaFarmaceutica formaFarmaceutica) {
 
         if(formaFarmaceutica.getNombre() == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
@@ -57,12 +41,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     }
 
     @Override
-    public FormaFarmaceutica actualizar(FormaFarmaceutica formaFarmaceutica) {
-        return this.guardar(formaFarmaceutica);
-    }
-
-    @Override
-    public FormaFarmaceuticaDto actualizar2(FormaFarmaceutica formaFarmaceutica) {
+    public FormaFarmaceuticaDto actualizar(FormaFarmaceutica formaFarmaceutica) {
         Long id = formaFarmaceutica.getId();
 
         if(id == null || formaFarmaceutica.getNombre() == null){
@@ -73,16 +52,11 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return this.guardar2(formaFarmaceutica);
+        return this.guardar(formaFarmaceutica);
     }
 
     @Override
     public void borrarPorId(Long id) {
-        repository.deleteById(id);
-    }
-
-    @Override
-    public void borrarPorId2(Long id) {
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -92,12 +66,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     }
 
     @Override
-    public Optional<FormaFarmaceutica> buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre);
-    }
-
-    @Override
-    public FormaFarmaceuticaDto buscarPorNombre2(String nombre) {
+    public FormaFarmaceuticaDto buscarPorNombre(String nombre) {
 
         if(repository.findByNombre(nombre).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

@@ -17,12 +17,7 @@ public class DosisService implements IDosisService{
     private IDosisRepository repository;
 
     @Override
-    public Optional<Dosis> buscarPorId(Long id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public Dosis buscarPorId2(Long id) {
+    public Dosis buscarPorId(Long id) {
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -38,20 +33,24 @@ public class DosisService implements IDosisService{
 
     @Override
     public Dosis guardar(Dosis dosis) {
+
+        if(dosis.getCantidad() == null || dosis.getUnidad() == null || dosis.getIntervaloHoras() == null){
+            throw new CampoNuloException("Hay tres campos en esta entidad que no pueden ser nulos");
+        }
+
         return repository.save(dosis);
     }
 
     @Override
     public Dosis actualizar(Dosis dosis) {
-        return this.guardar(dosis);
-    }
-
-    @Override
-    public Dosis actualizar2(Dosis dosis) {
         Long id = dosis.getId();
 
-        if(id == null || dosis.getCantidad() == null || dosis.getUnidad() == null || dosis.getIntervaloHoras() == null){
-            throw new CampoNuloException("Ningún campo puede ser nulo");
+        if(id == null){
+            throw new CampoNuloException("El id no puede ser nulo");
+        }
+
+        if(repository.findById(id).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
         return this.guardar(dosis);
@@ -68,12 +67,7 @@ public class DosisService implements IDosisService{
     }
 
     @Override
-    public Optional<Dosis> buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervalo) {
-        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo);
-    }
-
-    @Override
-    public Dosis buscarPorCantidadUnidadEIntervalo2(float cantidad, String nombreUnidad, int intervalo) {
+    public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervalo) {
 
         if(repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

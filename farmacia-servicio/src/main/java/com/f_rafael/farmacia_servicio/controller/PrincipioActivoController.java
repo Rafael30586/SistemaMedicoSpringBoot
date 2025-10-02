@@ -3,7 +3,6 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.service.IPrincipioActivoService;
-import com.f_rafael.farmacia_servicio.utils.TransformacionPrincipioActivo;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -20,32 +19,32 @@ public class PrincipioActivoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PrincipioActivoDto> buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(service.buscarPorId2(id));
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarTodos(){
-        return ResponseEntity.ok(service.buscarTodos2());
+        return ResponseEntity.ok(service.buscarTodos());
     }
 
     @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
-        return ResponseEntity.ok(service.buscarPorAccionTerapeutica2(nombreAccionTerapeutica));
+        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(nombreAccionTerapeutica));
     }
 
     @PostMapping
     public ResponseEntity<PrincipioActivoDto> guardar(@RequestBody PrincipioActivo principioActivo){
-        return new ResponseEntity<>(service.guardar2(principioActivo),HttpStatusCode.valueOf(201));
+        return new ResponseEntity<>(service.guardar(principioActivo),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<PrincipioActivoDto> actualizar(@RequestBody PrincipioActivo principioActivo){
-        return ResponseEntity.ok(service.actualizar2(principioActivo));
+        return ResponseEntity.ok(service.actualizar(principioActivo));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        service.borrarPorId2(id);
+        service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 }
