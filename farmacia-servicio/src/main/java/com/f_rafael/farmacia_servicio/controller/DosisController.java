@@ -19,12 +19,7 @@ public class DosisController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Dosis> buscarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new Dosis(-99999L,null,null,null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(service.buscarPorId(id).get());
+        return ResponseEntity.ok(service.buscarPorId2(id));
     }
 
     @GetMapping
@@ -36,14 +31,7 @@ public class DosisController {
     public ResponseEntity<Dosis> buscarPorCantidadUnidadEIntervalo(@RequestParam float cantidad,
                                                                    @RequestParam String nombreUnidad,
                                                                    @RequestParam int intervalo){
-        if(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).isEmpty()){
-            return new ResponseEntity<>(new Dosis(-99999L,null,
-                    new UnidadDeMedida(-99999L,"Entidad no encontrada",null),
-                    null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).get());
+        return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo2(cantidad,nombreUnidad,intervalo));
     }
 
     @PostMapping
@@ -74,14 +62,9 @@ public class DosisController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
 
-        if(service.buscarPorId(id).isEmpty()) {
-            return new ResponseEntity<>("Entidad no encontrada",
-                    HttpStatusCode.valueOf(204));
-        }
-
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",
-                HttpStatusCode.valueOf(200));
+                HttpStatusCode.valueOf(204));
 
     }
 }

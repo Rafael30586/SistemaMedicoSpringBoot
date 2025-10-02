@@ -20,62 +20,32 @@ public class FormaFarmaceuticaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<FormaFarmaceuticaDto> buscarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(TransformacionFormaFarmaceutica.obtenerDto(new FormaFarmaceutica(-99999L,"Entidad no encontrada",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionFormaFarmaceutica.obtenerDto(service.buscarPorId(id).get()));
+        return ResponseEntity.ok(service.buscarPorId2(id));
     }
 
     @GetMapping
     public ResponseEntity<List<FormaFarmaceuticaDto>> buscarTodas(){
-
-        return ResponseEntity.ok(TransformacionFormaFarmaceutica.obtenerListaDtos(service.buscarTodas()));
+        return ResponseEntity.ok(service.buscarTodas2());
     }
 
     @GetMapping
     public ResponseEntity<FormaFarmaceuticaDto> buscarPorNombre(@RequestParam String nombre){
-
-        if(service.buscarPorNombre(nombre).isEmpty()){
-            return new ResponseEntity<>(TransformacionFormaFarmaceutica.obtenerDto(new FormaFarmaceutica(-9999L,"Entidad no encontrada",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionFormaFarmaceutica.obtenerDto(service.buscarPorNombre(nombre).get()));
+        return ResponseEntity.ok(service.buscarPorNombre2(nombre));
     }
 
     @PostMapping
     public ResponseEntity<FormaFarmaceuticaDto> guardar(@RequestBody FormaFarmaceutica formaFarmaceutica){
-        return ResponseEntity.ok(TransformacionFormaFarmaceutica.obtenerDto(service.guardar(formaFarmaceutica)));
+        return ResponseEntity.ok(service.guardar2(formaFarmaceutica));
     }
 
     @PutMapping
     public ResponseEntity<FormaFarmaceuticaDto> actualizar(@RequestBody FormaFarmaceutica formaFarmaceutica){
-        Long id = formaFarmaceutica.getId();
-
-        if(id == null){
-            return new ResponseEntity<>(TransformacionFormaFarmaceutica.obtenerDto(new FormaFarmaceutica(-9999L,"El id no debe ser nulo",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(TransformacionFormaFarmaceutica.obtenerDto(new FormaFarmaceutica(-99999L,"Entidad no encontrada",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionFormaFarmaceutica.obtenerDto(service.actualizar(formaFarmaceutica)));
+        return ResponseEntity.ok(service.actualizar2(formaFarmaceutica));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>("Entidad no encontrada",
-                    HttpStatusCode.valueOf(204));
-        }
-
-        service.borrarPorId(id);
-        return ResponseEntity.ok("Entidad borrada correctamente");
+        service.borrarPorId2(id);
+        return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 }

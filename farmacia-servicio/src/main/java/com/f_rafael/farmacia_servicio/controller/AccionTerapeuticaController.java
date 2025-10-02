@@ -22,7 +22,7 @@ public class AccionTerapeuticaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AccionTerapeuticaDto> buscarPorId(@PathVariable Long id){
-        AccionTerapeuticaDto dtoARetornar;
+        /*AccionTerapeuticaDto dtoARetornar;
         Optional<AccionTerapeutica> accionTerapeuticaOptional = service.buscarPorId(id);
 
         if(accionTerapeuticaOptional.isEmpty()){
@@ -30,9 +30,8 @@ public class AccionTerapeuticaController {
                     HttpStatusCode.valueOf(204));
         }
 
-        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());
-
-        return ResponseEntity.ok(dtoARetornar);
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());*/
+        return ResponseEntity.ok(service.buscartPorId2(id));
     }
 
     @GetMapping
@@ -43,7 +42,7 @@ public class AccionTerapeuticaController {
 
     @GetMapping
     public ResponseEntity<AccionTerapeuticaDto> buscarPorNombre(@RequestParam String nombre){
-        AccionTerapeuticaDto dtoARetornar;
+        /*AccionTerapeuticaDto dtoARetornar;
         AccionTerapeutica informacionAccionTerapeutica;
 
         if(service.buscarPorNombre(nombre).isEmpty()){
@@ -52,27 +51,27 @@ public class AccionTerapeuticaController {
         }
 
         informacionAccionTerapeutica = service.buscarPorNombre(nombre).get();
-        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
-        return ResponseEntity.ok(dtoARetornar);
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);*/
+        return ResponseEntity.ok(service.buscarPorNombre2(nombre));
     }
 
     @GetMapping
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
-        List<AccionTerapeutica> informacionAccionesTerapeuticas = service.buscarPorSecuenciaEnDescripcion(secuencia);
-
-        return ResponseEntity.ok(TransformacionAccionTerapeutica.obtenerListaDtos(informacionAccionesTerapeuticas));
+        /*<AccionTerapeutica> informacionAccionesTerapeuticas = service.buscarPorSecuenciaEnDescripcion(secuencia);*/
+        return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion2(secuencia));
     }
 
     @PostMapping
     public ResponseEntity<AccionTerapeuticaDto> guardar(@RequestBody AccionTerapeutica accionTerapeutica){
-        AccionTerapeutica informacionAccionTerapeutica = service.guardar(accionTerapeutica);
-        AccionTerapeuticaDto dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
-        return ResponseEntity.ok(dtoARetornar);
+        /*AccionTerapeutica informacionAccionTerapeutica = service.guardar(accionTerapeutica);
+        AccionTerapeuticaDto dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);*/
+        // return ResponseEntity.created(service.guardar2(accionTerapeutica));
+        return new ResponseEntity<>(service.guardar2(accionTerapeutica),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<AccionTerapeuticaDto> actualizar(@RequestBody AccionTerapeutica accionTerapeutica){
-        Long id = accionTerapeutica.getId();
+        /*Long id = accionTerapeutica.getId();
         AccionTerapeuticaDto dtoARetornar;
         Optional<AccionTerapeutica> accionTerapeuticaOptional = service.buscarPorId(id);
 
@@ -86,14 +85,14 @@ public class AccionTerapeuticaController {
                     HttpStatusCode.valueOf(204));
         }
 
-        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());
+        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(accionTerapeuticaOptional.get());*/
 
-        return ResponseEntity.ok(dtoARetornar);
+        return ResponseEntity.ok(service.actualizar2(accionTerapeutica));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isEmpty()){
+        /*if(service.buscarPorId(id).isEmpty()){
             return new ResponseEntity<>("El id no corresponde a ninguna entidad de la base de datos",
                     HttpStatusCode.valueOf(204));
         }else{
@@ -101,12 +100,15 @@ public class AccionTerapeuticaController {
             return new ResponseEntity<>("Entidad borrada correctamente",
                     HttpStatusCode.valueOf(200));
         }
+         */
+        service.borrarPorId2(id);
 
+        return new ResponseEntity<>("Entidad borrada correctamente", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/cambiar-nombre/{id}")
-    public ResponseEntity<AccionTerapeuticaDto> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
-        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
+        /*String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         AccionTerapeutica accionTerapeuticaAEditar;
         AccionTerapeuticaDto dtoARetornar;
         AccionTerapeutica informacionAccinTerapeutica;
@@ -119,8 +121,10 @@ public class AccionTerapeuticaController {
 
         accionTerapeuticaAEditar = service.buscarPorId(id).get();
         accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
-        informacionAccinTerapeutica = service.actualizar(accionTerapeuticaAEditar);
+        informacionAccinTerapeutica = service.actualizar(accionTerapeuticaAEditar);*/
 
-        return ResponseEntity.ok(TransformacionAccionTerapeutica.obtenerDto(informacionAccinTerapeutica));
+        service.modificarNombre(id,nombre);
+
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 }

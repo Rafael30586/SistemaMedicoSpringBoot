@@ -21,75 +21,47 @@ public class MedicamentoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MedicamentoDto> buscarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(TransformacionMedicamento.obtenerDto(new Medicamento(-99999L,
-                    new PrincipioActivo(-99999L,"Entidad no encontrada",null,null),
-                    null,
-                    null,
-                    null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
         return ResponseEntity.ok(TransformacionMedicamento.obtenerDto(service.buscarPorId(id).get()));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarTodos(){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerListaDto(service.buscarTodos()));
+        return ResponseEntity.ok(service.buscarTodos2());
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorPrincipioActivo(@RequestParam("nombre-principio-activo") String nombrePrincipioActivo){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerListaDto(service.buscarPorPrincipioActivo(nombrePrincipioActivo)));
+        return ResponseEntity.ok(service.buscarPorPrincipioActivo2(nombrePrincipioActivo));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorFormaFarmaceutica(@RequestParam("nombre-forma-farmaceutica") String nombreFormaFarmaceutica){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerListaDto(service.buscarPorFormaFarmaceutica(nombreFormaFarmaceutica)));
+        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica2(nombreFormaFarmaceutica));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorAdminiastracion(@RequestParam("via") String via){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerListaDto(service.buscarPorAdministracion(via)));
+        return ResponseEntity.ok(service.buscarPorAdministracion2(via));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorMarca(@RequestParam("nombre-marca") String nombreMarca){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerListaDto(service.buscarPorMarca(nombreMarca)));
+        return ResponseEntity.ok(service.buscarPorMarca2(nombreMarca));
     }
 
     @PostMapping
     public ResponseEntity<MedicamentoDto> guardar(@RequestBody Medicamento medicamento){
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerDto(service.guardar(medicamento)));
+        return new ResponseEntity<>(service.guardar2(medicamento),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<MedicamentoDto> actualizar(@RequestBody Medicamento medicamento){
-        Long id = medicamento.getId();
-
-        if(id == null){
-            return new ResponseEntity<>(TransformacionMedicamento.obtenerDto(new Medicamento(-99999L,
-                    new PrincipioActivo(-9999L,"El id no puede ser nulo",null,null),
-                    null,null,null)) ,HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(TransformacionMedicamento.obtenerDto(new Medicamento(-999999L,
-                    new PrincipioActivo(-9999L,"Entidad no encontrada",null,null),
-                    null,null,null)) ,HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionMedicamento.obtenerDto(service.actualizar(medicamento)));
+        return ResponseEntity.ok(service.actualizar2(medicamento));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
-        }
-
-        service.borrarPorId(id);
-        return ResponseEntity.ok("Entidad borrada exitosamente");
+        service.borrarPorId2(id);
+        return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 }

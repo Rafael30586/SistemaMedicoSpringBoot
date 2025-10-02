@@ -20,61 +20,33 @@ public class AdministracionFarmacoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AdministracionFarmacoDto> buscarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isPresent()){
-            return ResponseEntity.ok(TransformacionAdministracionFarmaco.obtenerDto(service.buscarPorId(id).get()));
-        }else{
-            return new ResponseEntity<>(TransformacionAdministracionFarmaco.obtenerDto(new AdministracionFarmaco(-9999L,"Entidad no encontrada",null)) ,
-                    HttpStatusCode.valueOf(204));
-        }
+        return ResponseEntity.ok(service.buscarPorId2(id));
     }
 
     @GetMapping
     public ResponseEntity<List<AdministracionFarmacoDto>> buscarTodas(){
-        return ResponseEntity.ok(TransformacionAdministracionFarmaco.obtenerListaDtos(service.buscarTodas()));
+        return ResponseEntity.ok(service.buscarTodas2());
     }
 
     @GetMapping
     public ResponseEntity<AdministracionFarmacoDto> buscarPorVia(@RequestParam String via){
-
-        if(service.buscarPorVia(via).isEmpty()){
-            return new ResponseEntity<>(TransformacionAdministracionFarmaco.obtenerDto(new AdministracionFarmaco(-9999L,"Entidad no encontrada",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionAdministracionFarmaco.obtenerDto(service.buscarPorVia(via).get()));
+        return ResponseEntity.ok(service.buscarPorVia2(via));
     }
 
     @PostMapping
     public ResponseEntity<AdministracionFarmacoDto> guardar(@RequestBody AdministracionFarmaco administracionFarmaco){
-        return new ResponseEntity<>(TransformacionAdministracionFarmaco.obtenerDto(service.guardar(administracionFarmaco)),
+        return new ResponseEntity<>(service.guardar2(administracionFarmaco),
                 HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<AdministracionFarmacoDto> actualizar(@RequestBody AdministracionFarmaco administracionFarmaco){
-        Long id = administracionFarmaco.getId();
-
-        if(id == null){
-            return new ResponseEntity<>(TransformacionAdministracionFarmaco.obtenerDto(new AdministracionFarmaco(-999999L,"El id no debe ser nulo",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(TransformacionAdministracionFarmaco.obtenerDto(new AdministracionFarmaco(-999999L,"Entidad no encontrada",null)),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionAdministracionFarmaco.obtenerDto(service.actualizar(administracionFarmaco)));
+        return ResponseEntity.ok(service.actualizar2(administracionFarmaco));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
-        }else{
-            service.borrarPorId(id);
-            return ResponseEntity.ok("Entidad borrada");
-        }
+        service.buscarPorId2(id);
+        return new ResponseEntity<>("Entidad borrada correctamente", HttpStatusCode.valueOf(204));
     }
 }

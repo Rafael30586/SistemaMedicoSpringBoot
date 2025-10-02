@@ -20,65 +20,32 @@ public class PrincipioActivoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PrincipioActivoDto> buscarPorId(@PathVariable Long id){
-        PrincipioActivoDto dtoARetornar;
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null,null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(TransformacionPrincipioActivo.obtenerDto(service.buscarPorId(id).get()));
+        return ResponseEntity.ok(service.buscarPorId2(id));
     }
 
     @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarTodos(){
-        return ResponseEntity.ok(TransformacionPrincipioActivo.obtenerListaDto(service.buscarTodos()));
+        return ResponseEntity.ok(service.buscarTodos2());
     }
 
     @GetMapping
-    public ResponseEntity<List<PrincipioActivo>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
-        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(nombreAccionTerapeutica));
+    public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
+        return ResponseEntity.ok(service.buscarPorAccionTerapeutica2(nombreAccionTerapeutica));
     }
 
     @PostMapping
     public ResponseEntity<PrincipioActivoDto> guardar(@RequestBody PrincipioActivo principioActivo){
-        PrincipioActivoDto dtoARetornar;
-        PrincipioActivo informacionPrincipioActivo = service.guardar(principioActivo);
-        dtoARetornar = TransformacionPrincipioActivo.obtenerDto(informacionPrincipioActivo);
-        return ResponseEntity.ok(dtoARetornar);
+        return new ResponseEntity<>(service.guardar2(principioActivo),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<PrincipioActivoDto> actualizar(@RequestBody PrincipioActivo principioActivo){
-        Long id = principioActivo.getId();
-        PrincipioActivo informacionPrincipioActivo;
-        PrincipioActivoDto dtoARetornar;
-
-        if(id == null){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"El id no puede ser nulo",null,null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new PrincipioActivoDto(-99999L,"Entidad no encontrada",null,null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        informacionPrincipioActivo = service.actualizar(principioActivo);
-        dtoARetornar = TransformacionPrincipioActivo.obtenerDto(informacionPrincipioActivo);
-
-        return ResponseEntity.ok(dtoARetornar);
+        return ResponseEntity.ok(service.actualizar2(principioActivo));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>("Entidad no encontrada",
-                    HttpStatusCode.valueOf(204));
-        }
-
-        service.borrarPorId(id);
-        return ResponseEntity.ok("Entidad borrada exitosamente");
+        service.borrarPorId2(id);
+        return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 }
