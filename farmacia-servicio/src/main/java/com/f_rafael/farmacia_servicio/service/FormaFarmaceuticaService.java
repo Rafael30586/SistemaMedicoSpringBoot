@@ -1,14 +1,15 @@
 package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.dto.FormaFarmaceuticaDto;
+import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.FormaFarmaceutica;
+import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IFormaFarmaceuticaRepository;
-import com.f_rafael.farmacia_servicio.utils.TransformacionFormaFarmaceutica;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
@@ -22,12 +23,12 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return TransformacionFormaFarmaceutica.obtenerDto(repository.findById(id).get());
+        return obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<FormaFarmaceuticaDto> buscarTodas() {
-        return TransformacionFormaFarmaceutica.obtenerListaDtos(repository.findAll());
+        return obtenerListaDtos(repository.findAll());
     }
 
     @Override
@@ -37,7 +38,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
 
-        return TransformacionFormaFarmaceutica.obtenerDto(repository.save(formaFarmaceutica));
+        return obtenerDto(repository.save(formaFarmaceutica));
     }
 
     @Override
@@ -72,6 +73,46 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return TransformacionFormaFarmaceutica.obtenerDto(repository.findByNombre(nombre).get());
+        return obtenerDto(repository.findByNombre(nombre).get());
+    }
+
+    private FormaFarmaceuticaDto obtenerDto(FormaFarmaceutica formaFarmaceutica){
+        FormaFarmaceuticaDto dtoARetornar = new FormaFarmaceuticaDto();
+        Set<Medicamento> informacionMedicamentos;
+        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(formaFarmaceutica.getMedicamentos());
+        SubMedicamentoDto medicamentoParaAgregar;
+        Set<SubMedicamentoDto> medicamentosParaAsignar;
+
+        if(medicamentosOptional.isPresent()){
+            informacionMedicamentos = formaFarmaceutica.getMedicamentos();
+            medicamentosParaAsignar = new HashSet<>();
+
+            for(Medicamento m : informacionMedicamentos){
+                medicamentoParaAgregar = new SubMedicamentoDto(m.getId(),
+                        m.getPrincipioActivo().getNombre(),
+                        m.getFormaFarmaceutica().getNombre(),
+                        m.getAdministracion().getVia(),
+                        m.getMarca().getNombre());
+
+                medicamentosParaAsignar.add(medicamentoParaAgregar);
+            }
+
+            dtoARetornar.setMedicamento(medicamentosParaAsignar);
+        }
+
+        dtoARetornar.setId(formaFarmaceutica.getId());
+        dtoARetornar.setNombre(formaFarmaceutica.getNombre());
+
+        return dtoARetornar;
+    }
+
+    private List<FormaFarmaceuticaDto> obtenerListaDtos(Collection<FormaFarmaceutica> coleccionFormasFarmaceuticas){
+        List<FormaFarmaceuticaDto> listaARetornar = new LinkedList<>();
+
+        for(FormaFarmaceutica ff : coleccionFormasFarmaceuticas){
+            listaARetornar.add(obtenerDto(ff));
+        }
+
+        return listaARetornar;
     }
 }

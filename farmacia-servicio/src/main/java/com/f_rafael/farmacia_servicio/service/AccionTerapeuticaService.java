@@ -1,17 +1,17 @@
 package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
+import com.f_rafael.farmacia_servicio.dto.SubPrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
+import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
 import com.f_rafael.farmacia_servicio.utils.Transformacion;
-import com.f_rafael.farmacia_servicio.utils.TransformacionAccionTerapeutica;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -30,13 +30,13 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         informacionAccionTerapeutica = repository.findById(id).get();
-        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
+        dtoARetornar = obtenerDto(informacionAccionTerapeutica);
         return dtoARetornar;
     }
 
     @Override
     public List<AccionTerapeuticaDto> buscarTodas() {
-        return TransformacionAccionTerapeutica.obtenerListaDtos(repository.findAll());
+        return obtenerListaDto(repository.findAll());
     }
 
     @Override
@@ -47,7 +47,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
             throw new CampoNuloException("El nombre de la acción terapéutica no puede ser nulo");
         }
 
-        return TransformacionAccionTerapeutica.obtenerDto(repository.save(accionTerapeutica));
+        return obtenerDto(repository.save(accionTerapeutica));
     }
 
 
@@ -87,7 +87,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         informacionAccionTerapeutica = repository.findByNombre(nombre).get();
-        dtoARetornar = TransformacionAccionTerapeutica.obtenerDto(informacionAccionTerapeutica);
+        dtoARetornar = obtenerDto(informacionAccionTerapeutica);
         return dtoARetornar;
     }
 
@@ -95,7 +95,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion2(String secuencia) {
-        return TransformacionAccionTerapeutica.obtenerListaDtos(repository.buscarPorSecuenciaEnDescripcion(secuencia));
+        return obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuencia));
     }
 
     @Override
@@ -112,5 +112,41 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         this.actualizar2(accionTerapeuticaAEditar);
     }
 
+    private AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
+        Optional<Set<PrincipioActivo>> principiosActivosOpcional = Optional.of(informacionAccionTerapeutica.getPrincipiosActivos());
+        Set<PrincipioActivo> informacionPrincipiosActivos;
+        AccionTerapeuticaDto dtoARetornar = new AccionTerapeuticaDto();
+        Set<SubPrincipioActivoDto> principiosActivosParaAsignar;
+        SubPrincipioActivoDto principioActivoParaAsignar;
+
+        dtoARetornar.setId(informacionAccionTerapeutica.getId());
+        dtoARetornar.setNombre(informacionAccionTerapeutica.getNombre());
+
+        if(principiosActivosOpcional.isPresent()){
+            informacionPrincipiosActivos = principiosActivosOpcional.get();
+            principiosActivosParaAsignar = new HashSet<>();
+
+            for(PrincipioActivo pa : informacionPrincipiosActivos){
+                principioActivoParaAsignar = new SubPrincipioActivoDto(pa.getId(), pa.getNombre());
+                principiosActivosParaAsignar.add(principioActivoParaAsignar);
+            }
+
+            dtoARetornar.setPrincipiosActivos(principiosActivosParaAsignar);
+        }
+        return dtoARetornar;
+    }
+
+    private List<AccionTerapeuticaDto> obtenerListaDto(Collection<AccionTerapeutica> accionesTerapeuticas){
+
+        List<AccionTerapeuticaDto> listaARetornar = new LinkedList<>();
+        AccionTerapeuticaDto dtoParaAgregar;
+
+        for(AccionTerapeutica at : accionesTerapeuticas){
+            dtoParaAgregar = obtenerDto(at);
+            listaARetornar.add(dtoParaAgregar);
+        }
+
+        return listaARetornar;
+    }
 
 }

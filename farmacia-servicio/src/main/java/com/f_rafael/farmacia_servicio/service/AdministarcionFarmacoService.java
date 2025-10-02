@@ -1,17 +1,16 @@
 package com.f_rafael.farmacia_servicio.service;
 
-import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.dto.AdministracionFarmacoDto;
+import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.AdministracionFarmaco;
+import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IAdministarcionFarmacoRepository;
-import com.f_rafael.farmacia_servicio.utils.TransformacionAdministracionFarmaco;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -26,12 +25,12 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return TransformacionAdministracionFarmaco.obtenerDto(repository.findById(id).get());
+        return obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<AdministracionFarmacoDto> buscarTodas() {
-        return TransformacionAdministracionFarmaco.obtenerListaDtos(repository.findAll());
+        return obtenerListaDtos(repository.findAll());
     }
 
     @Override
@@ -40,7 +39,7 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
             throw new CampoNuloException("La via no puede swer nula");
         }
 
-        return TransformacionAdministracionFarmaco.obtenerDto(repository.save(administracion));
+        return obtenerDto(repository.save(administracion));
     }
 
 
@@ -70,6 +69,49 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return TransformacionAdministracionFarmaco.obtenerDto(repository.findByVia(via).get());
+        return obtenerDto(repository.findByVia(via).get());
+    }
+
+    private AdministracionFarmacoDto obtenerDto(AdministracionFarmaco administracion){
+
+        AdministracionFarmacoDto dtoARetornar = new AdministracionFarmacoDto();
+        SubMedicamentoDto medicamentoAAsignar;
+        Set<SubMedicamentoDto> medicamentosAAsignar;
+        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(administracion.getMedicamentos());
+        Set<Medicamento> informacionMedicamentos;
+
+        if(medicamentosOptional.isPresent()){
+
+            informacionMedicamentos = administracion.getMedicamentos();
+            medicamentosAAsignar = new HashSet<>();
+
+            for(Medicamento m : informacionMedicamentos){
+                medicamentoAAsignar = new SubMedicamentoDto(m.getId(),
+                        m.getPrincipioActivo().getNombre(),
+                        m.getFormaFarmaceutica().getNombre(),
+                        m.getAdministracion().getVia(),
+                        m.getMarca().getNombre());
+
+                medicamentosAAsignar.add(medicamentoAAsignar);
+            }
+
+            dtoARetornar.setMedicamentos(medicamentosAAsignar);
+        }
+
+        dtoARetornar.setId(administracion.getId());
+        dtoARetornar.setVia(administracion.getVia());
+
+        return dtoARetornar;
+    }
+
+
+    private List<AdministracionFarmacoDto> obtenerListaDtos(Collection<AdministracionFarmaco> coleccionAdministracionFarmaco){
+        List<AdministracionFarmacoDto> listaARetornar = new LinkedList<>();
+
+        for(AdministracionFarmaco af : coleccionAdministracionFarmaco){
+            listaARetornar.add(obtenerDto(af));
+        }
+
+        return listaARetornar;
     }
 }
