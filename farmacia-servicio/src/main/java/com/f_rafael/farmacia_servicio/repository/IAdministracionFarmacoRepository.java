@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface IAdministarcionFarmacoRepository extends JpaRepository<AdministracionFarmaco, Long> {
+public interface IAdministracionFarmacoRepository extends JpaRepository<AdministracionFarmaco, Long> {
 
     public Optional<AdministracionFarmaco> findByVia(String via);
 }

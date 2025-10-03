@@ -6,7 +6,7 @@ import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.AdministracionFarmaco;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
-import com.f_rafael.farmacia_servicio.repository.IAdministarcionFarmacoRepository;
+import com.f_rafael.farmacia_servicio.repository.IAdministracionFarmacoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.*;
 @AllArgsConstructor
 public class AdministarcionFarmacoService implements IAdministracionFarmacoService{
 
-    private IAdministarcionFarmacoRepository repository;
+    private IAdministracionFarmacoRepository repository;
 
     @Override
     public AdministracionFarmacoDto buscarPorId(Long id) {

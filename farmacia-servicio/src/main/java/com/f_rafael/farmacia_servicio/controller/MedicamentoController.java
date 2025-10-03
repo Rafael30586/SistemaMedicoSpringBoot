@@ -62,4 +62,32 @@ public class MedicamentoController {
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping
+    public ResponseEntity<String> asignarPrincipioActivo(@RequestParam Long id,
+                                                         @RequestParam("principio-activo-id") Long principioActivoId){
+        service.asignarPrincipioActivo(id,principioActivoId);
+        return new ResponseEntity<>("Entidad midificada correctamente",HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping
+    public ResponseEntity<String> asignarFormaFarmaceutica(@RequestParam Long id,
+                                                           @RequestParam("forma-farmaceutica-id") Long formaFarmaceuticaId){
+        service.asignarFormaFarmaceutica(id,formaFarmaceuticaId);
+        return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping
+    public ResponseEntity<String> asignarAdministracion(@RequestParam Long id,
+                                                        @RequestParam("administracion-id") Long administracionId){
+        service.asignarAdministracion(id,administracionId);
+        return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping
+    public ResponseEntity<String> asignarMarca(@RequestParam Long id,
+                                               @RequestParam("marca-id") Long marcaId){
+        service.asignarMarca(id,marcaId);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
+    }
 }

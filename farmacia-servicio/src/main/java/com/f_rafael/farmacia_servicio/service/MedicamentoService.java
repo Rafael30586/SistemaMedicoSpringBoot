@@ -4,7 +4,8 @@ import com.f_rafael.farmacia_servicio.dto.*;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.*;
-import com.f_rafael.farmacia_servicio.repository.IMedicamentoRepository;
+import com.f_rafael.farmacia_servicio.repository.*;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -13,9 +14,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class MedicamentoService implements IMedicamentoService{
 
     private IMedicamentoRepository repository;
+    private IPrincipioActivoRepository principioActivoRepository;
+    private IFormaFarmaceuticaRepository formaFarmaceuticaRepository;
+    private IAdministracionFarmacoRepository administracionFarmacoRepository;
+    private IMarcaMedicamentoRepository marcaMedicamentoRepository;
 
     @Override
     public MedicamentoDto buscarPorId(Long id) {
@@ -86,6 +92,69 @@ public class MedicamentoService implements IMedicamentoService{
     @Override
     public List<MedicamentoDto> buscarPorMarca(String nombreMarca) {
         return obtenerListaDto(repository.buscarPorMarca(nombreMarca));
+    }
+
+    @Override
+    public void asignarPrincipioActivo(Long id, Long principioActivoId) {
+        Medicamento medicamentoAEditar;
+        PrincipioActivo principioActivoAAsignar = new PrincipioActivo();
+
+        if(repository.findById(id).isEmpty() || principioActivoRepository.findById(principioActivoId).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        medicamentoAEditar = repository.findById(id).get();
+        principioActivoAAsignar.setId(principioActivoId);
+        medicamentoAEditar.setPrincipioActivo(principioActivoAAsignar);
+        repository.save(medicamentoAEditar);
+    }
+
+    @Override
+    public void asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId) {
+        Medicamento medicamentoAEditar;
+        FormaFarmaceutica formaFarmaceuticaAAsignar = new FormaFarmaceutica();
+
+        if(repository.findById(id).isEmpty() || formaFarmaceuticaRepository.findById(id).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        medicamentoAEditar = repository.findById(id).get();
+        formaFarmaceuticaAAsignar.setId(formaFarmaceuticaId);
+        medicamentoAEditar.setFormaFarmaceutica(formaFarmaceuticaAAsignar);
+        // medicamentoAEditar.setFormaFarmaceutica(formaFarmaceuticaRepository.findById(formaFarmaceuticaId).get());
+        repository.save(medicamentoAEditar);
+    }
+
+    @Override
+    public void asignarAdministracion(Long id, Long administracionId) {
+        Medicamento medicamentoAEditar;
+        AdministracionFarmaco administracionAAsignar = new AdministracionFarmaco();
+
+        if(repository.findById(id).isEmpty() || administracionFarmacoRepository.findById(id).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        medicamentoAEditar = repository.findById(id).get();
+        administracionAAsignar.setId(administracionId);
+        medicamentoAEditar.setAdministracion(administracionAAsignar);
+        // medicamentoAEditar.setAdministracion(administracionFarmacoRepository.findById(administracionId).get());
+        repository.save(medicamentoAEditar);
+    }
+
+    @Override
+    public void asignarMarca(Long id, Long marcaId) {
+        Medicamento medicamentoAEditar;
+        MarcaMedicamento marcaAAsignar = new MarcaMedicamento();
+
+        if(repository.findById(id).isEmpty() || marcaMedicamentoRepository.findById(id).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        medicamentoAEditar = repository.findById(id).get();
+        marcaAAsignar.setId(marcaId);
+        medicamentoAEditar.setMarca(marcaAAsignar);
+        // medicamentoAEditar.setMarca(marcaMedicamentoRepository.findById(marcaId).get());
+        repository.save(medicamentoAEditar);
     }
 
     private MedicamentoDto obtenerDto(Medicamento medicamento){
