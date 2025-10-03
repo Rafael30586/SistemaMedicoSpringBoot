@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.AdministracionFarmacoDto;
 import com.f_rafael.farmacia_servicio.model.AdministracionFarmaco;
 import com.f_rafael.farmacia_servicio.service.IAdministracionFarmacoService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,8 @@ public class AdministracionFarmacoController {
 
     @GetMapping
     public ResponseEntity<AdministracionFarmacoDto> buscarPorVia(@RequestParam String via){
-        return ResponseEntity.ok(service.buscarPorVia(via));
+        String viaSinGuiones = Transformacion.removerGuionesBajos(via);
+        return ResponseEntity.ok(service.buscarPorVia(viaSinGuiones));
     }
 
     @PostMapping

@@ -2,6 +2,7 @@ package com.f_rafael.farmacia_servicio.controller;
 
 import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.service.IUnidadDeMedidaService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,8 @@ public class UnidadDeMedidaController {
 
     @GetMapping
     public ResponseEntity<UnidadDeMedida> buscarPorNombre(@RequestParam String nombre){
-        return ResponseEntity.ok(service.buscarPorNombre(nombre));
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
     }
 
     @GetMapping

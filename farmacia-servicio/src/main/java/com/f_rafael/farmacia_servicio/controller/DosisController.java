@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.model.Dosis;
 import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.service.IDosisService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class DosisController {
     public ResponseEntity<Dosis> buscarPorCantidadUnidadEIntervalo(@RequestParam float cantidad,
                                                                    @RequestParam String nombreUnidad,
                                                                    @RequestParam int intervalo){
+        String nombreUnidadSinGuiones = Transformacion.removerGuionesBajos(nombreUnidad);
         return ResponseEntity.ok(service.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo));
     }
 

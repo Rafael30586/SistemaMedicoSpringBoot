@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.service.IAccionTerapeuticaService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,12 +30,14 @@ public class AccionTerapeuticaController {
 
     @GetMapping
     public ResponseEntity<AccionTerapeuticaDto> buscarPorNombre(@RequestParam String nombre){
-        return ResponseEntity.ok(service.buscarPorNombre2(nombre));
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        return ResponseEntity.ok(service.buscarPorNombre2(nombreSinGuiones));
     }
 
     @GetMapping
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
-        return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion2(secuencia));
+        String secuenciaSinGuiones = Transformacion.removerGuionesBajos(secuencia);
+        return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion2(secuenciaSinGuiones));
     }
 
     @PostMapping
@@ -55,7 +58,8 @@ public class AccionTerapeuticaController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
-        service.modificarNombre(id,nombre);
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        service.modificarNombre(id,nombreSinGuiones);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 }

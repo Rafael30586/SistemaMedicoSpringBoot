@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.service.IPrincipioActivoService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,8 @@ public class PrincipioActivoController {
 
     @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
-        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(nombreAccionTerapeutica));
+        String accionTerapeuticaSinGuiones = Transformacion.removerGuionesBajos(nombreAccionTerapeutica);
+        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(accionTerapeuticaSinGuiones));
     }
 
     @PostMapping

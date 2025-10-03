@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.MarcaMedicamentoDto;
 import com.f_rafael.farmacia_servicio.model.MarcaMedicamento;
 import com.f_rafael.farmacia_servicio.service.IMarcaMedicamentoService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class MarcaMedicamentoController {
 
     @GetMapping
     public ResponseEntity<MarcaMedicamentoDto> buscarPorNombre(@RequestParam String nombre){
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 

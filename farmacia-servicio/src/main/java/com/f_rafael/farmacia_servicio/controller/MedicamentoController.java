@@ -3,6 +3,7 @@ package com.f_rafael.farmacia_servicio.controller;
 import com.f_rafael.farmacia_servicio.dto.MedicamentoDto;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.service.IMedicamentoService;
+import com.f_rafael.farmacia_servicio.utils.Transformacion;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,22 +30,26 @@ public class MedicamentoController {
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorPrincipioActivo(@RequestParam("nombre-principio-activo") String nombrePrincipioActivo){
-        return ResponseEntity.ok(service.buscarPorPrincipioActivo(nombrePrincipioActivo));
+        String principioActivoSinGuiones = Transformacion.removerGuionesBajos(nombrePrincipioActivo);
+        return ResponseEntity.ok(service.buscarPorPrincipioActivo(principioActivoSinGuiones));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorFormaFarmaceutica(@RequestParam("nombre-forma-farmaceutica") String nombreFormaFarmaceutica){
-        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica(nombreFormaFarmaceutica));
+        String formaFarmaceuticaSinGuiones = Transformacion.removerGuionesBajos(nombreFormaFarmaceutica);
+        return ResponseEntity.ok(service.buscarPorFormaFarmaceutica(formaFarmaceuticaSinGuiones));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorAdminiastracion(@RequestParam("via") String via){
-        return ResponseEntity.ok(service.buscarPorAdministracion(via));
+        String viaSinGuiones = Transformacion.removerGuionesBajos(via);
+        return ResponseEntity.ok(service.buscarPorAdministracion(viaSinGuiones));
     }
 
     @GetMapping
     public ResponseEntity<List<MedicamentoDto>> buscarPorMarca(@RequestParam("nombre-marca") String nombreMarca){
-        return ResponseEntity.ok(service.buscarPorMarca(nombreMarca));
+        String marcaSinGuiones = Transformacion.removerGuionesBajos(nombreMarca);
+        return ResponseEntity.ok(service.buscarPorMarca(marcaSinGuiones));
     }
 
     @PostMapping
