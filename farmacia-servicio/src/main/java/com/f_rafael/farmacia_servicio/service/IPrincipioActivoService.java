@@ -12,4 +12,6 @@ public interface IPrincipioActivoService {
     public PrincipioActivoDto actualizar(PrincipioActivo principioActivo);
     public void borrarPorId(Long id);
     public List<PrincipioActivoDto> buscarPorAccionTerapeutica(String nombreAccionTerapeutica);
+    public void agregarAccionTerapeutica(Long id, Long accionTerapeuticaId);
+    public void quitarAccionTerapeutica(Long id, Long accionTerapeuticaId);
 }

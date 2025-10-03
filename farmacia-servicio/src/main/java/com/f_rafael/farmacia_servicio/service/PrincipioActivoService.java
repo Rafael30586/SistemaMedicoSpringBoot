@@ -8,15 +8,19 @@ import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
+import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
 import com.f_rafael.farmacia_servicio.repository.IPrincipioActivoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@AllArgsConstructor
 public class PrincipioActivoService implements IPrincipioActivoService{
 
     private IPrincipioActivoRepository repository;
+    private IAccionTerapeuticaRepository accionTerapeuticaRepository;
 
     @Override
     public PrincipioActivoDto buscarPorId(Long id) {
@@ -88,6 +92,57 @@ public class PrincipioActivoService implements IPrincipioActivoService{
         }
 
         return obtenerListaDto(principiosActivosARetornar);
+    }
+
+    @Override
+    public void agregarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
+        PrincipioActivo principioActivoAEditar;
+        AccionTerapeutica accionTerapeuticaAAgregar;
+        Set<AccionTerapeutica> setAccionesTerapeuticas;
+
+        if(repository.findById(id).isEmpty() || accionTerapeuticaRepository.findById(accionTerapeuticaId).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad  no encontrada");
+        }
+
+        principioActivoAEditar = repository.findById(id).get();
+
+        accionTerapeuticaAAgregar = new AccionTerapeutica();
+        accionTerapeuticaAAgregar.setId(id);
+
+        setAccionesTerapeuticas = principioActivoAEditar.getAccionesTerapeuticas();
+        setAccionesTerapeuticas.add(accionTerapeuticaAAgregar);
+
+        principioActivoAEditar.setAccionesTerapeuticas(setAccionesTerapeuticas);
+
+        repository.save(principioActivoAEditar);
+    }
+
+    @Override
+    public void quitarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
+        PrincipioActivo principioActivoAEditar;
+        AccionTerapeutica accionTerapeuticaAQuitar;
+        Set<AccionTerapeutica> setAccionesTerapeuticas;
+
+        if(repository.findById(id).isEmpty() || accionTerapeuticaRepository.findById(accionTerapeuticaId).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad  no encontrada");
+        }
+
+        accionTerapeuticaAQuitar = new AccionTerapeutica();
+
+        principioActivoAEditar = repository.findById(id).get();
+
+        setAccionesTerapeuticas = principioActivoAEditar.getAccionesTerapeuticas();
+
+        for(AccionTerapeutica at : setAccionesTerapeuticas){
+            if(at.getId().equals(accionTerapeuticaId)){
+                accionTerapeuticaAQuitar = at;
+            }
+        }
+
+        setAccionesTerapeuticas.remove(accionTerapeuticaAQuitar);
+        principioActivoAEditar.setAccionesTerapeuticas(setAccionesTerapeuticas);
+
+        repository.save(principioActivoAEditar);
     }
 
     private PrincipioActivoDto obtenerDto(PrincipioActivo principioActivo){

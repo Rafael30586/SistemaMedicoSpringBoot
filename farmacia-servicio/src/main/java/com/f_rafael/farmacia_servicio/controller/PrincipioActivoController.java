@@ -47,4 +47,18 @@ public class PrincipioActivoController {
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping("/agregar")
+    public ResponseEntity<String> agregarAccionTerapeutica(@RequestParam Long id,
+                                                           @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
+        service.agregarAccionTerapeutica(id,accionTerapeuticaId);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping("/quitar")
+    public ResponseEntity<String> quitarAccionTerapeutica(@RequestParam Long id,
+                                                           @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
+        service.quitarAccionTerapeutica(id,accionTerapeuticaId);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
+    }
 }

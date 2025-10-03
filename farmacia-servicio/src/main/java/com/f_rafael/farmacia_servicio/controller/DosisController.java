@@ -42,20 +42,6 @@ public class DosisController {
 
     @PutMapping
     public ResponseEntity<Dosis> actualizar(@RequestBody Dosis dosis){
-        Long id = dosis.getId();
-
-        if(id == null){
-            return new ResponseEntity<>(new Dosis(-99999L,
-                    null,
-                    new UnidadDeMedida(-9999L,"El id no debe ser nulo",null),
-                    null),HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new Dosis(-99999L,null,null,null),
-                    HttpStatusCode.valueOf(204));
-        }
-
         return ResponseEntity.ok(service.actualizar(dosis));
     }
 

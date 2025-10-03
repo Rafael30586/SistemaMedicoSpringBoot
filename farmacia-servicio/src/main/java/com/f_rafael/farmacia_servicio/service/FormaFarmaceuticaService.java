@@ -7,11 +7,13 @@ import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.FormaFarmaceutica;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IFormaFarmaceuticaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@AllArgsConstructor
 public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
 
     private IFormaFarmaceuticaRepository repository;
