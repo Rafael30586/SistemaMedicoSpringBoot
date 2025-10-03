@@ -7,9 +7,12 @@ import java.util.Optional;
 
 public interface ILocalidadService {
 
-    public Optional<Localidad> buscarPorId(Long id);
+    public Localidad buscarPorId(Long id);
     public List<Localidad>  buscarTodas();
     public Localidad guardar(Localidad localidad);
     public Localidad actualizar(Localidad localidad);
     public void borrarPorId(Long id);
+    public void cambiarNombre(Long id, String nombre);
+    public void cambiarProvincia(Long id, Long idProvincia);
+    
 }

@@ -18,12 +18,7 @@ public class ProvinciaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Provincia> buscarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isPresent()){
-            return ResponseEntity.ok(service.buscarPorId(id).get());
-        }else{
-            // return ResponseEntity.ok(new Provincia(-99999999L,"Entidad no encontrada"));
-            return new ResponseEntity<>(new Provincia(-9999L,"Entidad no encontrada"), HttpStatusCode.valueOf(204));
-        }
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping
@@ -31,40 +26,25 @@ public class ProvinciaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<Provincia> buscarPorNombre(@RequestParam String nombre){
+        return ResponseEntity.ok(service.buscarPorNombre(nombre));
+    }
+
     @PostMapping
     public ResponseEntity<Provincia> guardar(@RequestBody Provincia provincia){
-        return ResponseEntity.ok(service.guardar(provincia));
+        return new ResponseEntity<>(service.guardar(provincia),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<Provincia> actualizar(@RequestBody Provincia provincia){
-        Long id = provincia.getId();
-
-        if(id == null){
-            // return ResponseEntity.ok(new Provincia(-99999999L,"El id no puede ser nulo"));
-            return new ResponseEntity<>(new Provincia(-9999L,"El id no debe ser nulo"), HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isPresent()){
-            return ResponseEntity.ok(service.actualizar(provincia));
-        }else{
-            // return ResponseEntity.ok(new Provincia(-999999L,"Entidad no encontrada"));
-            return new ResponseEntity<>(new Provincia(-9999L,"Entidad no encontrada"), HttpStatusCode.valueOf(204));
-        }
-
+        return ResponseEntity.ok(service.actualizar(provincia));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        if(service.buscarPorId(id).isPresent()){
-            service.borrarPorId(id);
-            return ResponseEntity.ok("Entidad borrada correctamente");
-        }else{
-            // return ResponseEntity.ok("Entidad no encontrada");
-            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
-        }
-
+        service.borrarPorId(id);
+        return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
-
 
 }

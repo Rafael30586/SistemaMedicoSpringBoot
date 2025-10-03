@@ -18,13 +18,7 @@ public class NumeroTelefonicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<NumeroTelefonico> buscarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new NumeroTelefonico(-99999L,"Entidad no encontrada",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(service.buscarPorId(id).get());
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @GetMapping
@@ -34,50 +28,28 @@ public class NumeroTelefonicoController {
 
     @GetMapping
     public ResponseEntity<NumeroTelefonico> buscarPorNumero(@RequestParam String numero){
-
-        if(service.buscarPorNumero(numero).isEmpty()){
-            return new ResponseEntity<>(new NumeroTelefonico(-9999L,"Entidad no encontrada",null),
-            HttpStatusCode.valueOf(204));
-        }
-
-        return ResponseEntity.ok(service.buscarPorNumero(numero).get());
+        return ResponseEntity.ok(service.buscarPorNumero(numero));
     }
 
     @GetMapping
     public ResponseEntity<List<NumeroTelefonico>> buscarPorTipo(@RequestParam String tipo){
-        return ResponseEntity.ok(service.buscarPorTipo(tipo));
+        String tipoEnMayusculas = tipo.toUpperCase();
+        return ResponseEntity.ok(service.buscarPorTipo(tipoEnMayusculas));
     }
 
     @PostMapping
     public ResponseEntity<NumeroTelefonico> guardar(@RequestBody NumeroTelefonico telefono){
-        return ResponseEntity.ok(service.guardar(telefono));
+        return new ResponseEntity<>(service.guardar(telefono),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<NumeroTelefonico> actualizar(@RequestBody NumeroTelefonico telefono){
-        Long id = telefono.getId();
-
-        if(id == null){
-            return new ResponseEntity<>(new NumeroTelefonico(-99999L,"El id no puede ser nulo",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorNumero(telefono.getNumero()).isPresent()){
-            return new ResponseEntity<>(new NumeroTelefonico(-99999L,"El numero de telefono ya existe",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
         return ResponseEntity.ok(service.actualizar(telefono));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
-        }
-
         service.borrarPorId(id);
-        return ResponseEntity.ok("Entidad borrada correctamente");
+        return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 }

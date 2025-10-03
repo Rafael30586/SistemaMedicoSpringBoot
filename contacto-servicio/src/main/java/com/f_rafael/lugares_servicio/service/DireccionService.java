@@ -1,5 +1,7 @@
 package com.f_rafael.lugares_servicio.service;
 
+import com.f_rafael.lugares_servicio.exception.CampoNuloException;
+import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.lugares_servicio.model.Direccion;
 import com.f_rafael.lugares_servicio.repository.IDireccionRepository;
 import lombok.AllArgsConstructor;
@@ -16,8 +18,13 @@ public class DireccionService implements IDireccionService{
     private IDireccionRepository repository;
 
     @Override
-    public Optional<Direccion> buscarPorId(Long id) {
-        return repository.findById(id);
+    public Direccion buscarPorId(Long id) {
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        return repository.findById(id).get();
     }
 
     @Override
@@ -27,16 +34,31 @@ public class DireccionService implements IDireccionService{
 
     @Override
     public Direccion guardar(Direccion direccion) {
+
+        if(direccion.getCalle() == null){
+            throw new CampoNuloException("La calle no puede ser nula");
+        }
+
         return repository.save(direccion);
     }
 
     @Override
     public Direccion actualizar(Direccion direccion) {
+
+        if(direccion.getId() == null){
+            throw new CampoNuloException("El id no puede ser nulo");
+        }
+
         return this.guardar(direccion);
     }
 
     @Override
     public void borrarPorId(Long id) {
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
         repository.deleteById(id);
     }
 
@@ -66,5 +88,47 @@ public class DireccionService implements IDireccionService{
         });
 
         return direccionesARetornar;
+    }
+
+    @Override
+    public void editarCalle(Long id, String calle) {
+        Direccion direccionAEditar;
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        direccionAEditar = repository.findById(id).get();
+        direccionAEditar.setCalle(calle);
+
+        this.guardar(direccionAEditar);
+    }
+
+    @Override
+    public void editarAltura(Long id, Integer altura) {
+        Direccion direccionAEditar;
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        direccionAEditar = repository.findById(id).get();
+        direccionAEditar.setAltura(altura);
+
+        this.guardar(direccionAEditar);
+    }
+
+    @Override
+    public void editarDepartamento(Long id, String departamento) {
+        Direccion direccionAEditar;
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        direccionAEditar = repository.findById(id).get();
+        direccionAEditar.setDepartamento(departamento);
+
+        this.guardar(direccionAEditar);
     }
 }

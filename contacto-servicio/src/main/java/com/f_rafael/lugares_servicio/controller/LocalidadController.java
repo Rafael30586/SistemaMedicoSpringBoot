@@ -19,16 +19,9 @@ public class LocalidadController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Localidad> buscarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isPresent()){
-            return ResponseEntity.ok(service.buscarPorId(id).get());
-        }else{
-            // return ResponseEntity.ok(new Localidad(-9999L,null,null));
-            return new ResponseEntity<>(new Localidad(-9999L,"Entidad no encontrada",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
+        return ResponseEntity.ok(service.buscarPorId(id));
     }
+
     @GetMapping
     public ResponseEntity<List<Localidad>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
@@ -36,55 +29,31 @@ public class LocalidadController {
 
     @PostMapping
     public ResponseEntity<Localidad> guardar(@RequestBody Localidad localidad){
-        return ResponseEntity.ok(service.guardar(localidad));
+        return new ResponseEntity<>(service.guardar(localidad),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<Localidad> actualizar(@RequestBody Localidad localidad){
-        Long id = localidad.getId();
-        if(id == null){
-            // return ResponseEntity.ok(new Localidad(-9999999L,"El id no puede ser nulo",null));
-            return new ResponseEntity<>(new Localidad(-9999L,"El id no debe ser nulo",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        if(service.buscarPorId(id).isPresent()){
-            return ResponseEntity.ok(service.actualizar(localidad));
-        }else{
-            // return ResponseEntity.ok(new Localidad(-99999L,"Entidad no encontrada",null));
-            return new ResponseEntity<>(new Localidad(-9999L,"Entidad no encontrada",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
+        return ResponseEntity.ok(service.actualizar(localidad));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-
-        if(service.buscarPorId(id).isPresent()){
-            service.borrarPorId(id);
-            return ResponseEntity.ok("Entidad borrada correctamente");
-        }else{
-            // return ResponseEntity.ok("Entidad no encontrada");
-            return new ResponseEntity<>("Entidad no encontrada",HttpStatusCode.valueOf(204));
-        }
-
+        service.borrarPorId(id);
+        return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/cambiar-nombre/{id}")
-    public ResponseEntity<Localidad> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         String nombreSinGuiones = Transform.removerGuiones(nombre);
-        Localidad localidadAActualizar;
+        service.cambiarNombre(id,nombreSinGuiones);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
+    }
 
-        if(service.buscarPorId(id).isEmpty()){
-            return new ResponseEntity<>(new Localidad(-9999L,"Entidad no encontrada",null),
-                    HttpStatusCode.valueOf(204));
-        }
-
-        localidadAActualizar = service.buscarPorId(id).get();
-        localidadAActualizar.setNombre(nombreSinGuiones);
-        service.actualizar(localidadAActualizar);
-
-        return ResponseEntity.ok(localidadAActualizar);
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> modificarProvincia(@PathVariable Long id,
+                                                     @RequestParam("provincia-id") Long provinciaId){
+        service.cambiarProvincia(id,provinciaId);
+        return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
     }
 }

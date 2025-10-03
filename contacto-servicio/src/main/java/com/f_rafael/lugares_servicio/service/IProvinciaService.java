@@ -8,10 +8,11 @@ import java.util.Optional;
 
 public interface IProvinciaService {
 
-    public Optional<Provincia> buscarPorId(Long id);
+    public Provincia buscarPorId(Long id);
     public List<Provincia> buscarTodas();
     public Provincia guardar(Provincia provincia);
     public Provincia actualizar(Provincia provincia);
     public void borrarPorId(Long id);
+    public Provincia buscarPorNombre(String nombre);
 
 }

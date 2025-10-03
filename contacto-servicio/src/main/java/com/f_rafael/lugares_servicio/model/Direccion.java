@@ -15,6 +15,7 @@ public class Direccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String calle;
     private Integer altura;
     private String departamento;

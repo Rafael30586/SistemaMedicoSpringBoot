@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface INumeroTelefonicoService {
-    public Optional<NumeroTelefonico> buscarPorId(Long id);
+    public NumeroTelefonico buscarPorId(Long id);
     public List<NumeroTelefonico> buscarTodos();
     public NumeroTelefonico guardar(NumeroTelefonico telefono);
     public NumeroTelefonico actualizar(NumeroTelefonico telefono);
     public void borrarPorId(Long id);
-    public Optional<NumeroTelefonico> buscarPorNumero(String numero);
+    public NumeroTelefonico buscarPorNumero(String numero);
     public List<NumeroTelefonico> buscarPorTipo(String tipo);
 }

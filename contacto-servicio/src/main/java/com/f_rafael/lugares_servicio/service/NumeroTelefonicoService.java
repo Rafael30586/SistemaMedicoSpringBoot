@@ -1,7 +1,11 @@
 package com.f_rafael.lugares_servicio.service;
 
 
+import com.f_rafael.lugares_servicio.exception.CampoNuloException;
+import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.lugares_servicio.exception.EnumeradoIncorrectoException;
 import com.f_rafael.lugares_servicio.model.NumeroTelefonico;
+import com.f_rafael.lugares_servicio.model.TipoTelefono;
 import com.f_rafael.lugares_servicio.repository.INumeroTelefonicoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +20,11 @@ public class NumeroTelefonicoService implements INumeroTelefonicoService{
     private INumeroTelefonicoRepository repository;
 
     @Override
-    public Optional<NumeroTelefonico> buscarPorId(Long id) {
-        return repository.findById(id);
+    public NumeroTelefonico buscarPorId(Long id) {
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+        return repository.findById(id).get();
     }
 
     @Override
@@ -27,26 +34,55 @@ public class NumeroTelefonicoService implements INumeroTelefonicoService{
 
     @Override
     public NumeroTelefonico guardar(NumeroTelefonico telefono) {
+        if(telefono.getNumero() == null){
+            throw new CampoNuloException("El número de teléfono no puede ser nulo");
+        }
         return repository.save(telefono);
     }
 
     @Override
     public NumeroTelefonico actualizar(NumeroTelefonico telefono) {
+        Long id = telefono.getId();
+
+        if(!repository.existsById(id)){
+            throw new CampoNuloException("El id no puede ser nulo");
+        }
+
         return this.guardar(telefono);
     }
 
     @Override
     public void borrarPorId(Long id) {
+
+        if(!repository.existsById(id)){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
         repository.deleteById(id);
     }
 
     @Override
-    public Optional<NumeroTelefonico> buscarPorNumero(String numero) {
-        return repository.findByNumero(numero);
+    public NumeroTelefonico buscarPorNumero(String numero) {
+
+        if(repository.findByNumero(numero).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        return repository.findByNumero(numero).get();
     }
 
     @Override
     public List<NumeroTelefonico> buscarPorTipo(String tipo) {
+        TipoTelefono[] tiposDeTelefono = TipoTelefono.values();
+        boolean tipoTelefonicoPresente = false;
+
+        for (TipoTelefono tt : tiposDeTelefono) {
+            tipoTelefonicoPresente = tt.toString().equals(tipo) ? true : false;
+        }
+
+        if (!tipoTelefonicoPresente) {
+            throw new EnumeradoIncorrectoException("El tipo de teléfono no existe");
+        }
+
         return repository.buscarPorTipo(tipo);
     }
 }
