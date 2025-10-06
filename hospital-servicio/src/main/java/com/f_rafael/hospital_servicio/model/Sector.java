@@ -1,4 +1,4 @@
-package com.f_rafael.pacientes_servicio.model;
+package com.f_rafael.hospital_servicio.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "sectores")
 @Getter @Setter
-@Table(name = "motivos_turno")
-public class MotivoTurno {
+public class Sector {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Motivo motivo;
-    @Column(name = "cita_o_estudio")
-    private String citaOEstudio;
+    private String nombre; // medicina, limpieza, gastronomia, recursos humanos, etc
 }

@@ -17,6 +17,6 @@ public class RolEmpleado {
     private Long id;
     private String nombre; // Cardiólogo, cirujano, secreatario, etc.
     @ManyToOne
-    private AreaProfesional area;
+    private Sector sector;
 
 }

@@ -30,4 +30,5 @@ public class Empleado {
     private String matriculaPorfesional;
     @ManyToOne
     private RolEmpleado rol;
+    private Float salario;
 }

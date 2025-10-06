@@ -1,23 +1,32 @@
 package com.f_rafael.pacientes_servicio.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "turnos")
 @Getter @Setter
+@Table(name = "turnos")
+// @MappedSuperclass Esta anotación provoca, entre otras cosas, que la clase no tenga su propia tabla. No conviene usarla en este caso
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Entity
+@DiscriminatorColumn(name = "tipo")
 public class Turno {
     @Id
-    private Long id;
-    @Column(name = "fecha_horario_solicitud",nullable = false)
-    private LocalDateTime fechaHorarioSolicitud;
-    @Column(name = "fecha_horario_turno",nullable = false)
-    private LocalDateTime fechaHorarioTurno;
+    protected Long id;
+    @Column(name = "fecha_solicitud",nullable = false)
+    protected LocalDate fechaSolicitud;
+    @Column(name = "fecha_turno",nullable = false)
+    protected LocalDate fechaTurno;
+    @Column(name = "comienzo")
+    protected LocalTime comienzo;
+    @Column(name = "fin")
+    protected LocalTime fin;
+    @Enumerated(EnumType.STRING)
+    protected EstadoTurno estado;
 }
