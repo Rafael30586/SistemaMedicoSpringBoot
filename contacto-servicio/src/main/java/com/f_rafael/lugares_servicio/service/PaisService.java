@@ -2,24 +2,22 @@ package com.f_rafael.lugares_servicio.service;
 
 import com.f_rafael.lugares_servicio.exception.CampoNuloException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.lugares_servicio.model.Provincia;
-import com.f_rafael.lugares_servicio.repository.IProvinciaRepository;
+import com.f_rafael.lugares_servicio.model.Pais;
+import com.f_rafael.lugares_servicio.repository.IPaisRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class ProvinciaService implements IProvinciaService{
+public class PaisService implements IPaisService{
 
-    private IProvinciaRepository repository;
-
+    private IPaisRepository repository;
     @Override
-    public Provincia buscarPorId(Long id) {
+    public Pais buscarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -27,45 +25,42 @@ public class ProvinciaService implements IProvinciaService{
     }
 
     @Override
-    public List<Provincia> buscarTodas() {
+    public List<Pais> buscarTodos() {
         return repository.findAll();
     }
 
     @Override
-    public Provincia guardar(Provincia provincia) {
+    public Pais guardar(Pais pais) {
 
-        if(provincia.getNombre() == null || provincia.getPais() == null){
+        if(pais.getNombre() == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
 
-        return repository.save(provincia);
+        return repository.save(pais);
     }
 
     @Override
-    public Provincia actualizar(Provincia provincia) {
-        Long id = provincia.getId();
+    public Pais actualizar(Pais pais) {
 
-        if(id == null){
+        if(pais.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo");
         }
 
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return this.guardar(provincia);
+        return this.guardar(pais);
     }
 
     @Override
     public void borrarPorId(Long id) {
-        if(repository.findById(id).isEmpty()){
+
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
+
         repository.deleteById(id);
     }
 
     @Override
-    public Provincia buscarPorNombre(String nombre) {
+    public Pais buscarPorNombre(String nombre) {
 
         if(repository.findByNombre(nombre).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

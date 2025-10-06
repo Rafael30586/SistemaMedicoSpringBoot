@@ -6,21 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
 @Entity
-@Table(name = "provincias")
+@Setter @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Provincia {
+public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String nombre;
-    @ManyToOne
-    @JoinColumn(
-            name = "pais_id",
-            nullable = false
-    )
-    private Pais pais;
 }

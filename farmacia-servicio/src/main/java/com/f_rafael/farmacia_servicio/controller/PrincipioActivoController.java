@@ -29,6 +29,12 @@ public class PrincipioActivoController {
     }
 
     @GetMapping
+    public ResponseEntity<PrincipioActivoDto> buscarPorNombre(@RequestParam String nombre){
+        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        return new ResponseEntity<>(service.buscarPorNombre(nombre),HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping
     public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
         String accionTerapeuticaSinGuiones = Transformacion.removerGuionesBajos(nombreAccionTerapeutica);
         return ResponseEntity.ok(service.buscarPorAccionTerapeutica(accionTerapeuticaSinGuiones));

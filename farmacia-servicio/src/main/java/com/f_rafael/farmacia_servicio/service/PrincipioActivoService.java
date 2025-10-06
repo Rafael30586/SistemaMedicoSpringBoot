@@ -73,6 +73,16 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     }
 
     @Override
+    public PrincipioActivoDto buscarPorNombre(String nombre) {
+
+        if(repository.findByNombre(nombre).isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        return obtenerDto(repository.findByNombre(nombre).get());
+    }
+
+    @Override
     public List<PrincipioActivoDto> buscarPorAccionTerapeutica(String nombreAccionTerapeutica) {
         List<PrincipioActivo> principiosActivosARetornar = new LinkedList<>();
         List<PrincipioActivo> todosLosPrincipiosActivos = repository.findAll();
