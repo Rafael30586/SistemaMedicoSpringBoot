@@ -17,5 +17,6 @@ public class Sede {
     private Long id;
     private Long direccionId;
     @ElementCollection
+    @CollectionTable(name = "sede_telefono_id", joinColumns = @JoinColumn(name = "sede_id"))
     private Set<Long> telefonoId;
 }

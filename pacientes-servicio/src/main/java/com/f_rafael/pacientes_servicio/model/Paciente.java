@@ -19,7 +19,7 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private Long Dni;
     private String primerNombre;
     private String segundoNombre;
@@ -28,6 +28,7 @@ public class Paciente {
     @Column(unique = true)
     private String email;
     @ElementCollection
+    @CollectionTable(name = "paciente_telefono_id", joinColumns = @JoinColumn(name = "paciente_id"))
     private Set<Long> telefonosId;
     private LocalDate fechaNacimiento;
     private Long direccionId; // domicilio
