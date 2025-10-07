@@ -31,6 +31,7 @@ public class Paciente {
     @CollectionTable(name = "paciente_telefono_id", joinColumns = @JoinColumn(name = "paciente_id"))
     private Set<Long> telefonosId;
     private LocalDate fechaNacimiento;
-    private Long direccionId; // domicilio
+    private Long direccionId; //
+    private ObraSocial obraSocial;
 
 }
