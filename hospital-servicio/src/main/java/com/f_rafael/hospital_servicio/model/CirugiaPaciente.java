@@ -7,22 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
-@Table(name = "diagnostico_paciente")
-public class DiagnosticoPaciente {
+@Getter @Setter
+@Table(name = "cirugia_paciente")
+public class CirugiaPaciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "paciente_id", nullable = false)
     private Long pacienteId;
     @ManyToOne
-    @JoinColumn(name = "diagnostico_id", nullable = false)
-    private Diagnostico diagnostico;
-    @Column(nullable = false)
-    private LocalDate inicio;
-    private LocalDate fin;
+    @JoinColumn(nullable = false, name = "cirugía_id")
+    private TratamientoQuirurgico cirugia;
+    private LocalDate fecha;
+    private LocalTime inicio;
+    private LocalTime fin;
 }
