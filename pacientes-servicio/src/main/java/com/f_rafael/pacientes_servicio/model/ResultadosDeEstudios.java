@@ -14,11 +14,15 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "resultados_estudios")
 public class ResultadosDeEstudios {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long numero;
+    @ManyToOne
     private Paciente paciente;
-    private Boolean cobertura;
+    @Enumerated(EnumType.STRING)
+    private Cobertura cobertura;
     @ElementCollection
     @CollectionTable(name = "resultado_estudios_estudio_id", joinColumns = @JoinColumn(name = "resultado_estudios_id"))
     private List<Long> estudios;
-    private String informe;
+    private String urlInforme;
 }

@@ -7,16 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "estudios")
-public class Estudio {
+@Getter @Setter
+@Table(name = "estudios_medicos_clasificaciones")
+public class EstudioMedicoClasificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String nombre;
-    @Column(nullable = false)
-    private EstudioMedicoClasificacion clasificacion;
 }

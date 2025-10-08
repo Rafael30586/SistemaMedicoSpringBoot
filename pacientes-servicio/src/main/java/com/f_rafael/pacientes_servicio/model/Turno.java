@@ -23,9 +23,7 @@ public class Turno {
     protected LocalDate fechaSolicitud;
     @Column(name = "fecha_turno",nullable = false)
     protected LocalDate fechaTurno;
-    @Column(name = "comienzo")
-    protected LocalTime comienzo;
-    @Column(name = "fin")
+    protected LocalTime inicio;
     protected LocalTime fin;
     @Enumerated(EnumType.STRING)
     protected EstadoTurno estado;
