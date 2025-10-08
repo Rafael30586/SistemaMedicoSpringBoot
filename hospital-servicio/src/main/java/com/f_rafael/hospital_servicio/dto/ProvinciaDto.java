@@ -1,4 +1,4 @@
-package com.f_rafael.pacientes_servicio.dto;
+package com.f_rafael.hospital_servicio.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
+@Getter @Setter
 public class ProvinciaDto {
     private Long id;
     private String nombre;

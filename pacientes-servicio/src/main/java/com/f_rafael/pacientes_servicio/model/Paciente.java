@@ -20,7 +20,7 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true, nullable = false)
-    private Long Dni;
+    private Long dni;
     private String primerNombre;
     private String segundoNombre;
     private String apellidoPaterno;
@@ -30,8 +30,10 @@ public class Paciente {
     @ElementCollection
     @CollectionTable(name = "paciente_telefono_id", joinColumns = @JoinColumn(name = "paciente_id"))
     private Set<Long> telefonosId;
+    @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
-    private Long direccionId; //
+    private Long lugarNacimientoId;
+    private Long direccionId;
     private ObraSocial obraSocial;
 
 }

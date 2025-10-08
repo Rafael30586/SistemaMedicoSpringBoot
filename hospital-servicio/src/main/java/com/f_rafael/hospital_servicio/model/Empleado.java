@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -27,6 +29,8 @@ public class Empleado {
     private String apellidoMaterno;
     @Column(unique = true)
     private String email;
+    private Long domicilioId;
+    private Set<Long> telefonosId;
     @Column(name = "matricula_profesional",unique = true)
     private String matriculaPorfesional;
     @ManyToOne
