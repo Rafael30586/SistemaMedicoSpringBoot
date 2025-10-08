@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 @Table(name = "estudios_medicos_clasificaciones")
-public class EstudioMedicoClasificacion {
+public class EstudioMedicoClasificacion { // Clasificación de un estudio médico, ejemplos: examen de laboratorio, estudios de imagen ,etc
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

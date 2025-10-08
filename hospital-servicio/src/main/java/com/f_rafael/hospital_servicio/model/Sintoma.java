@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter @Getter
 @Table(name = "sintomas")
-public class Sintoma {
+public class Sintoma { // Sensaciones subjetivas del paciente, ejemplo: dolor de cabeza
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

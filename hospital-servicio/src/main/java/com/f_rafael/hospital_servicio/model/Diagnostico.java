@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "diagnosticos")
 @Setter @Getter
-public class Diagnostico {
+public class Diagnostico { // Ejemplos: gripe, diabetes tipo 2
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

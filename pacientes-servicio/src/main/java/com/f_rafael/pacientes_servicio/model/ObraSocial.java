@@ -2,6 +2,7 @@ package com.f_rafael.pacientes_servicio.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,6 @@ public class ObraSocial {
 
     private Long id;
     private String nombre;
-    @ManyToOne
+    @OneToMany
     private Set<Sede> sedes; // Sede
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles_empleado")
-public class RolEmpleado {
+public class RolEmpleado { // El rol que desempeña un empleado, ej: cirugano, cardiólogo, cocinero, etc
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

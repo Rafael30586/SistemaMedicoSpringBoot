@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Setter @Getter
 @Table(name = "diagnostico_paciente")
-public class DiagnosticoPaciente {
+public class DiagnosticoPaciente { // Un diagnóstico que se le da  a un paciente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

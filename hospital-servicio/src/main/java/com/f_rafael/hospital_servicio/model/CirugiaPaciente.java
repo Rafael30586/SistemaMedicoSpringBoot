@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Getter @Setter
 @Table(name = "cirugia_paciente")
-public class CirugiaPaciente {
+public class CirugiaPaciente { // Una cirugía realizada a un paciente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

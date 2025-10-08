@@ -13,15 +13,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "medicamento_paciente")
-public class MedicamentoPaciente {
+public class MedicamentoPaciente { // Un tratamiento con medicamento en un paciente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "paciente_id")
     private Long pacienteId;
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "tratamiento_farmacológico_id")
-    private TratamientoFarmacologico tratamientoFarmacologico;
+    private Long medicamentoId;
+    private Long dosisId;
     private LocalDate inicio;
     private LocalDate fin;
 }

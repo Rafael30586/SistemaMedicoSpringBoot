@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Setter @Getter
 @Table(name = "empleados")
-public class Empleado {
+public class Empleado { // Un empleado del hospital
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

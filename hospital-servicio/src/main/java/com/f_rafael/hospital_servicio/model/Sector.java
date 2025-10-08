@@ -15,5 +15,5 @@ public class Sector {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre; // medicina, limpieza, gastronomia, recursos humanos, etc
+    private String nombre; // Ejemplos: medicina, limpieza, gastronomia, recursos humanos, etc
 }

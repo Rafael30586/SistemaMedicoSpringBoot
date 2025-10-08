@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "estudios")
-public class Estudio {
+public class EstudioMedico { //Un estudio médico como puede ser análisis de sangre, ecografía, etc
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
