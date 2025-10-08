@@ -6,17 +6,21 @@ import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @AllArgsConstructor
+@Component
 public class TransformacionSedes {
 
-    private static IDireccionClient direccionClient;
-    private static INumeroTelefonicoClient numeroTelefonicoClient;
+
+    private IDireccionClient direccionClient;
+    private INumeroTelefonicoClient numeroTelefonicoClient;
 
 
-    public static SedeDto obtenerDto(Sede informacionSede){
+    public SedeDto obtenerDto(Sede informacionSede){
         SedeDto dtoaRetornar = new SedeDto();
         Set<Long> telefonosId;
         Set<NumeroTelefonicoDto> telefonosParaAsignar;
@@ -38,7 +42,7 @@ public class TransformacionSedes {
         return dtoaRetornar;
     }
 
-    public static List<SedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
+    public List<SedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
         List<SedeDto> listaARetornar = new LinkedList<>();
 
         for(Sede s : informacionSedes){

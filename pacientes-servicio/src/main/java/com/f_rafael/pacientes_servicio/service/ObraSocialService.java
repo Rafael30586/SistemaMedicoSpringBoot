@@ -3,7 +3,6 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.ObraSocial2;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
