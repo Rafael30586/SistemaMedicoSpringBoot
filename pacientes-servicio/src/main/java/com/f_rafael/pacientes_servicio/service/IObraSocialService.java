@@ -1,14 +1,16 @@
 package com.f_rafael.pacientes_servicio.service;
 
-import com.f_rafael.pacientes_servicio.model.ObraSocial;
+import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
+import com.f_rafael.pacientes_servicio.model.ObraSocial2;
+
 
 import java.util.List;
 
 public interface IObraSocialService {
-    public ObraSocial buscarPorId(Long id);
-    public List<ObraSocial> buscarTodas();
-    public ObraSocial buscarPorNombre(String nombre);
-    public ObraSocial guardar(ObraSocial obraSocial);
-    public ObraSocial actualizar(ObraSocial obraSocial);
+    public ObraSocialDto buscarPorId(Long id);
+    public List<ObraSocialDto> buscarTodas();
+    public ObraSocialDto buscarPorNombre(String nombre);
+    public ObraSocialDto guardar(ObraSocial2 obraSocial);
+    public ObraSocialDto actualizar(ObraSocial2 obraSocial);
     public void borrarPorId(Long id);
 }

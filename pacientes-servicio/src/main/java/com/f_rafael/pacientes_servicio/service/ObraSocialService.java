@@ -1,12 +1,16 @@
 package com.f_rafael.pacientes_servicio.service;
 
+import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
+import com.f_rafael.pacientes_servicio.model.ObraSocial2;
+import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ObraSocialService implements IObraSocialService{
@@ -61,5 +65,15 @@ public class ObraSocialService implements IObraSocialService{
         }
 
         repository.deleteById(id);
+    }
+
+    public ObraSocialDto obtenerDto(ObraSocial2 obraSocial){
+        ObraSocialDto dtoARetornar;
+        Set<Sede> informacionSedes;
+
+        if(obraSocial.getSedes()!=null){
+            informacionSedes = obraSocial.getSedes();
+        }
+        // falta completar
     }
 }

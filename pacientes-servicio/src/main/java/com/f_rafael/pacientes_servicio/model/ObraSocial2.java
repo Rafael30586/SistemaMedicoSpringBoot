@@ -11,10 +11,10 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
+@Setter
+@Getter
 @Table(name = "obras_sociales")
-public class ObraSocial {
-
+public class ObraSocial2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
