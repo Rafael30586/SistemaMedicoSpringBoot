@@ -3,9 +3,9 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.pacientes_servicio.model.ObraSocial2;
+import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
-import com.f_rafael.pacientes_servicio.utils.TransformacionObraSocial;
+import com.f_rafael.pacientes_servicio.utils.ObraSocialTransformacion;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class ObraSocialService implements IObraSocialService{
 
-    private TransformacionObraSocial transformacion;
+    private ObraSocialTransformacion transformacion;
 
     private IObraSocialRepository repository;
     @Override
@@ -49,7 +49,7 @@ public class ObraSocialService implements IObraSocialService{
     }
 
     @Override
-    public ObraSocialDto guardar(ObraSocial2 obraSocial) {
+    public ObraSocialDto guardar(ObraSocial obraSocial) {
         ObraSocialDto dtoARetornar;
 
         if(obraSocial.getNombre() == null){
@@ -62,7 +62,7 @@ public class ObraSocialService implements IObraSocialService{
     }
 
     @Override
-    public ObraSocialDto actualizar(ObraSocial2 obraSocial) {
+    public ObraSocialDto actualizar(ObraSocial obraSocial) {
         if(obraSocial.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo");
         }

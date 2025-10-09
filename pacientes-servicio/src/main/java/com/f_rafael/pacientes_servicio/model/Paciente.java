@@ -35,6 +35,6 @@ public class Paciente {
     private Long lugarNacimientoId;
     private Long direccionId;
     @ManyToOne
-    private ObraSocial2 obraSocial;
+    private ObraSocial obraSocial;
 
 }

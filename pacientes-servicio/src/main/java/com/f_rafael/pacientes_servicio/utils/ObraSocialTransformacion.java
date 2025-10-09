@@ -3,7 +3,7 @@ package com.f_rafael.pacientes_servicio.utils;
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubPacienteDto;
-import com.f_rafael.pacientes_servicio.model.ObraSocial2;
+import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import lombok.AllArgsConstructor;
@@ -16,12 +16,12 @@ import java.util.Set;
 
 @Component
 @AllArgsConstructor
-public class TransformacionObraSocial {
+public class ObraSocialTransformacion {
 
-    TransformacionSede transformacionSede;
-    TransformacionSubPaciente transformacionSubPaciente;
+    SedeTransformacion sedeTransformacion;
+    SubPacienteTransformacion subPacienteTransformacion;
 
-    public ObraSocialDto obtenerDto(ObraSocial2 obraSocial){
+    public ObraSocialDto obtenerDto(ObraSocial obraSocial){
         ObraSocialDto dtoARetornar = new ObraSocialDto();
         Set<Sede> informacionSedes;
         List<SedeDto> sedesParaAsignar;
@@ -34,24 +34,24 @@ public class TransformacionObraSocial {
         if(obraSocial.getSedes() != null){
             informacionSedes = obraSocial.getSedes();
 
-            sedesParaAsignar = transformacionSede.obtenerListaDtos(informacionSedes);
+            sedesParaAsignar = sedeTransformacion.obtenerListaDtos(informacionSedes);
             dtoARetornar.setSedes(sedesParaAsignar);
         }
 
         if(obraSocial.getPacientes() != null){
             informacionPacientes = obraSocial.getPacientes();
 
-            pacientesParaAsignar = transformacionSubPaciente.obtenerListaDto(informacionPacientes);
+            pacientesParaAsignar = subPacienteTransformacion.obtenerListaDto(informacionPacientes);
             dtoARetornar.setPacientes(pacientesParaAsignar);
         }
 
         return dtoARetornar;
     }
 
-    public List<ObraSocialDto> obtenerListaDto(Collection<ObraSocial2> informacionObrasSociales){
+    public List<ObraSocialDto> obtenerListaDto(Collection<ObraSocial> informacionObrasSociales){
         List<ObraSocialDto> listaARetornar = new LinkedList<>();
 
-        for(ObraSocial2 os : informacionObrasSociales){
+        for(ObraSocial os : informacionObrasSociales){
             listaARetornar.add(obtenerDto(os));
         }
 

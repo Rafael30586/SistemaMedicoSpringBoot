@@ -12,7 +12,7 @@ import java.util.*;
 
 @AllArgsConstructor
 @Component
-public class TransformacionSede {
+public class SedeTransformacion {
 
 
     private IDireccionClient direccionClient;

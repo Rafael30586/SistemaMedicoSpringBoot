@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Table(name = "obras_sociales")
-public class ObraSocial2 {
+public class ObraSocial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
