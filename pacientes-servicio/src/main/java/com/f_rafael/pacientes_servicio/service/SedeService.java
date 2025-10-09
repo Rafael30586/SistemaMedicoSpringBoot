@@ -43,7 +43,7 @@ public class SedeService implements ISedeService{
         if(sede.getDireccionId() == null){ // ¿Cómo podría hacer para confirmar que la direccion existe si está en otro microservicio?
             throw new CampoNuloException("La direccion no puede ser nula");
         }
-        
+
         dtoARetornar = tranformacion.obtenerDto(repository.save(sede));
         return dtoARetornar;
     }
