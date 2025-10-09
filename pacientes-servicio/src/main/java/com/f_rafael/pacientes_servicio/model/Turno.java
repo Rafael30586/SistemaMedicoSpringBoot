@@ -19,6 +19,8 @@ import java.time.LocalTime;
 public class Turno {
     @Id
     protected Long id;
+    @ManyToOne
+    protected Paciente paciente;
     @Column(name = "fecha_solicitud",nullable = false)
     protected LocalDate fechaSolicitud;
     @Column(name = "fecha_turno",nullable = false)
