@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @Component
 @AllArgsConstructor
-public class ResultadoDeEstudiosTransformacion {
+public class ResultadosDeEstudiosMap {
 
-    private SubPacienteTransformacion subPacienteTransformacion;
+    private SubPacienteMap subPacienteMap;
     private IEstudioClient estudioClient;
 
     public ResultadoDeEstudiosDto obtenerDto(ResultadosDeEstudios informacionResultado){
@@ -27,7 +26,7 @@ public class ResultadoDeEstudiosTransformacion {
         dtoARetornar.setNumero(informacionResultado.getNumero());
         dtoARetornar.setCobertura(informacionResultado.getCobertura());
         dtoARetornar.setUrlInforme(informacionResultado.getUrlInforme());
-        dtoARetornar.setPaciente(subPacienteTransformacion.obtenerDto(informacionResultado.getPaciente()));
+        dtoARetornar.setPaciente(subPacienteMap.obtenerDto(informacionResultado.getPaciente()));
 
         if(informacionResultado.getEstudios() != null){
             estudiosId = informacionResultado.getEstudios();

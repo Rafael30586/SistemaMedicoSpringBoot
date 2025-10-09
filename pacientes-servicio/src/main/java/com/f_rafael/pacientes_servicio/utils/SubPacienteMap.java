@@ -11,7 +11,7 @@ import java.util.*;
 
 @Component
 @AllArgsConstructor
-public class SubPacienteTransformacion {
+public class SubPacienteMap {
 
     private INumeroTelefonicoClient numeroTelefonicoClient;
 

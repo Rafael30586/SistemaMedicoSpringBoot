@@ -15,9 +15,9 @@ import java.util.Set;
 
 @AllArgsConstructor
 @Component
-public class PacienteTransformacion {
+public class PacienteMap {
 
-    private ObraSocialTransformacion obraSocialTransformacion;
+    private ObraSocialMap obraSocialMap;
     private IDireccionClient direccionClient;
     private INumeroTelefonicoClient numeroTelefonicoClient;
     private ILocalidadClient localidadClient;
@@ -48,7 +48,7 @@ public class PacienteTransformacion {
         dtoARetornar.setTelefonos(numerosTelefonicosParaAsignar);
 
         if(informacionPaciente.getObraSocial() != null){
-            obraSocialParaAsignar = obraSocialTransformacion.obtenerDto(informacionPaciente.getObraSocial());
+            obraSocialParaAsignar = obraSocialMap.obtenerDto(informacionPaciente.getObraSocial());
             dtoARetornar.setObraSocial(obraSocialParaAsignar);
         }
 

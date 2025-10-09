@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
-import com.f_rafael.pacientes_servicio.utils.PacienteTransformacion;
+import com.f_rafael.pacientes_servicio.utils.PacienteMap;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class PacienteService implements IPacienteService{
 
     private IPacienteRepository repository;
-    private PacienteTransformacion transformacion;
+    private PacienteMap transformacion;
 
     @Override
     public PacienteDto buscarPorId(Long id) {

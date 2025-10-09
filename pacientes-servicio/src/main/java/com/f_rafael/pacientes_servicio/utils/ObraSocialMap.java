@@ -16,10 +16,10 @@ import java.util.Set;
 
 @Component
 @AllArgsConstructor
-public class ObraSocialTransformacion {
+public class ObraSocialMap {
 
-    SedeTransformacion sedeTransformacion;
-    SubPacienteTransformacion subPacienteTransformacion;
+    SedeMap sedeMap;
+    SubPacienteMap subPacienteMap;
 
     public ObraSocialDto obtenerDto(ObraSocial obraSocial){
         ObraSocialDto dtoARetornar = new ObraSocialDto();
@@ -34,14 +34,14 @@ public class ObraSocialTransformacion {
         if(obraSocial.getSedes() != null){
             informacionSedes = obraSocial.getSedes();
 
-            sedesParaAsignar = sedeTransformacion.obtenerListaDtos(informacionSedes);
+            sedesParaAsignar = sedeMap.obtenerListaDtos(informacionSedes);
             dtoARetornar.setSedes(sedesParaAsignar);
         }
 
         if(obraSocial.getPacientes() != null){
             informacionPacientes = obraSocial.getPacientes();
 
-            pacientesParaAsignar = subPacienteTransformacion.obtenerListaDto(informacionPacientes);
+            pacientesParaAsignar = subPacienteMap.obtenerListaDto(informacionPacientes);
             dtoARetornar.setPacientes(pacientesParaAsignar);
         }
 

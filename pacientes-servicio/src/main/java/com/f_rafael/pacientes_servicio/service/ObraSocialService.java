@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
-import com.f_rafael.pacientes_servicio.utils.ObraSocialTransformacion;
+import com.f_rafael.pacientes_servicio.utils.ObraSocialMap;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class ObraSocialService implements IObraSocialService{
 
-    private ObraSocialTransformacion transformacion;
+    private ObraSocialMap transformacion;
 
     private IObraSocialRepository repository;
     @Override
