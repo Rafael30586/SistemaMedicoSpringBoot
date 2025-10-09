@@ -21,8 +21,10 @@ public class Paciente {
     private Long id;
     @Column(unique = true, nullable = false)
     private Long dni;
+    @Column(nullable = false)
     private String primerNombre;
     private String segundoNombre;
+    @Column(nullable = false)
     private String apellidoPaterno;
     private String apellidoMaterno;
     @Column(unique = true)
@@ -30,8 +32,9 @@ public class Paciente {
     @ElementCollection
     @CollectionTable(name = "paciente_telefono_id", joinColumns = @JoinColumn(name = "paciente_id"))
     private Set<Long> telefonosId;
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_nacimiento", nullable = false)
     private LocalDate fechaNacimiento;
+    @Column(nullable = false)
     private Long lugarNacimientoId;
     private Long direccionId;
     @ManyToOne
