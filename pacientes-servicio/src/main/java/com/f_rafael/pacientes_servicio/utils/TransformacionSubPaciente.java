@@ -11,11 +11,11 @@ import java.util.*;
 
 @Component
 @AllArgsConstructor
-public class TransformacionPacientes {
+public class TransformacionSubPaciente {
 
     private INumeroTelefonicoClient numeroTelefonicoClient;
 
-    public SubPacienteDto obtenerSubDto(Paciente paciente){
+    public SubPacienteDto obtenerDto(Paciente paciente){
         SubPacienteDto dtoARetornar = new SubPacienteDto();
         Set<Long> telefonosIds;
         Set<NumeroTelefonicoDto> telefonosParaAsignar;
@@ -43,12 +43,12 @@ public class TransformacionPacientes {
         return dtoARetornar;
     }
 
-    public List<SubPacienteDto> obtenerListaSubDto(Collection<Paciente> informacionPacientes){
+    public List<SubPacienteDto> obtenerListaDto(Collection<Paciente> informacionPacientes){
 
         List<SubPacienteDto> listaARetornar = new LinkedList<>();
 
         for(Paciente p : informacionPacientes){
-            listaARetornar.add(obtenerSubDto(p));
+            listaARetornar.add(obtenerDto(p));
         }
 
         return listaARetornar;

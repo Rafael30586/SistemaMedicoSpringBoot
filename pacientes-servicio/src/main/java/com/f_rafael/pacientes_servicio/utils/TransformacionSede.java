@@ -6,14 +6,13 @@ import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @AllArgsConstructor
 @Component
-public class TransformacionSedes {
+public class TransformacionSede {
 
 
     private IDireccionClient direccionClient;
