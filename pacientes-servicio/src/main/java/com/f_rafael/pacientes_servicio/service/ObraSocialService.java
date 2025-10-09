@@ -4,52 +4,65 @@ import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial2;
-import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
+import com.f_rafael.pacientes_servicio.utils.TransformacionObraSocial;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class ObraSocialService implements IObraSocialService{
 
+    private TransformacionObraSocial transformacion;
+
     private IObraSocialRepository repository;
     @Override
-    public ObraSocial buscarPorId(Long id) {
+    public ObraSocialDto buscarPorId(Long id) {
+        ObraSocialDto dtoARetornar;
+
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
-        return repository.findById(id).get();
+
+        dtoARetornar = transformacion.obtenerDto(repository.findById(id).get());
+        return dtoARetornar;
     }
 
     @Override
-    public List<ObraSocial> buscarTodas() {
-        return repository.findAll();
+    public List<ObraSocialDto> buscarTodas() {
+        List<ObraSocialDto> listaARetornar = transformacion.obtenerListaDto(repository.findAll());
+
+        return listaARetornar;
     }
 
     @Override
-    public ObraSocial buscarPorNombre(String nombre) {
+    public ObraSocialDto buscarPorNombre(String nombre) {
+        ObraSocialDto dtoaRetornar;
 
         if(repository.findByNombre(nombre).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return repository.findByNombre(nombre).get();
+        dtoaRetornar = transformacion.obtenerDto(repository.findByNombre(nombre).get());
+
+        return dtoaRetornar;
     }
 
     @Override
-    public ObraSocial guardar(ObraSocial obraSocial) {
+    public ObraSocialDto guardar(ObraSocial2 obraSocial) {
+        ObraSocialDto dtoARetornar;
 
         if(obraSocial.getNombre() == null){
             throw new CampoNuloException("El nombre no puede se nulo");
         }
 
-        return repository.save(obraSocial);
+        dtoARetornar = transformacion.obtenerDto(repository.save(obraSocial));
+
+        return dtoARetornar;
     }
 
     @Override
-    public ObraSocial actualizar(ObraSocial obraSocial) {
+    public ObraSocialDto actualizar(ObraSocial2 obraSocial) {
         if(obraSocial.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo");
         }
@@ -66,13 +79,4 @@ public class ObraSocialService implements IObraSocialService{
         repository.deleteById(id);
     }
 
-    public ObraSocialDto obtenerDto(ObraSocial2 obraSocial){
-        ObraSocialDto dtoARetornar;
-        Set<Sede> informacionSedes;
-
-        if(obraSocial.getSedes()!=null){
-            informacionSedes = obraSocial.getSedes();
-        }
-        // falta completar
-    }
 }

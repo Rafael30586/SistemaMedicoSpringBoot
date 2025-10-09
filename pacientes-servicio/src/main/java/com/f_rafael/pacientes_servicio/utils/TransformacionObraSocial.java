@@ -9,6 +9,8 @@ import com.f_rafael.pacientes_servicio.model.Sede;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -44,5 +46,15 @@ public class TransformacionObraSocial {
         }
 
         return dtoARetornar;
+    }
+
+    public List<ObraSocialDto> obtenerListaDto(Collection<ObraSocial2> informacionObrasSociales){
+        List<ObraSocialDto> listaARetornar = new LinkedList<>();
+
+        for(ObraSocial2 os : informacionObrasSociales){
+            listaARetornar.add(obtenerDto(os));
+        }
+
+        return listaARetornar;
     }
 }
