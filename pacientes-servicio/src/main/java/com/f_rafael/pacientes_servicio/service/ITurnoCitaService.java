@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ITurnoCitaService {
     public TurnoCitaDto buscarPorId(Long id);
-    public List<TurnoCitaDto> buscarTodas();
+    public List<TurnoCitaDto> buscarTodos();
     public TurnoCitaDto guardar(TurnoCita turnoCita);
     public TurnoCitaDto actualizar(TurnoCita turnoCita);
     public void borrarPorId(Long id);

@@ -27,7 +27,7 @@ public class TurnoCitaService implements ITurnoCitaService{
     }
 
     @Override
-    public List<TurnoCitaDto> buscarTodas() {
+    public List<TurnoCitaDto> buscarTodos() {
         return map.obtenerListaDto(repository.findAll());
     }
 
