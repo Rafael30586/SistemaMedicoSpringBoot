@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.ISedeRepository;
-import com.f_rafael.pacientes_servicio.utils.SedeMap;
+import com.f_rafael.pacientes_servicio.utils.SedeMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class SedeService implements ISedeService{
 
     private ISedeRepository repository;
-    private SedeMap tranformacion;
+    private SedeMapper tranformacion;
 
     @Override
     public SedeDto buscarPorId(Long id) {

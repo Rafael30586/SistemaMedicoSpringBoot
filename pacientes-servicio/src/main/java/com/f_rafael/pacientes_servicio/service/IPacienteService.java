@@ -11,4 +11,9 @@ public interface IPacienteService {
     public PacienteDto guardar(Paciente paciente);
     public PacienteDto actualizar(Paciente paciente);
     public void borrarPorId(Long id);
+    public PacienteDto buscarPorDni(Long dni);
+    public List<PacienteDto> buscarPorNombre(String nombre);
+    public List<PacienteDto> buscarPorApellido(String apellido);
+    public PacienteDto buscarPorEmail(String email);
+    public PacienteDto buscarPorNumeroTelefonico(String numero);
 }

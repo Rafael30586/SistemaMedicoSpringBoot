@@ -11,7 +11,7 @@ import java.util.*;
 
 @Component
 @AllArgsConstructor
-public class SubPacienteMap {
+public class SubPacienteMapper {
 
     private INumeroTelefonicoClient numeroTelefonicoClient;
 
@@ -34,7 +34,7 @@ public class SubPacienteMap {
             telefonosParaAsignar = new HashSet<>();
 
             for(Long id : telefonosIds){
-                telefonosParaAsignar.add(numeroTelefonicoClient.obtenerInformacionDeNumerosTelefonicos(id));
+                telefonosParaAsignar.add(numeroTelefonicoClient.buscarPorId(id));
             }
 
             dtoARetornar.setTelefonos(telefonosParaAsignar);

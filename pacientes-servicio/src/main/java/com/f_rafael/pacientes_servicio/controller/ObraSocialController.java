@@ -27,6 +27,11 @@ public class ObraSocialController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<ObraSocialDto> buscarPorNombre(@RequestParam String nombre){
+        return ResponseEntity.ok(service.buscarPorNombre(nombre));
+    }
+
     @PostMapping
     public ResponseEntity<ObraSocialDto> guardar(@RequestBody ObraSocial obraSocial){
         return new ResponseEntity<>(service.guardar(obraSocial), HttpStatusCode.valueOf(201));

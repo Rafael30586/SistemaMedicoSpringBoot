@@ -15,10 +15,10 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class TurnoEstudioMap {
+public class TurnoEstudioMapper {
 
     private IEstudioClient estudioClient;
-    private SubPacienteMap subPacienteMap;
+    private SubPacienteMapper subPacienteMapper;
 
     public TurnoEstudioDto obtenerDto(TurnoEstudio informacionTurno){
         TurnoEstudioDto dtoARetornar = new TurnoEstudioDto();
@@ -40,7 +40,7 @@ public class TurnoEstudioMap {
         }
 
         if(pacienteParaMapear != null){
-            pacienteParaAsignar = subPacienteMap.obtenerDto(pacienteParaMapear);
+            pacienteParaAsignar = subPacienteMapper.obtenerDto(pacienteParaMapear);
             dtoARetornar.setPaciente(pacienteParaAsignar);
         }
 

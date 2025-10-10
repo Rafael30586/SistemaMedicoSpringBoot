@@ -4,19 +4,22 @@ import com.f_rafael.pacientes_servicio.dto.PacienteDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
+import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
-import com.f_rafael.pacientes_servicio.utils.PacienteMap;
+import com.f_rafael.pacientes_servicio.utils.PacienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
 public class PacienteService implements IPacienteService{
 
     private IPacienteRepository repository;
-    private PacienteMap transformacion;
+    private PacienteMapper mapper;
+    private INumeroTelefonicoClient numeroTelefonicoClient;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -25,12 +28,12 @@ public class PacienteService implements IPacienteService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return transformacion.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<PacienteDto> buscarTodos() {
-        return transformacion.obtenerListaDto(repository.findAll());
+        return mapper.obtenerListaDto(repository.findAll());
     }
 
     @Override
@@ -40,7 +43,7 @@ public class PacienteService implements IPacienteService{
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
 
-        return transformacion.obtenerDto(repository.save(paciente));
+        return mapper.obtenerDto(repository.save(paciente));
     }
 
     @Override
@@ -61,5 +64,54 @@ public class PacienteService implements IPacienteService{
         }
 
         repository.deleteById(id);
+    }
+
+    @Override
+    public PacienteDto buscarPorDni(Long dni) {
+        return mapper.obtenerDto(repository.findByDni(dni).orElseThrow(() -> new EntidadNoEncontradaException("Entidad no encontrada")));
+    }
+
+    @Override
+    public List<PacienteDto> buscarPorNombre(String nombre) {
+        return mapper.obtenerListaDto(repository.buscarPorNombre(nombre));
+    }
+
+    @Override
+    public List<PacienteDto> buscarPorApellido(String apellido) {
+        return mapper.obtenerListaDto(repository.buscarPorApellido(apellido));
+    }
+
+    @Override
+    public PacienteDto buscarPorEmail(String email) {
+        return mapper.obtenerDto(repository.findByEmail(email).orElseThrow(()-> new EntidadNoEncontradaException("Entidad no encontrada")));
+    }
+
+    @Override
+    public PacienteDto buscarPorNumeroTelefonico(String numero) {
+        Long telefonoId = numeroTelefonicoClient.buscarPorNumero(numero).getId();
+        PacienteDto dtoARetornar = buscarPorTelefonoId(telefonoId);
+
+        return dtoARetornar;
+    }
+
+    private PacienteDto buscarPorTelefonoId(Long id){
+        List<Paciente> pacientes = repository.findAll();
+        PacienteDto dtoARetornar;
+        Set<Long> telefonosId;
+
+        for(Paciente p : pacientes){
+            if(p.getTelefonosId() != null){
+                telefonosId = p.getTelefonosId();
+
+                for(Long tid : telefonosId){
+                    if(tid.equals(id)){
+                        dtoARetornar = mapper.obtenerDto(p);
+                        return dtoARetornar;
+                    }
+                }
+            }
+        }
+
+        throw new EntidadNoEncontradaException("El número telefónico no corresponde a ningún paciente");
     }
 }

@@ -4,9 +4,8 @@ import com.f_rafael.pacientes_servicio.dto.TurnoEstudioDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
-import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoEstudioRepository;
-import com.f_rafael.pacientes_servicio.utils.TurnoEstudioMap;
+import com.f_rafael.pacientes_servicio.utils.TurnoEstudioMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ import java.util.List;
 public class TurnoEstudioService implements ITurnoEstudioService{
 
     private ITurnoEstudioRepository repository;
-    private TurnoEstudioMap map;
+    private TurnoEstudioMapper map;
     @Override
     public TurnoEstudioDto buscarPorId(Long id) {
 

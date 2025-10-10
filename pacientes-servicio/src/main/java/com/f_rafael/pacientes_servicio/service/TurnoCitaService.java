@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
-import com.f_rafael.pacientes_servicio.utils.TurnoCitaMap;
+import com.f_rafael.pacientes_servicio.utils.TurnoCitaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class TurnoCitaService implements ITurnoCitaService{
 
     private ITurnoCitaRepository repository;
-    private TurnoCitaMap map;
+    private TurnoCitaMapper map;
     @Override
     public TurnoCitaDto buscarPorId(Long id) {
         if(!repository.existsById(id)){

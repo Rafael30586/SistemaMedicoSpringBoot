@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
 import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
-import com.f_rafael.pacientes_servicio.utils.ResultadosDeEstudiosMap;
+import com.f_rafael.pacientes_servicio.utils.ResultadosDeEstudiosMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService{
 
     private IResultadoDeEstudiosRepository repository;
-    private ResultadosDeEstudiosMap map;
+    private ResultadosDeEstudiosMapper map;
 
 
     @Override

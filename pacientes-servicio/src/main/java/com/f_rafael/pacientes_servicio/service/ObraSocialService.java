@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
-import com.f_rafael.pacientes_servicio.utils.ObraSocialMap;
+import com.f_rafael.pacientes_servicio.utils.ObraSocialMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -13,8 +13,7 @@ import java.util.List;
 @Service
 public class ObraSocialService implements IObraSocialService{
 
-    private ObraSocialMap transformacion;
-
+    private ObraSocialMapper mapper;
     private IObraSocialRepository repository;
     @Override
     public ObraSocialDto buscarPorId(Long id) {
@@ -24,13 +23,13 @@ public class ObraSocialService implements IObraSocialService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        dtoARetornar = transformacion.obtenerDto(repository.findById(id).get());
+        dtoARetornar = mapper.obtenerDto(repository.findById(id).get());
         return dtoARetornar;
     }
 
     @Override
     public List<ObraSocialDto> buscarTodas() {
-        List<ObraSocialDto> listaARetornar = transformacion.obtenerListaDto(repository.findAll());
+        List<ObraSocialDto> listaARetornar = mapper.obtenerListaDto(repository.findAll());
 
         return listaARetornar;
     }
@@ -43,7 +42,7 @@ public class ObraSocialService implements IObraSocialService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        dtoaRetornar = transformacion.obtenerDto(repository.findByNombre(nombre).get());
+        dtoaRetornar = mapper.obtenerDto(repository.findByNombre(nombre).get());
 
         return dtoaRetornar;
     }
@@ -56,7 +55,7 @@ public class ObraSocialService implements IObraSocialService{
             throw new CampoNuloException("El nombre no puede se nulo");
         }
 
-        dtoARetornar = transformacion.obtenerDto(repository.save(obraSocial));
+        dtoARetornar = mapper.obtenerDto(repository.save(obraSocial));
 
         return dtoARetornar;
     }

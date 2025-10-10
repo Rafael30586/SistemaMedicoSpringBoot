@@ -13,9 +13,9 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-public class ResultadosDeEstudiosMap {
+public class ResultadosDeEstudiosMapper {
 
-    private SubPacienteMap subPacienteMap;
+    private SubPacienteMapper subPacienteMapper;
     private IEstudioClient estudioClient;
 
     public ResultadoDeEstudiosDto obtenerDto(ResultadosDeEstudios informacionResultado){
@@ -26,7 +26,7 @@ public class ResultadosDeEstudiosMap {
         dtoARetornar.setNumero(informacionResultado.getNumero());
         dtoARetornar.setCobertura(informacionResultado.getCobertura());
         dtoARetornar.setUrlInforme(informacionResultado.getUrlInforme());
-        dtoARetornar.setPaciente(subPacienteMap.obtenerDto(informacionResultado.getPaciente()));
+        dtoARetornar.setPaciente(subPacienteMapper.obtenerDto(informacionResultado.getPaciente()));
 
         if(informacionResultado.getEstudios() != null){
             estudiosId = informacionResultado.getEstudios();

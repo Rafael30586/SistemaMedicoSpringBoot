@@ -12,7 +12,7 @@ import java.util.*;
 
 @AllArgsConstructor
 @Component
-public class SedeMap {
+public class SedeMapper {
 
 
     private IDireccionClient direccionClient;
@@ -32,7 +32,7 @@ public class SedeMap {
             telefonosId = informacionSede.getTelefonosId();
 
             for(Long id : telefonosId){
-                telefonosParaAsignar.add(numeroTelefonicoClient.obtenerInformacionDeNumerosTelefonicos(id));
+                telefonosParaAsignar.add(numeroTelefonicoClient.buscarPorId(id));
             }
 
             dtoaRetornar.setTelefonos(telefonosParaAsignar);

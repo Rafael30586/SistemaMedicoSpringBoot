@@ -13,10 +13,10 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-public class TurnoCitaMap {
+public class TurnoCitaMapper {
 
     private IMedicoClient medicoClient;
-    private SubPacienteMap subPacienteMap;
+    private SubPacienteMapper subPacienteMapper;
 
     public TurnoCitaDto obtenerDto(TurnoCita informacionTurno){
         TurnoCitaDto dtoARetornar = new TurnoCitaDto();
@@ -30,7 +30,7 @@ public class TurnoCitaMap {
         dtoARetornar.setFechaSolicitud(informacionTurno.getFechaSolicitud());
 
         if(informacionTurno.getPaciente() != null){
-            pacienteParaAsignar = subPacienteMap.obtenerDto(informacionTurno.getPaciente());
+            pacienteParaAsignar = subPacienteMapper.obtenerDto(informacionTurno.getPaciente());
             dtoARetornar.setPaciente(pacienteParaAsignar);
         }
 
