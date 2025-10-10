@@ -36,7 +36,7 @@ public class ResultadosDeEstudiosController {
     public ResponseEntity<ResultadoDeEstudiosDto> actualizar(@RequestBody ResultadosDeEstudios resultadosDeEstudios){
         return ResponseEntity.ok(service.actualizar(resultadosDeEstudios));
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
