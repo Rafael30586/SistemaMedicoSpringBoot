@@ -31,4 +31,15 @@ public class GestorGlobalDeExcepciones {
 
         return new ResponseEntity<>(objetoDeError,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(DatoIncorrectoException.class)
+    public ResponseEntity<ObjetoDeError> controlarDatoIncorrectoException(DatoIncorrectoException excepcion){
+        ObjetoDeError objetoDeError = new ObjetoDeError();
+
+        objetoDeError.setCodigoDeEstado(HttpStatus.BAD_REQUEST.value());
+        objetoDeError.setMensaje(excepcion.getMessage());
+        objetoDeError.setMarcaDeTiempo(LocalDateTime.now());
+
+        return new ResponseEntity<>(objetoDeError,HttpStatus.BAD_REQUEST);
+    }
 }

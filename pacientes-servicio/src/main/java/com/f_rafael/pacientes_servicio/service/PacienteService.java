@@ -2,6 +2,7 @@ package com.f_rafael.pacientes_servicio.service;
 
 import com.f_rafael.pacientes_servicio.dto.PacienteDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
+import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
@@ -10,6 +11,7 @@ import com.f_rafael.pacientes_servicio.utils.PacienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -92,6 +94,19 @@ public class PacienteService implements IPacienteService{
         PacienteDto dtoARetornar = buscarPorTelefonoId(telefonoId);
 
         return dtoARetornar;
+    }
+
+    @Override
+    public List<PacienteDto> buscarPorIntervaloNacimiento(Integer desde, Integer hasta) {
+        if(desde > hasta){
+            throw new DatoIncorrectoException("El primer dato del intervalo debe ser menor que el segundo");
+        }
+
+        if(hasta > LocalDate.now().getYear() || desde < (LocalDate.now().getYear()-120)){
+            throw new DatoIncorrectoException("Se ha superado el límite del año de nacimiento");
+        }
+        
+        return mapper.obtenerListaDto(repository.buscarPorIntervaloNacimiento(desde,hasta));
     }
 
     private PacienteDto buscarPorTelefonoId(Long id){
