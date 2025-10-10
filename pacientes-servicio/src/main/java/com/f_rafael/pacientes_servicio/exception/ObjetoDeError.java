@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObjetoDeError {
-    @JsonProperty("código de estado")
+public class ObjetoDeError { // ¿Podría agregar un campo llamado id que siempre resulte en -1 para que lo mapee a la entidad del otro microservicio?
+    @JsonProperty("código_de_estado")
     private Integer codigoDeEstado;
     private String mensaje;
-    @JsonProperty("marca de tiempo")
+    @JsonProperty("marca_de_tiempo")
     private LocalDateTime marcaDeTiempo;
 }
