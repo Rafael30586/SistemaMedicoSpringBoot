@@ -71,8 +71,8 @@ public class TurnoCitaService implements ITurnoCitaService{
     }
 
     @Override
-    public List<TurnoCitaDto> buscarPorEstado(EstadoTurno estado) {
-        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toString()));
+    public List<TurnoCitaDto> buscarPorEstado(String estado) {
+        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
     }
 
     @Override

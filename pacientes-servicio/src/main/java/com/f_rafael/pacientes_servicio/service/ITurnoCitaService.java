@@ -15,6 +15,6 @@ public interface ITurnoCitaService {
     public void borrarPorId(Long id);
     public List<TurnoCitaDto> buscarPorPaciente(Long dni);
     public List<TurnoCitaDto> buscarPorFechaTurno(LocalDate fechaTurno);
-    public List<TurnoCitaDto> buscarPorEstado(EstadoTurno estado);
+    public List<TurnoCitaDto> buscarPorEstado(String estado);
     public List<TurnoCitaDto> buscarPorProfesional(Long id);
 }

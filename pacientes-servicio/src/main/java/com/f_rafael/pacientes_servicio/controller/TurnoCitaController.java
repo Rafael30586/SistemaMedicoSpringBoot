@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,26 @@ public class TurnoCitaController {
     @GetMapping
     public ResponseEntity<List<TurnoCitaDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TurnoCitaDto>> buscarPorPaciente(@RequestParam Long dni){
+        return ResponseEntity.ok(service.buscarPorPaciente(dni));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TurnoCitaDto>> buscarPorFechaTurno(@RequestParam LocalDate fechaTurno){
+        return ResponseEntity.ok(service.buscarPorFechaTurno(fechaTurno));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TurnoCitaDto>> buscarPorEstado(@RequestParam String estado){
+        return ResponseEntity.ok(service.buscarPorEstado(estado));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TurnoCitaDto>> buscarPorProfesional(@RequestParam Long id){
+        return ResponseEntity.ok(service.buscarPorProfesional(id));
     }
 
     @PostMapping
