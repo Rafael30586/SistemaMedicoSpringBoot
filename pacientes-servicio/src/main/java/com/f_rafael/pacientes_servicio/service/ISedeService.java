@@ -11,5 +11,7 @@ public interface ISedeService {
     public SedeDto guardar(Sede sede);
     public SedeDto actualizar(Sede sede);
     public void borrarPorId(Long id);
+    public List<SedeDto> buscarPorDireccion(String calle);
+    public SedeDto buscarPortelefono(String telefono);
 
 }
