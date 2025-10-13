@@ -11,4 +11,6 @@ public interface IResultadosDeEstudiosService {
     public ResultadoDeEstudiosDto guardar(ResultadosDeEstudios resultadosDeEstudios);
     public ResultadoDeEstudiosDto actualizar(ResultadosDeEstudios resultadosDeEstudios);
     public void borrarPorId(Long id);
+    public List<ResultadoDeEstudiosDto> buscarPorPaciente(Long dni);
+    public List<ResultadoDeEstudiosDto> buscarPorEstudio(String estudio);
 }

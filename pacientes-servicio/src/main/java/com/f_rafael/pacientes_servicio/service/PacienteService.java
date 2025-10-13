@@ -5,6 +5,8 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
+import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
+import com.f_rafael.pacientes_servicio.repository.ILocalidadClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.utils.PacienteMapper;
@@ -12,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +25,8 @@ public class PacienteService implements IPacienteService{
     private IPacienteRepository repository;
     private PacienteMapper mapper;
     private INumeroTelefonicoClient numeroTelefonicoClient;
+    private ILocalidadClient localidadClient;
+    private IDireccionClient direccionClient;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -105,8 +110,35 @@ public class PacienteService implements IPacienteService{
         if(hasta > LocalDate.now().getYear() || desde < (LocalDate.now().getYear()-120)){
             throw new DatoIncorrectoException("Se ha superado el límite del año de nacimiento");
         }
-        
+
         return mapper.obtenerListaDto(repository.buscarPorIntervaloNacimiento(desde,hasta));
+    }
+
+    @Override
+    public List<PacienteDto> buscarPorLugarNacimiento(String localidad) {
+        List<PacienteDto> listaARetornar = new LinkedList<>();
+        List<Paciente> informacionPacientes = repository.findAll();
+
+        for(Paciente p : informacionPacientes){
+            if(localidadClient.obtenerInformacionDeLocalidad(p.getLugarNacimientoId()).getNombre().equals(localidad)){
+                listaARetornar.add(mapper.obtenerDto(p));
+            }
+        }
+
+        return listaARetornar;
+    }
+
+    @Override
+    public List<PacienteDto> buscarPorDomicilio(String calle) {
+        List<PacienteDto> listaARetornar = new LinkedList<>();
+        List<Paciente> informacionPacientes = repository.findAll();
+
+        for(Paciente p : informacionPacientes){
+            if(direccionClient.obtenerInformacionDireccion(p.getDireccionId()).getCalle().equals(calle)){
+                listaARetornar.add(mapper.obtenerDto(p));
+            }
+        }
+        return listaARetornar;
     }
 
     private PacienteDto buscarPorTelefonoId(Long id){
