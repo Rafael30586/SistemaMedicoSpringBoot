@@ -27,6 +27,16 @@ public class SedeController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
+    @GetMapping
+    public ResponseEntity<List<SedeDto>> buscarPorDireccion(@RequestParam String calle){
+        return ResponseEntity.ok(service.buscarPorDireccion(calle));
+    }
+
+    @GetMapping
+    public ResponseEntity<SedeDto> buscarPorTelefono(@RequestParam String telefono){
+        return ResponseEntity.ok(service.buscarPortelefono(telefono));
+    }
+
     @PostMapping
     public ResponseEntity<SedeDto> guardar(@RequestBody Sede sede){
         return new ResponseEntity<>(service.guardar(sede), HttpStatusCode.valueOf(201));

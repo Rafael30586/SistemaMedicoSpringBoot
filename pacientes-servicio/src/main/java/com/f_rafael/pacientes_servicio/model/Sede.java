@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter @Setter
 @Table(name = "sedes")
-public class Sede {
+public class Sede { // Hay que agregar ObraSocial como campo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

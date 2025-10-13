@@ -27,6 +27,16 @@ public class ResultadosDeEstudiosController {
         return ResponseEntity.ok(service.buscartodos());
     }
 
+    @GetMapping
+    public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorPaciente(@RequestParam Long dni){
+        return ResponseEntity.ok(service.buscarPorPaciente(dni));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorEstudio(@RequestParam("nombre-estudio") String nombreEstudio){
+        return ResponseEntity.ok(service.buscarPorEstudio(nombreEstudio));
+    }
+
     @PostMapping
     public ResponseEntity<ResultadoDeEstudiosDto> guardar(@RequestBody ResultadosDeEstudios resultadosDeEstudios){
         return new ResponseEntity<>(service.guardar(resultadosDeEstudios), HttpStatusCode.valueOf(201));

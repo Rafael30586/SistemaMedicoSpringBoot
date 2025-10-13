@@ -27,6 +27,47 @@ public class PacienteController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
+    @GetMapping
+    public ResponseEntity<PacienteDto> buscarPorDni(@RequestParam Long dni){
+        return ResponseEntity.ok(service.buscarPorDni(dni));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PacienteDto>> buscarPorNombre(@RequestParam String nombre){
+        return ResponseEntity.ok(service.buscarPorNombre(nombre));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PacienteDto>> buscarPorApellido(@RequestParam String apellido){
+        return ResponseEntity.ok(service.buscarPorApellido(apellido));
+    }
+
+    @GetMapping
+    public ResponseEntity<PacienteDto> buscarPorEmail(@RequestParam String email){
+        return ResponseEntity.ok(service.buscarPorEmail(email));
+    }
+
+    @GetMapping
+    public ResponseEntity<PacienteDto> buscarPorTelefono(@RequestParam("numero-telefonico") String numeroTelefonico){
+        return ResponseEntity.ok(service.buscarPorNumeroTelefonico(numeroTelefonico));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PacienteDto>> buscarPorIntervaloNacimiento(@RequestParam Integer desde,
+                                                                    @RequestParam Integer hasta){
+        return ResponseEntity.ok(service.buscarPorIntervaloNacimiento(desde,hasta));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PacienteDto>> buscarPorLugarNacimiento(@RequestParam String localidad){
+        return ResponseEntity.ok(service.buscarPorLugarNacimiento(localidad));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PacienteDto>> buscarPorDomicilio(@RequestParam String calle){
+        return ResponseEntity.ok(service.buscarPorDomicilio(calle));
+    }
+
     @PostMapping
     public ResponseEntity<PacienteDto> guardar(@RequestBody Paciente paciente){
         return new ResponseEntity<>(service.guardar(paciente), HttpStatusCode.valueOf(201));

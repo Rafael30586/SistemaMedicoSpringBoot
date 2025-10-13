@@ -79,7 +79,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     }
 
     @Override
-    public List<ResultadoDeEstudiosDto> buscarPorEstudio(String estudio){
+    public List<ResultadoDeEstudiosDto> buscarPorEstudio(String nombreEstudio){
         List<ResultadosDeEstudios> informacionResultadosDeEstudios = repository.findAll();
         List<ResultadoDeEstudiosDto> listaARetornar = new LinkedList<>();
         List<Long> listaDeEstudios;
@@ -88,7 +88,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
             listaDeEstudios = rde.getEstudios();
 
             for(Long id : listaDeEstudios){
-                if(estudioClient.obtenerInformacionEstudio(id).getNombre().equals(estudio)){
+                if(estudioClient.obtenerInformacionEstudio(id).getNombre().equals(nombreEstudio)){
                     listaARetornar.add(mapper.obtenerDto(rde));
                 }
             }
