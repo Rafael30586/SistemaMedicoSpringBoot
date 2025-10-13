@@ -3,12 +3,14 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.TurnoEstudioDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
 import com.f_rafael.pacientes_servicio.repository.ITurnoEstudioRepository;
 import com.f_rafael.pacientes_servicio.utils.TurnoEstudioMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,7 +18,7 @@ import java.util.List;
 public class TurnoEstudioService implements ITurnoEstudioService{
 
     private ITurnoEstudioRepository repository;
-    private TurnoEstudioMapper map;
+    private TurnoEstudioMapper mapper;
     @Override
     public TurnoEstudioDto buscarPorId(Long id) {
 
@@ -24,12 +26,12 @@ public class TurnoEstudioService implements ITurnoEstudioService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return map.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<TurnoEstudioDto> buscarTodos() {
-        return map.obtenerListaDto(repository.findAll());
+        return mapper.obtenerListaDto(repository.findAll());
     }
 
     @Override
@@ -39,7 +41,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
 
-        return map.obtenerDto(repository.save(turnoEstudio));
+        return mapper.obtenerDto(repository.save(turnoEstudio));
     }
 
     @Override
@@ -59,5 +61,15 @@ public class TurnoEstudioService implements ITurnoEstudioService{
         }
 
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<TurnoEstudioDto> buscarPorFechaTurno(LocalDate fechaTurno) {
+        return mapper.obtenerListaDto(repository.buscarPorFechaTurno(fechaTurno));
+    }
+
+    @Override
+    public List<TurnoEstudioDto> buscarPorEstado(EstadoTurno estado) {
+        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toString()));
     }
 }
