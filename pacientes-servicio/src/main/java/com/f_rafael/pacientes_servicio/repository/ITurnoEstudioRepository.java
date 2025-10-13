@@ -14,5 +14,7 @@ public interface ITurnoEstudioRepository extends JpaRepository<TurnoEstudio, Lon
 
     @Query("SELECT te FROM TurnoEstudio te WHERE te.fechaTurno = :fechaTurno")
     public List<TurnoEstudio> buscarPorFechaTurno(@Param("fechaTurno") LocalDate fechaTurno);
+    @Query("SELECT te FROM TurnoEstudio te WHERE te.estado = :estado")
     public List<TurnoEstudio> buscarPorEstado(@Param("estado") String estado);
+    public List<TurnoEstudio> findByEstudioId(Long id);
 }

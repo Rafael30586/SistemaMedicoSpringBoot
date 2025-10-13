@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -64,12 +65,31 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     }
 
     @Override
+    public List<TurnoEstudioDto> buscarPorPaciente(Long dni) {
+        List<TurnoEstudioDto> listaARetornar = new LinkedList<>();
+        List<TurnoEstudio> informacionTurnosEstudios = repository.findAll();
+
+        for(TurnoEstudio te : informacionTurnosEstudios){
+            if(te.getPaciente().getDni() == dni){
+                listaARetornar.add(mapper.obtenerDto(te));
+            }
+        }
+        return listaARetornar;
+    }
+
+
+    @Override
     public List<TurnoEstudioDto> buscarPorFechaTurno(LocalDate fechaTurno) {
         return mapper.obtenerListaDto(repository.buscarPorFechaTurno(fechaTurno));
     }
 
     @Override
-    public List<TurnoEstudioDto> buscarPorEstado(EstadoTurno estado) {
-        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toString()));
+    public List<TurnoEstudioDto> buscarPorEstado(String estado) {
+        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
+    }
+
+    @Override
+    public List<TurnoEstudioDto> buscarPorEstudioId(Long estudioId) {
+        return mapper.obtenerListaDto(repository.findByEstudioId(estudioId));
     }
 }

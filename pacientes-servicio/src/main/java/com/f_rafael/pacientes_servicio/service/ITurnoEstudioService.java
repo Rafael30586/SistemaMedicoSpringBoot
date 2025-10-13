@@ -13,6 +13,8 @@ public interface ITurnoEstudioService {
     public TurnoEstudioDto guardar(TurnoEstudio turnoEstudio);
     public TurnoEstudioDto actualizar(TurnoEstudio turnoEstudio);
     public void borrarPorId(Long id);
+    public List<TurnoEstudioDto> buscarPorPaciente(Long dni);
     public List<TurnoEstudioDto> buscarPorFechaTurno(LocalDate fechaTurno);
-    public List<TurnoEstudioDto> buscarPorEstado(EstadoTurno estado);
+    public List<TurnoEstudioDto> buscarPorEstado(String estado);
+    public List<TurnoEstudioDto> buscarPorEstudioId(Long id);
 }
