@@ -40,7 +40,7 @@ public class SedeMapper {
 
             dtoaRetornar.setTelefonos(telefonosParaAsignar);
         }
-        // Agregar en este método lo necesario para asignar obra social (SubObraSocialDto)
+
 
         if(informacionSede.getObraSocial() != null){
             obraSocialParaAsignar = subObraSocialMapper.obtenerDto(informacionSede.getObraSocial());

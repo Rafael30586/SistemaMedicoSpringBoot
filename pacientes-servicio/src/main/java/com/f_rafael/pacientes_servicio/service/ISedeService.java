@@ -1,7 +1,6 @@
 package com.f_rafael.pacientes_servicio.service;
 
 import com.f_rafael.pacientes_servicio.dto.SedeDto;
-import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
 
 import java.util.List;

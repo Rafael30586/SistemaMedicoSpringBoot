@@ -13,4 +13,5 @@ public interface IObraSocialService {
     public ObraSocialDto guardar(ObraSocial obraSocial);
     public ObraSocialDto actualizar(ObraSocial obraSocial);
     public void borrarPorId(Long id);
+    public ObraSocialDto actualizarNombre(Long id,String nombre);
 }

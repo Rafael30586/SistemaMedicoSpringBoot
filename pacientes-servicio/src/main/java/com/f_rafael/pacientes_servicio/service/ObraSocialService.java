@@ -3,6 +3,7 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.mapper.StringMapper;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import com.f_rafael.pacientes_servicio.mapper.ObraSocialMapper;
@@ -15,6 +16,7 @@ public class ObraSocialService implements IObraSocialService{
 
     private ObraSocialMapper mapper;
     private IObraSocialRepository repository;
+    private StringMapper stringMapper;
     @Override
     public ObraSocialDto buscarPorId(Long id) {
         ObraSocialDto dtoARetornar;
@@ -76,6 +78,14 @@ public class ObraSocialService implements IObraSocialService{
         }
 
         repository.deleteById(id);
+    }
+
+    @Override
+    public ObraSocialDto actualizarNombre(Long id,String nombre) {
+        ObraSocialDto dtoARetornar = new ObraSocialDto();
+        ObraSocial obraSocialAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Obra social no encontrada"));
+        obraSocialAEditar.setNombre(stringMapper.quitarGuionesBajos(nombre));
+        return mapper.obtenerDto(repository.save(obraSocialAEditar));
     }
 
 }

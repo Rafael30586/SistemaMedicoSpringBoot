@@ -4,11 +4,10 @@ import com.f_rafael.pacientes_servicio.dto.PacienteDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.mapper.StringMapper;
+import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Paciente;
-import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
-import com.f_rafael.pacientes_servicio.repository.ILocalidadClient;
-import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
-import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
+import com.f_rafael.pacientes_servicio.repository.*;
 import com.f_rafael.pacientes_servicio.mapper.PacienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +26,8 @@ public class PacienteService implements IPacienteService{
     private INumeroTelefonicoClient numeroTelefonicoClient;
     private ILocalidadClient localidadClient;
     private IDireccionClient direccionClient;
+    private StringMapper stringMapper;
+    private IObraSocialRepository obraSocialRepository;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -80,12 +81,12 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public List<PacienteDto> buscarPorNombre(String nombre) {
-        return mapper.obtenerListaDto(repository.buscarPorNombre(nombre));
+        return mapper.obtenerListaDto(repository.buscarPorNombre(stringMapper.quitarGuionesBajos(nombre)));
     }
 
     @Override
     public List<PacienteDto> buscarPorApellido(String apellido) {
-        return mapper.obtenerListaDto(repository.buscarPorApellido(apellido));
+        return mapper.obtenerListaDto(repository.buscarPorApellido(stringMapper.quitarGuionesBajos(apellido)));
     }
 
     @Override
@@ -134,11 +135,114 @@ public class PacienteService implements IPacienteService{
         List<Paciente> informacionPacientes = repository.findAll();
 
         for(Paciente p : informacionPacientes){
-            if(direccionClient.obtenerInformacionDireccion(p.getDireccionId()).getCalle().equals(calle)){
+            if(direccionClient.obtenerInformacionDireccion(p.getDireccionId()).getCalle().equals(stringMapper.quitarGuionesBajos(calle))){
                 listaARetornar.add(mapper.obtenerDto(p));
             }
         }
         return listaARetornar;
+    }
+
+    @Override
+    public PacienteDto actulizarDni(Long id, Long dni) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("PAciente no encontrado"));
+        pacienteAEditar.setDni(dni);
+        return mapper.obtenerDto(repository.save(pacienteAEditar));
+    }
+
+    @Override
+    public PacienteDto actulizarPrimerNombre(Long id, String primerNombre) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAaciente no encontrado"));
+        pacienteAEditar.setPrimerNombre(stringMapper.quitarGuionesBajos(primerNombre));
+        return mapper.obtenerDto(pacienteAEditar);
+    }
+
+    @Override
+    public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAciente no encontrado"));
+        pacienteAEditar.setSegundoNombre(stringMapper.quitarGuionesBajos(segundoNombre));
+        return mapper.obtenerDto(pacienteAEditar);
+    }
+
+    @Override
+    public PacienteDto actulizarApellidoPaterno(Long id, String apellidoPaterno) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        pacienteAEditar.setApellidoPaterno(stringMapper.quitarGuionesBajos(apellidoPaterno));
+        return mapper.obtenerDto(pacienteAEditar);
+    }
+
+    @Override
+    public PacienteDto actualizarApellidoMaterno(Long id, String apellidoMaterno) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        pacienteAEditar.setApellidoMaterno(stringMapper.quitarGuionesBajos(apellidoMaterno));
+        return mapper.obtenerDto(pacienteAEditar);
+    }
+
+    @Override
+    public PacienteDto actualizarEmail(Long id, String email) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        pacienteAEditar.setEmail(email);
+        return mapper.obtenerDto(pacienteAEditar);
+    }
+
+    @Override
+    public PacienteDto agregarNumeroTelefonico(Long id, Long telefonoId) { // En otro momento hacer validaciones para saber si el teléfono existe en el otro microservicio
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+        Set<Long> telefonosParaAsignar = pacienteAEditar.getTelefonosId();
+
+        telefonosParaAsignar.add(telefonoId);
+        pacienteAEditar.setTelefonosId(telefonosParaAsignar);
+
+        return mapper.obtenerDto(repository.save(pacienteAEditar));
+    }
+
+    @Override
+    public PacienteDto quitarNumeroTelefonico(Long id, Long telefonoId) {
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+        Set<Long> telefonosParaAsignar = pacienteAEditar.getTelefonosId();
+        boolean telefonoPresente = false;
+        Long telefonoParaQuitar = null;
+
+        for(Long tid : telefonosParaAsignar){
+            if(tid.equals(telefonoId)){
+                telefonoParaQuitar = tid;
+                telefonoPresente = true;
+            }
+        }
+
+        if(telefonoPresente){
+            telefonosParaAsignar.remove(telefonoParaQuitar);
+        }
+
+        return mapper.obtenerDto(repository.save(pacienteAEditar));
+    }
+
+    @Override
+    public PacienteDto actualizarFechaNacimiento(Long id, LocalDate fechaNacimiento) {
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        pacianteParaEditar.setFechaNacimiento(fechaNacimiento);
+        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+    }
+
+    @Override
+    public PacienteDto actualizarLugarNacimiento(Long id, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        pacianteParaEditar.setLugarNacimientoId(localidadId);
+        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+    }
+
+    @Override
+    public PacienteDto actualizarDomicilio(Long id, Long direccionId) {
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        pacianteParaEditar.setDireccionId(direccionId);
+        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+    }
+
+    @Override
+    public PacienteDto actualizarObraSocial(Long id, Long obraSocialId) {
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()->new EntidadNoEncontradaException("Obra social no encontrada"));
+        pacianteParaEditar.setObraSocial(obraSocialParaAsignar);
+        return mapper.obtenerDto(repository.save(pacianteParaEditar));
     }
 
     private PacienteDto buscarPorTelefonoId(Long id){
