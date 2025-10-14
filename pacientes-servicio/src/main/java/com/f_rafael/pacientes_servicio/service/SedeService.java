@@ -7,7 +7,7 @@ import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import com.f_rafael.pacientes_servicio.repository.ISedeRepository;
-import com.f_rafael.pacientes_servicio.utils.SedeMapper;
+import com.f_rafael.pacientes_servicio.mapper.SedeMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

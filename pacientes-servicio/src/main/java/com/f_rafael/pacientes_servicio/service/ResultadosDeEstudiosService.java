@@ -6,7 +6,7 @@ import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
 import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
 import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
-import com.f_rafael.pacientes_servicio.utils.ResultadosDeEstudiosMapper;
+import com.f_rafael.pacientes_servicio.mapper.ResultadosDeEstudiosMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

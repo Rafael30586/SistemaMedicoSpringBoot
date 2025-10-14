@@ -3,10 +3,9 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.TurnoCitaDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
-import com.f_rafael.pacientes_servicio.utils.TurnoCitaMapper;
+import com.f_rafael.pacientes_servicio.mapper.TurnoCitaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

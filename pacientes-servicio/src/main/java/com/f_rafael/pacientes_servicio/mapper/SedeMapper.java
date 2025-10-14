@@ -1,6 +1,8 @@
-package com.f_rafael.pacientes_servicio.utils;
+package com.f_rafael.pacientes_servicio.mapper;
 
 import com.f_rafael.pacientes_servicio.dto.NumeroTelefonicoDto;
+import com.f_rafael.pacientes_servicio.dto.SedeDto;
+import com.f_rafael.pacientes_servicio.dto.SubObraSocialDto;
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
@@ -17,12 +19,14 @@ public class SedeMapper {
 
     private IDireccionClient direccionClient;
     private INumeroTelefonicoClient numeroTelefonicoClient;
+    private SubObraSocialMapper subObraSocialMapper;
 
 
-    public SubSedeDto obtenerDto(Sede informacionSede){
-        SubSedeDto dtoaRetornar = new SubSedeDto();
+    public SedeDto obtenerDto(Sede informacionSede){
+        SedeDto dtoaRetornar = new SedeDto();
         Set<Long> telefonosId;
         Set<NumeroTelefonicoDto> telefonosParaAsignar;
+        SubObraSocialDto obraSocialParaAsignar;
 
         dtoaRetornar.setId(informacionSede.getId());
         dtoaRetornar.setDireccion(direccionClient.obtenerInformacionDireccion(informacionSede.getDireccionId()));
@@ -37,12 +41,18 @@ public class SedeMapper {
 
             dtoaRetornar.setTelefonos(telefonosParaAsignar);
         }
+        // Agregar en este método lo necesario para asignar obra social (SubObraSocialDto)
+
+        if(informacionSede.getObraSocial() != null){
+            obraSocialParaAsignar = subObraSocialMapper.obtenerDto(informacionSede.getObraSocial());
+            dtoaRetornar.setObraSocial(obraSocialParaAsignar);
+        }
 
         return dtoaRetornar;
     }
 
-    public List<SubSedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
-        List<SubSedeDto> listaARetornar = new LinkedList<>();
+    public List<SedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
+        List<SedeDto> listaARetornar = new LinkedList<>();
 
         for(Sede s : informacionSedes){
             listaARetornar.add(obtenerDto(s));

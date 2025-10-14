@@ -5,7 +5,7 @@ import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
-import com.f_rafael.pacientes_servicio.utils.ObraSocialMapper;
+import com.f_rafael.pacientes_servicio.mapper.ObraSocialMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

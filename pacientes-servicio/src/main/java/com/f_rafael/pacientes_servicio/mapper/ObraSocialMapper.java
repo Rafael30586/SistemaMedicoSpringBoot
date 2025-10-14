@@ -1,4 +1,4 @@
-package com.f_rafael.pacientes_servicio.utils;
+package com.f_rafael.pacientes_servicio.mapper;
 
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;

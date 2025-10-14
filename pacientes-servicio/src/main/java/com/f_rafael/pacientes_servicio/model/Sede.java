@@ -21,5 +21,6 @@ public class Sede {
     @CollectionTable(name = "sede_telefono_id", joinColumns = @JoinColumn(name = "sede_id"))
     private Set<Long> telefonosId;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private ObraSocial obraSocial;
 }

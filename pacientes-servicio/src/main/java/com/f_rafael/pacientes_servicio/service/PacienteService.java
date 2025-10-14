@@ -9,7 +9,7 @@ import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.ILocalidadClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
-import com.f_rafael.pacientes_servicio.utils.PacienteMapper;
+import com.f_rafael.pacientes_servicio.mapper.PacienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
