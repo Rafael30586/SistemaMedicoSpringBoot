@@ -1,7 +1,7 @@
 package com.f_rafael.pacientes_servicio.utils;
 
 import com.f_rafael.pacientes_servicio.dto.NumeroTelefonicoDto;
-import com.f_rafael.pacientes_servicio.dto.SedeDto;
+import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
@@ -19,8 +19,8 @@ public class SedeMapper {
     private INumeroTelefonicoClient numeroTelefonicoClient;
 
 
-    public SedeDto obtenerDto(Sede informacionSede){
-        SedeDto dtoaRetornar = new SedeDto();
+    public SubSedeDto obtenerDto(Sede informacionSede){
+        SubSedeDto dtoaRetornar = new SubSedeDto();
         Set<Long> telefonosId;
         Set<NumeroTelefonicoDto> telefonosParaAsignar;
 
@@ -41,8 +41,8 @@ public class SedeMapper {
         return dtoaRetornar;
     }
 
-    public List<SedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
-        List<SedeDto> listaARetornar = new LinkedList<>();
+    public List<SubSedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
+        List<SubSedeDto> listaARetornar = new LinkedList<>();
 
         for(Sede s : informacionSedes){
             listaARetornar.add(obtenerDto(s));

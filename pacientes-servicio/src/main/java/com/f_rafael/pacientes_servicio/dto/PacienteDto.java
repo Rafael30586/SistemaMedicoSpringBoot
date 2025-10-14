@@ -23,5 +23,5 @@ public class PacienteDto {
     private LocalDate fechaNacimiento;
     private LocalidadDto lugarNacimiento;
     private DireccionDto domicilio;
-    private ObraSocialDto obraSocial;
+    private SubObraSocialDto obraSocial;
 }

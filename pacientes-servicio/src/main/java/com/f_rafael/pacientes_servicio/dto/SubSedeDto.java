@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObraSocialDto {
+@Getter @Setter
+public class SubSedeDto {
     private Long id;
-    private String nombre;
-    private List<SubSedeDto> sedes;
-    private List<SubPacienteDto> pacientes;
+    private DireccionDto direccion;
+    private Set<NumeroTelefonicoDto> telefonos;
 }

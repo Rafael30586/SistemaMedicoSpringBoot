@@ -10,8 +10,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
-public class SedeDto { // Hay que agregar un campo que sea SubObraSocialDto
+public class SedeDto {
     private Long id;
     private DireccionDto direccion;
     private Set<NumeroTelefonicoDto> telefonos;
+    private SubObraSocialDto obraSocial;
 }

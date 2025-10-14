@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter @Setter
 @Table(name = "sedes")
-public class Sede { // Hay que agregar ObraSocial como campo
+public class Sede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +20,6 @@ public class Sede { // Hay que agregar ObraSocial como campo
     @ElementCollection
     @CollectionTable(name = "sede_telefono_id", joinColumns = @JoinColumn(name = "sede_id"))
     private Set<Long> telefonosId;
+    @ManyToOne
+    private ObraSocial obraSocial;
 }

@@ -5,14 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObraSocialDto {
+@Getter @Setter
+public class SubObraSocialDto {
     private Long id;
     private String nombre;
-    private List<SubSedeDto> sedes;
-    private List<SubPacienteDto> pacientes;
 }

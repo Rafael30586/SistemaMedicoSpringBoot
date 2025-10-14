@@ -1,7 +1,7 @@
 package com.f_rafael.pacientes_servicio.utils;
 
 import com.f_rafael.pacientes_servicio.dto.ObraSocialDto;
-import com.f_rafael.pacientes_servicio.dto.SedeDto;
+import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubPacienteDto;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Paciente;
@@ -24,7 +24,7 @@ public class ObraSocialMapper {
     public ObraSocialDto obtenerDto(ObraSocial obraSocial){
         ObraSocialDto dtoARetornar = new ObraSocialDto();
         Set<Sede> informacionSedes;
-        List<SedeDto> sedesParaAsignar;
+        List<SubSedeDto> sedesParaAsignar;
         Set<Paciente> informacionPacientes;
         List<SubPacienteDto> pacientesParaAsignar;
 

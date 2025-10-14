@@ -19,7 +19,7 @@ public class ObraSocial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "obraSocial")
     private Set<Sede> sedes;
     @OneToMany(mappedBy = "obraSocial", fetch = FetchType.LAZY)
     private Set<Paciente> pacientes;
