@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.service;
 
+import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
@@ -25,8 +26,8 @@ public class SedeService implements ISedeService{
     private INumeroTelefonicoClient numeroTelefonicoClient;
 
     @Override
-    public SubSedeDto buscarPorId(Long id) {
-        SubSedeDto dtoARetornar;
+    public SedeDto buscarPorId(Long id) {
+        SedeDto dtoARetornar;
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -37,14 +38,14 @@ public class SedeService implements ISedeService{
     }
 
     @Override
-    public List<SubSedeDto> buscarTodas() {
-        List<SubSedeDto> listaARetornar = mapper.obtenerListaDtos(repository.findAll());
+    public List<SedeDto> buscarTodas() {
+        List<SedeDto> listaARetornar = mapper.obtenerListaDto(repository.findAll());
         return listaARetornar;
     }
 
     @Override
-    public SubSedeDto guardar(Sede sede) {
-        SubSedeDto dtoARetornar;
+    public SedeDto guardar(Sede sede) {
+        SedeDto dtoARetornar;
 
         if(sede.getDireccionId() == null){ // ¿Cómo podría hacer para confirmar que la direccion existe si está en otro microservicio?
             throw new CampoNuloException("La direccion no puede ser nula");
@@ -55,7 +56,7 @@ public class SedeService implements ISedeService{
     }
 
     @Override
-    public SubSedeDto actualizar(Sede sede) {
+    public SedeDto actualizar(Sede sede) {
 
         if(sede.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo");
@@ -74,8 +75,8 @@ public class SedeService implements ISedeService{
     }
 
     @Override
-    public List<SubSedeDto> buscarPorDireccion(String calle) {
-        List<SubSedeDto> listaARetornar = new LinkedList<>();
+    public List<SedeDto> buscarPorDireccion(String calle) {
+        List<SedeDto> listaARetornar = new LinkedList<>();
         List<Sede> informacionSedes = repository.findAll();
 
         for(Sede s : informacionSedes){
@@ -88,8 +89,8 @@ public class SedeService implements ISedeService{
     }
 
     @Override
-    public SubSedeDto buscarPortelefono(String telefono) {
-        SubSedeDto dtoARetornar;
+    public SedeDto buscarPortelefono(String telefono) {
+        SedeDto dtoARetornar;
         List<Sede> informacionSedes = repository.findAll();
         Set<Long> telefonosId;
 

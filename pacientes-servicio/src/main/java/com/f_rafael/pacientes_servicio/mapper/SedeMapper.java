@@ -3,7 +3,6 @@ package com.f_rafael.pacientes_servicio.mapper;
 import com.f_rafael.pacientes_servicio.dto.NumeroTelefonicoDto;
 import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubObraSocialDto;
-import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
@@ -51,7 +50,7 @@ public class SedeMapper {
         return dtoaRetornar;
     }
 
-    public List<SedeDto> obtenerListaDtos(Collection<Sede> informacionSedes){
+    public List<SedeDto> obtenerListaDto(Collection<Sede> informacionSedes){
         List<SedeDto> listaARetornar = new LinkedList<>();
 
         for(Sede s : informacionSedes){

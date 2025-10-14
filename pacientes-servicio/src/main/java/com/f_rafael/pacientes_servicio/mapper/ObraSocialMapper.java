@@ -34,7 +34,7 @@ public class ObraSocialMapper {
         if(obraSocial.getSedes() != null){
             informacionSedes = obraSocial.getSedes();
 
-            sedesParaAsignar = sedeMapper.obtenerListaDtos(informacionSedes);
+            sedesParaAsignar = sedeMapper.obtenerListaDto(informacionSedes);
             dtoARetornar.setSedes(sedesParaAsignar);
         }
 
