@@ -106,26 +106,14 @@ public class TurnoCitaService implements ITurnoCitaService{
     }
 
     @Override
-    public TurnoCitaDto actualizarInicio(Long id, LocalTime inicio) {
+    public TurnoCitaDto actualizarHorario(Long id, LocalTime inicio, LocalTime fin) {
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
 
-        if(inicio.isAfter(turnoParaActualizar.getFin())){
-            throw new DatoIncorrectoException("El horario de inicio debe ser menor que el horario de fin");
+        if(inicio.isAfter(fin)){
+            throw new DatoIncorrectoException("El horario de inicio debe ser anterior al horario de final");
         }
 
         turnoParaActualizar.setInicio(inicio);
-
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
-    }
-
-    @Override
-    public TurnoCitaDto actualizarHorarioDeFinal(Long id, LocalTime fin) {
-        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
-
-        if(fin.isBefore(turnoParaActualizar.getFin())){
-            throw new DatoIncorrectoException("El horario de inicio debe ser menor que el horario de fin");
-        }
-
         turnoParaActualizar.setFin(fin);
 
         return mapper.obtenerDto(repository.save(turnoParaActualizar));

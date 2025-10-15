@@ -20,8 +20,7 @@ public interface ITurnoCitaService {
     public List<TurnoCitaDto> buscarPorProfesional(Long id);
     public TurnoCitaDto actualizarPaciente(Long id, Long pacienteId);
     public TurnoCitaDto actualizarFechaSolicitud(Long id, LocalDate fechaSolicitud);
-    public TurnoCitaDto actualizarInicio(Long id, LocalTime inicio);
-    public TurnoCitaDto actualizarHorarioDeFinal(Long id, LocalTime fin);
+    public TurnoCitaDto actualizarHorario(Long id, LocalTime inicio, LocalTime fin);
     public TurnoCitaDto actualizarEstado(Long id, String estado);
     public TurnoCitaDto actualizarCobertura(Long id, String cobertura);
 }
