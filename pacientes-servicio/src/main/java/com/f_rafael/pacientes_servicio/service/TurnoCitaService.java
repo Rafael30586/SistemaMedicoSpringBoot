@@ -93,7 +93,7 @@ public class TurnoCitaService implements ITurnoCitaService{
 
         turnoParaActualizar.setPaciente(pacienteParaAsignar);
 
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+        return this.guardar(turnoParaActualizar);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class TurnoCitaService implements ITurnoCitaService{
 
         turnoParaActualizar.setFechaSolicitud(fechaSolicitud);
 
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+        return this.guardar(turnoParaActualizar);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class TurnoCitaService implements ITurnoCitaService{
         turnoParaActualizar.setInicio(inicio);
         turnoParaActualizar.setFin(fin);
 
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+        return this.guardar(turnoParaActualizar);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class TurnoCitaService implements ITurnoCitaService{
         EstadoTurno estadoParaAsignar = EstadoTurno.valueOf(estado.toUpperCase());
         turnoParaActualizar.setEstado(estadoParaAsignar);
 
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+        return this.guardar(turnoParaActualizar);
     }
 
     @Override
@@ -156,6 +156,6 @@ public class TurnoCitaService implements ITurnoCitaService{
         Cobertura coberturaParaAsignar = Cobertura.valueOf(cobertura.toUpperCase());
         turnoParaActualizar.setCobertura(coberturaParaAsignar);
 
-        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+        return this.guardar(turnoParaActualizar);
     }
 }

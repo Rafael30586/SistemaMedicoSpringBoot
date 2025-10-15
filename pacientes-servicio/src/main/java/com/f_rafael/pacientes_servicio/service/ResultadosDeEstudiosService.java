@@ -108,7 +108,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
 
         resultadoParaActualizar.setPaciente(pacienteParaAsignar);
 
-        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+        return this.guardar(resultadoParaActualizar);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         estudiosIds.add(estudioId); // Realizar validación para saber si el estudio existe en el otro microservicio
         resultadoParaActualizar.setEstudios(estudiosIds);
 
-        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+        return this.guardar(resultadoParaActualizar);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         estudiosIds.remove(estudioId); // Corroborar si esto funciona. Puede que no. Si no funciona habrá que iterar para remover el objeto.
         resultadoParaActualizar.setEstudios(estudiosIds);
 
-        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+        return this.guardar(resultadoParaActualizar);
     }
 
     @Override
@@ -138,6 +138,6 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Resultados no encontrados"));
         resultadoParaActualizar.setUrlInforme(urlInforme);
 
-        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+        return this.guardar(resultadoParaActualizar);
     }
 }

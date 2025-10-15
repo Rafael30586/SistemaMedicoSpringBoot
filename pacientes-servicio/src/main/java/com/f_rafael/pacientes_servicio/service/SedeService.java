@@ -115,7 +115,7 @@ public class SedeService implements ISedeService{
         Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
         sedeParaActualizar.setDireccionId(direccionId);
 
-        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+        return this.guardar(sedeParaActualizar);
     }
 
     @Override
@@ -126,7 +126,7 @@ public class SedeService implements ISedeService{
         telefonosIds.add(telefonoId); // Agregar validación para confirmar si el teléfono existe en el optro microservicio
         sedeParaActualizar.setTelefonosId(telefonosIds);
 
-        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+        return this.guardar(sedeParaActualizar);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class SedeService implements ISedeService{
         telefonosIds.remove(telefonoId);
         sedeParaActualizar.setTelefonosId(telefonosIds);
 
-        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+        return this.guardar(sedeParaActualizar);
     }
 
     @Override
@@ -147,7 +147,7 @@ public class SedeService implements ISedeService{
 
         sedeParaActualizar.setObraSocial(obraSocialParaAsignar);
 
-        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+        return this.guardar(sedeParaActualizar);
     }
 
 

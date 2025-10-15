@@ -146,42 +146,42 @@ public class PacienteService implements IPacienteService{
     public PacienteDto actulizarDni(Long id, Long dni) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("PAciente no encontrado"));
         pacienteAEditar.setDni(dni);
-        return mapper.obtenerDto(repository.save(pacienteAEditar));
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actulizarPrimerNombre(Long id, String primerNombre) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAaciente no encontrado"));
         pacienteAEditar.setPrimerNombre(stringMapper.quitarGuionesBajos(primerNombre));
-        return mapper.obtenerDto(pacienteAEditar);
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAciente no encontrado"));
         pacienteAEditar.setSegundoNombre(stringMapper.quitarGuionesBajos(segundoNombre));
-        return mapper.obtenerDto(pacienteAEditar);
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actulizarApellidoPaterno(Long id, String apellidoPaterno) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
         pacienteAEditar.setApellidoPaterno(stringMapper.quitarGuionesBajos(apellidoPaterno));
-        return mapper.obtenerDto(pacienteAEditar);
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actualizarApellidoMaterno(Long id, String apellidoMaterno) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
         pacienteAEditar.setApellidoMaterno(stringMapper.quitarGuionesBajos(apellidoMaterno));
-        return mapper.obtenerDto(pacienteAEditar);
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actualizarEmail(Long id, String email) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
         pacienteAEditar.setEmail(email);
-        return mapper.obtenerDto(pacienteAEditar);
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
@@ -192,7 +192,7 @@ public class PacienteService implements IPacienteService{
         telefonosParaAsignar.add(telefonoId);
         pacienteAEditar.setTelefonosId(telefonosParaAsignar);
 
-        return mapper.obtenerDto(repository.save(pacienteAEditar));
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
@@ -213,28 +213,28 @@ public class PacienteService implements IPacienteService{
             telefonosParaAsignar.remove(telefonoParaQuitar);
         }
 
-        return mapper.obtenerDto(repository.save(pacienteAEditar));
+        return this.guardar(pacienteAEditar);
     }
 
     @Override
     public PacienteDto actualizarFechaNacimiento(Long id, LocalDate fechaNacimiento) {
         Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setFechaNacimiento(fechaNacimiento);
-        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+        return this.guardar(pacianteParaEditar);
     }
 
     @Override
     public PacienteDto actualizarLugarNacimiento(Long id, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
         Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setLugarNacimientoId(localidadId);
-        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+        return this.guardar(pacianteParaEditar);
     }
 
     @Override
     public PacienteDto actualizarDomicilio(Long id, Long direccionId) {
         Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setDireccionId(direccionId);
-        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+        return this.guardar(pacianteParaEditar);
     }
 
     @Override
@@ -242,7 +242,7 @@ public class PacienteService implements IPacienteService{
         Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()->new EntidadNoEncontradaException("Obra social no encontrada"));
         pacianteParaEditar.setObraSocial(obraSocialParaAsignar);
-        return mapper.obtenerDto(repository.save(pacianteParaEditar));
+        return this.guardar(pacianteParaEditar);
     }
 
     private PacienteDto buscarPorTelefonoId(Long id){

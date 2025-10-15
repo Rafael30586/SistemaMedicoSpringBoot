@@ -82,10 +82,10 @@ public class ObraSocialService implements IObraSocialService{
 
     @Override
     public ObraSocialDto actualizarNombre(Long id,String nombre) {
-        ObraSocialDto dtoARetornar = new ObraSocialDto();
         ObraSocial obraSocialAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Obra social no encontrada"));
         obraSocialAEditar.setNombre(stringMapper.quitarGuionesBajos(nombre));
-        return mapper.obtenerDto(repository.save(obraSocialAEditar));
+
+        return this.guardar(obraSocialAEditar);
     }
 
 }
