@@ -218,28 +218,28 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actualizarFechaNacimiento(Long id, LocalDate fechaNacimiento) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setFechaNacimiento(fechaNacimiento);
         return mapper.obtenerDto(repository.save(pacianteParaEditar));
     }
 
     @Override
     public PacienteDto actualizarLugarNacimiento(Long id, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setLugarNacimientoId(localidadId);
         return mapper.obtenerDto(repository.save(pacianteParaEditar));
     }
 
     @Override
     public PacienteDto actualizarDomicilio(Long id, Long direccionId) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacianteParaEditar.setDireccionId(direccionId);
         return mapper.obtenerDto(repository.save(pacianteParaEditar));
     }
 
     @Override
     public PacienteDto actualizarObraSocial(Long id, Long obraSocialId) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no mencontrado"));
+        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()->new EntidadNoEncontradaException("Obra social no encontrada"));
         pacianteParaEditar.setObraSocial(obraSocialParaAsignar);
         return mapper.obtenerDto(repository.save(pacianteParaEditar));

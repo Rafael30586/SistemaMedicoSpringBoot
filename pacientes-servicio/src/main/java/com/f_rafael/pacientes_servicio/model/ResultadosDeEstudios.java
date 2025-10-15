@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter @Getter
@@ -16,13 +17,13 @@ import java.util.List;
 public class ResultadosDeEstudios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numero;
+    private Long numero; // Cambiar a id
     @ManyToOne
     private Paciente paciente;
     @Enumerated(EnumType.STRING)
-    private Cobertura cobertura;
+    private Cobertura cobertura; // Quitar este atributo y colocárselo  a la entidad Turno
     @ElementCollection
     @CollectionTable(name = "resultado_estudios_estudio_id", joinColumns = @JoinColumn(name = "resultado_estudios_id"))
-    private List<Long> estudios;
+    private Set<Long> estudios;
     private String urlInforme;
 }

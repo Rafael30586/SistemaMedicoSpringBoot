@@ -13,4 +13,8 @@ public interface IResultadosDeEstudiosService {
     public void borrarPorId(Long id);
     public List<ResultadoDeEstudiosDto> buscarPorPaciente(Long dni);
     public List<ResultadoDeEstudiosDto> buscarPorEstudio(String estudio);
+    public ResultadoDeEstudiosDto actualizarPaciente(Long id,Long dniPaciente);
+    public ResultadoDeEstudiosDto agregarEstudio(Long id, Long estudioId);
+    public ResultadoDeEstudiosDto quitarEstudio(Long id, Long estudioId);
+    public ResultadoDeEstudiosDto actualizarUrlInforme(Long id, String urlInforme);
 }

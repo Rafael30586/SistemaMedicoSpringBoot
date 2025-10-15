@@ -3,8 +3,10 @@ package com.f_rafael.pacientes_servicio.service;
 import com.f_rafael.pacientes_servicio.dto.ResultadoDeEstudiosDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
 import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
+import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
 import com.f_rafael.pacientes_servicio.mapper.ResultadosDeEstudiosMapper;
 import lombok.AllArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -20,6 +23,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     private IResultadoDeEstudiosRepository repository;
     private ResultadosDeEstudiosMapper mapper;
     private IEstudioClient estudioClient;
+    private IPacienteRepository pacienteRepository;
 
 
     @Override
@@ -82,7 +86,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     public List<ResultadoDeEstudiosDto> buscarPorEstudio(String nombreEstudio){
         List<ResultadosDeEstudios> informacionResultadosDeEstudios = repository.findAll();
         List<ResultadoDeEstudiosDto> listaARetornar = new LinkedList<>();
-        List<Long> listaDeEstudios;
+        Set<Long> listaDeEstudios;
 
         for(ResultadosDeEstudios rde : informacionResultadosDeEstudios){
             listaDeEstudios = rde.getEstudios();
@@ -95,5 +99,45 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         }
 
         return listaARetornar;
+    }
+
+    @Override
+    public ResultadoDeEstudiosDto actualizarPaciente(Long id, Long dniPaciente) {
+        Paciente pacienteParaAsignar = pacienteRepository.findByDni(dniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("REsultados no encontrados"));
+
+        resultadoParaActualizar.setPaciente(pacienteParaAsignar);
+
+        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+    }
+
+    @Override
+    public ResultadoDeEstudiosDto agregarEstudio(Long id, Long estudioId) {
+        ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Resultados no encontrados"));
+        Set<Long> estudiosIds = resultadoParaActualizar.getEstudios();
+
+        estudiosIds.add(estudioId); // Realizar validación para saber si el estudio existe en el otro microservicio
+        resultadoParaActualizar.setEstudios(estudiosIds);
+
+        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+    }
+
+    @Override
+    public ResultadoDeEstudiosDto quitarEstudio(Long id, Long estudioId) {
+        ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Resultados no encontrados"));
+        Set<Long> estudiosIds = resultadoParaActualizar.getEstudios();
+
+        estudiosIds.remove(estudioId); // Corroborar si esto funciona. Puede que no. Si no funciona habrá que iterar para remover el objeto.
+        resultadoParaActualizar.setEstudios(estudiosIds);
+
+        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
+    }
+
+    @Override
+    public ResultadoDeEstudiosDto actualizarUrlInforme(Long id, String urlInforme) {
+        ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Resultados no encontrados"));
+        resultadoParaActualizar.setUrlInforme(urlInforme);
+
+        return mapper.obtenerDto(repository.save(resultadoParaActualizar));
     }
 }
