@@ -5,6 +5,7 @@ import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface ITurnoCitaService {
@@ -17,4 +18,10 @@ public interface ITurnoCitaService {
     public List<TurnoCitaDto> buscarPorFechaTurno(LocalDate fechaTurno);
     public List<TurnoCitaDto> buscarPorEstado(String estado);
     public List<TurnoCitaDto> buscarPorProfesional(Long id);
+    public TurnoCitaDto actualizarPaciente(Long id, Long pacienteId);
+    public TurnoCitaDto actualizarFechaSolicitud(Long id, LocalDate fechaSolicitud);
+    public TurnoCitaDto actualizarInicio(Long id, LocalTime inicio);
+    public TurnoCitaDto actualizarHorarioDeFinal(Long id, LocalTime fin);
+    public TurnoCitaDto actualizarEstado(Long id, String estado);
+    public TurnoCitaDto actualizarCobertura(Long id, String cobertura);
 }

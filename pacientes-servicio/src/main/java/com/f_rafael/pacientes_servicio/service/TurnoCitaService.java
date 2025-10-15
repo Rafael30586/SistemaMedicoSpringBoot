@@ -2,14 +2,20 @@ package com.f_rafael.pacientes_servicio.service;
 
 import com.f_rafael.pacientes_servicio.dto.TurnoCitaDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
+import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.model.Cobertura;
+import com.f_rafael.pacientes_servicio.model.EstadoTurno;
+import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
+import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoCitaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -18,6 +24,7 @@ public class TurnoCitaService implements ITurnoCitaService{
 
     private ITurnoCitaRepository repository;
     private TurnoCitaMapper mapper;
+    private IPacienteRepository pacienteRepository;
     @Override
     public TurnoCitaDto buscarPorId(Long id) {
         if(!repository.existsById(id)){
@@ -77,5 +84,90 @@ public class TurnoCitaService implements ITurnoCitaService{
     @Override
     public List<TurnoCitaDto> buscarPorProfesional(Long id) {
         return mapper.obtenerListaDto(repository.findByProfesionalId(id));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarPaciente(Long id, Long pacienteDni) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+        Paciente pacienteParaAsignar = pacienteRepository.findByDni(pacienteDni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+
+        turnoParaActualizar.setPaciente(pacienteParaAsignar);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarFechaSolicitud(Long id, LocalDate fechaSolicitud) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+
+        turnoParaActualizar.setFechaSolicitud(fechaSolicitud);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarInicio(Long id, LocalTime inicio) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+
+        if(inicio.isAfter(turnoParaActualizar.getFin())){
+            throw new DatoIncorrectoException("El horario de inicio debe ser menor que el horario de fin");
+        }
+
+        turnoParaActualizar.setInicio(inicio);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarHorarioDeFinal(Long id, LocalTime fin) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+
+        if(fin.isBefore(turnoParaActualizar.getFin())){
+            throw new DatoIncorrectoException("El horario de inicio debe ser menor que el horario de fin");
+        }
+
+        turnoParaActualizar.setFin(fin);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarEstado(Long id, String estado) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+        boolean estadoExiste = false;
+        EstadoTurno[] estados = EstadoTurno.values();
+
+        for(EstadoTurno et : estados){
+            if(et.toString().equals(estado)) estadoExiste = true;
+        }
+
+        if(!estadoExiste){
+            throw new DatoIncorrectoException("El estado del turno es incorrecto");
+        }
+
+        EstadoTurno estadoParaAsignar = EstadoTurno.valueOf(estado.toUpperCase());
+        turnoParaActualizar.setEstado(estadoParaAsignar);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
+    }
+
+    @Override
+    public TurnoCitaDto actualizarCobertura(Long id, String cobertura) {
+        TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+        boolean coberturaExiste = false;
+        Cobertura[] coberturas = Cobertura.values();
+
+        for(Cobertura c : coberturas){
+            if(c.toString().equals(cobertura)) coberturaExiste = true;
+        }
+
+        if(!coberturaExiste){
+            throw new DatoIncorrectoException("La cobertura es incorrecta");
+        }
+
+        Cobertura coberturaParaAsignar = Cobertura.valueOf(cobertura.toUpperCase());
+        turnoParaActualizar.setCobertura(coberturaParaAsignar);
+
+        return mapper.obtenerDto(repository.save(turnoParaActualizar));
     }
 }

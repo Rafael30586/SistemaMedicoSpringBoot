@@ -29,4 +29,6 @@ public class Turno {
     protected LocalTime fin;
     @Enumerated(EnumType.STRING)
     protected EstadoTurno estado;
+    @Enumerated(EnumType.STRING)
+    protected Cobertura cobertura;
 }
