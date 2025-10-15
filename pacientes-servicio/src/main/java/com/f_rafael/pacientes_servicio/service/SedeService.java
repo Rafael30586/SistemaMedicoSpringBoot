@@ -4,9 +4,11 @@ import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
+import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import com.f_rafael.pacientes_servicio.repository.ISedeRepository;
 import com.f_rafael.pacientes_servicio.mapper.SedeMapper;
 import lombok.AllArgsConstructor;
@@ -24,6 +26,7 @@ public class SedeService implements ISedeService{
     private SedeMapper mapper;
     private IDireccionClient direccionClient;
     private INumeroTelefonicoClient numeroTelefonicoClient;
+    private IObraSocialRepository obraSocialRepository;
 
     @Override
     public SedeDto buscarPorId(Long id) {
@@ -105,6 +108,46 @@ public class SedeService implements ISedeService{
             }
         }
         throw new EntidadNoEncontradaException("Entidad no encontrada");
+    }
+
+    @Override
+    public SedeDto actualizarDireccion(Long id, Long direccionId) {
+        Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
+        sedeParaActualizar.setDireccionId(direccionId);
+
+        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+    }
+
+    @Override
+    public SedeDto agregarTelefono(Long id, Long telefonoId) {
+        Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
+        Set<Long> telefonosIds = sedeParaActualizar.getTelefonosId();
+
+        telefonosIds.add(telefonoId); // Agregar validación para confirmar si el teléfono existe en el optro microservicio
+        sedeParaActualizar.setTelefonosId(telefonosIds);
+
+        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+    }
+
+    @Override
+    public SedeDto quitarTelefono(Long id, Long telefonoId) {
+        Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
+        Set<Long> telefonosIds = sedeParaActualizar.getTelefonosId();
+
+        telefonosIds.remove(telefonoId);
+        sedeParaActualizar.setTelefonosId(telefonosIds);
+
+        return mapper.obtenerDto(repository.save(sedeParaActualizar));
+    }
+
+    @Override
+    public SedeDto actualizarObraSocial(Long id, Long obraSocialId) {
+        Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
+        ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()-> new EntidadNoEncontradaException("Obra social no encontrada"));
+
+        sedeParaActualizar.setObraSocial(obraSocialParaAsignar);
+
+        return mapper.obtenerDto(repository.save(sedeParaActualizar));
     }
 
 
