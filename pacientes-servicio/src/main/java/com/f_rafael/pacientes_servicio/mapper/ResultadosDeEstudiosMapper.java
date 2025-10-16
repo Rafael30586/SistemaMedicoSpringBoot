@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @AllArgsConstructor
@@ -20,11 +21,11 @@ public class ResultadosDeEstudiosMapper {
 
     public ResultadoDeEstudiosDto obtenerDto(ResultadosDeEstudios informacionResultado){
         ResultadoDeEstudiosDto dtoARetornar = new ResultadoDeEstudiosDto();
-        List<Long> estudiosId;
+        Set<Long> estudiosId;
         List<EstudioDto> estudiosparaAsignar = new LinkedList<>();
 
         dtoARetornar.setNumero(informacionResultado.getNumero());
-        dtoARetornar.setCobertura(informacionResultado.getCobertura());
+        // dtoARetornar.setCobertura(informacionResultado.getCobertura());
         dtoARetornar.setUrlInforme(informacionResultado.getUrlInforme());
         dtoARetornar.setPaciente(subPacienteMapper.obtenerDto(informacionResultado.getPaciente()));
 

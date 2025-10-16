@@ -20,8 +20,8 @@ public class ResultadosDeEstudios {
     private Long numero; // Cambiar a id
     @ManyToOne
     private Paciente paciente;
-    @Enumerated(EnumType.STRING)
-    private Cobertura cobertura; // Quitar este atributo y colocárselo  a la entidad Turno
+    //@Enumerated(EnumType.STRING)
+    //private Cobertura cobertura; // Quitar este atributo y colocárselo  a la entidad Turno
     @ElementCollection
     @CollectionTable(name = "resultado_estudios_estudio_id", joinColumns = @JoinColumn(name = "resultado_estudios_id"))
     private Set<Long> estudios;

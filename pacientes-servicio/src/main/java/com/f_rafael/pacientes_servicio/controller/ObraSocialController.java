@@ -47,4 +47,10 @@ public class ObraSocialController {
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ObraSocialDto> actualizarNombre(@PathVariable Long id, @RequestParam String nombre){
+        return ResponseEntity.ok(service.actualizarNombre(id,nombre));
+    }
+    
 }
