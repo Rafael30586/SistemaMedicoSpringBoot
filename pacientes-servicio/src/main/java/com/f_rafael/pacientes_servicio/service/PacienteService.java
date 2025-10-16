@@ -150,14 +150,28 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto actulizarPrimerNombre(Long id, String primerNombre) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAaciente no encontrado"));
+    public PacienteDto actulizarPrimerNombre(Long idODni,String opcion, String primerNombre) {
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumenmto puede ser id o dni");
+        }
+
+        Paciente pacienteAEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         pacienteAEditar.setPrimerNombre(stringMapper.quitarGuionesBajos(primerNombre));
         return this.guardar(pacienteAEditar);
     }
 
     @Override
-    public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre) {
+    public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre) { // Editar este método
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAciente no encontrado"));
         pacienteAEditar.setSegundoNombre(stringMapper.quitarGuionesBajos(segundoNombre));
         return this.guardar(pacienteAEditar);

@@ -21,7 +21,7 @@ public interface IPacienteService {
     public List<PacienteDto> buscarPorLugarNacimiento(String localidad);
     public List<PacienteDto> buscarPorDomicilio(String calle);
     public PacienteDto actulizarDni(Long id, Long dni);
-    public PacienteDto actulizarPrimerNombre(Long id, String primerNombre);
+    public PacienteDto actulizarPrimerNombre(Long idODni,String opcion, String primerNombre);
     public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre);
     public PacienteDto actulizarApellidoPaterno(Long id, String apellidoPaterno);
     public PacienteDto actualizarApellidoMaterno(Long id, String apellidoMaterno);

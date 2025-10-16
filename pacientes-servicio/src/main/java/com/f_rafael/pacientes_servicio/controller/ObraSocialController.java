@@ -52,5 +52,5 @@ public class ObraSocialController {
     public ResponseEntity<ObraSocialDto> actualizarNombre(@PathVariable Long id, @RequestParam String nombre){
         return ResponseEntity.ok(service.actualizarNombre(id,nombre));
     }
-    
+
 }
