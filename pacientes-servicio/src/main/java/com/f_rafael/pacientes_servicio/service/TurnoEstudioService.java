@@ -11,6 +11,7 @@ import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoEstudioRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoEstudioMapper;
+import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,8 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     private ITurnoEstudioRepository repository;
     private TurnoEstudioMapper mapper;
     private IPacienteRepository pacienteRepository;
+    private VerificadorOpciones verificador;
+
     @Override
     public TurnoEstudioDto buscarPorId(Long id) {
 
@@ -100,9 +103,21 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     }
 
     @Override
-    public TurnoEstudioDto actualizarPaciente(Long id, Long pacienteDni) {
+    public TurnoEstudioDto actualizarPaciente(Long id, Long idODniPaciente, String opcion) {
         TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
-        Paciente pacienteParaAsignar = pacienteRepository.findByDni(pacienteDni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no enconmtrado"));
+        Paciente pacienteParaAsignar = new Paciente();
+
+        if(!verificador.idODni(opcion)){
+            throw new DatoIncorrectoException("La opción tiene que ser id o dni");
+        }
+
+        if(opcion.equals("id")){
+            pacienteParaAsignar = pacienteRepository.findById(idODniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaAsignar = pacienteRepository.findByDni(idODniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no enconmtrado"));
+        }
 
         turnoParaEditar.setPaciente(pacienteParaAsignar);
 

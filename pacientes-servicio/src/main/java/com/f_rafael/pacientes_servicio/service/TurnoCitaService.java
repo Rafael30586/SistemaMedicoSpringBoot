@@ -87,9 +87,21 @@ public class TurnoCitaService implements ITurnoCitaService{
     }
 
     @Override
-    public TurnoCitaDto actualizarPaciente(Long id, Long pacienteDni) {
+    public TurnoCitaDto actualizarPaciente(Long id, Long idODniPaciente, String opcion) {
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
-        Paciente pacienteParaAsignar = pacienteRepository.findByDni(pacienteDni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        Paciente pacienteParaAsignar = new Paciente();
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("La opción debe ser id o dni");
+        }
+
+        if(opcion.equals("id")){
+            pacienteParaAsignar = pacienteRepository.findById(idODniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaAsignar = pacienteRepository.findByDni(idODniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
 
         turnoParaActualizar.setPaciente(pacienteParaAsignar);
 
