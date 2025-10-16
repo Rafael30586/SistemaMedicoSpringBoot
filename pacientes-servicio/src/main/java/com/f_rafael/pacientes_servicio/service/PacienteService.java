@@ -153,7 +153,7 @@ public class PacienteService implements IPacienteService{
     public PacienteDto actulizarPrimerNombre(Long idODni,String opcion, String primerNombre) {
 
         if(!opcion.equals("id") && !opcion.equals("dni")){
-            throw new DatoIncorrectoException("El argumenmto puede ser id o dni");
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
         Paciente pacienteAEditar = new Paciente();
@@ -171,29 +171,84 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto actulizarSegundoNombre(Long id, String segundoNombre) { // Editar este método
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("PAciente no encontrado"));
+    public PacienteDto actulizarSegundoNombre(Long idODni,String opcion, String segundoNombre) {
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteAEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+
         pacienteAEditar.setSegundoNombre(stringMapper.quitarGuionesBajos(segundoNombre));
         return this.guardar(pacienteAEditar);
     }
 
     @Override
-    public PacienteDto actulizarApellidoPaterno(Long id, String apellidoPaterno) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto actulizarApellidoPaterno(Long idODni,String opcion, String apellidoPaterno) {
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteAEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         pacienteAEditar.setApellidoPaterno(stringMapper.quitarGuionesBajos(apellidoPaterno));
         return this.guardar(pacienteAEditar);
     }
 
     @Override
-    public PacienteDto actualizarApellidoMaterno(Long id, String apellidoMaterno) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto actualizarApellidoMaterno(Long idODni,String opcion, String apellidoMaterno) {
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteAEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         pacienteAEditar.setApellidoMaterno(stringMapper.quitarGuionesBajos(apellidoMaterno));
         return this.guardar(pacienteAEditar);
     }
 
     @Override
-    public PacienteDto actualizarEmail(Long id, String email) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto actualizarEmail(Long idODni,String opcion, String email) {
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteAEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         pacienteAEditar.setEmail(email);
         return this.guardar(pacienteAEditar);
     }
@@ -231,32 +286,85 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto actualizarFechaNacimiento(Long id, LocalDate fechaNacimiento) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
-        pacianteParaEditar.setFechaNacimiento(fechaNacimiento);
-        return this.guardar(pacianteParaEditar);
+    public PacienteDto actualizarFechaNacimiento(Long idODni,String opcion, LocalDate fechaNacimiento) {
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteParaEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteParaEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        pacienteParaEditar.setFechaNacimiento(fechaNacimiento);
+        return this.guardar(pacienteParaEditar);
     }
 
     @Override
-    public PacienteDto actualizarLugarNacimiento(Long id, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
-        pacianteParaEditar.setLugarNacimientoId(localidadId);
-        return this.guardar(pacianteParaEditar);
+    public PacienteDto actualizarLugarNacimiento(Long idODni,String opcion, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteParaEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteParaEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        pacienteParaEditar.setLugarNacimientoId(localidadId);
+        return this.guardar(pacienteParaEditar);
     }
 
     @Override
-    public PacienteDto actualizarDomicilio(Long id, Long direccionId) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
-        pacianteParaEditar.setDireccionId(direccionId);
-        return this.guardar(pacianteParaEditar);
+    public PacienteDto actualizarDomicilio(Long idODni,String opcion, Long direccionId) {
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteParaEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteParaEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        pacienteParaEditar.setDireccionId(direccionId);
+        return this.guardar(pacienteParaEditar);
     }
 
     @Override
-    public PacienteDto actualizarObraSocial(Long id, Long obraSocialId) {
-        Paciente pacianteParaEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto actualizarObraSocial(Long idODni, String opcion, Long obraSocialId) {
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("El argumento debe ser id o dni");
+        }
+
+        Paciente pacienteParaEditar = new Paciente();
+
+        if(opcion.equals("id")){
+            pacienteParaEditar = repository.findById(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()->new EntidadNoEncontradaException("Obra social no encontrada"));
-        pacianteParaEditar.setObraSocial(obraSocialParaAsignar);
-        return this.guardar(pacianteParaEditar);
+        pacienteParaEditar.setObraSocial(obraSocialParaAsignar);
+        return this.guardar(pacienteParaEditar);
     }
 
     private PacienteDto buscarPorTelefonoId(Long id){
