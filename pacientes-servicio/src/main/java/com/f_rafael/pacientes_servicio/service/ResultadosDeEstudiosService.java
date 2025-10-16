@@ -2,6 +2,7 @@ package com.f_rafael.pacientes_servicio.service;
 
 import com.f_rafael.pacientes_servicio.dto.ResultadoDeEstudiosDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
+import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
@@ -44,7 +45,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     @Override
     public ResultadoDeEstudiosDto guardar(ResultadosDeEstudios resultadosDeEstudios) {
 
-        if(resultadosDeEstudios.getPaciente() == null || resultadosDeEstudios.getEstudios() == null || resultadosDeEstudios.getCobertura() == null || resultadosDeEstudios.getUrlInforme() == null){
+        if(resultadosDeEstudios.getPaciente() == null || resultadosDeEstudios.getEstudios() == null || resultadosDeEstudios.getUrlInforme() == null){
             throw new CampoNuloException("Hay campos que no pueden ser nulos");
         } // Averiguar como hacer con el tema de los estudiso ya que puede que no existan en el otro microservicio
 
@@ -102,9 +103,21 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     }
 
     @Override
-    public ResultadoDeEstudiosDto actualizarPaciente(Long id, Long dniPaciente) {
-        Paciente pacienteParaAsignar = pacienteRepository.findByDni(dniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+    public ResultadoDeEstudiosDto actualizarPaciente(Long id, Long idODniPaciente, String opcion) {
+        Paciente pacienteParaAsignar = new Paciente();
         ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("REsultados no encontrados"));
+
+        if(!opcion.equals("id") && !opcion.equals("dni")){
+            throw new DatoIncorrectoException("La opción debe ser id o dni");
+        }
+
+        if(opcion.equals("id")){
+            pacienteParaAsignar = pacienteRepository.findById(idODniPaciente).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteParaAsignar = pacienteRepository.findByDni(idODniPaciente).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
 
         resultadoParaActualizar.setPaciente(pacienteParaAsignar);
 
