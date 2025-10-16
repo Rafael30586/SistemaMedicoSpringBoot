@@ -11,6 +11,7 @@ import com.f_rafael.pacientes_servicio.model.TurnoCita;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoCitaMapper;
+import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class TurnoCitaService implements ITurnoCitaService{
     private ITurnoCitaRepository repository;
     private TurnoCitaMapper mapper;
     private IPacienteRepository pacienteRepository;
+    private VerificadorOpciones verificador;
     @Override
     public TurnoCitaDto buscarPorId(Long id) {
         if(!repository.existsById(id)){
@@ -91,7 +93,7 @@ public class TurnoCitaService implements ITurnoCitaService{
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
         Paciente pacienteParaAsignar = new Paciente();
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("La opción debe ser id o dni");
         }
 

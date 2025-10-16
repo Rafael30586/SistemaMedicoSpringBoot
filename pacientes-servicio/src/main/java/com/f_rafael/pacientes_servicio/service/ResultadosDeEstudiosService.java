@@ -10,6 +10,7 @@ import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
 import com.f_rafael.pacientes_servicio.mapper.ResultadosDeEstudiosMapper;
+import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     private ResultadosDeEstudiosMapper mapper;
     private IEstudioClient estudioClient;
     private IPacienteRepository pacienteRepository;
+    private VerificadorOpciones verificador;
 
 
     @Override
@@ -107,7 +109,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         Paciente pacienteParaAsignar = new Paciente();
         ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("REsultados no encontrados"));
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("La opción debe ser id o dni");
         }
 

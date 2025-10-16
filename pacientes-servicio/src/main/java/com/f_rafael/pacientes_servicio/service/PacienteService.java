@@ -9,6 +9,7 @@ import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.repository.*;
 import com.f_rafael.pacientes_servicio.mapper.PacienteMapper;
+import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class PacienteService implements IPacienteService{
     private IDireccionClient direccionClient;
     private StringMapper stringMapper;
     private IObraSocialRepository obraSocialRepository;
+    private VerificadorOpciones verificador;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -152,7 +154,7 @@ public class PacienteService implements IPacienteService{
     @Override
     public PacienteDto actulizarPrimerNombre(Long idODni,String opcion, String primerNombre) {
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -173,7 +175,7 @@ public class PacienteService implements IPacienteService{
     @Override
     public PacienteDto actulizarSegundoNombre(Long idODni,String opcion, String segundoNombre) {
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -194,7 +196,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actulizarApellidoPaterno(Long idODni,String opcion, String apellidoPaterno) {
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -214,7 +216,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actualizarApellidoMaterno(Long idODni,String opcion, String apellidoMaterno) {
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -235,7 +237,7 @@ public class PacienteService implements IPacienteService{
     @Override
     public PacienteDto actualizarEmail(Long idODni,String opcion, String email) {
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -287,7 +289,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actualizarFechaNacimiento(Long idODni,String opcion, LocalDate fechaNacimiento) {
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -307,7 +309,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actualizarLugarNacimiento(Long idODni,String opcion, Long localidadId) { // Hacer validación para saber si la localidad existe en el otro microservicio
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -328,7 +330,7 @@ public class PacienteService implements IPacienteService{
     @Override
     public PacienteDto actualizarDomicilio(Long idODni,String opcion, Long direccionId) {
 
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
@@ -348,7 +350,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actualizarObraSocial(Long idODni, String opcion, Long obraSocialId) {
-        if(!opcion.equals("id") && !opcion.equals("dni")){
+        if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
