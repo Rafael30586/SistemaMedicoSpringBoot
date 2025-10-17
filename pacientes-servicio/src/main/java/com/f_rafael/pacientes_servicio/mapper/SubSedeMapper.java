@@ -1,6 +1,5 @@
 package com.f_rafael.pacientes_servicio.mapper;
 
-import com.f_rafael.pacientes_servicio.dto.NumeroTelefonicoDto;
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
@@ -17,10 +16,10 @@ public class SubSedeMapper {
     private INumeroTelefonicoClient numeroTelefonicoClient;
     private IDireccionClient direccionClient;
 
-    public SubSedeDto obtenerDto(Sede sede){
+    public SubSedeDto obtenerDto(Sede informacionSede){
         SubSedeDto dtoARetornar = new SubSedeDto();
 
-        dtoARetornar.setId(sede.getId());
+        dtoARetornar.setId(informacionSede.getId());
 /*
         if(sede.getTelefonos() != null){
             telefonos = sede.getTelefonos();
@@ -31,10 +30,10 @@ public class SubSedeMapper {
 
             dtoARetornar.setTelefonos(telefonosParaAsignar);
         }*/
-        dtoARetornar.setTelefonos(sede.getTelefonos());
+        dtoARetornar.setTelefonos(informacionSede.getTelefonos());
 
-        if(sede.getDireccionId() != null){
-            dtoARetornar.setDireccion(direccionClient.obtenerInformacionDireccion(sede.getDireccionId()));
+        if(informacionSede.getDireccionId() != null){
+            dtoARetornar.setDireccion(direccionClient.obtenerInformacionDireccion(informacionSede.getDireccionId()));
         }
 
         return dtoARetornar;
