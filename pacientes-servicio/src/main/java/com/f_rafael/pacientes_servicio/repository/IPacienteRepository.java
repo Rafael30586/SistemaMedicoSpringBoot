@@ -22,6 +22,9 @@ public interface IPacienteRepository extends JpaRepository<Paciente, Long> {
 
     public Optional<Paciente> findByEmail(String email);
 
+    @Query("SELECT p FROM Paciente p JOIN p.telefonos t WHERE t = :numero")
+    public List<Paciente> buscarPorNumeroTelefonico(@Param("numero") String numero);
+
     @Query("SELECT p FROM Paciente p WHERE YEAR(p.fechaNacimento) BETWEEN :desde AND :hasta ")
     public List<Paciente> buscarPorIntervaloNacimiento(Integer desde, Integer hasta);
 }

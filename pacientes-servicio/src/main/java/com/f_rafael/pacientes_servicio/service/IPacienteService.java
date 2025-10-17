@@ -16,7 +16,7 @@ public interface IPacienteService {
     public List<PacienteDto> buscarPorNombre(String nombre);
     public List<PacienteDto> buscarPorApellido(String apellido);
     public PacienteDto buscarPorEmail(String email);
-    // public PacienteDto buscarPorNumeroTelefonico(String numero);
+    public List<PacienteDto> buscarPorNumeroTelefonico(String numero);
     public List<PacienteDto> buscarPorIntervaloNacimiento(Integer desde, Integer hasta);
     public List<PacienteDto> buscarPorLugarNacimiento(String localidad);
     public List<PacienteDto> buscarPorDomicilio(String calle);

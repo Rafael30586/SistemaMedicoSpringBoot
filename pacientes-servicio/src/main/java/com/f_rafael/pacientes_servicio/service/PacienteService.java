@@ -95,14 +95,12 @@ public class PacienteService implements IPacienteService{
     public PacienteDto buscarPorEmail(String email) {
         return mapper.obtenerDto(repository.findByEmail(email).orElseThrow(()-> new EntidadNoEncontradaException("Entidad no encontrada")));
     }
-/*
-    @Override
-    public PacienteDto buscarPorNumeroTelefonico(String numero) {
-        Long telefonoId = numeroTelefonicoClient.buscarPorNumero(numero).getId();
-        PacienteDto dtoARetornar = buscarPorTelefonoId(telefonoId);
 
-        return dtoARetornar;
-    }*/
+    @Override
+    public List<PacienteDto> buscarPorNumeroTelefonico(String numero) {
+        List<Paciente> listaARetornar = repository.buscarPorNumeroTelefonico(numero);
+        return mapper.obtenerListaDto(listaARetornar);
+    }
 
     @Override
     public List<PacienteDto> buscarPorIntervaloNacimiento(Integer desde, Integer hasta) {
