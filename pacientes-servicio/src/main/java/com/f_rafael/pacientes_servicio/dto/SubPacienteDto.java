@@ -19,7 +19,7 @@ public class SubPacienteDto {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String email;
-    private Set<NumeroTelefonicoDto> telefonos;
+    private Set<String> telefonos;
     private LocalDate fechaNacimiento;
     private LocalidadDto lugarNacimiento;
 }

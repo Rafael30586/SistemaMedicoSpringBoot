@@ -95,14 +95,14 @@ public class PacienteService implements IPacienteService{
     public PacienteDto buscarPorEmail(String email) {
         return mapper.obtenerDto(repository.findByEmail(email).orElseThrow(()-> new EntidadNoEncontradaException("Entidad no encontrada")));
     }
-
+/*
     @Override
     public PacienteDto buscarPorNumeroTelefonico(String numero) {
         Long telefonoId = numeroTelefonicoClient.buscarPorNumero(numero).getId();
         PacienteDto dtoARetornar = buscarPorTelefonoId(telefonoId);
 
         return dtoARetornar;
-    }
+    }*/
 
     @Override
     public List<PacienteDto> buscarPorIntervaloNacimiento(Integer desde, Integer hasta) {
@@ -256,33 +256,37 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto agregarNumeroTelefonico(Long id, Long telefonoId) { // En otro momento hacer validaciones para saber si el teléfono existe en el otro microservicio
+    public PacienteDto agregarNumeroTelefonico(Long id, String telefono) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
-        Set<Long> telefonosParaAsignar = pacienteAEditar.getTelefonosId();
+        Set<String> telefonosParaAsignar = pacienteAEditar.getTelefonos();
 
-        telefonosParaAsignar.add(telefonoId);
-        pacienteAEditar.setTelefonosId(telefonosParaAsignar);
+        telefonosParaAsignar.add(telefono);
+        pacienteAEditar.setTelefonos(telefonosParaAsignar);
 
         return this.guardar(pacienteAEditar);
     }
 
     @Override
-    public PacienteDto quitarNumeroTelefonico(Long id, Long telefonoId) {
+    public PacienteDto quitarNumeroTelefonico(Long id, String telefonoParaQuitar) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
-        Set<Long> telefonosParaAsignar = pacienteAEditar.getTelefonosId();
+        Set<String> telefonosParaAsignar = pacienteAEditar.getTelefonos();
         boolean telefonoPresente = false;
-        Long telefonoParaQuitar = null;
+        //Long telefonoParaQuitar = null;
 
-        for(Long tid : telefonosParaAsignar){
-            if(tid.equals(telefonoId)){
-                telefonoParaQuitar = tid;
+        for(String t : telefonosParaAsignar){
+            if(t.equals(telefonoParaQuitar)){
+                //telefonoParaQuitar = t;
                 telefonoPresente = true;
             }
         }
 
-        if(telefonoPresente){
-            telefonosParaAsignar.remove(telefonoParaQuitar);
+        if(!telefonoPresente){
+            throw new DatoIncorrectoException("El teléfono no existe dentro de la lista de teléfonos del paciente");
         }
+
+        telefonosParaAsignar.remove(telefonoParaQuitar);
+
+        pacienteAEditar.setTelefonos(telefonosParaAsignar);
 
         return this.guardar(pacienteAEditar);
     }
@@ -368,7 +372,7 @@ public class PacienteService implements IPacienteService{
         pacienteParaEditar.setObraSocial(obraSocialParaAsignar);
         return this.guardar(pacienteParaEditar);
     }
-
+/*
     private PacienteDto buscarPorTelefonoId(Long id){
         List<Paciente> pacientes = repository.findAll();
         PacienteDto dtoARetornar;
@@ -388,5 +392,5 @@ public class PacienteService implements IPacienteService{
         }
 
         throw new EntidadNoEncontradaException("El número telefónico no corresponde a ningún paciente");
-    }
+    }*/
 }

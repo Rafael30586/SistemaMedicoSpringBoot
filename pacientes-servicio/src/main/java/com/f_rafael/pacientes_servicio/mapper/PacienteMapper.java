@@ -17,9 +17,9 @@ import java.util.Set;
 @Component
 public class PacienteMapper {
 
-    private ObraSocialMapper obraSocialMapper;
+    private SubObraSocialMapper subObraSocialMapper;
     private IDireccionClient direccionClient;
-    private INumeroTelefonicoClient numeroTelefonicoClient;
+    // private INumeroTelefonicoClient numeroTelefonicoClient;
     private ILocalidadClient localidadClient;
 
     public PacienteDto obtenerDto(Paciente informacionPaciente){
@@ -27,8 +27,8 @@ public class PacienteMapper {
         List<NumeroTelefonicoDto> numerosTelefonicosParaAsignar = new LinkedList<>();
         DireccionDto direccionParaAsignar = direccionClient.obtenerInformacionDireccion(informacionPaciente.getDireccionId());
         LocalidadDto lugarDeNacimientoParaAsignar = localidadClient.obtenerInformacionDeLocalidad(informacionPaciente.getLugarNacimientoId());
-        Set<Long> idTelefonos = informacionPaciente.getTelefonosId();
-        ObraSocialDto obraSocialParaAsignar;
+        Set<String> telefonos = informacionPaciente.getTelefonos();
+        SubObraSocialDto obraSocialParaAsignar;
 
         dtoARetornar.setId(informacionPaciente.getId());
         dtoARetornar.setDni(informacionPaciente.getDni());
@@ -40,15 +40,13 @@ public class PacienteMapper {
         dtoARetornar.setFechaNacimiento(informacionPaciente.getFechaNacimiento());
         dtoARetornar.setDomicilio(direccionParaAsignar);
         dtoARetornar.setLugarNacimiento(lugarDeNacimientoParaAsignar);
+        dtoARetornar.setTelefonos(telefonos);
 
-        for(Long id : idTelefonos){
-            numerosTelefonicosParaAsignar.add(numeroTelefonicoClient.buscarPorId(id));
-        }
 
-        dtoARetornar.setTelefonos(numerosTelefonicosParaAsignar);
+        // dtoARetornar.setTelefonos(numerosTelefonicosParaAsignar);
 
         if(informacionPaciente.getObraSocial() != null){
-            obraSocialParaAsignar = obraSocialMapper.obtenerDto(informacionPaciente.getObraSocial());
+            obraSocialParaAsignar = subObraSocialMapper.obtenerDto(informacionPaciente.getObraSocial());
             dtoARetornar.setObraSocial(obraSocialParaAsignar);
         }
 

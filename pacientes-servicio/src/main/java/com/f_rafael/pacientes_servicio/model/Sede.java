@@ -18,8 +18,8 @@ public class Sede {
     @Column(nullable = false)
     private Long direccionId;
     @ElementCollection
-    @CollectionTable(name = "sede_telefono_id", joinColumns = @JoinColumn(name = "sede_id"))
-    private Set<Long> telefonosId;
+    @CollectionTable(name = "sede_telefono", joinColumns = @JoinColumn(name = "sede_id"))
+    private Set<String> telefonos;
     @ManyToOne
     @JoinColumn(nullable = false)
     private ObraSocial obraSocial;

@@ -8,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-public class NumeroTelefonicoDto {
+public class NumeroTelefonicoDto { // Este dto ya no sirve. Hay que borrarlo
     private Long id;
     private String numero;
     private String tipo;

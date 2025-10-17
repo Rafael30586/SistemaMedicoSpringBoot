@@ -46,11 +46,11 @@ public class PacienteController {
     public ResponseEntity<PacienteDto> buscarPorEmail(@RequestParam String email){
         return ResponseEntity.ok(service.buscarPorEmail(email));
     }
-
+/*
     @GetMapping
     public ResponseEntity<PacienteDto> buscarPorTelefono(@RequestParam("numero-telefonico") String numeroTelefonico){
         return ResponseEntity.ok(service.buscarPorNumeroTelefonico(numeroTelefonico));
-    }
+    }*/
 
     @GetMapping
     public ResponseEntity<List<PacienteDto>> buscarPorIntervaloNacimiento(@RequestParam Integer desde,

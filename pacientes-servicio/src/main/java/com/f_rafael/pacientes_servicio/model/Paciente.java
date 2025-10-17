@@ -30,8 +30,8 @@ public class Paciente {
     @Column(unique = true)
     private String email;
     @ElementCollection
-    @CollectionTable(name = "paciente_telefono_id", joinColumns = @JoinColumn(name = "paciente_id"))
-    private Set<Long> telefonosId;
+    @CollectionTable(name = "paciente_telefono", joinColumns = @JoinColumn(name = "paciente_id"))
+    private Set<String> telefonos;
     @Column(name = "fecha_nacimiento", nullable = false)
     private LocalDate fechaNacimiento;
     @Column(nullable = false)

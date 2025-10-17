@@ -1,9 +1,8 @@
 package com.f_rafael.pacientes_servicio.mapper;
 
-import com.f_rafael.pacientes_servicio.dto.NumeroTelefonicoDto;
+
 import com.f_rafael.pacientes_servicio.dto.SubPacienteDto;
 import com.f_rafael.pacientes_servicio.model.Paciente;
-import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +12,12 @@ import java.util.*;
 @AllArgsConstructor
 public class SubPacienteMapper {
 
-    private INumeroTelefonicoClient numeroTelefonicoClient;
+    // private INumeroTelefonicoClient numeroTelefonicoClient;
 
     public SubPacienteDto obtenerDto(Paciente paciente){
         SubPacienteDto dtoARetornar = new SubPacienteDto();
-        Set<Long> telefonosIds;
-        Set<NumeroTelefonicoDto> telefonosParaAsignar;
+        //Set<Long> telefonosIds;
+        //Set<NumeroTelefonicoDto> telefonosParaAsignar;
 
         dtoARetornar.setId(paciente.getId());
         dtoARetornar.setDni(paciente.getDni());
@@ -28,7 +27,8 @@ public class SubPacienteMapper {
         dtoARetornar.setApellidoMaterno(paciente.getApellidoMaterno());
         dtoARetornar.setFechaNacimiento(paciente.getFechaNacimiento());
         dtoARetornar.setEmail(paciente.getEmail());
-
+        dtoARetornar.setTelefonos(paciente.getTelefonos());
+/*
         if(paciente.getTelefonosId() != null){
             telefonosIds = paciente.getTelefonosId();
             telefonosParaAsignar = new HashSet<>();
@@ -38,7 +38,7 @@ public class SubPacienteMapper {
             }
 
             dtoARetornar.setTelefonos(telefonosParaAsignar);
-        }
+        }*/
 
         return dtoARetornar;
     }

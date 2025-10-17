@@ -16,7 +16,7 @@ public interface IPacienteService {
     public List<PacienteDto> buscarPorNombre(String nombre);
     public List<PacienteDto> buscarPorApellido(String apellido);
     public PacienteDto buscarPorEmail(String email);
-    public PacienteDto buscarPorNumeroTelefonico(String numero);
+    // public PacienteDto buscarPorNumeroTelefonico(String numero);
     public List<PacienteDto> buscarPorIntervaloNacimiento(Integer desde, Integer hasta);
     public List<PacienteDto> buscarPorLugarNacimiento(String localidad);
     public List<PacienteDto> buscarPorDomicilio(String calle);
@@ -26,8 +26,8 @@ public interface IPacienteService {
     public PacienteDto actulizarApellidoPaterno(Long idODni,String opcion, String apellidoPaterno);
     public PacienteDto actualizarApellidoMaterno(Long idODni,String opcion, String apellidoMaterno);
     public PacienteDto actualizarEmail(Long idODni,String opcion, String email);
-    public PacienteDto agregarNumeroTelefonico(Long id, Long telefonoId);
-    public PacienteDto quitarNumeroTelefonico(Long id, Long telefonoId);
+    public PacienteDto agregarNumeroTelefonico(Long id, String telefono);
+    public PacienteDto quitarNumeroTelefonico(Long id, String telefono);
     public PacienteDto actualizarFechaNacimiento(Long idODni,String opcion, LocalDate fechaNacimiento);
     public PacienteDto actualizarLugarNacimiento(Long idODni,String opcion, Long localidadId);
     public PacienteDto actualizarDomicilio(Long idODni,String opcion, Long direccionId);
