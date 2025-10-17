@@ -13,5 +13,5 @@ import java.util.Set;
 public class SubSedeDto {
     private Long id;
     private DireccionDto direccion;
-    private Set<NumeroTelefonicoDto> telefonos;
+    private Set<String> telefonos;
 }

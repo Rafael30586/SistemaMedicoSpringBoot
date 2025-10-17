@@ -1,8 +1,8 @@
 package com.f_rafael.pacientes_servicio.service;
 
 import com.f_rafael.pacientes_servicio.dto.SedeDto;
-import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
+import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Sede;
@@ -93,21 +93,7 @@ public class SedeService implements ISedeService{
 
     @Override
     public SedeDto buscarPortelefono(String telefono) {
-        SedeDto dtoARetornar;
-        List<Sede> informacionSedes = repository.findAll();
-        Set<Long> telefonosId;
-
-        for(Sede s : informacionSedes){
-            telefonosId = s.getTelefonosId();
-
-            for(Long id : telefonosId){
-                if(telefono.equals(numeroTelefonicoClient.buscarPorId(id).getNumero())){
-                    dtoARetornar = mapper.obtenerDto(s);
-                    return dtoARetornar;
-                }
-            }
-        }
-        throw new EntidadNoEncontradaException("Entidad no encontrada");
+        return mapper.obtenerDto(repository.buscarPorNumeroTelefonico(telefono).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada")));
     }
 
     @Override
@@ -119,23 +105,27 @@ public class SedeService implements ISedeService{
     }
 
     @Override
-    public SedeDto agregarTelefono(Long id, Long telefonoId) {
+    public SedeDto agregarTelefono(Long id, String telefono) {
         Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
-        Set<Long> telefonosIds = sedeParaActualizar.getTelefonosId();
+        Set<String> telefonosParaAsignar = sedeParaActualizar.getTelefonos();
 
-        telefonosIds.add(telefonoId); // Agregar validación para confirmar si el teléfono existe en el optro microservicio
-        sedeParaActualizar.setTelefonosId(telefonosIds);
+        telefonosParaAsignar.add(telefono);
+        sedeParaActualizar.setTelefonos(telefonosParaAsignar);
 
         return this.guardar(sedeParaActualizar);
     }
 
     @Override
-    public SedeDto quitarTelefono(Long id, Long telefonoId) {
+    public SedeDto quitarTelefono(Long id, String telefono) {
         Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
-        Set<Long> telefonosIds = sedeParaActualizar.getTelefonosId();
+        Set<String> telefonosParaAsignar = sedeParaActualizar.getTelefonos();
 
-        telefonosIds.remove(telefonoId);
-        sedeParaActualizar.setTelefonosId(telefonosIds);
+        if(!telefonosParaAsignar.contains(telefono)){
+            throw new DatoIncorrectoException("El número telefónico no se encuentra en la lista");
+        }
+
+        telefonosParaAsignar.remove(telefono);
+        sedeParaActualizar.setTelefonos(telefonosParaAsignar);
 
         return this.guardar(sedeParaActualizar);
     }

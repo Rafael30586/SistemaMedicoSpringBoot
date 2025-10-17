@@ -19,20 +19,19 @@ public class SubSedeMapper {
 
     public SubSedeDto obtenerDto(Sede sede){
         SubSedeDto dtoARetornar = new SubSedeDto();
-        Set<NumeroTelefonicoDto> telefonosParaAsignar = new HashSet<>();
-        Set<Long> telefonosId;
 
         dtoARetornar.setId(sede.getId());
+/*
+        if(sede.getTelefonos() != null){
+            telefonos = sede.getTelefonos();
 
-        if(sede.getTelefonosId() != null){
-            telefonosId = sede.getTelefonosId();
-
-            for(Long telefonoId : telefonosId){
-                telefonosParaAsignar.add(numeroTelefonicoClient.buscarPorId(telefonoId));
+            for(String telefono : telefonos){
+                telefonosParaAsignar.add(numeroTelefonicoClient.buscarPorId(telefono));
             }
 
             dtoARetornar.setTelefonos(telefonosParaAsignar);
-        }
+        }*/
+        dtoARetornar.setTelefonos(sede.getTelefonos());
 
         if(sede.getDireccionId() != null){
             dtoARetornar.setDireccion(direccionClient.obtenerInformacionDireccion(sede.getDireccionId()));

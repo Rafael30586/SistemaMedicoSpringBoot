@@ -13,6 +13,6 @@ import java.util.Set;
 public class SedeDto {
     private Long id;
     private DireccionDto direccion;
-    private Set<NumeroTelefonicoDto> telefonos;
+    private Set<String> telefonos;
     private SubObraSocialDto obraSocial;
 }

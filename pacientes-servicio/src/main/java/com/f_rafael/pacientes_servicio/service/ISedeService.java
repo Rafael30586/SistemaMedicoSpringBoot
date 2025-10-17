@@ -14,8 +14,8 @@ public interface ISedeService {
     public List<SedeDto> buscarPorDireccion(String calle);
     public SedeDto buscarPortelefono(String telefono);
     public SedeDto actualizarDireccion(Long id, Long direccionId);
-    public SedeDto agregarTelefono(Long id, Long telefonoId);
-    public SedeDto quitarTelefono(Long id, Long telefonoId);
+    public SedeDto agregarTelefono(Long id, String telefono);
+    public SedeDto quitarTelefono(Long id, String telefono);
     public SedeDto actualizarObraSocial(Long id, Long obraSocialId);
 
 }
