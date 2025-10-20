@@ -52,4 +52,28 @@ public class SedeController {
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping
+    public ResponseEntity<SedeDto> actualizarDireccion(@RequestParam Long id,
+                                                       @RequestParam("direccion-id") Long direccionId){
+        return ResponseEntity.ok(service.actualizarDireccion(id,direccionId));
+    }
+
+    @PatchMapping
+    public ResponseEntity<SedeDto> agregarTelefono(@RequestParam Long id,
+                                                   @RequestParam String telefono){
+        return ResponseEntity.ok(service.agregarTelefono(id,telefono));
+    }
+
+    @PatchMapping
+    public ResponseEntity<SedeDto> quitarTelefono(@RequestParam Long id,
+                                                  @RequestParam String telefono){
+        return ResponseEntity.ok(service.quitarTelefono(id,telefono));
+    }
+
+    @PatchMapping
+    public ResponseEntity<SedeDto> actualizarObraSocial(@RequestParam Long id,
+                                                        @RequestParam("obra-social-id") Long obraSocialId){
+        return ResponseEntity.ok(service.actualizarObraSocial(id,obraSocialId));
+    }
 }
