@@ -254,8 +254,20 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto agregarNumeroTelefonico(Long id, String telefono) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto agregarNumeroTelefonico(Long idODni,String opcion, String telefono) {
+        Paciente pacienteAEditar = new Paciente();
+        if(!verificador.idODni(opcion)){
+            throw new DatoIncorrectoException("La opción debe ser id o dni");
+        }
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals(("dni"))){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("PAciente no encontrado"));
+        }
+
         Set<String> telefonosParaAsignar = pacienteAEditar.getTelefonos();
 
         telefonosParaAsignar.add(telefono);
@@ -265,12 +277,28 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public PacienteDto quitarNumeroTelefonico(Long id, String telefonoParaQuitar) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+    public PacienteDto quitarNumeroTelefonico(Long idODni,String opcion, String telefonoParaQuitar) {
+        Paciente pacienteAEditar = new Paciente();
+
+        if(!verificador.idODni(opcion)){
+            throw new DatoIncorrectoException("La opción debe ser id o dni");
+        }
+
+        if(opcion.equals("id")){
+            pacienteAEditar = repository.findById(idODni).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
+        if(opcion.equals("dni")){
+            pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
+        }
+
         Set<String> telefonosParaAsignar = pacienteAEditar.getTelefonos();
         boolean telefonoPresente = false;
-        //Long telefonoParaQuitar = null;
 
+        if(!telefonosParaAsignar.contains(telefonoParaQuitar)){
+            throw new DatoIncorrectoException("Este teléfono no pertenece al paciente a actualizar");
+        }
+/*
         for(String t : telefonosParaAsignar){
             if(t.equals(telefonoParaQuitar)){
                 //telefonoParaQuitar = t;
@@ -281,7 +309,7 @@ public class PacienteService implements IPacienteService{
         if(!telefonoPresente){
             throw new DatoIncorrectoException("El teléfono no existe dentro de la lista de teléfonos del paciente");
         }
-
+*/
         telefonosParaAsignar.remove(telefonoParaQuitar);
 
         pacienteAEditar.setTelefonos(telefonosParaAsignar);

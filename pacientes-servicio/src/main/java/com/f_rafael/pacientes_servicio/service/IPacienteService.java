@@ -26,8 +26,8 @@ public interface IPacienteService {
     public PacienteDto actulizarApellidoPaterno(Long idODni,String opcion, String apellidoPaterno);
     public PacienteDto actualizarApellidoMaterno(Long idODni,String opcion, String apellidoMaterno);
     public PacienteDto actualizarEmail(Long idODni,String opcion, String email);
-    public PacienteDto agregarNumeroTelefonico(Long id, String telefono);
-    public PacienteDto quitarNumeroTelefonico(Long id, String telefono);
+    public PacienteDto agregarNumeroTelefonico(Long idODni,String opcion, String telefono);
+    public PacienteDto quitarNumeroTelefonico(Long idODni,String opcion, String telefono);
     public PacienteDto actualizarFechaNacimiento(Long idODni,String opcion, LocalDate fechaNacimiento);
     public PacienteDto actualizarLugarNacimiento(Long idODni,String opcion, Long localidadId);
     public PacienteDto actualizarDomicilio(Long idODni,String opcion, Long direccionId);
