@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,9 +20,9 @@ public class PacienteDto {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String email;
-    private List<NumeroTelefonicoDto> telefono;
+    private Set<String> telefonos;
     private LocalDate fechaNacimiento;
-    private Long lugarNacimientoId;
-    private Long direccionId;
+    private LocalidadDto lugarNacimiento;
+    private DireccionDto direccion;
     private ObraSocialDto obraSocial;
 }
