@@ -36,8 +36,14 @@ public class TurnoEstudioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TurnoEstudioDto>> buscarPorFechaTurno(@RequestParam LocalDate fechaTurno){
+    public ResponseEntity<List<TurnoEstudioDto>> buscarPorFechaTurno(@RequestParam("fecha-turno") LocalDate fechaTurno){
         return ResponseEntity.ok(service.buscarPorFechaTurno(fechaTurno));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TurnoEstudioDto>> buscarPorPeriodo(@RequestParam LocalDate desde,
+                                                                  @RequestParam LocalDate hasta){
+        return ResponseEntity.ok(service.buscarPorPeriodo(desde,hasta));
     }
 
     @GetMapping

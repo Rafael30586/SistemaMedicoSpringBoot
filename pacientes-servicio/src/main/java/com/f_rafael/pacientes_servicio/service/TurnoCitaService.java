@@ -79,6 +79,11 @@ public class TurnoCitaService implements ITurnoCitaService{
     }
 
     @Override
+    public List<TurnoCitaDto> buscarPorPeriodo(LocalDate desde, LocalDate hasta) {
+        return mapper.obtenerListaDto(repository.buscarPorPeriodo(desde,hasta));
+    }
+
+    @Override
     public List<TurnoCitaDto> buscarPorEstado(String estado) {
         return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
     }

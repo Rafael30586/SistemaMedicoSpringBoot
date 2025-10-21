@@ -21,4 +21,7 @@ public interface ITurnoCitaRepository extends JpaRepository<TurnoCita, Long> {
     public List<TurnoCita> buscarPorEstado(String estado);
 
     public List<TurnoCita> findByProfesionalId(Long id);
+
+    @Query("SELECT tc FROM TurnoCita tc WHERE tc.fechaTurno BETWEEN :desde AND :hasta")
+    public List<TurnoCita> buscarPorPeriodo(LocalDate desde, LocalDate hasta);
 }

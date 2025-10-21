@@ -40,6 +40,12 @@ public class TurnoCitaController {
     }
 
     @GetMapping
+    public ResponseEntity<List<TurnoCitaDto>> buscarPorPeriodo(@RequestParam LocalDate desde,
+                                                               @RequestParam LocalDate hasta){
+        return ResponseEntity.ok(service.buscarPorPeriodo(desde,hasta));
+    }
+
+    @GetMapping
     public ResponseEntity<List<TurnoCitaDto>> buscarPorEstado(@RequestParam String estado){
         return ResponseEntity.ok(service.buscarPorEstado(estado));
     }

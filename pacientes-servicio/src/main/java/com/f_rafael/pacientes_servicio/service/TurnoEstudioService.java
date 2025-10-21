@@ -93,6 +93,11 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     }
 
     @Override
+    public List<TurnoEstudioDto> buscarPorPeriodo(LocalDate desde, LocalDate hasta) {
+        return mapper.obtenerListaDto(repository.buscarPorPeriodo(desde,hasta));
+    }
+
+    @Override
     public List<TurnoEstudioDto> buscarPorEstado(String estado) {
         return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
     }
