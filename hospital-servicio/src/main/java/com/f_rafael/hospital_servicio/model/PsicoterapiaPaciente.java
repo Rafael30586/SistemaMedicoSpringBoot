@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter @Getter
 @Entity
 @Table(name = "psicopterapia_paciente")
-public class PscioterapiaPaciente { // Un tratamiento de psicoterapia en un paciente
+public class PsicoterapiaPaciente { // Un tratamiento de psicoterapia en un paciente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
