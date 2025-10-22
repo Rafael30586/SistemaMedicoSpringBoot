@@ -1,14 +1,15 @@
 package com.f_rafael.hospital_servicio.service;
 
+import com.f_rafael.hospital_servicio.dto.DiagnosticoDto;
 import com.f_rafael.hospital_servicio.model.Diagnostico;
 
 import java.util.List;
 
 public interface IDiagnosticoService {
 
-    public Diagnostico buscarPorId(Long id);
-    public List<Diagnostico> buscarTodos();
-    public Diagnostico guardar(Diagnostico diagnostico);
-    public Diagnostico actualizar(Diagnostico diagnostico);
+    public DiagnosticoDto buscarPorId(Long id);
+    public List<DiagnosticoDto> buscarTodos();
+    public DiagnosticoDto guardar(Diagnostico diagnostico);
+    public DiagnosticoDto actualizar(Diagnostico diagnostico);
     public void borrarPorId(Long id);
 }
