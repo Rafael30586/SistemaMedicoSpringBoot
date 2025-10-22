@@ -20,7 +20,7 @@ public class CirugiaPacienteMapper {
         CirugiaPacienteDto dtoARetornar = new CirugiaPacienteDto();
 
         dtoARetornar.setId(informacioncirugiaPaciente.getId());
-        dtoARetornar.setPaciente(pacienteClient.obtenerInformacionPaciente(informacioncirugiaPaciente.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacioncirugiaPaciente.getPacienteId()));
         dtoARetornar.setCirugia(informacioncirugiaPaciente.getCirugia());
         dtoARetornar.setFecha(informacioncirugiaPaciente.getFecha());
         dtoARetornar.setInicio(informacioncirugiaPaciente.getInicio());
