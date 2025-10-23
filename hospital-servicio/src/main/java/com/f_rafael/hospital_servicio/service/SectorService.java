@@ -4,11 +4,13 @@ import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.ISectorRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class SectorService implements ISectorService{
 
     private ISectorRepository repository;

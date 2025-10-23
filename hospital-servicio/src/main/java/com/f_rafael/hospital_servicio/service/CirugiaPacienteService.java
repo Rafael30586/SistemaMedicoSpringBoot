@@ -7,11 +7,13 @@ import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.CirugiaPacienteMapper;
 import com.f_rafael.hospital_servicio.model.CirugiaPaciente;
 import com.f_rafael.hospital_servicio.repository.ICirugiaPacienteRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     private CirugiaPacienteMapper mapper;
