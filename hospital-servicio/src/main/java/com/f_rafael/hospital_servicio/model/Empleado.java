@@ -30,7 +30,7 @@ public class Empleado { // Un empleado del hospital
     @Column(unique = true)
     private String email;
     private Long domicilioId;
-    private Set<Long> telefonosId;
+    private Set<String> telefonos;
     @Column(name = "matricula_profesional",unique = true)
     private String matriculaPorfesional;
     @ManyToOne
