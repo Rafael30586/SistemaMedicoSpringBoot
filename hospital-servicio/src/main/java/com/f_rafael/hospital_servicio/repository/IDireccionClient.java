@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface IDireccionClient {
 
     @GetMapping("/direcciones/{id}")
-    public DireccionDto obtenerInofrmacionDireccion(@PathVariable Long id);
+    public DireccionDto buscarPorId(@PathVariable Long id);
 }
