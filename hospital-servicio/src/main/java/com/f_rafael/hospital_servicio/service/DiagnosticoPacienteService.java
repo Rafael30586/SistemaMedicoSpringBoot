@@ -41,6 +41,10 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
 
     @Override
     public DiagnosticoPacienteDto actualizar(DiagnosticoPaciente diagnosticoPaciente) {
+
+        if(diagnosticoPaciente.getId() == null){
+            throw new CampoNuloException("El id no puede ser nulo durante una actualización");
+        }
         return this.guardar(diagnosticoPaciente);
     }
 

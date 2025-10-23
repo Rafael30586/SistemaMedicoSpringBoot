@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 
 import com.f_rafael.hospital_servicio.dto.CirugiaPacienteDto;
+import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.CirugiaPacienteMapper;
 import com.f_rafael.hospital_servicio.model.CirugiaPaciente;
@@ -32,6 +33,11 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     @Override
     public CirugiaPacienteDto actualizar(CirugiaPaciente cirugiaPaciente) {
+
+        if(cirugiaPaciente.getId() == null){
+            throw new CampoNuloException("El id no puede ser nulo durante una actualización");
+
+        }
         return this.guardar(cirugiaPaciente);
     }
 
