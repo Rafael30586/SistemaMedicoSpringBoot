@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,5 +33,5 @@ public class Signo { // A diferencia de los síntomas, se pueden medir, ejemplo:
     //@JoinColumn(name = "medicion_id")
     //private Medicion medicion;
     @ManyToMany(mappedBy = "signos")
-    private Diagnostico diagnosticos;
+    private Set<Diagnostico> diagnosticos;
 }
