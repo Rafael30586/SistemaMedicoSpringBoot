@@ -10,7 +10,7 @@ import com.f_rafael.hospital_servicio.mapper.CirugiaPacienteMapper;
 import com.f_rafael.hospital_servicio.model.CirugiaPaciente;
 import com.f_rafael.hospital_servicio.repository.ICirugiaPacienteRepository;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
-import com.f_rafael.hospital_servicio.utils.Verificacion;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     private CirugiaPacienteMapper mapper;
     private ICirugiaPacienteRepository repository;
-    private Verificacion verificacion;
+    private Verificador verificador;
     private IPacienteClient pacienteClient;
 
     @Override
@@ -68,7 +68,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
         List<CirugiaPaciente> informacionTratamientos;
         PacienteDto informacionPaciente;
 
-        if(!verificacion.esIdODni(opcion)) throw new DatoIncorrectoException("La opción debe ser id o dni");
+        if(!verificador.esIdODni(opcion)) throw new DatoIncorrectoException("La opción debe ser id o dni");
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
