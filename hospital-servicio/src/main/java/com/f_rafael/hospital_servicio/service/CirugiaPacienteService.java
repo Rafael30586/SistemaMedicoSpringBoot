@@ -89,7 +89,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     @Override
     public List<CirugiaPacienteDto> buscarPorCirugia(String cirugia) {
-        return List.of();
+        return mapper.obtenerListaDto(repository.buscarPorCirugia(cirugia));
     }
 
     @Override
