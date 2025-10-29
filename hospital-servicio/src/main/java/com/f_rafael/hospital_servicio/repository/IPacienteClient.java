@@ -10,4 +10,7 @@ public interface IPacienteClient {
 
     @GetMapping("/pacientes/{id}")
     public PacienteDto buscarPorId(@PathVariable Long id);
+
+    @GetMapping("/pacientes/{dni}")
+    public PacienteDto buscarPorDni(@PathVariable Long dni);
 }
