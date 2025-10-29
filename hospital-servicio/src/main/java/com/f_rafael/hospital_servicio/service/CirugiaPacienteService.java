@@ -10,6 +10,7 @@ import com.f_rafael.hospital_servicio.repository.ICirugiaPacienteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -51,5 +52,20 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
         }
 
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<CirugiaPacienteDto> buscarPorPaciente(Long idODni, String opcion) {
+        return List.of();
+    }
+
+    @Override
+    public List<CirugiaPacienteDto> buscarPorCirugia(String cirugia) {
+        return List.of();
+    }
+
+    @Override
+    public List<CirugiaPacienteDto> buscarPorPeriodo(LocalDate desde, LocalDate hasta) {
+        return List.of();
     }
 }
