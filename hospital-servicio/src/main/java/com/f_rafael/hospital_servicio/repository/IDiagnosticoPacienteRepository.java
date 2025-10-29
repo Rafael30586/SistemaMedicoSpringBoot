@@ -13,4 +13,7 @@ public interface IDiagnosticoPacienteRepository extends JpaRepository<Diagnostic
 
     @Query("SELECT dp FROM DiagnosticoPaciente dp WHERE dp.pacienteId = :idPaciente")
     public List<DiagnosticoPaciente> buscarPorPaciente(@Param("idPaciente") Long idPaciente);
+
+    @Query("SELECT dp FROM DiagnosticoPaciente dp LEFT JOIN FETCH dp.diagnostico WHERE dp.diagnostico.nombre = :diagnostico")
+    public List<DiagnosticoPaciente> buscarPorDiagnostico(@Param("diagnostico") String diagnostico);
 }

@@ -92,6 +92,6 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
 
     @Override
     public List<DiagnosticoPacienteDto> buscarPorDiagnostico(String diagnostico) {
-        return null;
+        return mapper.obtenerListaDto(repository.buscarPorDiagnostico(diagnostico));
     }
 }
