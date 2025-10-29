@@ -94,6 +94,6 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     @Override
     public List<CirugiaPacienteDto> buscarPorPeriodo(LocalDate desde, LocalDate hasta) {
-        return List.of();
+        return mapper.obtenerListaDto(repository.buscarPorPeriodo(desde,hasta));
     }
 }

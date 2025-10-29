@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -15,4 +16,7 @@ public interface ICirugiaPacienteRepository extends JpaRepository<CirugiaPacient
 
     @Query("SELECT cp FROM CirugiaPaciente cp LEFT JOIN FETCH cp.cirugia WHERE cp.cirugia.nombre = :cirugia")
     public List<CirugiaPaciente> buscarPorCirugia(@Param("cirugia") String cirugia);
+
+    @Query("SELECT cp FROM CirugiaPaciente cp WHERE cp.fecha BETWEEN :desde AND :hasta")
+    public List<CirugiaPaciente> buscarPorPeriodo(LocalDate desde, LocalDate hasta);
 }
