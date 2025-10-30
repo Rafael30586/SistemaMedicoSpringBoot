@@ -56,4 +56,39 @@ public class EmpleadoService implements IEmpleadoService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public EmpleadoDto buscarPorDni(Long dni) {
+        return mapper.obtenerDto(repository.findByDni(dni).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado")));
+    }
+
+    @Override
+    public List<EmpleadoDto> buscarPorNombre(String nombre) {
+        return mapper.obtenerListaDto(repository.buscarPorNombre(nombre));
+    }
+
+    @Override
+    public List<EmpleadoDto> buscarPorApellido(String apellido) {
+        return mapper.obtenerListaDto(repository.buscarPorApellido(apellido));
+    }
+
+    @Override
+    public EmpleadoDto buscarPorEmail(String email) {
+        return mapper.obtenerDto(repository.findByEmail(email).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado")));
+    }
+
+    @Override
+    public EmpleadoDto buscarPorMatriculaProfesional(String matricula) {
+        return mapper.obtenerDto(repository.findByMatriculaProfesional(matricula).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontardo")));
+    }
+
+    @Override
+    public List<EmpleadoDto> buscarPorRol(String rol) {
+        return mapper.obtenerListaDto(repository.buscarPorRol(rol));
+    }
+
+    @Override
+    public List<EmpleadoDto> buscarPorRangoSalarial(Float minimo, Float maximo) {
+        return mapper.obtenerListaDto(repository.buscarPorRangoSalarial(minimo,maximo));
+    }
 }

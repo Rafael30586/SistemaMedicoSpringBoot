@@ -12,5 +12,10 @@ public interface IEmpleadoService {
     public EmpleadoDto actualizar(Empleado empleado);
     public void borrarPorId(Long id);
     public EmpleadoDto buscarPorDni(Long dni);
-    
+    public List<EmpleadoDto> buscarPorNombre(String nombre);
+    public List<EmpleadoDto> buscarPorApellido(String apellido);
+    public EmpleadoDto buscarPorEmail(String email);
+    public EmpleadoDto buscarPorMatriculaProfesional(String matricula);
+    public List<EmpleadoDto> buscarPorRol(String rol);
+    public List<EmpleadoDto> buscarPorRangoSalarial(Float minimo, Float maximo);
 }

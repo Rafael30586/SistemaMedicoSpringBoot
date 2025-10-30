@@ -22,4 +22,6 @@ public interface IEmpleadoRepository extends JpaRepository<Empleado, Long> {
     public Optional<Empleado> findByMatriculaProfesional(String matricula);
     @Query("SELECT e FROM  Empleado e LEFT JOIN FETCH e.rol WHERE e.rol.nombre = :rol")
     public List<Empleado> buscarPorRol(@Param("rol") String rol);
+    @Query("SELECT e FROM Empleado e WHERE e.salario BETWEEN :minimo AND :maximo")
+    public List<Empleado> buscarPorRangoSalarial(@Param("minimo") Float minimo,@Param("maximo") Float maximo);
 }
