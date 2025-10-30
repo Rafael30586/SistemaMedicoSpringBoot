@@ -57,4 +57,9 @@ public class DiagnosticoService implements IDiagnosticoService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public DiagnosticoDto buscarPorNombre(String nombre) {
+        return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado")));
+    }
 }
