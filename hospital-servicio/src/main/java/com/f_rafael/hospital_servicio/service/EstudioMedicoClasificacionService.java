@@ -54,4 +54,9 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
 
         repository.deleteById(id);
     }
+
+    @Override
+    public EstudioMedicoClasificacion buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Clasificación de estudio médico no encontrada"));
+    }
 }

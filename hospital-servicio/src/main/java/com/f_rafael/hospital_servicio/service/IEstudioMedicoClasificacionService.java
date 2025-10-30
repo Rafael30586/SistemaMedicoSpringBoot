@@ -10,4 +10,5 @@ public interface IEstudioMedicoClasificacionService {
     public EstudioMedicoClasificacion guardar(EstudioMedicoClasificacion clasificacion);
     public EstudioMedicoClasificacion actualizar(EstudioMedicoClasificacion clasificacion);
     public void borrarPorId(Long id);
+    public EstudioMedicoClasificacion buscarPorNombre(String nombre);
 }
