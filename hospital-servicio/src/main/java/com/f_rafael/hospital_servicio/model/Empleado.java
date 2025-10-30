@@ -32,7 +32,7 @@ public class Empleado { // Un empleado del hospital
     private Long domicilioId;
     private Set<String> telefonos;
     @Column(name = "matricula_profesional",unique = true)
-    private String matriculaPorfesional;
+    private String matriculaProfesional;
     @ManyToOne
     private RolEmpleado rol;
     private Float salario;

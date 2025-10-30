@@ -11,4 +11,6 @@ public interface IEmpleadoService {
     public EmpleadoDto guardar(Empleado empleado);
     public EmpleadoDto actualizar(Empleado empleado);
     public void borrarPorId(Long id);
+    public EmpleadoDto buscarPorDni(Long dni);
+    
 }
