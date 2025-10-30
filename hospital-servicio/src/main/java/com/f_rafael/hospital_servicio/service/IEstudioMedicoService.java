@@ -10,4 +10,6 @@ public interface IEstudioMedicoService {
     public EstudioMedico guardar(EstudioMedico estudioMedico);
     public EstudioMedico actualizar(EstudioMedico estudioMedico);
     public void borrarPorId(Long id);
+    public EstudioMedico buscarPorNombre(String nombre);
+    public List<EstudioMedico> buscarPorClasificacion(String clasificacion);
 }

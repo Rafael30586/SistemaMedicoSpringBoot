@@ -53,4 +53,14 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public EstudioMedico buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("El estudio médico no ha sido encontrado"));
+    }
+
+    @Override
+    public List<EstudioMedico> buscarPorClasificacion(String clasificacion) {
+        return repository.buscarPorClasificacion(clasificacion);
+    }
 }
