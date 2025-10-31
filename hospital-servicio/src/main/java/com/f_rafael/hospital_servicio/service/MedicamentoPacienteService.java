@@ -8,6 +8,7 @@ import com.f_rafael.hospital_servicio.model.MedicamentoPaciente;
 import com.f_rafael.hospital_servicio.repository.IMedicamentoPacienteRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -50,5 +51,25 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
         }
 
         repository.deleteById(id);
+    }
+
+    @Override
+    public MedicamentoPacienteDto buscarPorPaciente(MedicamentoPaciente medicamentoPaciente) {
+        return null;
+    }
+
+    @Override
+    public MedicamentoPacienteDto buscarPorPrincipioActivo(String principioActivo) {
+        return null;
+    }
+
+    @Override
+    public MedicamentoPacienteDto buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta) {
+        return null;
+    }
+
+    @Override
+    public MedicamentoPacienteDto BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
+        return null;
     }
 }
