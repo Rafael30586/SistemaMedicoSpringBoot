@@ -13,8 +13,8 @@ public interface IMedicamentoPacienteService {
     public MedicamentoPacienteDto guardar(MedicamentoPaciente medicamentoPaciente);
     public MedicamentoPacienteDto actualizar(MedicamentoPaciente medicamentoPaciente);
     public void borrarPorId(Long id);
-    public MedicamentoPacienteDto buscarPorPaciente(MedicamentoPaciente medicamentoPaciente);
-    public MedicamentoPacienteDto buscarPorPrincipioActivo(String principioActivo);
-    public MedicamentoPacienteDto buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta);
-    public MedicamentoPacienteDto BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta);
+    public List<MedicamentoPacienteDto> buscarPorPaciente(Long idODni, String opcion);
+    public List<MedicamentoPacienteDto> buscarPorPrincipioActivo(String principioActivo);
+    public List<MedicamentoPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta);
+    public List<MedicamentoPacienteDto> BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta);
 }

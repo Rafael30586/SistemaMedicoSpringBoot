@@ -8,11 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IMedicamentoPacienteRepository extends JpaRepository<MedicamentoPaciente, Long> {
 
-    public MedicamentoPaciente findByPacienteId(Long id);
+    public List<MedicamentoPaciente> findByPacienteId(Long id);
     @Query("SELECT mp FROM MedicamentoPaciente mp WHERE mp.inicio BETWEEN :desde AND :hasta")
     public List<MedicamentoPaciente> buscarPorFechaDeInicio(@Param("desde")LocalDate desde, @Param("hasta") LocalDate hasta);
     @Query("SELECT mp FROM MedicamentoPaciente mp WHERE mp.fin BETWEEN :desde AND :hasta")
