@@ -53,4 +53,14 @@ public class RolEmpleadoService implements IRolEmpleadoService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public RolEmpleado buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre);
+    }
+
+    @Override
+    public List<RolEmpleado> buscarPorSector(String sector) {
+        return repository.buscarPorSector(sector);
+    }
 }

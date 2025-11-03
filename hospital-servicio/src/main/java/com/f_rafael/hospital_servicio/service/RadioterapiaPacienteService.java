@@ -4,7 +4,7 @@ import com.f_rafael.hospital_servicio.dto.RadioTerapiaPacienteDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.hospital_servicio.mapper.RadioTerapiaPacienteMapper;
+import com.f_rafael.hospital_servicio.mapper.RadioterapiaPacienteMapper;
 import com.f_rafael.hospital_servicio.model.RadioterapiaPaciente;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
 import com.f_rafael.hospital_servicio.repository.IRadioterapiaPacienteRepository;
@@ -21,7 +21,7 @@ import java.util.List;
 public class RadioterapiaPacienteService implements IRadioterapiaPacienteService {
 
     private IRadioterapiaPacienteRepository repository;
-    private RadioTerapiaPacienteMapper mapper;
+    private RadioterapiaPacienteMapper mapper;
     private Verificador verificador;
     private IPacienteClient pacienteClient;
 

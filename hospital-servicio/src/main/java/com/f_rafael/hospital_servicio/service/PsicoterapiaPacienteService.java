@@ -5,7 +5,7 @@ import com.f_rafael.hospital_servicio.dto.PsicoterapiaPacienteDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.hospital_servicio.mapper.PsicotearpiaPacienteMapper;
+import com.f_rafael.hospital_servicio.mapper.PsicoterapiaPacienteMapper;
 import com.f_rafael.hospital_servicio.model.PsicoterapiaPaciente;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
 import com.f_rafael.hospital_servicio.repository.IPsicoterapiaPacienteRepository;
@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService{
 
-    private PsicotearpiaPacienteMapper mapper;
+    private PsicoterapiaPacienteMapper mapper;
     private IPsicoterapiaPacienteRepository repository;
     private Verificador verificador;
     private IPacienteClient pacienteClient;

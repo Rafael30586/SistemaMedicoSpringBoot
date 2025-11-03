@@ -12,7 +12,7 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-public class RadioTerapiaPacienteMapper {
+public class RadioterapiaPacienteMapper {
 
     private IPacienteClient pacienteClient;
 

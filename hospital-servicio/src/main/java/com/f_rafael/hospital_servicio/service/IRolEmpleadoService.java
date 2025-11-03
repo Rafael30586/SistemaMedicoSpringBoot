@@ -10,4 +10,6 @@ public interface IRolEmpleadoService {
     public RolEmpleado guardar(RolEmpleado rolEmpleado);
     public RolEmpleado actualizar(RolEmpleado rolEmpleado);
     public void borrarPorId(Long id);
+    public RolEmpleado buscarPorNombre(String nombre);
+    public List<RolEmpleado> buscarPorSector(String sector);
 }
