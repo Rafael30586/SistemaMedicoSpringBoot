@@ -15,4 +15,7 @@ public interface ISignoService {
     public SignoDto guardar(Signo signo);
     public SignoDto actualizar(Signo signo);
     public void borrarPorId(Long id);
+    public SignoDto buscarPorNombre(String nombre);
+    public List<SignoDto> buscarPorUnidad(String unidad);
+    public List<SignoDto> buscarPorDescripcion(String secuencia);
 }
