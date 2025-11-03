@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "radioterapia_paciente")
-public class RadioTerapiaPaciente { // Tratamiento de radioterapia para un paciente
+public class RadioterapiaPaciente { // Tratamiento de radioterapia para un paciente
     private Long id;
     @Column(name = "paciente_id",nullable = false)
     private Long pacienteId;

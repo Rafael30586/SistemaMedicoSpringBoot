@@ -1,7 +1,7 @@
 package com.f_rafael.hospital_servicio.mapper;
 
 import com.f_rafael.hospital_servicio.dto.RadioTerapiaPacienteDto;
-import com.f_rafael.hospital_servicio.model.RadioTerapiaPaciente;
+import com.f_rafael.hospital_servicio.model.RadioterapiaPaciente;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class RadioTerapiaPacienteMapper {
 
     private IPacienteClient pacienteClient;
 
-    public RadioTerapiaPacienteDto obtenerDto(RadioTerapiaPaciente informacionTratamiento){
+    public RadioTerapiaPacienteDto obtenerDto(RadioterapiaPaciente informacionTratamiento){
         RadioTerapiaPacienteDto dtoARetornar = new RadioTerapiaPacienteDto();
 
         dtoARetornar.setId(informacionTratamiento.getId());
@@ -27,10 +27,10 @@ public class RadioTerapiaPacienteMapper {
         return dtoARetornar;
     }
 
-    public List<RadioTerapiaPacienteDto> obtenerListaDto(Collection<RadioTerapiaPaciente> informacionTratamientos){
+    public List<RadioTerapiaPacienteDto> obtenerListaDto(Collection<RadioterapiaPaciente> informacionTratamientos){
         List<RadioTerapiaPacienteDto> listaParaRetornar = new LinkedList<>();
 
-        for(RadioTerapiaPaciente rtp : informacionTratamientos){
+        for(RadioterapiaPaciente rtp : informacionTratamientos){
             listaParaRetornar.add(obtenerDto(rtp));
         }
 
