@@ -56,7 +56,7 @@ public class RolEmpleadoService implements IRolEmpleadoService{
 
     @Override
     public RolEmpleado buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre);
+        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Rol de empleado no encontrado"));
     }
 
     @Override

@@ -10,4 +10,5 @@ public interface ISectorService {
     public Sector guardar(Sector sector);
     public Sector actualizar(Sector sector);
     public void borrarPorId(Long id);
+    public Sector buscarPorNombre(String nombre);
 }

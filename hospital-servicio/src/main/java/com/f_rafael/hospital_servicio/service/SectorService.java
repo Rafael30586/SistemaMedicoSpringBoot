@@ -53,4 +53,9 @@ public class SectorService implements ISectorService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public Sector buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Sector no encontrado"));
+    }
 }

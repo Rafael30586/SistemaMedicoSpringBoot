@@ -6,11 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IRolEmpleadoRepository extends JpaRepository<RolEmpleado, Long> {
 
-    public RolEmpleado findByNombre(String nombre);
+    public Optional<RolEmpleado> findByNombre(String nombre);
     @Query("SELECT re FRM RolEmpleado re LEFT JOIN FETCH re.sector WHERE re.sector.nombre = :sector")
     public List<RolEmpleado> buscarPorSector(String sector);
 }
