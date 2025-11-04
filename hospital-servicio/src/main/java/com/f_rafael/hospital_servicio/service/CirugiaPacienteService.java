@@ -149,7 +149,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     public CirugiaPacienteDto modificarHoraFinal(Long id, LocalTime fin) {
         CirugiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
         tratamientoParaActualizar.setFin(fin);
-        
+
         return this.actualizar(tratamientoParaActualizar);
     }
 }

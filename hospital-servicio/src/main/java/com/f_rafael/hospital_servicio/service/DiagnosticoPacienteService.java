@@ -6,6 +6,7 @@ import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.DiagnosticoPacienteMapper;
+import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.DiagnosticoPaciente;
 import com.f_rafael.hospital_servicio.repository.IDiagnosticoPacienteRepository;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
@@ -13,6 +14,7 @@ import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -93,5 +95,53 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
     @Override
     public List<DiagnosticoPacienteDto> buscarPorDiagnostico(String diagnostico) {
         return mapper.obtenerListaDto(repository.buscarPorDiagnostico(diagnostico));
+    }
+
+    @Override
+    public DiagnosticoPacienteDto modificarPaciente(Long id, Long idODniPaciente, String opcion) {
+        DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico a paciente no encontrado"));
+
+
+        if(!verificador.esIdODni(opcion)){
+            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
+        }
+
+        if(opcion.equals("id")){
+            diagnosticoParaActualizar.setPacienteId(idODniPaciente);
+        }
+
+        if(opcion.equals("dni")){
+            diagnosticoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODniPaciente).getId());
+        }
+
+        return this.actualizar(diagnosticoParaActualizar);
+    }
+
+    @Override
+    public DiagnosticoPacienteDto modificarDiagnostico(Long id, Long diagnosticoId) {
+        DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico para paciente no encontrado"));
+
+        Diagnostico diagnosticoParaAsignar = new Diagnostico();
+        diagnosticoParaAsignar.setId(diagnosticoId);
+
+        diagnosticoParaActualizar.setDiagnostico(diagnosticoParaAsignar);
+
+        return this.actualizar(diagnosticoParaActualizar);
+    }
+
+    @Override
+    public DiagnosticoPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
+        DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico para paciente no encontrado"));
+        diagnosticoParaActualizar.setInicio(inicio);
+
+        return this.actualizar(diagnosticoParaActualizar);
+    }
+
+    @Override
+    public DiagnosticoPacienteDto modificarFechaFinal(Long id, LocalDate fin) {
+        DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico para paciente no encontrado"));
+        diagnosticoParaActualizar.setFin(fin);
+
+        return this.actualizar(diagnosticoParaActualizar);
     }
 }
