@@ -10,4 +10,6 @@ public interface ITratamientoQuirurgicoService {
     public TratamientoQuirurgico guardar(TratamientoQuirurgico tratamientoQuirurgico);
     public TratamientoQuirurgico actualizar(TratamientoQuirurgico tratamientoQuirurgico);
     public void borrarPorId(Long id);
+    public TratamientoQuirurgico buscarPorNombre(String nombre);
+    public List<TratamientoQuirurgico> buscarPorDescripcion(String secuencia);
 }

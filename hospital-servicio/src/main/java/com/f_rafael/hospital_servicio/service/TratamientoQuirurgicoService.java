@@ -54,4 +54,14 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
 
         repository.deleteById(id);
     }
+
+    @Override
+    public TratamientoQuirurgico buscarPorNombre(String nombre) {
+        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento quirúrgico no encontrado"));
+    }
+
+    @Override
+    public List<TratamientoQuirurgico> buscarPorDescripcion(String secuencia) {
+        return repository.findAllByDescripcionContaining(secuencia);
+    }
 }
