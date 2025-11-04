@@ -55,4 +55,9 @@ public class SintomaService implements ISintomaService{
 
         repository.deleteById(id);
     }
+
+    @Override
+    public SintomaDto buscarPorNombre(String nombre) {
+        return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Síntoma no encontrado")));
+    }
 }

@@ -12,4 +12,5 @@ public interface ISintomaService {
     public SintomaDto guardar(Sintoma sintoma);
     public SintomaDto actualizar(Sintoma sintoma);
     public void borrarPorId(Long id);
+    public SintomaDto buscarPorNombre(String nombre);
 }
