@@ -13,4 +13,9 @@ public interface IDiagnosticoService {
     public DiagnosticoDto actualizar(Diagnostico diagnostico);
     public void borrarPorId(Long id);
     public DiagnosticoDto buscarPorNombre(String nombre);
+    public DiagnosticoDto modificarNombre(Long id, String nombre);
+    public DiagnosticoDto agregarSintoma(Long id, Long sintomaId);
+    public DiagnosticoDto quitarSintoma(Long id, Long sintomaId);
+    public DiagnosticoDto agregarSigno(Long id, Long signoId);
+    public DiagnosticoDto quitarSigno(Long id, Long signoId);
 }
