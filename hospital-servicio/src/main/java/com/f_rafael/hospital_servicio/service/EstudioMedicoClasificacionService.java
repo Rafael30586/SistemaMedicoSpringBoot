@@ -59,4 +59,12 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
     public EstudioMedicoClasificacion buscarPorNombre(String nombre) {
         return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Clasificación de estudio médico no encontrada"));
     }
+
+    @Override
+    public EstudioMedicoClasificacion modificarNombre(Long id, String nombre) {
+        EstudioMedicoClasificacion clasificacionParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Clasificación no encontrada"));
+        clasificacionParaActualizar.setNombre(nombre);
+
+        return this.actualizar(clasificacionParaActualizar);
+    }
 }

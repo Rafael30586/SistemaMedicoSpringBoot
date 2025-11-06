@@ -11,4 +11,5 @@ public interface IEstudioMedicoClasificacionService {
     public EstudioMedicoClasificacion actualizar(EstudioMedicoClasificacion clasificacion);
     public void borrarPorId(Long id);
     public EstudioMedicoClasificacion buscarPorNombre(String nombre);
+    public EstudioMedicoClasificacion modificarNombre(Long id, String nombre);
 }
