@@ -101,4 +101,53 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
     public List<FisioterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
+
+    @Override
+    public FisioterapiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion) {
+        FisioterapiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no e ncontrado"));
+
+        if(!verificador.esIdODni(opcion)){
+            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
+        }
+
+        if(opcion.equals("id")){
+            tratamientoParaActualizar.setPacienteId(idODni);
+        }
+
+        if(opcion.equals("dni")){
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODni).getId());
+        }
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public FisioterapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
+        FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        if(tratamientoParaActualizar.getFin() != null && tratamientoParaActualizar.getFin().isBefore(inicio)){
+            throw new DatoIncorrectoException("La fecha de inicio debe ser anterior a la fecha de final");
+        }
+
+        tratamientoParaActualizar.setInicio(inicio);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public FisioterapiaPacienteDto modificareFechaDeFinal(Long id, LocalDate fin) {
+        FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        if(tratamientoParaActualizar.getInicio().isAfter(fin)){
+            throw new DatoIncorrectoException("La fecha de final no piuede ser anterior a la fecha de inicio");
+        }
+
+        tratamientoParaActualizar.setFin(fin);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    public FisioterapiaPaciente devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
+    }
 }

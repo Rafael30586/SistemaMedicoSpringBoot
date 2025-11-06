@@ -16,4 +16,7 @@ public interface IFisioterapiaPacienteService {
     public List<FisioterapiaPacienteDto> buscarPorPaciente(Long idODni, String opcion);
     public List<FisioterapiaPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta);
     public List<FisioterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta);
+    public FisioterapiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion);
+    public FisioterapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio);
+    public FisioterapiaPacienteDto modificareFechaDeFinal(Long id, LocalDate fin);
 }
