@@ -70,10 +70,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
         List<MedicamentoPaciente> informacionTratamientos;
         PacienteDto paciente;
 
-        if(!verificador.esIdODni(opcion)) {
-            System.gc();
-            throw new DatoIncorrectoException("Las opciones pueden ser id o dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(idODni.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
@@ -117,5 +114,67 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     @Override
     public List<MedicamentoPacienteDto> BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
+    }
+
+    @Override
+    public MedicamentoPacienteDto modificarPaciente(Long id, Long idODni, String opcion) {
+        MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
+        verificador.esIdODni(opcion);
+
+        if(opcion.equals("id")){
+            medicamentoParaActualizar.setPacienteId(idODni);
+        }
+
+        if(opcion.equals("dni")){
+            medicamentoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODni).getId());
+        }
+
+        return this.actualizar(medicamentoParaActualizar);
+    }
+
+    @Override
+    public MedicamentoPacienteDto modificarMedicamento(Long id, Long medicamentoId) {
+        MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
+        medicamentoParaActualizar.setMedicamentoId(medicamentoId);
+
+        return this.actualizar(medicamentoParaActualizar);
+    }
+
+    @Override
+    public MedicamentoPacienteDto modificarDosis(Long id, Long dosisId) {
+        MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
+        medicamentoParaActualizar.setDosisId(dosisId);
+
+        return this.actualizar(medicamentoParaActualizar);
+    }
+
+    @Override
+    public MedicamentoPacienteDto mdoficarFechaDeInicio(Long id, LocalDate inicio) {
+        MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
+
+        if(medicamentoParaActualizar.getFin() != null && inicio.isAfter(medicamentoParaActualizar.getFin())){
+            throw new DatoIncorrectoException("La fecha de inicio no puede ser posterior a la fecha de final");
+        }
+
+        medicamentoParaActualizar.setInicio(inicio);
+
+        return this.actualizar(medicamentoParaActualizar);
+    }
+
+    @Override
+    public MedicamentoPacienteDto modificarFechaDeFinal(Long id, LocalDate fin) {
+        MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
+
+        if(fin.isBefore(medicamentoParaActualizar.getInicio())){
+            throw new DatoIncorrectoException("La fecha de final no puede ser anterior a la fecha de inicio");
+        }
+
+        medicamentoParaActualizar.setFin(fin);
+
+        return this.actualizar(medicamentoParaActualizar);
+    }
+
+    public MedicamentoPaciente devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
     }
 }

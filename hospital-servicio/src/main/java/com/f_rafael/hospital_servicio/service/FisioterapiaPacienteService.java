@@ -29,7 +29,8 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
 
     @Override
     public FisioterapiaPacienteDto buscarPorId(Long id) {
-        return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Fisioterapia para paciente no encontrada")));
+        // return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Fisioterapia para paciente no encontrada")));
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -104,7 +105,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
 
     @Override
     public FisioterapiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion) {
-        FisioterapiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no e ncontrado"));
+        FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
 
         if(!verificador.esIdODni(opcion)){
             throw new DatoIncorrectoException("Las opciones disponibles son id y dni");

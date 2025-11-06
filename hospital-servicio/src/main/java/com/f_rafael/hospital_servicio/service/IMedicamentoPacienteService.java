@@ -17,4 +17,9 @@ public interface IMedicamentoPacienteService {
     public List<MedicamentoPacienteDto> buscarPorPrincipioActivo(String principioActivo);
     public List<MedicamentoPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta);
     public List<MedicamentoPacienteDto> BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta);
+    public MedicamentoPacienteDto modificarPaciente(Long id, Long idODni, String opcion);
+    public MedicamentoPacienteDto modificarMedicamento(Long id, Long medicamentoId);
+    public MedicamentoPacienteDto modificarDosis(Long id, Long dosisId);
+    public MedicamentoPacienteDto mdoficarFechaDeInicio(Long id, LocalDate inicio);
+    public MedicamentoPacienteDto modificarFechaDeFinal(Long id, LocalDate fin);
 }
