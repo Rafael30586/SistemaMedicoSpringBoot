@@ -72,7 +72,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
         List<FisioterapiaPaciente> informacionTratamientos;
         PacienteDto informacionPaciente;
 
-        if(!verificador.esIdODni(opcion)) throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
@@ -107,9 +107,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
     public FisioterapiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion) {
         FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
 
-        if(!verificador.esIdODni(opcion)){
-            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             tratamientoParaActualizar.setPacienteId(idODni);

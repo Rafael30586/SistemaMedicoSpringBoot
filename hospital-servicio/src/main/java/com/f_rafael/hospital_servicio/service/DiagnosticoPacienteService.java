@@ -72,7 +72,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
         List<DiagnosticoPaciente> informacionDiagnosticos;
         PacienteDto informacionPaciente;
 
-        if(!verificador.esIdODni(opcion)) throw new DatoIncorrectoException("La opción ingreasada no está dentro de las permitidas");
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.buscarPorPaciente(idODni));
@@ -102,9 +102,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
         DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico a paciente no encontrado"));
 
 
-        if(!verificador.esIdODni(opcion)){
-            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             diagnosticoParaActualizar.setPacienteId(idODniPaciente);

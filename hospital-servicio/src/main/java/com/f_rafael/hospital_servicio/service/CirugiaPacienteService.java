@@ -70,7 +70,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
         List<CirugiaPaciente> informacionTratamientos;
         PacienteDto informacionPaciente;
 
-        if(!verificador.esIdODni(opcion)) throw new DatoIncorrectoException("La opción debe ser id o dni");
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
@@ -103,9 +103,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     public CirugiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion) {
         CirugiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
 
-        if(!verificador.esIdODni(opcion)){
-            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             tratamientoParaActualizar.setPacienteId(idODni);

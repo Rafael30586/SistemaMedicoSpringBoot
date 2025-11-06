@@ -69,10 +69,7 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
         List<RadioTerapiaPacienteDto> listaParaRetornar = new LinkedList<>();
         List<RadioterapiaPaciente> informacionTratamientos;
 
-        if(!verificador.esIdODni(opcion)){
-            System.gc();
-            throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));

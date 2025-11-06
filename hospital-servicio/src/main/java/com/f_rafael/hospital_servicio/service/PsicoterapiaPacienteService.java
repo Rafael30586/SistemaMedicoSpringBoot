@@ -71,10 +71,7 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
         List<PsicoterapiaPaciente> informacionTratamientos;
         PacienteDto informacionPaciente;
 
-        if(!verificador.esIdODni(opcion)){
-            System.gc();
-            throw new DatoIncorrectoException("La opción debe ser id o dni");
-        }
+        verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
