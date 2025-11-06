@@ -12,4 +12,6 @@ public interface IEstudioMedicoService {
     public void borrarPorId(Long id);
     public EstudioMedico buscarPorNombre(String nombre);
     public List<EstudioMedico> buscarPorClasificacion(String clasificacion);
+    public EstudioMedico modificarNombre(Long id, String nombre);
+    public EstudioMedico modificarClasificacion(Long id, Long clasificacionId);
 }

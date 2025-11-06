@@ -3,6 +3,7 @@ package com.f_rafael.hospital_servicio.service;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.model.EstudioMedico;
+import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,24 @@ public class EstudioMedicoService implements IEstudioMedicoService{
     @Override
     public List<EstudioMedico> buscarPorClasificacion(String clasificacion) {
         return repository.buscarPorClasificacion(clasificacion);
+    }
+
+    @Override
+    public EstudioMedico modificarNombre(Long id, String nombre) {
+        EstudioMedico estudioParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio no encontrado"));
+        estudioParaActualizar.setNombre(nombre);
+
+        return this.actualizar(estudioParaActualizar);
+    }
+
+    @Override
+    public EstudioMedico modificarClasificacion(Long id, Long clasificacionId) {
+        EstudioMedico estudioParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio no encontrado"));
+        EstudioMedicoClasificacion clasificacionParaAsignar = new EstudioMedicoClasificacion();
+
+        clasificacionParaAsignar.setId(clasificacionId);
+        estudioParaActualizar.setClasificacion(clasificacionParaAsignar);
+
+        return this.actualizar(estudioParaActualizar);
     }
 }
