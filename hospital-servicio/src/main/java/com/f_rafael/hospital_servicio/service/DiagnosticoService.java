@@ -24,7 +24,7 @@ public class DiagnosticoService implements IDiagnosticoService{
     private IDiagnosticoRepository repository;
     @Override
     public DiagnosticoDto buscarPorId(Long id) {
-        return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnostico no encontrado")));
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -69,7 +69,7 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto modificarNombre(Long id, String nuevoNombre) {
-        Diagnostico diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagn{ostico no encontrado"));
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         diagnosticoParaActualizar.setNombre(nuevoNombre);
 
         return this.actualizar(diagnosticoParaActualizar);
@@ -77,7 +77,7 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto agregarSintoma(Long id, Long sintomaId) {
-        Diagnostico diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado"));
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         Set<Sintoma> sintomasParaAsignar = diagnosticoParaActualizar.getSintomas();
         Sintoma sintomaParaAgregar = new Sintoma();
 
@@ -91,7 +91,7 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto quitarSintoma(Long id, Long sintomaId) {
-        Diagnostico diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado"));
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         Set<Sintoma> sintomasParaAsignar = diagnosticoParaActualizar.getSintomas();
         Iterator<Sintoma> iteradorSintomas = sintomasParaAsignar.iterator();
         boolean sintomaPresente = false;
@@ -112,7 +112,7 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto agregarSigno(Long id, Long signoId) {
-        Diagnostico diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado"));
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         Set<Signo> signosParaAsignar = diagnosticoParaActualizar.getSignos();
         Signo signoParaAgregar= new Signo();
 
@@ -125,7 +125,7 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto quitarSigno(Long id, Long signoId) {
-        Diagnostico diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado"));
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         Set<Signo> signosParaAsignar = diagnosticoParaActualizar.getSignos();
         Iterator<Signo> iteradorSignos = signosParaAsignar.iterator();
         boolean signoPresente = false;
@@ -142,5 +142,9 @@ public class DiagnosticoService implements IDiagnosticoService{
         }
 
         return this.actualizar(diagnosticoParaActualizar);
+    }
+
+    public Diagnostico devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado"));
     }
 }

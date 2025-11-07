@@ -18,7 +18,7 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     @Override
     public EstudioMedico buscarPorId(Long id) {
-        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio médico no encontrado"));
+        return devolverPorId(id);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     @Override
     public EstudioMedico modificarNombre(Long id, String nombre) {
-        EstudioMedico estudioParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio no encontrado"));
+        EstudioMedico estudioParaActualizar = devolverPorId(id);
         estudioParaActualizar.setNombre(nombre);
 
         return this.actualizar(estudioParaActualizar);
@@ -75,12 +75,16 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     @Override
     public EstudioMedico modificarClasificacion(Long id, Long clasificacionId) {
-        EstudioMedico estudioParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio no encontrado"));
+        EstudioMedico estudioParaActualizar = devolverPorId(id);
         EstudioMedicoClasificacion clasificacionParaAsignar = new EstudioMedicoClasificacion();
 
         clasificacionParaAsignar.setId(clasificacionId);
         estudioParaActualizar.setClasificacion(clasificacionParaAsignar);
 
         return this.actualizar(estudioParaActualizar);
+    }
+
+    public EstudioMedico devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Estudio médico no encontrado"));
     }
 }

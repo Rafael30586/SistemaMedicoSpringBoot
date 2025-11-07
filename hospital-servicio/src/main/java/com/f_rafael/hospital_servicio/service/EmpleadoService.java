@@ -22,7 +22,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto buscarPorId(Long id) {
-        return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado")));
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarDni(Long id, Long dni) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setDni(dni);
 
         return this.actualizar(empleadoAModificar);
@@ -104,7 +104,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarPrimerNombre(Long id, String nombre) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setPrimerNombre(nombre);
 
         return this.actualizar(empleadoAModificar);
@@ -112,7 +112,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarSegundoNombre(Long id, String nombre) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setSegundoNombre(nombre);
 
         return this.actualizar(empleadoAModificar);
@@ -120,7 +120,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarApellidoPaterno(Long id, String apellido) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setApellidoPaterno(apellido);
 
         return this.actualizar(empleadoAModificar);
@@ -128,7 +128,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarApellidoMaterno(Long id, String apellido) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setApellidoMaterno(apellido);
 
         return this.actualizar(empleadoAModificar);
@@ -136,7 +136,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarEmail(Long id, String email) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setEmail(email);
 
         return this.actualizar(empleadoAModificar);
@@ -144,7 +144,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarDomicilio(Long id, Long domicilioId) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setDomicilioId(domicilioId);
 
         return this.actualizar(empleadoAModificar);
@@ -152,7 +152,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto agregarTelefono(Long id, String telefono) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         Set<String> telefonosParaAsignar = empleadoAModificar.getTelefonos();
 
         telefonosParaAsignar.add(telefono);
@@ -163,7 +163,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto quitarTelefono(Long id, String telefono) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         Set<String> telefonosParaAsignar = empleadoAModificar.getTelefonos();
 
         if(!telefonosParaAsignar.contains(telefono)){
@@ -178,7 +178,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarMatriculaProfesional(Long id, String matricula) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setMatriculaProfesional(matricula);
 
         return this.actualizar(empleadoAModificar);
@@ -186,7 +186,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarRol(Long id, Long rolId) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         RolEmpleado rolParaAsignar = new RolEmpleado();
         rolParaAsignar.setId(rolId);
 
@@ -197,9 +197,13 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto modificarSalario(Long id, Float salario) {
-        Empleado empleadoAModificar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado"));
+        Empleado empleadoAModificar = devolverPorId(id);
         empleadoAModificar.setSalario(salario);
 
         return this.actualizar(empleadoAModificar);
+    }
+
+    public Empleado devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Emple4ado no encontrado"));
     }
 }
