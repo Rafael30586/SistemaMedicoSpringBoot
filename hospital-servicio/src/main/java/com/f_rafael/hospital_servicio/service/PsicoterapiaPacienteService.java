@@ -101,4 +101,45 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
     public List<PsicoterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
+
+    @Override
+    public PsicoterapiaPacienteDto modificarPaciente(Long id, Long pacienteIdODni, String opcion) {
+        PsicoterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esIdODni(opcion);
+
+        if(opcion.equals("id")){
+            tratamientoParaActualizar.setPacienteId(pacienteIdODni);
+        }
+
+        if(opcion.equals("dni")){
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(pacienteIdODni).getId());
+        }
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public PsicoterapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
+        PsicoterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esAnterior(inicio,tratamientoParaActualizar.getFin());
+        tratamientoParaActualizar.setInicio(inicio);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public PsicoterapiaPacienteDto modificarFechaDeFinal(Long id, LocalDate fin) {
+        PsicoterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esAnterior(tratamientoParaActualizar.getInicio(), fin);
+        tratamientoParaActualizar.setFin(fin);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    public PsicoterapiaPaciente devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
+    }
 }

@@ -16,4 +16,7 @@ public interface IPsicoterapiaPacienteService {
     public List<PsicoterapiaPacienteDto> buscarPorPaciente(Long idODni, String opcion);
     public List<PsicoterapiaPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta);
     public List<PsicoterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta);
+    public PsicoterapiaPacienteDto modificarPaciente(Long id, Long idODni, String opcion);
+    public PsicoterapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio);
+    public PsicoterapiaPacienteDto modificarFechaDeFinal(Long id, LocalDate fin);
 }
