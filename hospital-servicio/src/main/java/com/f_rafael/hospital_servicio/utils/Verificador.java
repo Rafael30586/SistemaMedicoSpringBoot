@@ -21,4 +21,8 @@ public class Verificador {
     public void esAnterior(LocalTime inicio, LocalTime fin){
         if(inicio.isAfter(fin)) throw new DatoIncorrectoException("El primer horario debe ser anterior al segundo");
     }
+
+    public void esMenor(Double minimo, Double maximo){
+        if(minimo > maximo) throw new DatoIncorrectoException("El valor mínimo no puede ser mayor que el máximo");
+    }
 }

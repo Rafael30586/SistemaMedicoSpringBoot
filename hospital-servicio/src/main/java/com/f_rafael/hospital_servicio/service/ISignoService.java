@@ -18,4 +18,10 @@ public interface ISignoService {
     public SignoDto buscarPorNombre(String nombre);
     public List<SignoDto> buscarPorUnidad(String unidad);
     public List<SignoDto> buscarPorDescripcion(String secuencia);
+    public SignoDto modificarNombre(Long id, String nombre);
+    public SignoDto modificarValorMinimo(Long id, Double valorMinimo);
+    public SignoDto modificarValorMaximo(Long id, Double valorMaximo);
+    public SignoDto modificarUnidad(Long id, Long unidadId);
+    public SignoDto modificarDescripcion(Long id, String descriopcion);
+
 }

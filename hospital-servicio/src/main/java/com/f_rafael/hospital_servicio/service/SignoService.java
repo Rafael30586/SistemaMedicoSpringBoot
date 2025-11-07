@@ -8,6 +8,7 @@ import com.f_rafael.hospital_servicio.mapper.SignoMapper;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.repository.ISignoRepository;
 import com.f_rafael.hospital_servicio.repository.IUnidadDeMedidaClient;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class SignoService implements ISignoService{
     private ISignoRepository repository;
     private SignoMapper mapper;
     private IUnidadDeMedidaClient unidadDeMedidaClient;
+    private Verificador verificador;
 
     @Override
     public SignoDto buscarPorId(Long id) {
@@ -85,5 +87,53 @@ public class SignoService implements ISignoService{
     @Override
     public List<SignoDto> buscarPorDescripcion(String secuencia) {
         return mapper.obtenerListaDto(repository.findAllByDescripcionContainingIgnoreCase(secuencia));
+    }
+
+    @Override
+    public SignoDto modificarNombre(Long id, String nombre) {
+        Signo signoParaActualizar = devolverPorId(id);
+        signoParaActualizar.setNombre(nombre);
+
+        return this.actualizar(signoParaActualizar);
+    }
+
+    @Override
+    public SignoDto modificarValorMinimo(Long id, Double valorMinimo) {
+        Signo signoParaActualizar = devolverPorId(id);
+
+        verificador.esMenor(valorMinimo, signoParaActualizar.getValorMaximo());
+        signoParaActualizar.setValorMinimo(valorMinimo);
+
+        return this.actualizar(signoParaActualizar);
+    }
+
+    @Override
+    public SignoDto modificarValorMaximo(Long id, Double valorMaximo) {
+        Signo signoParaActualizar = devolverPorId(id);
+
+        verificador.esMenor(signoParaActualizar.getValorMinimo(), valorMaximo);
+        signoParaActualizar.setValorMaximo(valorMaximo);
+
+        return this.actualizar(signoParaActualizar);
+    }
+
+    @Override
+    public SignoDto modificarUnidad(Long id, Long unidadId) {
+        Signo signoParaActualizar = devolverPorId(id);
+        signoParaActualizar.setUnidadId(unidadId);
+
+        return this.actualizar(signoParaActualizar);
+    }
+
+    @Override
+    public SignoDto modificarDescripcion(Long id, String descripcion) {
+        Signo signoParaActualizar = devolverPorId(id);
+        signoParaActualizar.setDescripcion(descripcion);
+
+        return this.actualizar(signoParaActualizar);
+    }
+
+    public Signo devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Signo no encontrado"));
     }
 }
