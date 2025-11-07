@@ -130,6 +130,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
     @Override
     public DiagnosticoPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
         DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico para paciente no encontrado"));
+        verificador.esAnterior(inicio,diagnosticoParaActualizar.getFin());
         diagnosticoParaActualizar.setInicio(inicio);
 
         return this.actualizar(diagnosticoParaActualizar);
@@ -138,6 +139,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
     @Override
     public DiagnosticoPacienteDto modificarFechaFinal(Long id, LocalDate fin) {
         DiagnosticoPaciente diagnosticoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico para paciente no encontrado"));
+        verificador.esAnterior(diagnosticoParaActualizar.getInicio(), fin);
         diagnosticoParaActualizar.setFin(fin);
 
         return this.actualizar(diagnosticoParaActualizar);

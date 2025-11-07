@@ -5,6 +5,7 @@ import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Component
 public class Verificador {
@@ -15,5 +16,9 @@ public class Verificador {
 
     public void esAnterior(LocalDate inicio, LocalDate fin){
         if(inicio.isAfter(fin) && fin != null) throw new DatoIncorrectoException("La primera fecha debe ser anterior a la segunda");
+    }
+
+    public void esAnterior(LocalTime inicio, LocalTime fin){
+        if(inicio.isAfter(fin)) throw new DatoIncorrectoException("El primer horario debe ser anterior al segundo");
     }
 }

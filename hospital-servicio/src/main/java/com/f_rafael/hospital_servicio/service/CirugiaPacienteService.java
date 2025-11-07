@@ -138,6 +138,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     @Override
     public CirugiaPacienteDto modificarHoraInicio(Long id, LocalTime inicio) {
         CirugiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
+        verificador.esAnterior(inicio, tratamientoParaActualizar.getFin());
         tratamientoParaActualizar.setInicio(inicio);
 
         return this.actualizar(tratamientoParaActualizar);
@@ -146,6 +147,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     @Override
     public CirugiaPacienteDto modificarHoraFinal(Long id, LocalTime fin) {
         CirugiaPaciente tratamientoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
+        verificador.esAnterior(tratamientoParaActualizar.getInicio(), fin);
         tratamientoParaActualizar.setFin(fin);
 
         return this.actualizar(tratamientoParaActualizar);

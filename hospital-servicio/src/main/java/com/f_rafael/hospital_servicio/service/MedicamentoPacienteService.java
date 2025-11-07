@@ -152,9 +152,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     public MedicamentoPacienteDto mdoficarFechaDeInicio(Long id, LocalDate inicio) {
         MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
 
-        if(medicamentoParaActualizar.getFin() != null && inicio.isAfter(medicamentoParaActualizar.getFin())){
-            throw new DatoIncorrectoException("La fecha de inicio no puede ser posterior a la fecha de final");
-        }
+        verificador.esAnterior(inicio,medicamentoParaActualizar.getFin());
 
         medicamentoParaActualizar.setInicio(inicio);
 
@@ -165,9 +163,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     public MedicamentoPacienteDto modificarFechaDeFinal(Long id, LocalDate fin) {
         MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
 
-        if(fin.isBefore(medicamentoParaActualizar.getInicio())){
-            throw new DatoIncorrectoException("La fecha de final no puede ser anterior a la fecha de inicio");
-        }
+        verificador.esAnterior(medicamentoParaActualizar.getInicio(),fin);
 
         medicamentoParaActualizar.setFin(fin);
 

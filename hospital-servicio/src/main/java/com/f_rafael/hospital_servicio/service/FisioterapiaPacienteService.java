@@ -124,9 +124,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
     public FisioterapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
         FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
 
-        if(tratamientoParaActualizar.getFin() != null && tratamientoParaActualizar.getFin().isBefore(inicio)){
-            throw new DatoIncorrectoException("La fecha de inicio debe ser anterior a la fecha de final");
-        }
+        verificador.esAnterior(inicio,tratamientoParaActualizar.getFin());
 
         tratamientoParaActualizar.setInicio(inicio);
 
@@ -137,10 +135,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
     public FisioterapiaPacienteDto modificareFechaDeFinal(Long id, LocalDate fin) {
         FisioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
 
-        if(tratamientoParaActualizar.getInicio().isAfter(fin)){
-            throw new DatoIncorrectoException("La fecha de final no piuede ser anterior a la fecha de inicio");
-        }
-
+        verificador.esAnterior(tratamientoParaActualizar.getInicio(), fin);
         tratamientoParaActualizar.setFin(fin);
 
         return this.actualizar(tratamientoParaActualizar);
