@@ -3,6 +3,7 @@ package com.f_rafael.hospital_servicio.service;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
+import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.IRolEmpleadoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,28 @@ public class RolEmpleadoService implements IRolEmpleadoService{
     @Override
     public List<RolEmpleado> buscarPorSector(String sector) {
         return repository.buscarPorSector(sector);
+    }
+
+    @Override
+    public RolEmpleado modificarNombre(Long id, String nombre) {
+        RolEmpleado rolParaActualizar = devoleverPorId(id);
+        rolParaActualizar.setNombre(nombre);
+
+        return this.actualizar(rolParaActualizar);
+    }
+
+    @Override
+    public RolEmpleado modificarSector(Long id, Long sectorId) {
+        RolEmpleado rolParaActualizar = devoleverPorId(id);
+        Sector sectorParaAsignar = new Sector();
+
+        sectorParaAsignar.setId(sectorId);
+        rolParaActualizar.setSector(sectorParaAsignar);
+
+        return this.actualizar(rolParaActualizar);
+    }
+
+    public RolEmpleado devoleverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Rol no encontrado"));
     }
 }

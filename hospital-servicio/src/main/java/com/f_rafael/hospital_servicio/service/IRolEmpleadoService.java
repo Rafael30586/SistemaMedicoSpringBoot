@@ -12,4 +12,6 @@ public interface IRolEmpleadoService {
     public void borrarPorId(Long id);
     public RolEmpleado buscarPorNombre(String nombre);
     public List<RolEmpleado> buscarPorSector(String sector);
+    public RolEmpleado modificarNombre(Long id, String nombre);
+    public RolEmpleado modificarSector(Long id, Long sectorId);
 }
