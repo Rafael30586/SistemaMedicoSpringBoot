@@ -17,7 +17,7 @@ public class SectorService implements ISectorService{
 
     @Override
     public Sector buscarPorId(Long id) {
-        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sector no encontrado"));
+        return devolverPorId(id);
     }
 
     @Override
@@ -57,5 +57,17 @@ public class SectorService implements ISectorService{
     @Override
     public Sector buscarPorNombre(String nombre) {
         return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Sector no encontrado"));
+    }
+
+    @Override
+    public Sector modificarNombre(Long id, String nombre) {
+        Sector sectorParaActualizar = devolverPorId(id);
+        sectorParaActualizar.setNombre(nombre);
+
+        return this.actualizar(sectorParaActualizar);
+    }
+
+    public Sector devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sector no encontrado"));
     }
 }

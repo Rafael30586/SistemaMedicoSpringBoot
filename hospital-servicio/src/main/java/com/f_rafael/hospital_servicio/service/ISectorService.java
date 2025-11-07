@@ -11,4 +11,5 @@ public interface ISectorService {
     public Sector actualizar(Sector sector);
     public void borrarPorId(Long id);
     public Sector buscarPorNombre(String nombre);
+    public Sector modificarNombre(Long id, String nombre);
 }
