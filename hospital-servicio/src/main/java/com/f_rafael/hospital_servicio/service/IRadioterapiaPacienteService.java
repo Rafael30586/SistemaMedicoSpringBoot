@@ -16,4 +16,7 @@ public interface IRadioterapiaPacienteService {
     public List<RadioTerapiaPacienteDto> buscarPorPaciente(Long idODni, String opcion);
     public List<RadioTerapiaPacienteDto> buscarPorFechaInicio(LocalDate desde, LocalDate hasta);
     public List<RadioTerapiaPacienteDto> buscarPorFechaFinal(LocalDate desde, LocalDate hasta);
+    public RadioTerapiaPacienteDto modificarPaciente(Long id, Long pacienteIdODni, String opcion);
+    public RadioTerapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio);
+    public RadioTerapiaPacienteDto modificarFechaDeFinal(Long id, LocalDate fin);
 }

@@ -97,4 +97,45 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
     public List<RadioTerapiaPacienteDto> buscarPorFechaFinal(LocalDate desde, LocalDate hasta) {
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
+
+    @Override
+    public RadioTerapiaPacienteDto modificarPaciente(Long id, Long pacienteIdODni, String opcion) {
+        RadioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esIdODni(opcion);
+
+        if(opcion.equals("id")){
+            tratamientoParaActualizar.setPacienteId(pacienteIdODni);
+        }
+
+        if(opcion.equals("dni")){
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(pacienteIdODni).getId());
+        }
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public RadioTerapiaPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
+        RadioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esAnterior(inicio, tratamientoParaActualizar.getFin());
+        tratamientoParaActualizar.setInicio(inicio);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public RadioTerapiaPacienteDto modificarFechaDeFinal(Long id, LocalDate fin) {
+        RadioterapiaPaciente tratamientoParaActualizar = devolverPorId(id);
+
+        verificador.esAnterior(tratamientoParaActualizar.getInicio(), fin);
+        tratamientoParaActualizar.setFin(fin);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    public RadioterapiaPaciente devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento no encontrado"));
+    }
 }
