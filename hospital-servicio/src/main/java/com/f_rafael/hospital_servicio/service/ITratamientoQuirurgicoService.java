@@ -12,4 +12,6 @@ public interface ITratamientoQuirurgicoService {
     public void borrarPorId(Long id);
     public TratamientoQuirurgico buscarPorNombre(String nombre);
     public List<TratamientoQuirurgico> buscarPorDescripcion(String secuencia);
+    public TratamientoQuirurgico modificarNombre(Long id, String nombre);
+    public TratamientoQuirurgico modificarDescripcion(Long id, String descripcion);
 }

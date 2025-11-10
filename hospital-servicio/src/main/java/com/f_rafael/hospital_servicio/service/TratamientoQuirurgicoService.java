@@ -64,4 +64,24 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
     public List<TratamientoQuirurgico> buscarPorDescripcion(String secuencia) {
         return repository.findAllByDescripcionContaining(secuencia);
     }
+
+    @Override
+    public TratamientoQuirurgico modificarNombre(Long id, String nombre) {
+        TratamientoQuirurgico tratamientoParaActualizar = devolverPorId(id);
+        tratamientoParaActualizar.setNombre(nombre);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    @Override
+    public TratamientoQuirurgico modificarDescripcion(Long id, String descripcion) {
+        TratamientoQuirurgico tratamientoParaActualizar = devolverPorId(id);
+        tratamientoParaActualizar.setDescripcion(descripcion);
+
+        return this.actualizar(tratamientoParaActualizar);
+    }
+
+    public TratamientoQuirurgico devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento quirúrgico no encontrado"));
+    }
 }
