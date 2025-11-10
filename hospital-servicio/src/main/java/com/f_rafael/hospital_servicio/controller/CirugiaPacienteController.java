@@ -58,7 +58,8 @@ public class CirugiaPacienteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        return new ResponseEntity<>("Cirugía en pa ciente borrada", HttpStatusCode.valueOf(204));
+        service.borrarPorId(id);
+        return new ResponseEntity<>("Cirugía en paciente borrada", HttpStatusCode.valueOf(204));
     }
 
     @PatchMapping("/{id}")
