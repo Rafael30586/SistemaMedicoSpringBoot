@@ -60,4 +60,16 @@ public class SintomaService implements ISintomaService{
     public SintomaDto buscarPorNombre(String nombre) {
         return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Síntoma no encontrado")));
     }
+
+    @Override
+    public SintomaDto modificarNombre(Long id,String nombre) {
+        Sintoma sintomaParaActualizar = devolverPorId(id);
+        sintomaParaActualizar.setNombre(nombre);
+
+        return this.actualizar(sintomaParaActualizar);
+    }
+
+    public Sintoma devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Síntoma no encontrado"));
+    }
 }
