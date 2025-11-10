@@ -35,7 +35,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     }
 
     @Override
-    public List<CirugiaPacienteDto> buscarTodos() {
+    public List<CirugiaPacienteDto> buscarTodas() {
         return mapper.obtenerListaDto(repository.findAll());
     }
 
