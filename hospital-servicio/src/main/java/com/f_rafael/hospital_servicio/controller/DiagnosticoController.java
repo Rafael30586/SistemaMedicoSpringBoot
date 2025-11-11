@@ -40,7 +40,7 @@ public class DiagnosticoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
-        return ResponseEntity.ok("El diagnóstico se ha borrado");
+        return new ResponseEntity("El diagnóstico se ha borrado",HttpStatusCode.valueOf(204));
     }
 
     @GetMapping
