@@ -31,7 +31,7 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
     }
 
     @Override
-    public List<PsicoterapiaPacienteDto> buscarTodas() {
+    public List<PsicoterapiaPacienteDto> buscarTodos() {
         return mapper.obtenerListaDto(repository.findAll());
     }
 
