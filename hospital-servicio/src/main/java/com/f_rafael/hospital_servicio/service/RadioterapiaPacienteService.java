@@ -31,7 +31,7 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
     }
 
     @Override
-    public List<RadioTerapiaPacienteDto> buscarTodas() {
+    public List<RadioTerapiaPacienteDto> buscarTodos() {
         return mapper.obtenerListaDto(repository.findAll());
     }
 

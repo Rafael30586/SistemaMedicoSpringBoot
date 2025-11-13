@@ -9,7 +9,7 @@ import java.util.List;
 public interface IRadioterapiaPacienteService {
 
     public RadioTerapiaPacienteDto buscarPorId(Long id);
-    public List<RadioTerapiaPacienteDto> buscarTodas();
+    public List<RadioTerapiaPacienteDto> buscarTodos();
     public RadioTerapiaPacienteDto guardar(RadioterapiaPaciente radioTerapiaPaciente);
     public RadioTerapiaPacienteDto actualizar(RadioterapiaPaciente radioTerapiaPaciente);
     public void borrarPorId(Long id);
