@@ -4,6 +4,7 @@ import com.f_rafael.hospital_servicio.dto.SintomaDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.SintomaMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Sintoma;
 import com.f_rafael.hospital_servicio.repository.ISintomaRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ public class SintomaService implements ISintomaService{
 
     private ISintomaRepository repository;
     private SintomaMapper mapper;
+    private StringMapper stringMapper;
 
     @Override
     public SintomaDto buscarPorId(Long id) {
@@ -58,13 +60,16 @@ public class SintomaService implements ISintomaService{
 
     @Override
     public SintomaDto buscarPorNombre(String nombre) {
-        return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Síntoma no encontrado")));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return mapper.obtenerDto(repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Síntoma no encontrado")));
     }
 
     @Override
     public SintomaDto modificarNombre(Long id,String nombre) {
         Sintoma sintomaParaActualizar = devolverPorId(id);
-        sintomaParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        sintomaParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(sintomaParaActualizar);
     }

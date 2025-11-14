@@ -4,6 +4,7 @@ import com.f_rafael.hospital_servicio.dto.DiagnosticoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.DiagnosticoMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.model.Sintoma;
@@ -20,8 +21,8 @@ import java.util.Set;
 public class DiagnosticoService implements IDiagnosticoService{
 
     private DiagnosticoMapper mapper;
-
     private IDiagnosticoRepository repository;
+    private StringMapper stringMapper;
     @Override
     public DiagnosticoDto buscarPorId(Long id) {
         return mapper.obtenerDto(devolverPorId(id));
@@ -64,13 +65,16 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto buscarPorNombre(String nombre) {
-        return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado")));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return mapper.obtenerDto(repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Diagnóstico no encontrado")));
     }
 
     @Override
     public DiagnosticoDto modificarNombre(Long id, String nuevoNombre) {
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nuevoNombre);
         Diagnostico diagnosticoParaActualizar = devolverPorId(id);
-        diagnosticoParaActualizar.setNombre(nuevoNombre);
+
+        diagnosticoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(diagnosticoParaActualizar);
     }

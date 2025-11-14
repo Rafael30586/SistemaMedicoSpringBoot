@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoClasificacionRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class EstudioMedicoClasificacionService implements IEstudioMedicoClasificacionService{
 
     private IEstudioMedicoClasificacionRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public EstudioMedicoClasificacion buscarPorId(Long id) {
@@ -57,13 +59,16 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
 
     @Override
     public EstudioMedicoClasificacion buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Clasificación de estudio médico no encontrada"));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Clasificación de estudio médico no encontrada"));
     }
 
     @Override
     public EstudioMedicoClasificacion modificarNombre(Long id, String nombre) {
         EstudioMedicoClasificacion clasificacionParaActualizar = devolverPorId(id);
-        clasificacionParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        clasificacionParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(clasificacionParaActualizar);
     }

@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.EstudioMedico;
 import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoRepository;
@@ -15,6 +16,7 @@ import java.util.List;
 public class EstudioMedicoService implements IEstudioMedicoService{
 
     private IEstudioMedicoRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public EstudioMedico buscarPorId(Long id) {
@@ -57,18 +59,22 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     @Override
     public EstudioMedico buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("El estudio médico no ha sido encontrado"));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("El estudio médico no ha sido encontrado"));
     }
 
     @Override
     public List<EstudioMedico> buscarPorClasificacion(String clasificacion) {
-        return repository.buscarPorClasificacion(clasificacion);
+        String clasificacionSinGuiones = stringMapper.quitarGuionesBajos(clasificacion);
+        return repository.buscarPorClasificacion(clasificacionSinGuiones);
     }
 
     @Override
     public EstudioMedico modificarNombre(Long id, String nombre) {
         EstudioMedico estudioParaActualizar = devolverPorId(id);
-        estudioParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        estudioParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(estudioParaActualizar);
     }

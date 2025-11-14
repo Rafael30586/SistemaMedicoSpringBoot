@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.TratamientoQuirurgico;
 import com.f_rafael.hospital_servicio.repository.ITratamientoQuirurgicoRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoService{
 
     private ITratamientoQuirurgicoRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public TratamientoQuirurgico buscarPorId(Long id) {
@@ -57,7 +59,8 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
 
     @Override
     public TratamientoQuirurgico buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento quirúrgico no encontrado"));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento quirúrgico no encontrado"));
     }
 
     @Override
@@ -68,7 +71,9 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
     @Override
     public TratamientoQuirurgico modificarNombre(Long id, String nombre) {
         TratamientoQuirurgico tratamientoParaActualizar = devolverPorId(id);
-        tratamientoParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        tratamientoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(tratamientoParaActualizar);
     }

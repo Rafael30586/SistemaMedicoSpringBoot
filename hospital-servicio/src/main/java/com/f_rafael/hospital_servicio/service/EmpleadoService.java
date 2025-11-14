@@ -4,6 +4,7 @@ import com.f_rafael.hospital_servicio.dto.EmpleadoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.EmpleadoMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Empleado;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.repository.IEmpleadoRepository;
@@ -19,6 +20,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     private IEmpleadoRepository repository;
     private EmpleadoMapper mapper;
+    private StringMapper stringMapper;
 
     @Override
     public EmpleadoDto buscarPorId(Long id) {
@@ -71,7 +73,8 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public List<EmpleadoDto> buscarPorApellido(String apellido) {
-        return mapper.obtenerListaDto(repository.buscarPorApellido(apellido));
+        String apellidoSinGuiones = stringMapper.quitarGuionesBajos(apellido);
+        return mapper.obtenerListaDto(repository.buscarPorApellido(apellidoSinGuiones));
     }
 
     @Override
@@ -121,7 +124,9 @@ public class EmpleadoService implements IEmpleadoService{
     @Override
     public EmpleadoDto modificarApellidoPaterno(Long id, String apellido) {
         Empleado empleadoAModificar = devolverPorId(id);
-        empleadoAModificar.setApellidoPaterno(apellido);
+        String apellidoSinGuiones = stringMapper.quitarGuionesBajos(apellido);
+
+        empleadoAModificar.setApellidoPaterno(apellidoSinGuiones);
 
         return this.actualizar(empleadoAModificar);
     }
@@ -129,7 +134,9 @@ public class EmpleadoService implements IEmpleadoService{
     @Override
     public EmpleadoDto modificarApellidoMaterno(Long id, String apellido) {
         Empleado empleadoAModificar = devolverPorId(id);
-        empleadoAModificar.setApellidoMaterno(apellido);
+        String apellidoSinGuiones = stringMapper.quitarGuionesBajos(apellido);
+
+        empleadoAModificar.setApellidoMaterno(apellidoSinGuiones);
 
         return this.actualizar(empleadoAModificar);
     }

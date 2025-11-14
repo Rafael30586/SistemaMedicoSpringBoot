@@ -5,6 +5,7 @@ import com.f_rafael.hospital_servicio.dto.UnidadDeMedidaDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.SignoMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.repository.ISignoRepository;
 import com.f_rafael.hospital_servicio.repository.IUnidadDeMedidaClient;
@@ -23,6 +24,7 @@ public class SignoService implements ISignoService{
     private SignoMapper mapper;
     private IUnidadDeMedidaClient unidadDeMedidaClient;
     private Verificador verificador;
+    private StringMapper stringMapper;
 
     @Override
     public SignoDto buscarPorId(Long id) {
@@ -66,7 +68,8 @@ public class SignoService implements ISignoService{
 
     @Override
     public SignoDto buscarPorNombre(String nombre) {
-        return mapper.obtenerDto(repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Signo no encontrado")));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return mapper.obtenerDto(repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Signo no encontrado")));
     }
 
     @Override
@@ -92,7 +95,9 @@ public class SignoService implements ISignoService{
     @Override
     public SignoDto modificarNombre(Long id, String nombre) {
         Signo signoParaActualizar = devolverPorId(id);
-        signoParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        signoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(signoParaActualizar);
     }

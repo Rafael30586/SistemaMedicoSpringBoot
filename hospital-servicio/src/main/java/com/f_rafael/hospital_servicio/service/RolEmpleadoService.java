@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.IRolEmpleadoRepository;
@@ -15,6 +16,7 @@ import java.util.List;
 public class RolEmpleadoService implements IRolEmpleadoService{
 
     private IRolEmpleadoRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public RolEmpleado buscarPorId(Long id) {
@@ -57,18 +59,22 @@ public class RolEmpleadoService implements IRolEmpleadoService{
 
     @Override
     public RolEmpleado buscarPorNombre(String nombre) {
-        return repository.findByNombre(nombre).orElseThrow(()-> new EntidadNoEncontradaException("Rol de empleado no encontrado"));
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        return repository.findByNombre(nombreSinGuiones).orElseThrow(()-> new EntidadNoEncontradaException("Rol de empleado no encontrado"));
     }
 
     @Override
     public List<RolEmpleado> buscarPorSector(String sector) {
-        return repository.buscarPorSector(sector);
+        String sectorSinGuiones = stringMapper.quitarGuionesBajos(sector);
+        return repository.buscarPorSector(sectorSinGuiones);
     }
 
     @Override
     public RolEmpleado modificarNombre(Long id, String nombre) {
         RolEmpleado rolParaActualizar = devoleverPorId(id);
-        rolParaActualizar.setNombre(nombre);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        rolParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(rolParaActualizar);
     }
