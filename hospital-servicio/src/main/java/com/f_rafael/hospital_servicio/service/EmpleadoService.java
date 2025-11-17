@@ -8,6 +8,7 @@ import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Empleado;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.repository.IEmpleadoRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class EmpleadoService implements IEmpleadoService{
     private IEmpleadoRepository repository;
     private EmpleadoMapper mapper;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public EmpleadoDto buscarPorId(Long id) {
@@ -38,6 +40,8 @@ public class EmpleadoService implements IEmpleadoService{
         if(empleado.getDni() == null || empleado.getPrimerNombre() == null || empleado.getRol() == null){
             throw new CampoNuloException("Algunos campos de la entidad Empleado no pueden ser nulos");
         }
+
+        verificador.esEmail(empleado.getEmail());
 
         return mapper.obtenerDto(repository.save(empleado));
     }
@@ -79,6 +83,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto buscarPorEmail(String email) {
+        verificador.esEmail(email);
         return mapper.obtenerDto(repository.findByEmail(email).orElseThrow(()-> new EntidadNoEncontradaException("Empleado no encontrado")));
     }
 
@@ -144,6 +149,8 @@ public class EmpleadoService implements IEmpleadoService{
     @Override
     public EmpleadoDto modificarEmail(Long id, String email) {
         Empleado empleadoAModificar = devolverPorId(id);
+
+        verificador.esEmail(email);
         empleadoAModificar.setEmail(email);
 
         return this.actualizar(empleadoAModificar);

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class Verificador {
@@ -24,5 +26,12 @@ public class Verificador {
 
     public void esMenor(Double minimo, Double maximo){
         if(minimo > maximo) throw new DatoIncorrectoException("El valor mínimo no puede ser mayor que el máximo");
+    }
+
+    public void esEmail(String cadena){
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\n");
+        Matcher matcher = pattern.matcher(cadena);
+
+        if(!matcher.matches()) throw new DatoIncorrectoException("La dirección de email tiene un formato incorrecto");
     }
 }
