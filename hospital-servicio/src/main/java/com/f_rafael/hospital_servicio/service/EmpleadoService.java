@@ -36,14 +36,26 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public EmpleadoDto guardar(Empleado empleado) {
+        String primerNombre = empleado.getPrimerNombre();
+        String segundoNombre = empleado.getSegundoNombre();
+        String apellidoPaterno = empleado.getApellidoPaterno();
+        String apellidoMaterno = empleado.getApellidoMaterno();
 
-        if(empleado.getDni() == null || empleado.getPrimerNombre() == null || empleado.getRol() == null){
+        if(empleado.getDni() == null || primerNombre == null || empleado.getRol() == null){
             throw new CampoNuloException("Algunos campos de la entidad Empleado no pueden ser nulos");
         }
 
         verificador.esEmail(empleado.getEmail());
-        verificador.tieneEspaciosVacios(empleado.getPrimerNombre());
-        verificador.tieneEspaciosVacios(empleado.getSegundoNombre());
+        verificador.tieneEspaciosVacios(primerNombre);
+        verificador.tieneEspaciosVacios(segundoNombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(primerNombre);
+        verificador.tieneEspaciosVacios(primerNombre);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(segundoNombre);
+        verificador.tieneEspaciosVacios(segundoNombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoPaterno);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
 
         Set<String> telefonos = empleado.getTelefonos();
 
@@ -121,6 +133,10 @@ public class EmpleadoService implements IEmpleadoService{
     @Override
     public EmpleadoDto modificarPrimerNombre(Long id, String nombre) {
         Empleado empleadoAModificar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+        verificador.tieneEspaciosVacios(nombre);
+
         empleadoAModificar.setPrimerNombre(nombre);
 
         return this.actualizar(empleadoAModificar);
@@ -129,6 +145,10 @@ public class EmpleadoService implements IEmpleadoService{
     @Override
     public EmpleadoDto modificarSegundoNombre(Long id, String nombre) {
         Empleado empleadoAModificar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+        verificador.tieneEspaciosVacios(nombre);
+
         empleadoAModificar.setSegundoNombre(nombre);
 
         return this.actualizar(empleadoAModificar);
@@ -139,6 +159,7 @@ public class EmpleadoService implements IEmpleadoService{
         Empleado empleadoAModificar = devolverPorId(id);
         String apellidoSinGuiones = stringMapper.quitarGuionesBajos(apellido);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellido);
         empleadoAModificar.setApellidoPaterno(apellidoSinGuiones);
 
         return this.actualizar(empleadoAModificar);
@@ -149,6 +170,7 @@ public class EmpleadoService implements IEmpleadoService{
         Empleado empleadoAModificar = devolverPorId(id);
         String apellidoSinGuiones = stringMapper.quitarGuionesBajos(apellido);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellido);
         empleadoAModificar.setApellidoMaterno(apellidoSinGuiones);
 
         return this.actualizar(empleadoAModificar);

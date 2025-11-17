@@ -7,6 +7,7 @@ import com.f_rafael.hospital_servicio.mapper.SintomaMapper;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Sintoma;
 import com.f_rafael.hospital_servicio.repository.ISintomaRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ public class SintomaService implements ISintomaService{
     private ISintomaRepository repository;
     private SintomaMapper mapper;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public SintomaDto buscarPorId(Long id) {
@@ -32,10 +34,14 @@ public class SintomaService implements ISintomaService{
 
     @Override
     public SintomaDto guardar(Sintoma sintoma) {
+        String nombreSintoma = sintoma.getNombre();
 
-        if(sintoma.getNombre() == null){
+        if(nombreSintoma == null){
             throw new CampoNuloException("El síntoma debe tener un nombre");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSintoma);
+
         return mapper.obtenerDto(repository.save(sintoma));
     }
 
@@ -69,6 +75,7 @@ public class SintomaService implements ISintomaService{
         Sintoma sintomaParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         sintomaParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(sintomaParaActualizar);

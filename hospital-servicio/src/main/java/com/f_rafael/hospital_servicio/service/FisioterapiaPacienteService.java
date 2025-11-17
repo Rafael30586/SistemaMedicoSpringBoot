@@ -44,6 +44,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
         if(fisioterapiaPaciente.getPacienteId() == null || fisioterapiaPaciente.getInicio() == null){
             throw new CampoNuloException("Algunos campos de fisioterapia para paciente no pueden ser nulos");
         }
+
         return mapper.obtenerDto(repository.save(fisioterapiaPaciente));
     }
 

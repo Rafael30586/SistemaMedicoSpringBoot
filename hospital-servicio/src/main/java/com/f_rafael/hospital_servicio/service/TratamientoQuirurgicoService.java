@@ -5,6 +5,7 @@ import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.TratamientoQuirurgico;
 import com.f_rafael.hospital_servicio.repository.ITratamientoQuirurgicoRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
 
     private ITratamientoQuirurgicoRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public TratamientoQuirurgico buscarPorId(Long id) {
@@ -29,10 +31,13 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
 
     @Override
     public TratamientoQuirurgico guardar(TratamientoQuirurgico tratamientoQuirurgico) {
+        String nombreCirugia = tratamientoQuirurgico.getNombre();
 
-        if(tratamientoQuirurgico.getNombre() == null){
+        if(nombreCirugia == null){
             throw new CampoNuloException("El tratamiento quirúrgico debe tener un nombre");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreCirugia);
 
         return repository.save(tratamientoQuirurgico);
     }
@@ -73,6 +78,7 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
         TratamientoQuirurgico tratamientoParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         tratamientoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(tratamientoParaActualizar);

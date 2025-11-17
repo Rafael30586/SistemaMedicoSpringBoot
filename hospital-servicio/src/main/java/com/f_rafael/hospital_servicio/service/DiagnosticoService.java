@@ -9,6 +9,7 @@ import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.model.Sintoma;
 import com.f_rafael.hospital_servicio.repository.IDiagnosticoRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,8 @@ public class DiagnosticoService implements IDiagnosticoService{
     private DiagnosticoMapper mapper;
     private IDiagnosticoRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
+
     @Override
     public DiagnosticoDto buscarPorId(Long id) {
         return mapper.obtenerDto(devolverPorId(id));
@@ -36,9 +39,13 @@ public class DiagnosticoService implements IDiagnosticoService{
     @Override
     public DiagnosticoDto guardar(Diagnostico diagnostico) {
 
-        if(diagnostico.getNombre() == null){
+        String nombreDiagnostico = diagnostico.getNombre();
+
+        if(nombreDiagnostico == null){
             throw new CampoNuloException("El nombre del diagnóstico no puede ser nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreDiagnostico);
 
         return mapper.obtenerDto(repository.save(diagnostico));
     }
@@ -72,8 +79,9 @@ public class DiagnosticoService implements IDiagnosticoService{
     @Override
     public DiagnosticoDto modificarNombre(Long id, String nuevoNombre) {
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nuevoNombre);
-        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
+        Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         diagnosticoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(diagnosticoParaActualizar);
@@ -118,7 +126,7 @@ public class DiagnosticoService implements IDiagnosticoService{
     public DiagnosticoDto agregarSigno(Long id, Long signoId) {
         Diagnostico diagnosticoParaActualizar = devolverPorId(id);
         Set<Signo> signosParaAsignar = diagnosticoParaActualizar.getSignos();
-        Signo signoParaAgregar= new Signo();
+        Signo signoParaAgregar = new Signo();
 
         signoParaAgregar.setId(signoId);
         signosParaAsignar.add(signoParaAgregar);

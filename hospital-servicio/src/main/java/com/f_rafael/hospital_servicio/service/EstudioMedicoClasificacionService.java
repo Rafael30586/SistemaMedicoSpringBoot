@@ -5,6 +5,7 @@ import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoClasificacionRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
 
     private IEstudioMedicoClasificacionRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public EstudioMedicoClasificacion buscarPorId(Long id) {
@@ -29,10 +31,13 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
 
     @Override
     public EstudioMedicoClasificacion guardar(EstudioMedicoClasificacion clasificacion) {
+        String nombreClasificacion = clasificacion.getNombre();
 
-        if(clasificacion.getNombre() == null){
+        if(nombreClasificacion == null){
             throw new CampoNuloException("La clasificación de estudio médico debe tener nombre");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreClasificacion);
 
         return repository.save(clasificacion);
     }
@@ -68,6 +73,7 @@ public class EstudioMedicoClasificacionService implements IEstudioMedicoClasific
         EstudioMedicoClasificacion clasificacionParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         clasificacionParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(clasificacionParaActualizar);

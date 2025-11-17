@@ -6,6 +6,7 @@ import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.IRolEmpleadoRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class RolEmpleadoService implements IRolEmpleadoService{
 
     private IRolEmpleadoRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public RolEmpleado buscarPorId(Long id) {
@@ -30,9 +32,13 @@ public class RolEmpleadoService implements IRolEmpleadoService{
 
     @Override
     public RolEmpleado guardar(RolEmpleado rolEmpleado) {
-        if(rolEmpleado.getNombre() == null || rolEmpleado.getSector() == null){
+        String nombreRol = rolEmpleado.getNombre();
+
+        if(nombreRol == null || rolEmpleado.getSector() == null){
             throw new CampoNuloException("Algunos campos de rol de empleado no pueden ser nulos");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreRol);
 
         return repository.save(rolEmpleado);
     }
@@ -74,6 +80,7 @@ public class RolEmpleadoService implements IRolEmpleadoService{
         RolEmpleado rolParaActualizar = devoleverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         rolParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(rolParaActualizar);

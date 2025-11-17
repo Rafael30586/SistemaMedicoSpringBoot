@@ -49,7 +49,6 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
         if(cirugiaPaciente.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo durante una actualización");
-
         }
         return this.guardar(cirugiaPaciente);
     }

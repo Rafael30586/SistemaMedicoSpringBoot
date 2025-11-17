@@ -38,10 +38,13 @@ public class SignoService implements ISignoService{
 
     @Override
     public SignoDto guardar(Signo signo) {
+        String nombreSigno = signo.getNombre();
 
-        if(signo.getNombre() == null || (signo.getValorMinimo() == null && signo.getValorMaximo() == null)){
+        if(nombreSigno == null || (signo.getValorMinimo() == null && signo.getValorMaximo() == null)){
             throw new CampoNuloException("Algunos campos de signo no pueden ser nulos");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSigno);
 
         return mapper.obtenerDto(repository.save(signo));
     }
@@ -97,6 +100,7 @@ public class SignoService implements ISignoService{
         Signo signoParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         signoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(signoParaActualizar);

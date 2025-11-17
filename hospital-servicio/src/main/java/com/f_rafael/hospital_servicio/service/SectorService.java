@@ -5,6 +5,7 @@ import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.ISectorRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class SectorService implements ISectorService{
 
     private ISectorRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public Sector buscarPorId(Long id) {
@@ -29,10 +31,13 @@ public class SectorService implements ISectorService{
 
     @Override
     public Sector guardar(Sector sector) {
+        String nombreSector = sector.getNombre();
 
-        if(sector.getNombre() == null){
+        if(nombreSector == null){
             throw new CampoNuloException("El nombre del sector no puede ser nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSector);
 
         return repository.save(sector);
     }
@@ -67,6 +72,7 @@ public class SectorService implements ISectorService{
         Sector sectorParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         sectorParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(sectorParaActualizar);

@@ -6,6 +6,7 @@ import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.EstudioMedico;
 import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoRepository;
+import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     private IEstudioMedicoRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public EstudioMedico buscarPorId(Long id) {
@@ -30,10 +32,13 @@ public class EstudioMedicoService implements IEstudioMedicoService{
 
     @Override
     public EstudioMedico guardar(EstudioMedico estudioMedico) {
+        String nombreEstudioMedico = estudioMedico.getNombre();
 
-        if(estudioMedico.getNombre() == null){
+        if(nombreEstudioMedico == null){
             throw new CampoNuloException("El estudio médico debe tener un nombre");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreEstudioMedico);
 
         return repository.save(estudioMedico);
     }
@@ -74,6 +79,7 @@ public class EstudioMedicoService implements IEstudioMedicoService{
         EstudioMedico estudioParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
         estudioParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(estudioParaActualizar);
