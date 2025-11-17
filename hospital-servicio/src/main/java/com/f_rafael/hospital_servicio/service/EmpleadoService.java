@@ -48,7 +48,7 @@ public class EmpleadoService implements IEmpleadoService{
         Set<String> telefonos = empleado.getTelefonos();
 
         for(String t : telefonos){
-            verificador.tieneEspaciosVacios(t);
+            verificador.esNumeroTelefonico(t);
         }
 
         return mapper.obtenerDto(repository.save(empleado));
@@ -177,6 +177,8 @@ public class EmpleadoService implements IEmpleadoService{
         Empleado empleadoAModificar = devolverPorId(id);
         Set<String> telefonosParaAsignar = empleadoAModificar.getTelefonos();
 
+        verificador.esNumeroTelefonico(telefono);
+
         telefonosParaAsignar.add(telefono);
         empleadoAModificar.setTelefonos(telefonosParaAsignar);
 
@@ -187,6 +189,8 @@ public class EmpleadoService implements IEmpleadoService{
     public EmpleadoDto quitarTelefono(Long id, String telefono) {
         Empleado empleadoAModificar = devolverPorId(id);
         Set<String> telefonosParaAsignar = empleadoAModificar.getTelefonos();
+
+        verificador.esNumeroTelefonico(telefono);
 
         if(!telefonosParaAsignar.contains(telefono)){
             throw new EntidadNoEncontradaException("El número telefónico no está dentro de la lista");

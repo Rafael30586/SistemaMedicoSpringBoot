@@ -38,4 +38,12 @@ public class Verificador {
     public void tieneEspaciosVacios(String cadena){
         if(cadena.contains(" ")) throw new DatoIncorrectoException("LA cadena de caracteres no debe tener espacios vacíos");
     }
+
+    public void esNumeroTelefonico(String cadena){
+        Pattern pattern = Pattern.compile("^\\\\d+(?:-\\\\d+)*$\n");
+        Matcher matcher = pattern.matcher(cadena);
+
+        if(!matcher.matches()) throw new DatoIncorrectoException("La cadena de texto  no es un númro telefónico válido");
+        tieneEspaciosVacios(cadena);
+    }
 }
