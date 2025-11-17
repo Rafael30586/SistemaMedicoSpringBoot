@@ -42,6 +42,14 @@ public class EmpleadoService implements IEmpleadoService{
         }
 
         verificador.esEmail(empleado.getEmail());
+        verificador.tieneEspaciosVacios(empleado.getPrimerNombre());
+        verificador.tieneEspaciosVacios(empleado.getSegundoNombre());
+
+        Set<String> telefonos = empleado.getTelefonos();
+
+        for(String t : telefonos){
+            verificador.tieneEspaciosVacios(t);
+        }
 
         return mapper.obtenerDto(repository.save(empleado));
     }

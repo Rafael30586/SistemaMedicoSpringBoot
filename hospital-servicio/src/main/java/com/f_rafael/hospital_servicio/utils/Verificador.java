@@ -34,4 +34,8 @@ public class Verificador {
 
         if(!matcher.matches()) throw new DatoIncorrectoException("La dirección de email tiene un formato incorrecto");
     }
+
+    public void tieneEspaciosVacios(String cadena){
+        if(cadena.contains(" ")) throw new DatoIncorrectoException("LA cadena de caracteres no debe tener espacios vacíos");
+    }
 }
