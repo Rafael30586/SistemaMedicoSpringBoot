@@ -112,7 +112,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     }
 
     @Override
-    public List<MedicamentoPacienteDto> BuscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
+    public List<MedicamentoPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
 
@@ -149,7 +149,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     }
 
     @Override
-    public MedicamentoPacienteDto mdoficarFechaDeInicio(Long id, LocalDate inicio) {
+    public MedicamentoPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio) {
         MedicamentoPaciente medicamentoParaActualizar = devolverPorId(id);
 
         verificador.esAnterior(inicio,medicamentoParaActualizar.getFin());

@@ -20,6 +20,6 @@ public interface IMedicamentoPacienteService {
     public MedicamentoPacienteDto modificarPaciente(Long id, Long idODni, String opcion);
     public MedicamentoPacienteDto modificarMedicamento(Long id, Long medicamentoId);
     public MedicamentoPacienteDto modificarDosis(Long id, Long dosisId);
-    public MedicamentoPacienteDto moficarFechaDeInicio(Long id, LocalDate inicio);
+    public MedicamentoPacienteDto modificarFechaDeInicio(Long id, LocalDate inicio);
     public MedicamentoPacienteDto modificarFechaDeFinal(Long id, LocalDate fin);
 }
