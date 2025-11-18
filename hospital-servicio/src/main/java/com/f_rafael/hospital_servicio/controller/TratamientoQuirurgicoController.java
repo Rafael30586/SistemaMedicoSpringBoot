@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.controller;
 
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.model.TratamientoQuirurgico;
 import com.f_rafael.hospital_servicio.service.ITratamientoQuirurgicoService;
 import lombok.AllArgsConstructor;
@@ -60,7 +61,7 @@ public class TratamientoQuirurgicoController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<TratamientoQuirurgico> modificarDescripcion(@PathVariable Long id,
-                                                                      @RequestParam String descripcion){
+                                                                      @RequestBody TextoDto descripcion){
         return ResponseEntity.ok(service.modificarDescripcion(id, descripcion));
     }
 }

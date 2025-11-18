@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.service;
 
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.model.TratamientoQuirurgico;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface ITratamientoQuirurgicoService {
     public TratamientoQuirurgico buscarPorNombre(String nombre);
     public List<TratamientoQuirurgico> buscarPorDescripcion(String secuencia);
     public TratamientoQuirurgico modificarNombre(Long id, String nombre);
-    public TratamientoQuirurgico modificarDescripcion(Long id, String descripcion);
+    public TratamientoQuirurgico modificarDescripcion(Long id, TextoDto descripcion);
 }

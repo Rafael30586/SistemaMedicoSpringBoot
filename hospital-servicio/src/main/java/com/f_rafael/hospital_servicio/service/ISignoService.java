@@ -1,6 +1,7 @@
 package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.dto.SignoDto;
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.model.Signo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,6 @@ public interface ISignoService {
     public SignoDto modificarValorMinimo(Long id, Double valorMinimo);
     public SignoDto modificarValorMaximo(Long id, Double valorMaximo);
     public SignoDto modificarUnidad(Long id, Long unidadId);
-    public SignoDto modificarDescripcion(Long id, String descriopcion);
+    public SignoDto modificarDescripcion(Long id, TextoDto descripcion);
 
 }

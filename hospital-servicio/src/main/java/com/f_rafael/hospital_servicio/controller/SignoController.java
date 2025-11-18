@@ -1,6 +1,7 @@
 package com.f_rafael.hospital_servicio.controller;
 
 import com.f_rafael.hospital_servicio.dto.SignoDto;
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.service.ISignoService;
 import lombok.AllArgsConstructor;
@@ -84,7 +85,7 @@ public class SignoController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<SignoDto> modificarDescripcion(@PathVariable Long id,
-                                                         @RequestParam String descripcion){
+                                                         @RequestBody TextoDto descripcion){
         return ResponseEntity.ok(service.modificarDescripcion(id, descripcion));
     }
 }

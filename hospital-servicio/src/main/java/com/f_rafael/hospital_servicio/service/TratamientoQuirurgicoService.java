@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.service;
 
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
@@ -85,9 +86,9 @@ public class TratamientoQuirurgicoService implements ITratamientoQuirurgicoServi
     }
 
     @Override
-    public TratamientoQuirurgico modificarDescripcion(Long id, String descripcion) {
+    public TratamientoQuirurgico modificarDescripcion(Long id, TextoDto descripcion) {
         TratamientoQuirurgico tratamientoParaActualizar = devolverPorId(id);
-        tratamientoParaActualizar.setDescripcion(descripcion);
+        tratamientoParaActualizar.setDescripcion(descripcion.getTexto());
 
         return this.actualizar(tratamientoParaActualizar);
     }

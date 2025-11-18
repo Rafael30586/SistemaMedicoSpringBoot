@@ -1,6 +1,7 @@
 package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.dto.SignoDto;
+import com.f_rafael.hospital_servicio.dto.TextoDto;
 import com.f_rafael.hospital_servicio.dto.UnidadDeMedidaDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
@@ -135,9 +136,9 @@ public class SignoService implements ISignoService{
     }
 
     @Override
-    public SignoDto modificarDescripcion(Long id, String descripcion) {
+    public SignoDto modificarDescripcion(Long id, TextoDto descripcion) {
         Signo signoParaActualizar = devolverPorId(id);
-        signoParaActualizar.setDescripcion(descripcion);
+        signoParaActualizar.setDescripcion(descripcion.getTexto());
 
         return this.actualizar(signoParaActualizar);
     }
