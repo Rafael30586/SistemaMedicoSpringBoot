@@ -168,6 +168,8 @@ public class PacienteService implements IPacienteService{
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(primerNombre);
+
         Paciente pacienteAEditar = new Paciente();
 
         if(opcion.equals("id")){
@@ -188,6 +190,8 @@ public class PacienteService implements IPacienteService{
         if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(segundoNombre);
 
         Paciente pacienteAEditar = new Paciente();
 
@@ -210,6 +214,8 @@ public class PacienteService implements IPacienteService{
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoPaterno);
+
         Paciente pacienteAEditar = new Paciente();
 
         if(opcion.equals("id")){
@@ -229,6 +235,8 @@ public class PacienteService implements IPacienteService{
         if(!verificador.idODni(opcion)){
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
 
         Paciente pacienteAEditar = new Paciente();
 
