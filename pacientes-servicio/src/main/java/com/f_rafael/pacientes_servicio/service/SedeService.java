@@ -101,7 +101,7 @@ public class SedeService implements ISedeService{
         Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
         sedeParaActualizar.setDireccionId(direccionId);
 
-        return this.guardar(sedeParaActualizar);
+        return this.actualizar(sedeParaActualizar);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class SedeService implements ISedeService{
         telefonosParaAsignar.add(telefono);
         sedeParaActualizar.setTelefonos(telefonosParaAsignar);
 
-        return this.guardar(sedeParaActualizar);
+        return this.actualizar(sedeParaActualizar);
     }
 
     @Override
@@ -127,7 +127,7 @@ public class SedeService implements ISedeService{
         telefonosParaAsignar.remove(telefono);
         sedeParaActualizar.setTelefonos(telefonosParaAsignar);
 
-        return this.guardar(sedeParaActualizar);
+        return this.actualizar(sedeParaActualizar);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class SedeService implements ISedeService{
 
         sedeParaActualizar.setObraSocial(obraSocialParaAsignar);
 
-        return this.guardar(sedeParaActualizar);
+        return this.actualizar(sedeParaActualizar);
     }
 
 

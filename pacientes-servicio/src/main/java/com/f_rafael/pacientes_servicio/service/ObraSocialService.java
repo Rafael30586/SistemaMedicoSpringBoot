@@ -7,6 +7,7 @@ import com.f_rafael.pacientes_servicio.mapper.StringMapper;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import com.f_rafael.pacientes_servicio.mapper.ObraSocialMapper;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class ObraSocialService implements IObraSocialService{
     private ObraSocialMapper mapper;
     private IObraSocialRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
+
     @Override
     public ObraSocialDto buscarPorId(Long id) {
         ObraSocialDto dtoARetornar;
@@ -52,10 +55,13 @@ public class ObraSocialService implements IObraSocialService{
     @Override
     public ObraSocialDto guardar(ObraSocial obraSocial) {
         ObraSocialDto dtoARetornar;
+        String nombreObraSocial = obraSocial.getNombre();
 
-        if(obraSocial.getNombre() == null){
+        if(nombreObraSocial == null){
             throw new CampoNuloException("El nombre no puede se nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreObraSocial);
 
         dtoARetornar = mapper.obtenerDto(repository.save(obraSocial));
 
@@ -85,7 +91,7 @@ public class ObraSocialService implements IObraSocialService{
         ObraSocial obraSocialAEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Obra social no encontrada"));
         obraSocialAEditar.setNombre(stringMapper.quitarGuionesBajos(nombre));
 
-        return this.guardar(obraSocialAEditar);
+        return this.actualizar(obraSocialAEditar);
     }
 
 }

@@ -11,7 +11,7 @@ import com.f_rafael.pacientes_servicio.model.TurnoCita;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoCitaMapper;
-import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class TurnoCitaService implements ITurnoCitaService{
     private ITurnoCitaRepository repository;
     private TurnoCitaMapper mapper;
     private IPacienteRepository pacienteRepository;
-    private VerificadorOpciones verificador;
+    private Verificador verificador;
     @Override
     public TurnoCitaDto buscarPorId(Long id) {
         if(!repository.existsById(id)){
@@ -112,7 +112,7 @@ public class TurnoCitaService implements ITurnoCitaService{
 
         turnoParaActualizar.setPaciente(pacienteParaAsignar);
 
-        return this.guardar(turnoParaActualizar);
+        return this.actualizar(turnoParaActualizar);
     }
 
     @Override
@@ -121,7 +121,7 @@ public class TurnoCitaService implements ITurnoCitaService{
 
         turnoParaActualizar.setFechaSolicitud(fechaSolicitud);
 
-        return this.guardar(turnoParaActualizar);
+        return this.actualizar(turnoParaActualizar);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class TurnoCitaService implements ITurnoCitaService{
         turnoParaActualizar.setInicio(inicio);
         turnoParaActualizar.setFin(fin);
 
-        return this.guardar(turnoParaActualizar);
+        return this.actualizar(turnoParaActualizar);
     }
 
     @Override
@@ -155,7 +155,7 @@ public class TurnoCitaService implements ITurnoCitaService{
         EstadoTurno estadoParaAsignar = EstadoTurno.valueOf(estado.toUpperCase());
         turnoParaActualizar.setEstado(estadoParaAsignar);
 
-        return this.guardar(turnoParaActualizar);
+        return this.actualizar(turnoParaActualizar);
     }
 
     @Override
@@ -175,6 +175,6 @@ public class TurnoCitaService implements ITurnoCitaService{
         Cobertura coberturaParaAsignar = Cobertura.valueOf(cobertura.toUpperCase());
         turnoParaActualizar.setCobertura(coberturaParaAsignar);
 
-        return this.guardar(turnoParaActualizar);
+        return this.actualizar(turnoParaActualizar);
     }
 }

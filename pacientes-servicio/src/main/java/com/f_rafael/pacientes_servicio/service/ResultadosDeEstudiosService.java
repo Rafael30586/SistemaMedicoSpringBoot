@@ -10,7 +10,7 @@ import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
 import com.f_rafael.pacientes_servicio.mapper.ResultadosDeEstudiosMapper;
-import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     private ResultadosDeEstudiosMapper mapper;
     private IEstudioClient estudioClient;
     private IPacienteRepository pacienteRepository;
-    private VerificadorOpciones verificador;
+    private Verificador verificador;
 
 
     @Override
@@ -49,7 +49,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
 
         if(resultadosDeEstudios.getPaciente() == null || resultadosDeEstudios.getEstudios() == null || resultadosDeEstudios.getUrlInforme() == null){
             throw new CampoNuloException("Hay campos que no pueden ser nulos");
-        } // Averiguar como hacer con el tema de los estudiso ya que puede que no existan en el otro microservicio
+        } // Averiguar como hacer con el tema de los estudios ya que puede que no existan en el otro microservicio
 
         return mapper.obtenerDto(repository.save(resultadosDeEstudios));
     }
@@ -123,7 +123,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
 
         resultadoParaActualizar.setPaciente(pacienteParaAsignar);
 
-        return this.guardar(resultadoParaActualizar);
+        return this.actualizar(resultadoParaActualizar);
     }
 
     @Override
@@ -134,7 +134,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         estudiosIds.add(estudioId); // Realizar validación para saber si el estudio existe en el otro microservicio
         resultadoParaActualizar.setEstudios(estudiosIds);
 
-        return this.guardar(resultadoParaActualizar);
+        return this.actualizar(resultadoParaActualizar);
     }
 
     @Override
@@ -145,7 +145,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         estudiosIds.remove(estudioId); // Corroborar si esto funciona. Puede que no. Si no funciona habrá que iterar para remover el objeto.
         resultadoParaActualizar.setEstudios(estudiosIds);
 
-        return this.guardar(resultadoParaActualizar);
+        return this.actualizar(resultadoParaActualizar);
     }
 
     @Override
@@ -153,6 +153,6 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         ResultadosDeEstudios resultadoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Resultados no encontrados"));
         resultadoParaActualizar.setUrlInforme(urlInforme);
 
-        return this.guardar(resultadoParaActualizar);
+        return this.actualizar(resultadoParaActualizar);
     }
 }

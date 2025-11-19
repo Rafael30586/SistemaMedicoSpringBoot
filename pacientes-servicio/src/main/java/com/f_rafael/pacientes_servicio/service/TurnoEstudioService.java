@@ -11,7 +11,7 @@ import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoEstudioRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoEstudioMapper;
-import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     private ITurnoEstudioRepository repository;
     private TurnoEstudioMapper mapper;
     private IPacienteRepository pacienteRepository;
-    private VerificadorOpciones verificador;
+    private Verificador verificador;
 
     @Override
     public TurnoEstudioDto buscarPorId(Long id) {
@@ -126,7 +126,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
         turnoParaEditar.setPaciente(pacienteParaAsignar);
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 
     @Override
@@ -135,7 +135,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
         turnoParaEditar.setFechaSolicitud(fechaSolicitud);
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 
     @Override
@@ -144,7 +144,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
         turnoParaEditar.setFechaTurno(fechaTurno);
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
 
     }
 
@@ -159,7 +159,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
         turnoParaEditar.setInicio(inicio);
         turnoParaEditar.setFin(fin);
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 
     @Override
@@ -178,7 +178,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
             turnoParaEditar.setEstado(EstadoTurno.valueOf(estado.toUpperCase()));
         }
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 
     @Override
@@ -197,7 +197,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
             turnoParaEditar.setCobertura(Cobertura.valueOf(cobertura));
         }
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 
     @Override
@@ -206,6 +206,6 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
         turnoParaEditar.setEstudioId(estudioId);
 
-        return this.guardar(turnoParaEditar);
+        return this.actualizar(turnoParaEditar);
     }
 }

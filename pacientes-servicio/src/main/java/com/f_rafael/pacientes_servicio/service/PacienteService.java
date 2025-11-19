@@ -9,7 +9,7 @@ import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.repository.*;
 import com.f_rafael.pacientes_servicio.mapper.PacienteMapper;
-import com.f_rafael.pacientes_servicio.utils.VerificadorOpciones;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class PacienteService implements IPacienteService{
     private IDireccionClient direccionClient;
     private StringMapper stringMapper;
     private IObraSocialRepository obraSocialRepository;
-    private VerificadorOpciones verificador;
+    private Verificador verificador;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -48,10 +48,22 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto guardar(Paciente paciente) {
+        String primerNombre = paciente.getPrimerNombre();
+        String segundoNombre = paciente.getSegundoNombre();
+        String apellidoPaterno = paciente.getApellidoPaterno();
+        String apellidoMaterno = paciente.getApellidoMaterno();
 
-        if(paciente.getPrimerNombre() == null || paciente.getApellidoPaterno() == null || paciente.getFechaNacimiento() == null || paciente.getLugarNacimientoId() == null || paciente.getDni() == null){
+        if(primerNombre == null || apellidoPaterno == null || paciente.getFechaNacimiento() == null || paciente.getLugarNacimientoId() == null || paciente.getDni() == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(primerNombre);
+        verificador.tieneEspaciosVacios(primerNombre);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(segundoNombre);
+        verificador.tieneEspaciosVacios(segundoNombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoPaterno);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
 
         return mapper.obtenerDto(repository.save(paciente));
     }
@@ -146,7 +158,7 @@ public class PacienteService implements IPacienteService{
     public PacienteDto actulizarDni(Long id, Long dni) {
         Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("PAciente no encontrado"));
         pacienteAEditar.setDni(dni);
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -166,8 +178,8 @@ public class PacienteService implements IPacienteService{
             pacienteAEditar = repository.findByDni(idODni).orElseThrow(()-> new EntidadNoEncontradaException("Paciente no encontrado"));
         }
 
-        pacienteAEditar.setPrimerNombre(stringMapper.quitarGuionesBajos(primerNombre));
-        return this.guardar(pacienteAEditar);
+        pacienteAEditar.setPrimerNombre(primerNombre);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -188,8 +200,8 @@ public class PacienteService implements IPacienteService{
         }
 
 
-        pacienteAEditar.setSegundoNombre(stringMapper.quitarGuionesBajos(segundoNombre));
-        return this.guardar(pacienteAEditar);
+        pacienteAEditar.setSegundoNombre(segundoNombre);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -209,7 +221,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteAEditar.setApellidoPaterno(stringMapper.quitarGuionesBajos(apellidoPaterno));
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -229,7 +241,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteAEditar.setApellidoMaterno(stringMapper.quitarGuionesBajos(apellidoMaterno));
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -250,7 +262,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteAEditar.setEmail(email);
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -273,7 +285,7 @@ public class PacienteService implements IPacienteService{
         telefonosParaAsignar.add(telefono);
         pacienteAEditar.setTelefonos(telefonosParaAsignar);
 
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -314,7 +326,7 @@ public class PacienteService implements IPacienteService{
 
         pacienteAEditar.setTelefonos(telefonosParaAsignar);
 
-        return this.guardar(pacienteAEditar);
+        return this.actualizar(pacienteAEditar);
     }
 
     @Override
@@ -334,7 +346,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteParaEditar.setFechaNacimiento(fechaNacimiento);
-        return this.guardar(pacienteParaEditar);
+        return this.actualizar(pacienteParaEditar);
     }
 
     @Override
@@ -354,7 +366,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteParaEditar.setLugarNacimientoId(localidadId);
-        return this.guardar(pacienteParaEditar);
+        return this.actualizar(pacienteParaEditar);
     }
 
     @Override
@@ -375,7 +387,7 @@ public class PacienteService implements IPacienteService{
         }
 
         pacienteParaEditar.setDireccionId(direccionId);
-        return this.guardar(pacienteParaEditar);
+        return this.actualizar(pacienteParaEditar);
     }
 
     @Override
@@ -396,7 +408,7 @@ public class PacienteService implements IPacienteService{
 
         ObraSocial obraSocialParaAsignar = obraSocialRepository.findById(obraSocialId).orElseThrow(()->new EntidadNoEncontradaException("Obra social no encontrada"));
         pacienteParaEditar.setObraSocial(obraSocialParaAsignar);
-        return this.guardar(pacienteParaEditar);
+        return this.actualizar(pacienteParaEditar);
     }
 /*
     private PacienteDto buscarPorTelefonoId(Long id){
