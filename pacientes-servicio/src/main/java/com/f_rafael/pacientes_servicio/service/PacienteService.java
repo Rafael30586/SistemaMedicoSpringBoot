@@ -65,6 +65,8 @@ public class PacienteService implements IPacienteService{
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoPaterno);
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
 
+        verificador.esEmail(paciente.getEmail());
+
         return mapper.obtenerDto(repository.save(paciente));
     }
 
@@ -156,7 +158,7 @@ public class PacienteService implements IPacienteService{
 
     @Override
     public PacienteDto actulizarDni(Long id, Long dni) {
-        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("PAciente no encontrado"));
+        Paciente pacienteAEditar = repository.findById(id).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         pacienteAEditar.setDni(dni);
         return this.actualizar(pacienteAEditar);
     }
@@ -259,6 +261,8 @@ public class PacienteService implements IPacienteService{
             throw new DatoIncorrectoException("El argumento debe ser id o dni");
         }
 
+        verificador.esEmail(email);
+
         Paciente pacienteAEditar = new Paciente();
 
         if(opcion.equals("id")){
@@ -318,18 +322,7 @@ public class PacienteService implements IPacienteService{
         if(!telefonosParaAsignar.contains(telefonoParaQuitar)){
             throw new DatoIncorrectoException("Este teléfono no pertenece al paciente a actualizar");
         }
-/*
-        for(String t : telefonosParaAsignar){
-            if(t.equals(telefonoParaQuitar)){
-                //telefonoParaQuitar = t;
-                telefonoPresente = true;
-            }
-        }
 
-        if(!telefonoPresente){
-            throw new DatoIncorrectoException("El teléfono no existe dentro de la lista de teléfonos del paciente");
-        }
-*/
         telefonosParaAsignar.remove(telefonoParaQuitar);
 
         pacienteAEditar.setTelefonos(telefonosParaAsignar);
@@ -418,25 +411,5 @@ public class PacienteService implements IPacienteService{
         pacienteParaEditar.setObraSocial(obraSocialParaAsignar);
         return this.actualizar(pacienteParaEditar);
     }
-/*
-    private PacienteDto buscarPorTelefonoId(Long id){
-        List<Paciente> pacientes = repository.findAll();
-        PacienteDto dtoARetornar;
-        Set<Long> telefonosId;
 
-        for(Paciente p : pacientes){
-            if(p.getTelefonosId() != null){
-                telefonosId = p.getTelefonosId();
-
-                for(Long tid : telefonosId){
-                    if(tid.equals(id)){
-                        dtoARetornar = mapper.obtenerDto(p);
-                        return dtoARetornar;
-                    }
-                }
-            }
-        }
-
-        throw new EntidadNoEncontradaException("El número telefónico no corresponde a ningún paciente");
-    }*/
 }
