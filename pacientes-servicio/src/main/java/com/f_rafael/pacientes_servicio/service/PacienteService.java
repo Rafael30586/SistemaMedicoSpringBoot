@@ -24,7 +24,6 @@ public class PacienteService implements IPacienteService{
 
     private IPacienteRepository repository;
     private PacienteMapper mapper;
-    private INumeroTelefonicoClient numeroTelefonicoClient;
     private ILocalidadClient localidadClient;
     private IDireccionClient direccionClient;
     private StringMapper stringMapper;
@@ -52,6 +51,7 @@ public class PacienteService implements IPacienteService{
         String segundoNombre = paciente.getSegundoNombre();
         String apellidoPaterno = paciente.getApellidoPaterno();
         String apellidoMaterno = paciente.getApellidoMaterno();
+        Set<String> telefonos = paciente.getTelefonos();
 
         if(primerNombre == null || apellidoPaterno == null || paciente.getFechaNacimiento() == null || paciente.getLugarNacimientoId() == null || paciente.getDni() == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
@@ -66,6 +66,8 @@ public class PacienteService implements IPacienteService{
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
 
         verificador.esEmail(paciente.getEmail());
+
+        telefonos.stream().forEach(verificador::esNumeroTelefonico);
 
         return mapper.obtenerDto(repository.save(paciente));
     }
@@ -284,6 +286,8 @@ public class PacienteService implements IPacienteService{
             throw new DatoIncorrectoException("La opción debe ser id o dni");
         }
 
+        verificador.esNumeroTelefonico(telefono);
+
         if(opcion.equals("id")){
             pacienteAEditar = repository.findById(idODni).orElseThrow(()->new EntidadNoEncontradaException("Paciente no encontrado"));
         }
@@ -317,7 +321,6 @@ public class PacienteService implements IPacienteService{
         }
 
         Set<String> telefonosParaAsignar = pacienteAEditar.getTelefonos();
-        boolean telefonoPresente = false;
 
         if(!telefonosParaAsignar.contains(telefonoParaQuitar)){
             throw new DatoIncorrectoException("Este teléfono no pertenece al paciente a actualizar");

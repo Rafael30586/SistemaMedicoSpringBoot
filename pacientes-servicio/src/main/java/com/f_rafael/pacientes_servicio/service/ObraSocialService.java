@@ -8,10 +8,11 @@ import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import com.f_rafael.pacientes_servicio.mapper.ObraSocialMapper;
 import com.f_rafael.pacientes_servicio.utils.Verificador;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-
+@AllArgsConstructor
 @Service
 public class ObraSocialService implements IObraSocialService{
 

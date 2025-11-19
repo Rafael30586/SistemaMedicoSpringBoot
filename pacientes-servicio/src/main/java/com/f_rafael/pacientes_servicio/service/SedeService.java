@@ -11,6 +11,7 @@ import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
 import com.f_rafael.pacientes_servicio.repository.ISedeRepository;
 import com.f_rafael.pacientes_servicio.mapper.SedeMapper;
+import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,8 @@ public class SedeService implements ISedeService{
     private ISedeRepository repository;
     private SedeMapper mapper;
     private IDireccionClient direccionClient;
-    private INumeroTelefonicoClient numeroTelefonicoClient;
     private IObraSocialRepository obraSocialRepository;
+    private Verificador verificador;
 
     @Override
     public SedeDto buscarPorId(Long id) {
@@ -49,10 +50,13 @@ public class SedeService implements ISedeService{
     @Override
     public SedeDto guardar(Sede sede) {
         SedeDto dtoARetornar;
+        Set<String> telefonos = sede.getTelefonos();
 
         if(sede.getDireccionId() == null){ // ¿Cómo podría hacer para confirmar que la direccion existe si está en otro microservicio?
             throw new CampoNuloException("La direccion no puede ser nula");
         }
+
+        telefonos.stream().forEach(verificador::esNumeroTelefonico);
 
         dtoARetornar = mapper.obtenerDto(repository.save(sede));
         return dtoARetornar;
@@ -108,6 +112,8 @@ public class SedeService implements ISedeService{
     public SedeDto agregarTelefono(Long id, String telefono) {
         Sede sedeParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Sede no encontrada"));
         Set<String> telefonosParaAsignar = sedeParaActualizar.getTelefonos();
+
+        verificador.esNumeroTelefonico(telefono);
 
         telefonosParaAsignar.add(telefono);
         sedeParaActualizar.setTelefonos(telefonosParaAsignar);
