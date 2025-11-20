@@ -12,4 +12,6 @@ public interface IUnidadDeMedidaService {
     public void borrarPorId(Long id);
     public UnidadDeMedida buscarPorNombre(String nombre);
     public UnidadDeMedida buscarPorSimbolo(String simbolo);
+    public UnidadDeMedida modificarNombre(Long id, String nombre);
+    public UnidadDeMedida modificarSimbolo(Long id, String simbolo);
 }

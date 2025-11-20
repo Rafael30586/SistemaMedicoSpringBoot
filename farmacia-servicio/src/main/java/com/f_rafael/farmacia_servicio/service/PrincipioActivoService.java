@@ -1,5 +1,6 @@
 package com.f_rafael.farmacia_servicio.service;
 
+import com.f_rafael.farmacia_servicio.dto.MedicamentoDto;
 import com.f_rafael.farmacia_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.dto.SubAccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
@@ -107,7 +108,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     }
 
     @Override
-    public void agregarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
+    public PrincipioActivoDto agregarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
         PrincipioActivo principioActivoAEditar;
         AccionTerapeutica accionTerapeuticaAAgregar;
         Set<AccionTerapeutica> setAccionesTerapeuticas;
@@ -126,11 +127,11 @@ public class PrincipioActivoService implements IPrincipioActivoService{
 
         principioActivoAEditar.setAccionesTerapeuticas(setAccionesTerapeuticas);
 
-        this.actualizar(principioActivoAEditar);
+        return this.actualizar(principioActivoAEditar);
     }
 
     @Override
-    public void quitarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
+    public PrincipioActivoDto quitarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
         PrincipioActivo principioActivoAEditar;
         AccionTerapeutica accionTerapeuticaAQuitar;
         Set<AccionTerapeutica> setAccionesTerapeuticas;
@@ -154,7 +155,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
         setAccionesTerapeuticas.remove(accionTerapeuticaAQuitar);
         principioActivoAEditar.setAccionesTerapeuticas(setAccionesTerapeuticas);
 
-        this.actualizar(principioActivoAEditar);
+        return this.actualizar(principioActivoAEditar);
     }
 
 

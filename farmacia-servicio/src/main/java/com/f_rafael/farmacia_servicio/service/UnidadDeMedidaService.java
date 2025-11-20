@@ -85,4 +85,14 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
         return repository.findBySimbolo(simbolo).get();
     }
+
+    @Override
+    public UnidadDeMedida modificarNombre(Long id, String nombre) {
+        return null;
+    }
+
+    @Override
+    public UnidadDeMedida modificarSimbolo(Long id, String simbolo) {
+        return null;
+    }
 }

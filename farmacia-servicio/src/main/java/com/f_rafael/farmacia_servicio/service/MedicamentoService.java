@@ -98,7 +98,7 @@ public class MedicamentoService implements IMedicamentoService{
     }
 
     @Override
-    public void asignarPrincipioActivo(Long id, Long principioActivoId) {
+    public MedicamentoDto asignarPrincipioActivo(Long id, Long principioActivoId) {
         Medicamento medicamentoAEditar;
         PrincipioActivo principioActivoAAsignar = new PrincipioActivo();
 
@@ -109,11 +109,11 @@ public class MedicamentoService implements IMedicamentoService{
         medicamentoAEditar = repository.findById(id).get();
         principioActivoAAsignar.setId(principioActivoId);
         medicamentoAEditar.setPrincipioActivo(principioActivoAAsignar);
-        repository.save(medicamentoAEditar);
+        return this.actualizar(medicamentoAEditar);
     }
 
     @Override
-    public void asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId) {
+    public MedicamentoDto asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId) {
         Medicamento medicamentoAEditar;
         FormaFarmaceutica formaFarmaceuticaAAsignar = new FormaFarmaceutica();
 
@@ -125,11 +125,11 @@ public class MedicamentoService implements IMedicamentoService{
         formaFarmaceuticaAAsignar.setId(formaFarmaceuticaId);
         medicamentoAEditar.setFormaFarmaceutica(formaFarmaceuticaAAsignar);
         // medicamentoAEditar.setFormaFarmaceutica(formaFarmaceuticaRepository.findById(formaFarmaceuticaId).get());
-        repository.save(medicamentoAEditar);
+        return this.actualizar(medicamentoAEditar);
     }
 
     @Override
-    public void asignarAdministracion(Long id, Long administracionId) {
+    public MedicamentoDto asignarAdministracion(Long id, Long administracionId) {
         Medicamento medicamentoAEditar;
         AdministracionFarmaco administracionAAsignar = new AdministracionFarmaco();
 
@@ -141,11 +141,11 @@ public class MedicamentoService implements IMedicamentoService{
         administracionAAsignar.setId(administracionId);
         medicamentoAEditar.setAdministracion(administracionAAsignar);
         // medicamentoAEditar.setAdministracion(administracionFarmacoRepository.findById(administracionId).get());
-        repository.save(medicamentoAEditar);
+        return this.actualizar(medicamentoAEditar);
     }
 
     @Override
-    public void asignarMarca(Long id, Long marcaId) {
+    public MedicamentoDto asignarMarca(Long id, Long marcaId) {
         Medicamento medicamentoAEditar;
         MarcaMedicamento marcaAAsignar = new MarcaMedicamento();
 
@@ -157,7 +157,7 @@ public class MedicamentoService implements IMedicamentoService{
         marcaAAsignar.setId(marcaId);
         medicamentoAEditar.setMarca(marcaAAsignar);
         // medicamentoAEditar.setMarca(marcaMedicamentoRepository.findById(marcaId).get());
-        repository.save(medicamentoAEditar);
+        return this.actualizar(medicamentoAEditar);
     }
 
 

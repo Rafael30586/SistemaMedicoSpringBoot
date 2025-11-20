@@ -13,6 +13,6 @@ public interface IPrincipioActivoService {
     public void borrarPorId(Long id);
     public PrincipioActivoDto buscarPorNombre(String nombre);
     public List<PrincipioActivoDto> buscarPorAccionTerapeutica(String nombreAccionTerapeutica);
-    public void agregarAccionTerapeutica(Long id, Long accionTerapeuticaId);
-    public void quitarAccionTerapeutica(Long id, Long accionTerapeuticaId);
+    public PrincipioActivoDto agregarAccionTerapeutica(Long id, Long accionTerapeuticaId);
+    public PrincipioActivoDto quitarAccionTerapeutica(Long id, Long accionTerapeuticaId);
 }
