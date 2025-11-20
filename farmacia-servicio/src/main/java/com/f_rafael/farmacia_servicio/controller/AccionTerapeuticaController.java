@@ -31,28 +31,28 @@ public class AccionTerapeuticaController {
     @GetMapping
     public ResponseEntity<AccionTerapeuticaDto> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
-        return ResponseEntity.ok(service.buscarPorNombre2(nombreSinGuiones));
+        return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
     }
 
     @GetMapping
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
         String secuenciaSinGuiones = Transformacion.removerGuionesBajos(secuencia);
-        return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion2(secuenciaSinGuiones));
+        return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion(secuenciaSinGuiones));
     }
 
     @PostMapping
     public ResponseEntity<AccionTerapeuticaDto> guardar(@RequestBody AccionTerapeutica accionTerapeutica){
-        return new ResponseEntity<>(service.guardar2(accionTerapeutica),HttpStatusCode.valueOf(201));
+        return new ResponseEntity<>(service.guardar(accionTerapeutica),HttpStatusCode.valueOf(201));
     }
 
     @PutMapping
     public ResponseEntity<AccionTerapeuticaDto> actualizar(@RequestBody AccionTerapeutica accionTerapeutica){
-        return ResponseEntity.ok(service.actualizar2(accionTerapeutica));
+        return ResponseEntity.ok(service.actualizar(accionTerapeutica));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
-        service.borrarPorId2(id);
+        service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente", HttpStatusCode.valueOf(204));
     }
 

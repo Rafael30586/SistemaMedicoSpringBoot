@@ -1,6 +1,7 @@
 package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
+import com.f_rafael.farmacia_servicio.dto.DescripcionDto;
 import com.f_rafael.farmacia_servicio.dto.SubPrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
@@ -40,7 +41,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     }
 
     @Override
-    public AccionTerapeuticaDto guardar2(AccionTerapeutica accionTerapeutica) {
+    public AccionTerapeuticaDto guardar(AccionTerapeutica accionTerapeutica) {
         AccionTerapeuticaDto dtoARetornar;
 
         if(accionTerapeutica.getNombre() == null){
@@ -52,7 +53,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
 
     @Override
-    public AccionTerapeuticaDto actualizar2(AccionTerapeutica accionTerapeutica) {
+    public AccionTerapeuticaDto actualizar(AccionTerapeutica accionTerapeutica) {
         Long id = accionTerapeutica.getId();
 
         if(id == null || accionTerapeutica.getNombre() == null){
@@ -63,12 +64,12 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
             throw new EntidadNoEncontradaException("El id no corresponde a ninguna entidad en la base de datos");
         }
 
-        return this.guardar2(accionTerapeutica);
+        return this.guardar(accionTerapeutica);
     }
 
 
     @Override
-    public void borrarPorId2(Long id) {
+    public void borrarPorId(Long id) {
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -78,7 +79,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     }
 
     @Override
-    public AccionTerapeuticaDto buscarPorNombre2(String nombre) {
+    public AccionTerapeuticaDto buscarPorNombre(String nombre) {
         AccionTerapeutica informacionAccionTerapeutica;
         AccionTerapeuticaDto dtoARetornar;
 
@@ -94,12 +95,12 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
 
     @Override
-    public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion2(String secuencia) {
+    public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion(String secuencia) {
         return obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuencia));
     }
 
     @Override
-    public void modificarNombre(Long id, String nombre) {
+    public AccionTerapeuticaDto modificarNombre(Long id, String nombre) {
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         AccionTerapeutica accionTerapeuticaAEditar;
 
@@ -109,7 +110,15 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
         accionTerapeuticaAEditar = repository.findById(id).get();
         accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
-        this.actualizar2(accionTerapeuticaAEditar);
+        return this.actualizar(accionTerapeuticaAEditar);
+    }
+
+    @Override
+    public AccionTerapeuticaDto modificarDescripcion(Long id, DescripcionDto descripcion) {
+        AccionTerapeutica accionTerapeuticaParaActualizar = devolverPorId(id);
+        accionTerapeuticaParaActualizar.setDescripcion(descripcion.getTexto());
+
+        return this.actualizar(accionTerapeuticaParaActualizar);
     }
 
     private AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
@@ -147,6 +156,10 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         return listaARetornar;
+    }
+
+    private AccionTerapeutica devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Acción terapéutica no encontrada"));
     }
 
 }
