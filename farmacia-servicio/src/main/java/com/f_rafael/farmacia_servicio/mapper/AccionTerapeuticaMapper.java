@@ -11,7 +11,7 @@ import java.util.*;
 @Component
 public class AccionTerapeuticaMapper {
 
-    private AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
+    public AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
         Optional<Set<PrincipioActivo>> principiosActivosOpcional = Optional.of(informacionAccionTerapeutica.getPrincipiosActivos());
         Set<PrincipioActivo> informacionPrincipiosActivos;
         AccionTerapeuticaDto dtoARetornar = new AccionTerapeuticaDto();
@@ -35,7 +35,7 @@ public class AccionTerapeuticaMapper {
         return dtoARetornar;
     }
 
-    private List<AccionTerapeuticaDto> obtenerListaDto(Collection<AccionTerapeutica> accionesTerapeuticas){
+    public List<AccionTerapeuticaDto> obtenerListaDto(Collection<AccionTerapeutica> accionesTerapeuticas){
 
         List<AccionTerapeuticaDto> listaARetornar = new LinkedList<>();
         AccionTerapeuticaDto dtoParaAgregar;

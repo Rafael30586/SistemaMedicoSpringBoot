@@ -4,6 +4,7 @@ import com.f_rafael.farmacia_servicio.dto.MarcaMedicamentoDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.farmacia_servicio.mapper.MarcaMedicamentoMapper;
 import com.f_rafael.farmacia_servicio.model.MarcaMedicamento;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IMarcaMedicamentoRepository;
@@ -17,6 +18,7 @@ import java.util.*;
 public class MarcaMedicamentoService implements IMarcaMedicamentoService{
 
     private IMarcaMedicamentoRepository repository;
+    private MarcaMedicamentoMapper mapper;
 
     @Override
     public MarcaMedicamentoDto buscarPorId(Long id) {
@@ -24,18 +26,18 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<MarcaMedicamentoDto> buscarTodas() {
-        return obtenerListaDtos(repository.findAll());
+        return mapper.obtenerListaDtos(repository.findAll());
     }
 
 
     @Override
     public MarcaMedicamentoDto guardar(MarcaMedicamento marca) {
-        return obtenerDto(repository.save(marca));
+        return mapper.obtenerDto(repository.save(marca));
     }
 
     @Override
@@ -66,42 +68,8 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return obtenerDto(repository.findByNombre(nombre).get());
+        return mapper.obtenerDto(repository.findByNombre(nombre).get());
     }
 
-    private MarcaMedicamentoDto obtenerDto(MarcaMedicamento marca){
-        MarcaMedicamentoDto dtoARetornar = new MarcaMedicamentoDto();
-        Set<Medicamento> informacionMedicamentos;
-        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(marca.getMedicamentos());
-        Set<SubMedicamentoDto> medicamentosParaAsignar;
-        SubMedicamentoDto medicamentoParaAgregar;
 
-        if(medicamentosOptional.isPresent()){
-            informacionMedicamentos = marca.getMedicamentos();
-            medicamentosParaAsignar = new HashSet<>();
-
-            for(Medicamento m : informacionMedicamentos){
-                medicamentoParaAgregar = new SubMedicamentoDto(m.getId(),
-                        m.getPrincipioActivo().getNombre(),
-                        m.getFormaFarmaceutica().getNombre(),
-                        m.getAdministracion().getVia(),
-                        m.getMarca().getNombre());
-
-                medicamentosParaAsignar.add(medicamentoParaAgregar);
-            }
-            dtoARetornar.setMedicamentos(medicamentosParaAsignar);
-        }
-        dtoARetornar.setId(marca.getId());
-        dtoARetornar.setNombre(marca.getNombre());
-
-        return dtoARetornar;
-    }
-
-    private List<MarcaMedicamentoDto> obtenerListaDtos(Collection<MarcaMedicamento> coleccionMarcaMedicamento){
-        List<MarcaMedicamentoDto> listaARetornar = new LinkedList<>();
-        for(MarcaMedicamento mm : coleccionMarcaMedicamento){
-            listaARetornar.add(obtenerDto(mm));
-        }
-        return listaARetornar;
-    }
 }

@@ -5,6 +5,7 @@ import com.f_rafael.farmacia_servicio.dto.DescripcionDto;
 import com.f_rafael.farmacia_servicio.dto.SubPrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.farmacia_servicio.mapper.AccionTerapeuticaMapper;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
@@ -19,6 +20,7 @@ import java.util.*;
 public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     private IAccionTerapeuticaRepository repository;
+    private AccionTerapeuticaMapper mapper;
 
 
     @Override
@@ -31,7 +33,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         informacionAccionTerapeutica = repository.findById(id).get();
-        dtoARetornar = obtenerDto(informacionAccionTerapeutica);
+        dtoARetornar = mapper.obtenerDto(informacionAccionTerapeutica);
         return dtoARetornar;
     }
 
@@ -48,7 +50,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
             throw new CampoNuloException("El nombre de la acción terapéutica no puede ser nulo");
         }
 
-        return obtenerDto(repository.save(accionTerapeutica));
+        return mapper.obtenerDto(repository.save(accionTerapeutica));
     }
 
 
@@ -88,7 +90,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         }
 
         informacionAccionTerapeutica = repository.findByNombre(nombre).get();
-        dtoARetornar = obtenerDto(informacionAccionTerapeutica);
+        dtoARetornar = mapper.obtenerDto(informacionAccionTerapeutica);
         return dtoARetornar;
     }
 
