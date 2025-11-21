@@ -2,6 +2,7 @@ package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.repository.IUnidadDeMedidaRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     private IUnidadDeMedidaRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public UnidadDeMedida buscarPorId(Long id) {
@@ -88,11 +90,23 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     @Override
     public UnidadDeMedida modificarNombre(Long id, String nombre) {
-        return null;
+        UnidadDeMedida unidadParaModificar = devolverPorId(id);
+
+        unidadParaModificar.setNombre(stringMapper.removerGuionesBajos(nombre));
+
+        return this.actualizar(unidadParaModificar);
     }
 
     @Override
     public UnidadDeMedida modificarSimbolo(Long id, String simbolo) {
-        return null;
+        UnidadDeMedida unidadParaModificar = devolverPorId(id);
+
+        unidadParaModificar.setSimbolo(simbolo);
+
+        return this.actualizar(unidadParaModificar);
+    }
+
+    public UnidadDeMedida devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Unidad de medida no encontrada"));
     }
 }
