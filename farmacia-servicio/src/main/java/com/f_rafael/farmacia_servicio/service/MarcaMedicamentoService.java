@@ -8,6 +8,7 @@ import com.f_rafael.farmacia_servicio.mapper.MarcaMedicamentoMapper;
 import com.f_rafael.farmacia_servicio.model.MarcaMedicamento;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IMarcaMedicamentoRepository;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
 
     private IMarcaMedicamentoRepository repository;
     private MarcaMedicamentoMapper mapper;
+    private Verificador verificador;
 
     @Override
     public MarcaMedicamentoDto buscarPorId(Long id) {
@@ -37,6 +39,14 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
 
     @Override
     public MarcaMedicamentoDto guardar(MarcaMedicamento marca) {
+        String nombre = marca.getNombre();
+
+        if(nombre == null){
+            throw new CampoNuloException("El nombre no puede ser nulo");
+        }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
         return mapper.obtenerDto(repository.save(marca));
     }
 
@@ -44,8 +54,8 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     public MarcaMedicamentoDto actualizar(MarcaMedicamento marca) {
         Long id = marca.getId();
 
-        if(id == null || marca.getNombre() == null){
-            throw new CampoNuloException("El id y el nombre no pueden ser nulos");
+        if(id == null){
+            throw new CampoNuloException("El id y no puede ser nulo");
         }
 
         return this.guardar(marca);

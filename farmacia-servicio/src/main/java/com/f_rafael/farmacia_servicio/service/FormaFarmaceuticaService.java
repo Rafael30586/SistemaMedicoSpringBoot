@@ -4,9 +4,11 @@ import com.f_rafael.farmacia_servicio.dto.FormaFarmaceuticaDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.farmacia_servicio.mapper.FormaFarmaceuticaMapper;
 import com.f_rafael.farmacia_servicio.model.FormaFarmaceutica;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IFormaFarmaceuticaRepository;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.*;
 public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
 
     private IFormaFarmaceuticaRepository repository;
+    private Verificador verificador;
+    private FormaFarmaceuticaMapper mapper;
 
     @Override
     public FormaFarmaceuticaDto buscarPorId(Long id) {
@@ -25,30 +29,33 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(repository.findById(id).get());
     }
 
     @Override
     public List<FormaFarmaceuticaDto> buscarTodas() {
-        return obtenerListaDtos(repository.findAll());
+        return mapper.obtenerListaDtos(repository.findAll());
     }
 
     @Override
     public FormaFarmaceuticaDto guardar(FormaFarmaceutica formaFarmaceutica) {
+        String nombre = formaFarmaceutica.getNombre();
 
-        if(formaFarmaceutica.getNombre() == null){
+        if(nombre == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
 
-        return obtenerDto(repository.save(formaFarmaceutica));
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        return mapper.obtenerDto(repository.save(formaFarmaceutica));
     }
 
     @Override
     public FormaFarmaceuticaDto actualizar(FormaFarmaceutica formaFarmaceutica) {
         Long id = formaFarmaceutica.getId();
 
-        if(id == null || formaFarmaceutica.getNombre() == null){
-            throw new CampoNuloException("El id y el nombre no pueden ser nulos");
+        if(id == null){
+            throw new CampoNuloException("El id no puede ser nulo");
         }
 
         if(repository.findById(id).isEmpty()){
@@ -75,46 +82,8 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return obtenerDto(repository.findByNombre(nombre).get());
+        return mapper.obtenerDto(repository.findByNombre(nombre).get());
     }
 
-    private FormaFarmaceuticaDto obtenerDto(FormaFarmaceutica formaFarmaceutica){
-        FormaFarmaceuticaDto dtoARetornar = new FormaFarmaceuticaDto();
-        Set<Medicamento> informacionMedicamentos;
-        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(formaFarmaceutica.getMedicamentos());
-        SubMedicamentoDto medicamentoParaAgregar;
-        Set<SubMedicamentoDto> medicamentosParaAsignar;
 
-        if(medicamentosOptional.isPresent()){
-            informacionMedicamentos = formaFarmaceutica.getMedicamentos();
-            medicamentosParaAsignar = new HashSet<>();
-
-            for(Medicamento m : informacionMedicamentos){
-                medicamentoParaAgregar = new SubMedicamentoDto(m.getId(),
-                        m.getPrincipioActivo().getNombre(),
-                        m.getFormaFarmaceutica().getNombre(),
-                        m.getAdministracion().getVia(),
-                        m.getMarca().getNombre());
-
-                medicamentosParaAsignar.add(medicamentoParaAgregar);
-            }
-
-            dtoARetornar.setMedicamento(medicamentosParaAsignar);
-        }
-
-        dtoARetornar.setId(formaFarmaceutica.getId());
-        dtoARetornar.setNombre(formaFarmaceutica.getNombre());
-
-        return dtoARetornar;
-    }
-
-    private List<FormaFarmaceuticaDto> obtenerListaDtos(Collection<FormaFarmaceutica> coleccionFormasFarmaceuticas){
-        List<FormaFarmaceuticaDto> listaARetornar = new LinkedList<>();
-
-        for(FormaFarmaceutica ff : coleccionFormasFarmaceuticas){
-            listaARetornar.add(obtenerDto(ff));
-        }
-
-        return listaARetornar;
-    }
 }

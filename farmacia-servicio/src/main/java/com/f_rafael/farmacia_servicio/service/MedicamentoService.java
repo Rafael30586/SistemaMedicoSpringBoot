@@ -3,17 +3,15 @@ package com.f_rafael.farmacia_servicio.service;
 import com.f_rafael.farmacia_servicio.dto.*;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
-import com.f_rafael.farmacia_servicio.mapper.MarcaMedicamentoMapper;
 import com.f_rafael.farmacia_servicio.mapper.MedicamentoMapper;
 import com.f_rafael.farmacia_servicio.model.*;
 import com.f_rafael.farmacia_servicio.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.LinkedList;
+
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor

@@ -12,6 +12,7 @@ import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
 import com.f_rafael.farmacia_servicio.repository.IPrincipioActivoRepository;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,8 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     private IPrincipioActivoRepository repository;
     private IAccionTerapeuticaRepository accionTerapeuticaRepository;
     private PrincipioActivoMapper mapper;
+    private Verificador verificador;
+
 
     @Override
     public PrincipioActivoDto buscarPorId(Long id) {
@@ -42,9 +45,13 @@ public class PrincipioActivoService implements IPrincipioActivoService{
 
     @Override
     public PrincipioActivoDto guardar(PrincipioActivo principioActivo) {
-        if(principioActivo.getNombre() == null){
+        String nombre = principioActivo.getNombre();
+
+        if(nombre == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
 
         return mapper.obtenerDto(repository.save(principioActivo));
     }

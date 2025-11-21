@@ -6,10 +6,12 @@ import com.f_rafael.farmacia_servicio.dto.SubPrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.AccionTerapeuticaMapper;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
 import com.f_rafael.farmacia_servicio.repository.IAccionTerapeuticaRepository;
 import com.f_rafael.farmacia_servicio.utils.Transformacion;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     private IAccionTerapeuticaRepository repository;
     private AccionTerapeuticaMapper mapper;
+    private Verificador verificador;
+    private StringMapper stringMapper;
 
 
     @Override
@@ -39,16 +43,18 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public List<AccionTerapeuticaDto> buscarTodas() {
-        return obtenerListaDto(repository.findAll());
+        return mapper.obtenerListaDto(repository.findAll());
     }
 
     @Override
     public AccionTerapeuticaDto guardar(AccionTerapeutica accionTerapeutica) {
-        AccionTerapeuticaDto dtoARetornar;
+        String nombre = accionTerapeutica.getNombre();
 
-        if(accionTerapeutica.getNombre() == null){
+        if(nombre == null){
             throw new CampoNuloException("El nombre de la acción terapéutica no puede ser nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
 
         return mapper.obtenerDto(repository.save(accionTerapeutica));
     }
@@ -98,17 +104,19 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion(String secuencia) {
-        return obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuencia));
+        return mapper.obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuencia));
     }
 
     @Override
     public AccionTerapeuticaDto modificarNombre(Long id, String nombre) {
-        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
         AccionTerapeutica accionTerapeuticaAEditar;
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
         accionTerapeuticaAEditar = repository.findById(id).get();
         accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
@@ -123,42 +131,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         return this.actualizar(accionTerapeuticaParaActualizar);
     }
 
-    private AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
-        Optional<Set<PrincipioActivo>> principiosActivosOpcional = Optional.of(informacionAccionTerapeutica.getPrincipiosActivos());
-        Set<PrincipioActivo> informacionPrincipiosActivos;
-        AccionTerapeuticaDto dtoARetornar = new AccionTerapeuticaDto();
-        Set<SubPrincipioActivoDto> principiosActivosParaAsignar;
-        SubPrincipioActivoDto principioActivoParaAsignar;
 
-        dtoARetornar.setId(informacionAccionTerapeutica.getId());
-        dtoARetornar.setNombre(informacionAccionTerapeutica.getNombre());
-
-        if(principiosActivosOpcional.isPresent()){
-            informacionPrincipiosActivos = principiosActivosOpcional.get();
-            principiosActivosParaAsignar = new HashSet<>();
-
-            for(PrincipioActivo pa : informacionPrincipiosActivos){
-                principioActivoParaAsignar = new SubPrincipioActivoDto(pa.getId(), pa.getNombre());
-                principiosActivosParaAsignar.add(principioActivoParaAsignar);
-            }
-
-            dtoARetornar.setPrincipiosActivos(principiosActivosParaAsignar);
-        }
-        return dtoARetornar;
-    }
-
-    private List<AccionTerapeuticaDto> obtenerListaDto(Collection<AccionTerapeutica> accionesTerapeuticas){
-
-        List<AccionTerapeuticaDto> listaARetornar = new LinkedList<>();
-        AccionTerapeuticaDto dtoParaAgregar;
-
-        for(AccionTerapeutica at : accionesTerapeuticas){
-            dtoParaAgregar = obtenerDto(at);
-            listaARetornar.add(dtoParaAgregar);
-        }
-
-        return listaARetornar;
-    }
 
     private AccionTerapeutica devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Acción terapéutica no encontrada"));

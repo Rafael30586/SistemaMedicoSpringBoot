@@ -5,6 +5,7 @@ import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.repository.IUnidadDeMedidaRepository;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     private IUnidadDeMedidaRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public UnidadDeMedida buscarPorId(Long id) {
@@ -35,10 +37,13 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     @Override
     public UnidadDeMedida guardar(UnidadDeMedida unidad) {
+        String nombre = unidad.getNombre();
 
-        if(unidad.getNombre() == null){
+        if(nombre == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
 
         return repository.save(unidad);
     }
@@ -47,8 +52,8 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
     public UnidadDeMedida actualizar(UnidadDeMedida unidad) {
         Long id = unidad.getId();
 
-        if(id == null || unidad.getNombre() == null){
-            throw new CampoNuloException("Ni el id y ni el nombre pueden ser nulos");
+        if(id == null){
+            throw new CampoNuloException("El id no puede ser nulo");
         }
 
         if(repository.findById(id).isEmpty()){

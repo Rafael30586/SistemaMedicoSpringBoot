@@ -8,6 +8,7 @@ import com.f_rafael.farmacia_servicio.mapper.AdministracionFarmacoMapper;
 import com.f_rafael.farmacia_servicio.model.AdministracionFarmaco;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IAdministracionFarmacoRepository;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
 
     private IAdministracionFarmacoRepository repository;
     private AdministracionFarmacoMapper mapper;
+    private Verificador verificador;
 
     @Override
     public AdministracionFarmacoDto buscarPorId(Long id) {
@@ -37,9 +39,13 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
 
     @Override
     public AdministracionFarmacoDto guardar(AdministracionFarmaco administracion) {
-        if(administracion.getVia() == null){
-            throw new CampoNuloException("La via no puede swer nula");
+        String via = administracion.getVia();
+
+        if(via == null){
+            throw new CampoNuloException("La via no puede ser nula");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(via);
 
         return mapper.obtenerDto(repository.save(administracion));
     }
@@ -49,8 +55,8 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
     public AdministracionFarmacoDto actualizar(AdministracionFarmaco administracion) {
         Long id = administracion.getId();
 
-        if(id == null || administracion.getVia() == null){
-            throw new CampoNuloException("Ni el id ni la via pueden ser nulos");
+        if(id == null){
+            throw new CampoNuloException("El id no puede ser nulo");
         }
 
         return this.guardar(administracion);
