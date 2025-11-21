@@ -20,7 +20,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
     @Override
     public UnidadDeMedida buscarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(repository.findById(id).isEmpty()){ // refactorizar
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
