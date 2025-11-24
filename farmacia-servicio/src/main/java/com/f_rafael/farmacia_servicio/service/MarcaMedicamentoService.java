@@ -77,6 +77,17 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
         return mapper.obtenerDto(repository.findByNombre(nombre).get());
     }
 
+    @Override
+    public MarcaMedicamentoDto modificarNombre(Long id, String nuevoNombre) {
+        MarcaMedicamento marcaParaActualizar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nuevoNombre);
+
+        marcaParaActualizar.setNombre(nuevoNombre);
+
+        return this.actualizar(marcaParaActualizar);
+    }
+
 
     public MarcaMedicamento devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Marca de medicamento no encontrada"));

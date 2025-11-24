@@ -110,6 +110,17 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     }
 
     @Override
+    public PrincipioActivoDto modificarNombre(Long id, String nombre) {
+        PrincipioActivo principioActivoParaActualizar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        principioActivoParaActualizar.setNombre(nombre);
+
+        return this.actualizar(principioActivoParaActualizar);
+    }
+
+    @Override
     public PrincipioActivoDto agregarAccionTerapeutica(Long id, Long accionTerapeuticaId) {
         PrincipioActivo principioActivoAEditar;
         AccionTerapeutica accionTerapeuticaAAgregar;

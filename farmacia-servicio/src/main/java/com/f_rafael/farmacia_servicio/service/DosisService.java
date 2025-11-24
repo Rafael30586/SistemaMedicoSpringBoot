@@ -3,7 +3,9 @@ package com.f_rafael.farmacia_servicio.service;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.model.Dosis;
+import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.repository.IDosisRepository;
+import com.f_rafael.farmacia_servicio.repository.IUnidadDeMedidaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class DosisService implements IDosisService{
 
     private IDosisRepository repository;
+    private IUnidadDeMedidaRepository unidadDeMedidaRepository;
 
     @Override
     public Dosis buscarPorId(Long id) {
@@ -62,13 +65,44 @@ public class DosisService implements IDosisService{
     }
 
     @Override
-    public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervalo) {
+    public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervaloHoras) {
 
-        if(repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).isEmpty()){
+        if(repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervaloHoras).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).get();
+        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervaloHoras).get();
+    }
+
+    @Override
+    public Dosis modificarCantidad(Long id, Float cantidad) {
+        Dosis dosisParaActualizar = devolverPorId(id);
+        dosisParaActualizar.setCantidad(cantidad);
+
+        return this.actualizar(dosisParaActualizar);
+    }
+
+    @Override
+    public Dosis modificarUnidad(Long id, Long unidadId) {
+        Dosis dosisParaActualizar = devolverPorId(id);
+        UnidadDeMedida unidadParaAsignar = new UnidadDeMedida();
+        unidadParaAsignar.setId(unidadId);
+
+        if(!unidadDeMedidaRepository.existsById(unidadId)){
+            throw new EntidadNoEncontradaException("La unidad de medida no se ha encontrado");
+        }
+
+        dosisParaActualizar.setUnidad(unidadParaAsignar);
+
+        return this.actualizar(dosisParaActualizar);
+    }
+
+    @Override
+    public Dosis modificarIntervalo(Long id, Integer intervaloHoras) {
+        Dosis dosisParaActualizar = devolverPorId(id);
+        dosisParaActualizar.setIntervaloHoras(intervaloHoras);
+
+        return this.actualizar(dosisParaActualizar);
     }
 
     public Dosis devolverPorId(Long id){

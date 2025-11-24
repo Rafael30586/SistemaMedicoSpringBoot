@@ -12,4 +12,5 @@ public interface IAdministracionFarmacoService {
     public AdministracionFarmacoDto actualizar(AdministracionFarmaco administracion);
     public void borrarPorId(Long id);
     public AdministracionFarmacoDto buscarPorVia(String via);
+    public AdministracionFarmacoDto modificarVia(Long id, String via);
 }

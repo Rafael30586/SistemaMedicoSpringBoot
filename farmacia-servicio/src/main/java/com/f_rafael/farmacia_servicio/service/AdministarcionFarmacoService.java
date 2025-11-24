@@ -79,6 +79,17 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
         return mapper.obtenerDto(repository.findByVia(via).get());
     }
 
+    @Override
+    public AdministracionFarmacoDto modificarVia(Long id, String via) {
+        AdministracionFarmaco administracionParaEditar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(via);
+
+        administracionParaEditar.setVia(via);
+
+        return this.actualizar(administracionParaEditar);
+    }
+
     public AdministracionFarmaco devolverPorId(Long id){
         AdministracionFarmaco admninitracionParaRetornar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Admninistración de fármaco no encontrada"));
         return admninitracionParaRetornar;

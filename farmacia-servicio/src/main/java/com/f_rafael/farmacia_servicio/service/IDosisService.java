@@ -11,5 +11,8 @@ public interface IDosisService {
     public Dosis guardar(Dosis dosis);
     public Dosis actualizar(Dosis dosis);
     public void borrarPorId(Long id);
-    public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervalo);
+    public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervaloHoras);
+    public Dosis modificarCantidad(Long id, Float cantidad);
+    public Dosis modificarUnidad(Long id, Long unidadId);
+    public Dosis modificarIntervalo(Long id, Integer intervaloHoras);
 }

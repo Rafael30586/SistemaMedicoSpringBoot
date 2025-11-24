@@ -12,4 +12,5 @@ public interface IMarcaMedicamentoService {
     public MarcaMedicamentoDto actualizar(MarcaMedicamento marca);
     public void borrarPorId(Long id);
     public MarcaMedicamentoDto buscarPorNombre(String nombre);
+    public MarcaMedicamentoDto modificarNombre(Long id, String nuevoNombre);
 }
