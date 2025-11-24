@@ -26,12 +26,7 @@ public class MedicamentoService implements IMedicamentoService{
 
     @Override
     public MedicamentoDto buscarPorId(Long id) {
-
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return mapper.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -56,7 +51,7 @@ public class MedicamentoService implements IMedicamentoService{
             throw new CampoNuloException("El id no puede ser nulo");
         }
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -67,7 +62,7 @@ public class MedicamentoService implements IMedicamentoService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -100,7 +95,7 @@ public class MedicamentoService implements IMedicamentoService{
         Medicamento medicamentoAEditar;
         PrincipioActivo principioActivoAAsignar = new PrincipioActivo();
 
-        if(repository.findById(id).isEmpty() || principioActivoRepository.findById(principioActivoId).isEmpty()){
+        if(!repository.existsById(id) || principioActivoRepository.findById(principioActivoId).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -115,7 +110,7 @@ public class MedicamentoService implements IMedicamentoService{
         Medicamento medicamentoAEditar;
         FormaFarmaceutica formaFarmaceuticaAAsignar = new FormaFarmaceutica();
 
-        if(repository.findById(id).isEmpty() || formaFarmaceuticaRepository.findById(id).isEmpty()){
+        if(!repository.existsById(id) || formaFarmaceuticaRepository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -156,6 +151,10 @@ public class MedicamentoService implements IMedicamentoService{
         medicamentoAEditar.setMarca(marcaAAsignar);
         // medicamentoAEditar.setMarca(marcaMedicamentoRepository.findById(marcaId).get());
         return this.actualizar(medicamentoAEditar);
+    }
+
+    public Medicamento devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Medicamento no encontrado"));
     }
 
 

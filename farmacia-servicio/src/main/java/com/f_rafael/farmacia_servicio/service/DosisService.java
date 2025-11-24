@@ -18,12 +18,7 @@ public class DosisService implements IDosisService{
 
     @Override
     public Dosis buscarPorId(Long id) {
-
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return repository.findById(id).get();
+        return devolverPorId(id);
     }
 
     @Override
@@ -59,7 +54,7 @@ public class DosisService implements IDosisService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -74,5 +69,9 @@ public class DosisService implements IDosisService{
         }
 
         return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervalo).get();
+    }
+
+    public Dosis devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Dosis no encontrada"));
     }
 }

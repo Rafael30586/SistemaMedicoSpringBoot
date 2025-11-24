@@ -29,16 +29,9 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public AccionTerapeuticaDto buscarPorId(Long id) {
-        AccionTerapeutica informacionAccionTerapeutica;
-        AccionTerapeuticaDto dtoARetornar;
+        AccionTerapeutica informacionAccionTerapeutica = devolverPorId(id);
 
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        informacionAccionTerapeutica = repository.findById(id).get();
-        dtoARetornar = mapper.obtenerDto(informacionAccionTerapeutica);
-        return dtoARetornar;
+        return mapper.obtenerDto(informacionAccionTerapeutica);
     }
 
     @Override
@@ -64,11 +57,11 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     public AccionTerapeuticaDto actualizar(AccionTerapeutica accionTerapeutica) {
         Long id = accionTerapeutica.getId();
 
-        if(id == null || accionTerapeutica.getNombre() == null){
-            throw new CampoNuloException("El id y el nombre no pueden ser nulos");
+        if(id == null){
+            throw new CampoNuloException("El nombre de la acción terpéutica no puede ser nulo");
         }
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("El id no corresponde a ninguna entidad en la base de datos");
         }
 
@@ -79,7 +72,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -110,16 +103,12 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     @Override
     public AccionTerapeuticaDto modificarNombre(Long id, String nombre) {
         String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
-        AccionTerapeutica accionTerapeuticaAEditar;
-
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
+        AccionTerapeutica accionTerapeuticaAEditar = devolverPorId(id);
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
-        accionTerapeuticaAEditar = repository.findById(id).get();
         accionTerapeuticaAEditar.setNombre(nombreSinGuiones);
+
         return this.actualizar(accionTerapeuticaAEditar);
     }
 

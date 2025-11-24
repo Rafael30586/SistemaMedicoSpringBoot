@@ -24,12 +24,9 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
 
     @Override
     public AdministracionFarmacoDto buscarPorId(Long id) {
+        AdministracionFarmaco informacionAdministracionFarmaco = devolverPorId(id);
 
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return mapper.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(informacionAdministracionFarmaco);
     }
 
     @Override
@@ -64,9 +61,11 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
 
     @Override
     public void borrarPorId(Long id) {
-        if(repository.findById(id).isEmpty()){
+
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
+
         repository.deleteById(id);
     }
 
@@ -78,6 +77,11 @@ public class AdministarcionFarmacoService implements IAdministracionFarmacoServi
         }
 
         return mapper.obtenerDto(repository.findByVia(via).get());
+    }
+
+    public AdministracionFarmaco devolverPorId(Long id){
+        AdministracionFarmaco admninitracionParaRetornar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Admninistración de fármaco no encontrada"));
+        return admninitracionParaRetornar;
     }
 
 

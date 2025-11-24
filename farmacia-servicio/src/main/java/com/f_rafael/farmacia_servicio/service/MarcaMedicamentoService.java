@@ -24,11 +24,7 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
 
     @Override
     public MarcaMedicamentoDto buscarPorId(Long id) {
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return mapper.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -82,4 +78,7 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     }
 
 
+    public MarcaMedicamento devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Marca de medicamento no encontrada"));
+    }
 }

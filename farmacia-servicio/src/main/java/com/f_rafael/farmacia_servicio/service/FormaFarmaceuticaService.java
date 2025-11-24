@@ -24,12 +24,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
 
     @Override
     public FormaFarmaceuticaDto buscarPorId(Long id) {
-
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return mapper.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -58,7 +53,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
             throw new CampoNuloException("El id no puede ser nulo");
         }
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -68,7 +63,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -83,6 +78,10 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
         }
 
         return mapper.obtenerDto(repository.findByNombre(nombre).get());
+    }
+
+    public FormaFarmaceutica devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Forma farmacéutica no encontrada"));
     }
 
 

@@ -30,12 +30,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
 
     @Override
     public PrincipioActivoDto buscarPorId(Long id) {
-
-        if(repository.findById(id).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return mapper.obtenerDto(repository.findById(id).get());
+        return mapper.obtenerDto(devolverPorId(id));
     }
 
     @Override
@@ -75,7 +70,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -165,5 +160,8 @@ public class PrincipioActivoService implements IPrincipioActivoService{
         return this.actualizar(principioActivoAEditar);
     }
 
+    public PrincipioActivo devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Principio activo no encontrado"));
+    }
 
 }

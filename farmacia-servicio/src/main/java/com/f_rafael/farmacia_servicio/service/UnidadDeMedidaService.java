@@ -21,12 +21,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     @Override
     public UnidadDeMedida buscarPorId(Long id) {
-
-        if(repository.findById(id).isEmpty()){ // refactorizar
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
-
-        return repository.findById(id).get();
+        return devolverPorId(id);
     }
 
     @Override
@@ -56,7 +51,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
             throw new CampoNuloException("El id no puede ser nulo");
         }
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -66,7 +61,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
     @Override
     public void borrarPorId(Long id) {
 
-        if(repository.findById(id).isEmpty()){
+        if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -77,7 +72,7 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
     public UnidadDeMedida buscarPorNombre(String nombre) {
 
         if(repository.findByNombre(nombre).isEmpty()){
-            throw  new EntidadNoEncontradaException("Entidad no encontrada");
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
         return repository.findByNombre(nombre).get();
