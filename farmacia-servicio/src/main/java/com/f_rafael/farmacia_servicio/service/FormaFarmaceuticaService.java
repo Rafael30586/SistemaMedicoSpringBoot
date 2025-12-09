@@ -80,6 +80,17 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
         return mapper.obtenerDto(repository.findByNombre(nombre).get());
     }
 
+    @Override
+    public FormaFarmaceuticaDto modificarNombre(Long id, String nombre) {
+        FormaFarmaceutica formaFarmaceuticaParaEditar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        formaFarmaceuticaParaEditar.setNombre(nombre);
+
+        return this.actualizar(formaFarmaceuticaParaEditar);
+    }
+
     public FormaFarmaceutica devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Forma farmacéutica no encontrada"));
     }
