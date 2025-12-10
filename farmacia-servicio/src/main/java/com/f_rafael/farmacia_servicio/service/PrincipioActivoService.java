@@ -5,8 +5,10 @@ import com.f_rafael.farmacia_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.dto.SubAccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.PrincipioActivoMapper;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.AccionTerapeutica;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.model.PrincipioActivo;
@@ -26,6 +28,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     private IAccionTerapeuticaRepository accionTerapeuticaRepository;
     private PrincipioActivoMapper mapper;
     private Verificador verificador;
+    private StringMapper stringMapper;
 
 
     @Override
@@ -55,6 +58,7 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     @Override
     public PrincipioActivoDto actualizar(PrincipioActivo principioActivo) {
         Long id = principioActivo.getId();
+        String nuevoNombre = principioActivo.getNombre();
 
         if(id == null){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
@@ -62,6 +66,10 @@ public class PrincipioActivoService implements IPrincipioActivoService{
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        if(nuevoNombre != repository.findById(id).get().getNombre()){
+            if(exietePorNombre(nuevoNombre)) throw new DatoIncorrectoException("El nombre ya existe para otra entidad");
         }
 
         return this.guardar(principioActivo);
@@ -112,10 +120,15 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     @Override
     public PrincipioActivoDto modificarNombre(Long id, String nombre) {
         PrincipioActivo principioActivoParaActualizar = devolverPorId(id);
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
 
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+        if(exietePorNombre(nombre)){
+            throw new DatoIncorrectoException("El nombre ya existe para alguna entidad");
+        }
 
-        principioActivoParaActualizar.setNombre(nombre);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
+
+        principioActivoParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(principioActivoParaActualizar);
     }
@@ -171,8 +184,12 @@ public class PrincipioActivoService implements IPrincipioActivoService{
         return this.actualizar(principioActivoAEditar);
     }
 
-    public PrincipioActivo devolverPorId(Long id){
+    private PrincipioActivo devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Principio activo no encontrado"));
+    }
+
+    private boolean exietePorNombre(String nombre){
+        return repository.findByNombre(nombre).isPresent();
     }
 
 }

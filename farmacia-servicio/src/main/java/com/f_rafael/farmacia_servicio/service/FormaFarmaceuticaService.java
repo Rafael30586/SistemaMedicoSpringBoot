@@ -3,8 +3,10 @@ package com.f_rafael.farmacia_servicio.service;
 import com.f_rafael.farmacia_servicio.dto.FormaFarmaceuticaDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.FormaFarmaceuticaMapper;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.FormaFarmaceutica;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IFormaFarmaceuticaRepository;
@@ -21,6 +23,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     private IFormaFarmaceuticaRepository repository;
     private Verificador verificador;
     private FormaFarmaceuticaMapper mapper;
+    private StringMapper stringMapper;
 
     @Override
     public FormaFarmaceuticaDto buscarPorId(Long id) {
@@ -48,6 +51,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     @Override
     public FormaFarmaceuticaDto actualizar(FormaFarmaceutica formaFarmaceutica) {
         Long id = formaFarmaceutica.getId();
+        String nuevoNombre = formaFarmaceutica.getNombre();
 
         if(id == null){
             throw new CampoNuloException("El id no puede ser nulo");
@@ -55,6 +59,10 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        if(nuevoNombre != repository.findById(id).get().getNombre()){
+            if(exietePorNombre(nuevoNombre)) throw new DatoIncorrectoException("El nombrwe ya existe para otra entidad");
         }
 
         return this.guardar(formaFarmaceutica);
@@ -73,7 +81,7 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     @Override
     public FormaFarmaceuticaDto buscarPorNombre(String nombre) {
 
-        if(repository.findByNombre(nombre).isEmpty()){
+        if(!exietePorNombre(nombre)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -83,17 +91,25 @@ public class FormaFarmaceuticaService implements IFormaFarmaceuticaService{
     @Override
     public FormaFarmaceuticaDto modificarNombre(Long id, String nombre) {
         FormaFarmaceutica formaFarmaceuticaParaEditar = devolverPorId(id);
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
 
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+        if(exietePorNombre(nombreSinGuiones)){
+            throw new DatoIncorrectoException("El nokbre ya existe para otra entidad");
+        }
 
-        formaFarmaceuticaParaEditar.setNombre(nombre);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
+
+        formaFarmaceuticaParaEditar.setNombre(nombreSinGuiones);
 
         return this.actualizar(formaFarmaceuticaParaEditar);
     }
 
-    public FormaFarmaceutica devolverPorId(Long id){
+    private FormaFarmaceutica devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Forma farmacéutica no encontrada"));
     }
 
+    private boolean exietePorNombre(String nombre){
+        return repository.findByNombre(nombre).isPresent();
+    }
 
 }

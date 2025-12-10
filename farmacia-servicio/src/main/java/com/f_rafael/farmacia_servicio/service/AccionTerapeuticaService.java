@@ -4,6 +4,7 @@ import com.f_rafael.farmacia_servicio.dto.AccionTerapeuticaDto;
 import com.f_rafael.farmacia_servicio.dto.DescripcionDto;
 import com.f_rafael.farmacia_servicio.dto.SubPrincipioActivoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.AccionTerapeuticaMapper;
 import com.f_rafael.farmacia_servicio.mapper.StringMapper;
@@ -56,6 +57,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     @Override
     public AccionTerapeuticaDto actualizar(AccionTerapeutica accionTerapeutica) {
         Long id = accionTerapeutica.getId();
+        String nombre = accionTerapeutica.getNombre();
 
         if(id == null){
             throw new CampoNuloException("El nombre de la acción terpéutica no puede ser nulo");
@@ -63,6 +65,10 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("El id no corresponde a ninguna entidad en la base de datos");
+        }
+
+        if(nombre != repository.findById(id).get().getNombre()){
+            if(existePorNombre(nombre)) throw new DatoIncorrectoException("El nombre ya existe para otra entidad");
         }
 
         return this.guardar(accionTerapeutica);
@@ -84,9 +90,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
         AccionTerapeutica informacionAccionTerapeutica;
         AccionTerapeuticaDto dtoARetornar;
 
-        if(repository.findByNombre(nombre).isEmpty()){
-            throw new EntidadNoEncontradaException("Entidad no encontrada");
-        }
+        if(!existePorNombre(nombre)) throw new EntidadNoEncontradaException("Entidad no encontrada");
 
         informacionAccionTerapeutica = repository.findByNombre(nombre).get();
         dtoARetornar = mapper.obtenerDto(informacionAccionTerapeutica);
@@ -104,6 +108,10 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     public AccionTerapeuticaDto modificarNombre(Long id, String nombre) {
         String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
         AccionTerapeutica accionTerapeuticaAEditar = devolverPorId(id);
+
+        if(existePorNombre(nombre)){
+            throw new DatoIncorrectoException("El nombre est{a presente en otra entidad");
+        }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
@@ -124,6 +132,10 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     private AccionTerapeutica devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Acción terapéutica no encontrada"));
+    }
+
+    private boolean existePorNombre(String nombre){
+        return repository.findByNombre(nombre).isPresent();
     }
 
 }

@@ -3,8 +3,10 @@ package com.f_rafael.farmacia_servicio.service;
 import com.f_rafael.farmacia_servicio.dto.MarcaMedicamentoDto;
 import com.f_rafael.farmacia_servicio.dto.SubMedicamentoDto;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.MarcaMedicamentoMapper;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.MarcaMedicamento;
 import com.f_rafael.farmacia_servicio.model.Medicamento;
 import com.f_rafael.farmacia_servicio.repository.IMarcaMedicamentoRepository;
@@ -21,6 +23,7 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     private IMarcaMedicamentoRepository repository;
     private MarcaMedicamentoMapper mapper;
     private Verificador verificador;
+    private StringMapper stringMapper;
 
     @Override
     public MarcaMedicamentoDto buscarPorId(Long id) {
@@ -49,9 +52,14 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     @Override
     public MarcaMedicamentoDto actualizar(MarcaMedicamento marca) {
         Long id = marca.getId();
+        String nuevoNombre = marca.getNombre();
 
         if(id == null){
             throw new CampoNuloException("El id y no puede ser nulo");
+        }
+
+        if(nuevoNombre != repository.findById(id).get().getNombre()){
+            throw new DatoIncorrectoException("El nombre ya existe para otra entidad");
         }
 
         return this.guardar(marca);
@@ -70,7 +78,7 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     @Override
     public MarcaMedicamentoDto buscarPorNombre(String nombre) {
 
-        if(repository.findByNombre(nombre).isEmpty()){
+        if(!existePorNombre(nombre)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
@@ -80,16 +88,25 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     @Override
     public MarcaMedicamentoDto modificarNombre(Long id, String nuevoNombre) {
         MarcaMedicamento marcaParaActualizar = devolverPorId(id);
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nuevoNombre);
 
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nuevoNombre);
+        if(existePorNombre(nombreSinGuiones)){
+            throw new DatoIncorrectoException("El nombre ya existe para alguna entidad");
+        }
 
-        marcaParaActualizar.setNombre(nuevoNombre);
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
+
+        marcaParaActualizar.setNombre(nombreSinGuiones);
 
         return this.actualizar(marcaParaActualizar);
     }
 
 
-    public MarcaMedicamento devolverPorId(Long id){
+    private MarcaMedicamento devolverPorId(Long id){
         return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Marca de medicamento no encontrada"));
+    }
+
+    private boolean existePorNombre(String nombre){
+        return repository.findByNombre(nombre).isPresent();
     }
 }
