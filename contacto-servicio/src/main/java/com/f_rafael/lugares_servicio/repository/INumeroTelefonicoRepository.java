@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface INumeroTelefonicoRepository extends JpaRepository<NumeroTelefonico, Long> {
+public interface INumeroTelefonicoRepository extends JpaRepository<NumeroTelefonico, Long> { // Clase para borrar
 
     public Optional<NumeroTelefonico> findByNumero(String numero);
     @Query("SELECT nt FROM NumeroTelefonico nt WHERE nt.tipo = :tipo")

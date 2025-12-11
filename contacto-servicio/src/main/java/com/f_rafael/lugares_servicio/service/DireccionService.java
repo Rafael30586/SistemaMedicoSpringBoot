@@ -2,6 +2,7 @@ package com.f_rafael.lugares_servicio.service;
 
 import com.f_rafael.lugares_servicio.exception.CampoNuloException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Direccion;
 import com.f_rafael.lugares_servicio.repository.IDireccionRepository;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class DireccionService implements IDireccionService{
 
     private IDireccionRepository repository;
+    private StringMapper stringMapper;
 
     @Override
     public Direccion buscarPorId(Long id) {
@@ -93,13 +95,14 @@ public class DireccionService implements IDireccionService{
     @Override
     public void editarCalle(Long id, String calle) {
         Direccion direccionAEditar;
+        String calleSinGuiones = stringMapper.quitarGuionesBajos(calle);
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
         direccionAEditar = repository.findById(id).get();
-        direccionAEditar.setCalle(calle);
+        direccionAEditar.setCalle(calleSinGuiones);
 
         this.guardar(direccionAEditar);
     }
@@ -121,13 +124,14 @@ public class DireccionService implements IDireccionService{
     @Override
     public void editarDepartamento(Long id, String departamento) {
         Direccion direccionAEditar;
+        String departamentoSinGuiones = stringMapper.quitarGuionesBajos(departamento);
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
         direccionAEditar = repository.findById(id).get();
-        direccionAEditar.setDepartamento(departamento);
+        direccionAEditar.setDepartamento(departamentoSinGuiones);
 
         this.guardar(direccionAEditar);
     }

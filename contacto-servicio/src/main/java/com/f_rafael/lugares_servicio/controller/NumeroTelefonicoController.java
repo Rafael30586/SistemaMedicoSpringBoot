@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/numeros-telefonicos")
 @AllArgsConstructor
-public class NumeroTelefonicoController {
+public class NumeroTelefonicoController { // Clase para borrar
 
     private INumeroTelefonicoService service;
 

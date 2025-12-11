@@ -5,7 +5,7 @@ import com.f_rafael.lugares_servicio.model.NumeroTelefonico;
 import java.util.List;
 import java.util.Optional;
 
-public interface INumeroTelefonicoService {
+public interface INumeroTelefonicoService { // Clase para borrar
     public NumeroTelefonico buscarPorId(Long id);
     public List<NumeroTelefonico> buscarTodos();
     public NumeroTelefonico guardar(NumeroTelefonico telefono);

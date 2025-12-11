@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "numeros_telefonicos")
-public class NumeroTelefonico {
+public class NumeroTelefonico { // Clase para borrar
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
