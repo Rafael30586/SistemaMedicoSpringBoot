@@ -12,4 +12,5 @@ public interface IPaisService {
     public Pais actualizar(Pais pais);
     public void borrarPorId(Long id);
     public Pais buscarPorNombre(String nombre);
+    public Pais modificarNombre(Long id, String nombre);
 }

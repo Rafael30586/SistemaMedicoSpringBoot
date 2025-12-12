@@ -2,7 +2,10 @@ package com.f_rafael.lugares_servicio.service;
 
 import com.f_rafael.lugares_servicio.exception.CampoNuloException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.lugares_servicio.mapper.StringMapper;
+import com.f_rafael.lugares_servicio.model.Pais;
 import com.f_rafael.lugares_servicio.model.Provincia;
+import com.f_rafael.lugares_servicio.repository.IPaisRepository;
 import com.f_rafael.lugares_servicio.repository.IProvinciaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,8 @@ import java.util.Optional;
 public class ProvinciaService implements IProvinciaService{
 
     private IProvinciaRepository repository;
+    private StringMapper stringMapper;
+    private IPaisRepository paisRepository;
 
     @Override
     public Provincia buscarPorId(Long id) {
@@ -72,5 +77,35 @@ public class ProvinciaService implements IProvinciaService{
         }
 
         return repository.findByNombre(nombre).get();
+    }
+
+    @Override
+    public Provincia modificarNombre(Long id, String nombre) {
+        Provincia provinciaParaModificar = devolverPorId(id);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        provinciaParaModificar.setNombre(nombreSinGuiones);
+
+        return this.actualizar(provinciaParaModificar);
+    }
+
+    @Override
+    public Provincia modificarProvincia(Long id, Long paisId) {
+        Provincia provinciaParaModificiar = devolverPorId(id);
+        Pais paisParaAsignar = new Pais();
+
+        if(paisRepository.existsById(paisId)) {
+            paisParaAsignar.setId(paisId);
+        }else{
+            throw new EntidadNoEncontradaException("Pais no encontrado");
+        }
+
+        provinciaParaModificiar.setPais(paisParaAsignar);
+
+        return this.actualizar(provinciaParaModificiar);
+    }
+
+    private Provincia devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Provincia no encontrada"));
     }
 }

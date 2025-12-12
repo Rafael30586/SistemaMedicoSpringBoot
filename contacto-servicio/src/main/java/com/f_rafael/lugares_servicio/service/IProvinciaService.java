@@ -14,5 +14,7 @@ public interface IProvinciaService {
     public Provincia actualizar(Provincia provincia);
     public void borrarPorId(Long id);
     public Provincia buscarPorNombre(String nombre);
+    public Provincia modificarNombre(Long id, String nombre);
+    public Provincia modificarProvincia(Long id, Long paisId);
 
 }

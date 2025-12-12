@@ -2,6 +2,7 @@ package com.f_rafael.lugares_servicio.service;
 
 import com.f_rafael.lugares_servicio.exception.CampoNuloException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Pais;
 import com.f_rafael.lugares_servicio.repository.IPaisRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class PaisService implements IPaisService{
 
     private IPaisRepository repository;
+    private StringMapper stringMapper;
     @Override
     public Pais buscarPorId(Long id) {
 
@@ -67,5 +69,19 @@ public class PaisService implements IPaisService{
         }
 
         return repository.findByNombre(nombre).get();
+    }
+
+    @Override
+    public Pais modificarNombre(Long id, String nombre) {
+        Pais paisParaActualizar = devolverPorId(id);
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        paisParaActualizar.setNombre(nombreSinGuiones);
+
+        return this.actualizar(paisParaActualizar);
+    }
+
+    private Pais devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Pais no encontrado"));
     }
 }
