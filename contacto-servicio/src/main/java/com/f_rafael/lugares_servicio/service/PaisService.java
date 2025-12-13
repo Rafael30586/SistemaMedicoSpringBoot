@@ -5,6 +5,7 @@ import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Pais;
 import com.f_rafael.lugares_servicio.repository.IPaisRepository;
+import com.f_rafael.lugares_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class PaisService implements IPaisService{
 
     private IPaisRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
     @Override
     public Pais buscarPorId(Long id) {
 
@@ -33,8 +35,11 @@ public class PaisService implements IPaisService{
 
     @Override
     public Pais guardar(Pais pais) {
+        String nombre = pais.getNombre();
 
-        if(pais.getNombre() == null){
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        if(nombre == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
 
@@ -75,6 +80,8 @@ public class PaisService implements IPaisService{
     public Pais modificarNombre(Long id, String nombre) {
         Pais paisParaActualizar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
         paisParaActualizar.setNombre(nombreSinGuiones);
 

@@ -7,6 +7,7 @@ import com.f_rafael.lugares_servicio.model.Pais;
 import com.f_rafael.lugares_servicio.model.Provincia;
 import com.f_rafael.lugares_servicio.repository.IPaisRepository;
 import com.f_rafael.lugares_servicio.repository.IProvinciaRepository;
+import com.f_rafael.lugares_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class ProvinciaService implements IProvinciaService{
     private IProvinciaRepository repository;
     private StringMapper stringMapper;
     private IPaisRepository paisRepository;
+    private Verificador verificador;
 
     @Override
     public Provincia buscarPorId(Long id) {
@@ -38,8 +40,11 @@ public class ProvinciaService implements IProvinciaService{
 
     @Override
     public Provincia guardar(Provincia provincia) {
+        String nombre = provincia.getNombre();
 
-        if(provincia.getNombre() == null || provincia.getPais() == null){
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        if(nombre == null || provincia.getPais() == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
         }
 
@@ -83,6 +88,8 @@ public class ProvinciaService implements IProvinciaService{
     public Provincia modificarNombre(Long id, String nombre) {
         Provincia provinciaParaModificar = devolverPorId(id);
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
         provinciaParaModificar.setNombre(nombreSinGuiones);
 

@@ -5,6 +5,7 @@ import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Direccion;
 import com.f_rafael.lugares_servicio.repository.IDireccionRepository;
+import com.f_rafael.lugares_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class DireccionService implements IDireccionService{
 
     private IDireccionRepository repository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public Direccion buscarPorId(Long id) {
@@ -36,10 +38,13 @@ public class DireccionService implements IDireccionService{
 
     @Override
     public Direccion guardar(Direccion direccion) {
+        String calle = direccion.getCalle();
 
-        if(direccion.getCalle() == null){
+        if(calle == null){
             throw new CampoNuloException("La calle no puede ser nula");
         }
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(calle);
 
         return repository.save(direccion);
     }
@@ -96,6 +101,8 @@ public class DireccionService implements IDireccionService{
     public void editarCalle(Long id, String calle) {
         Direccion direccionAEditar;
         String calleSinGuiones = stringMapper.quitarGuionesBajos(calle);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(calleSinGuiones);
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

@@ -7,11 +7,11 @@ import com.f_rafael.lugares_servicio.model.Localidad;
 import com.f_rafael.lugares_servicio.model.Provincia;
 import com.f_rafael.lugares_servicio.repository.ILocalidadRepository;
 import com.f_rafael.lugares_servicio.repository.IProvinciaRepository;
+import com.f_rafael.lugares_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor
@@ -20,6 +20,7 @@ public class LocalidadService implements ILocalidadService{
     private ILocalidadRepository repository;
     private IProvinciaRepository provinciaRepository;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public Localidad buscarPorId(Long id) {
@@ -36,8 +37,11 @@ public class LocalidadService implements ILocalidadService{
 
     @Override
     public Localidad guardar(Localidad localidad) {
+        String nombre = localidad.getNombre();
 
-        if(localidad.getNombre() == null || localidad.getProvincia() == null){
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);
+
+        if(nombre == null || localidad.getProvincia() == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
 
@@ -68,6 +72,8 @@ public class LocalidadService implements ILocalidadService{
     public void cambiarNombre(Long id, String nombre) {
         Localidad localidadAEditar;
         String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
 
         if(repository.findById(id).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
