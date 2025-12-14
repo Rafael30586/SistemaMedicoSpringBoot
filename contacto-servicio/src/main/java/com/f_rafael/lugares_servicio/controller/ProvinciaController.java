@@ -47,4 +47,14 @@ public class ProvinciaController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Provincia> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
+        return ResponseEntity.ok(service.modificarNombre(id, nombre));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Provincia> modificarPais(@PathVariable Long id,@RequestParam("pais-id") Long paisId){
+        return ResponseEntity.ok(service.modificarProvincia(id, paisId));
+    }
+
 }

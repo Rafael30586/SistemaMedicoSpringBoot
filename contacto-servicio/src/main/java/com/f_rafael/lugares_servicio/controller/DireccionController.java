@@ -55,10 +55,10 @@ public class DireccionController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}") // La calle va con guiones bajos en lugar de espacios vacíos
+    @PatchMapping("/{id}")
     public ResponseEntity<String> editarCalle(@PathVariable Long id,
                                                  @RequestParam("calle") String calle){
-        String calleSinGuiones = Transform.removerGuiones(calle);
+        // String calleSinGuiones = Transform.removerGuiones(calle);
         service.editarCalle(id,calle);
         return new ResponseEntity<>("Direccion editada correctamente",HttpStatusCode.valueOf(204));
     }
@@ -73,9 +73,9 @@ public class DireccionController {
     @PatchMapping("/{id}") // El departamento va con guiones bajos en lugar de espacios vacíos
     public ResponseEntity<String> editarDepartamento(@PathVariable Long id,
                                                  @RequestParam("departamento") String departamento){
-        String departamentoSinGuiones = Transform.removerGuiones(departamento);
+        // String departamentoSinGuiones = Transform.removerGuiones(departamento);
 
-        service.editarDepartamento(id,departamentoSinGuiones);
+        service.editarDepartamento(id,departamento);
         return new ResponseEntity<>("Entidad editada correctamente",HttpStatusCode.valueOf(204));
     }
 }

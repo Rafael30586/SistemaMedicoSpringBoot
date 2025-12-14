@@ -41,4 +41,9 @@ public class PaisController {
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Pais> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
+        return ResponseEntity.ok(service.modificarNombre(id,nombre));
+    }
 }

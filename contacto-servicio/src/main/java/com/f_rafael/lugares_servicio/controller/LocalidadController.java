@@ -45,8 +45,8 @@ public class LocalidadController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<String> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
-        String nombreSinGuiones = Transform.removerGuiones(nombre);
-        service.cambiarNombre(id,nombreSinGuiones);
+        // String nombreSinGuiones = Transform.removerGuiones(nombre);
+        service.cambiarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
