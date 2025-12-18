@@ -26,12 +26,12 @@ public class NumeroTelefonicoController { // Clase para borrar
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/numero")
     public ResponseEntity<NumeroTelefonico> buscarPorNumero(@RequestParam String numero){
         return ResponseEntity.ok(service.buscarPorNumero(numero));
     }
 
-    @GetMapping
+    @GetMapping("/tipo")
     public ResponseEntity<List<NumeroTelefonico>> buscarPorTipo(@RequestParam String tipo){
         String tipoEnMayusculas = tipo.toUpperCase();
         return ResponseEntity.ok(service.buscarPorTipo(tipoEnMayusculas));

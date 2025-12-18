@@ -26,7 +26,7 @@ public class ProvinciaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<Provincia> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
@@ -47,12 +47,12 @@ public class ProvinciaController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<Provincia> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/pais")
     public ResponseEntity<Provincia> modificarPais(@PathVariable Long id,@RequestParam("pais-id") Long paisId){
         return ResponseEntity.ok(service.modificarProvincia(id, paisId));
     }

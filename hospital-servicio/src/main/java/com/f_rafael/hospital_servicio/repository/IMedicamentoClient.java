@@ -5,8 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "FARMACIA-SERVICIO")
-public interface IMedicamentoClient {
+// @FeignClient(name = "FARMACIA-SERVICIO")
+public interface IMedicamentoClient { // Inerfaz para borrar
 
     @GetMapping("/medicamentos/{id}")
     public MedicamentoDto buscarPorId(@PathVariable("id") Long id);

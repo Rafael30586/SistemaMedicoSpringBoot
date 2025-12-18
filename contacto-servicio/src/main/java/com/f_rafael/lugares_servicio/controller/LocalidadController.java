@@ -43,14 +43,14 @@ public class LocalidadController {
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<String> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         // String nombreSinGuiones = Transform.removerGuiones(nombre);
         service.cambiarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/provincia")
     public ResponseEntity<String> modificarProvincia(@PathVariable Long id,
                                                      @RequestParam("provincia-id") Long provinciaId){
         service.cambiarProvincia(id,provinciaId);

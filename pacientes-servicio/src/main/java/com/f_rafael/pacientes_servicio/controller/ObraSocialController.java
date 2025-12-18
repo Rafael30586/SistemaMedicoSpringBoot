@@ -27,7 +27,7 @@ public class ObraSocialController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<ObraSocialDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
@@ -48,7 +48,7 @@ public class ObraSocialController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<ObraSocialDto> actualizarNombre(@PathVariable Long id, @RequestParam String nombre){
         return ResponseEntity.ok(service.actualizarNombre(id,nombre));
     }

@@ -28,13 +28,13 @@ public class PrincipioActivoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<PrincipioActivoDto> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return new ResponseEntity<>(service.buscarPorNombre(nombre),HttpStatusCode.valueOf(200));
     }
 
-    @GetMapping
+    @GetMapping("/acciopn-terapeutica")
     public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
         String accionTerapeuticaSinGuiones = Transformacion.removerGuionesBajos(nombreAccionTerapeutica);
         return ResponseEntity.ok(service.buscarPorAccionTerapeutica(accionTerapeuticaSinGuiones));
@@ -56,14 +56,14 @@ public class PrincipioActivoController {
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/agregar")
+    @PatchMapping("/{id}/agregar-accion-terapeutica")
     public ResponseEntity<String> agregarAccionTerapeutica(@RequestParam Long id,
                                                            @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
         service.agregarAccionTerapeutica(id,accionTerapeuticaId);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/quitar")
+    @PatchMapping("/{id}/quitar-accion-terapeutica")
     public ResponseEntity<String> quitarAccionTerapeutica(@RequestParam Long id,
                                                            @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
         service.quitarAccionTerapeutica(id,accionTerapeuticaId);

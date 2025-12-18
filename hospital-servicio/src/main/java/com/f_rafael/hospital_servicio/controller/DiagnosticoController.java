@@ -43,30 +43,30 @@ public class DiagnosticoController {
         return new ResponseEntity("El diagnóstico se ha borrado",HttpStatusCode.valueOf(204));
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<DiagnosticoDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/agregar-sintoma")
     public ResponseEntity<DiagnosticoDto> agregarSintoma(@PathVariable Long id,
                                                          @RequestParam("sintoma-id") Long sintomaId){
         return ResponseEntity.ok(service.agregarSintoma(id, sintomaId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/quitar-sintoma")
     public ResponseEntity<DiagnosticoDto> quitarSintoma(@PathVariable Long id,
                                                         @RequestParam("sintoma-id") Long sintomaId){
         return ResponseEntity.ok(service.quitarSintoma(id, sintomaId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/agregar-signo")
     public ResponseEntity<DiagnosticoDto> agregarSigno(@PathVariable Long id,
                                                        @RequestParam("signo-id") Long signoId){
         return ResponseEntity.ok(service.agregarSigno(id, signoId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/quitar-signo")
     public ResponseEntity<DiagnosticoDto> quitarSigno(@PathVariable Long id,
                                                       @RequestParam("signo-id") Long signoId){
         return ResponseEntity.ok(service.quitarSigno(id, signoId));

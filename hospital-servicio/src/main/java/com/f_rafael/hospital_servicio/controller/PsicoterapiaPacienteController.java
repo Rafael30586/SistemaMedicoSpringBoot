@@ -28,19 +28,19 @@ public class PsicoterapiaPacienteController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/paciente")
     public ResponseEntity<List<PsicoterapiaPacienteDto>> buscarPorPaciente(@RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                            @RequestParam String opcion) {
         return ResponseEntity.ok(service.buscarPorPaciente(pacienteIdODni, opcion));
     }
 
-    @GetMapping
+    @GetMapping("/fecha-inicio")
     public ResponseEntity<List<PsicoterapiaPacienteDto>> buscarPorFechaDeInicio(@RequestParam LocalDate desde,
                                                                                 @RequestParam LocalDate hasta){
         return ResponseEntity.ok(service.buscarPorFechaDeInicio(desde, hasta));
     }
 
-    @GetMapping
+    @GetMapping("/fecha-final")
     public ResponseEntity<List<PsicoterapiaPacienteDto>> buscarPorFechaDeFinal(@RequestParam LocalDate desde,
                                                                                @RequestParam LocalDate hasta){
         return ResponseEntity.ok(service.buscarPorFechaDeFinal(desde,hasta));
@@ -62,20 +62,20 @@ public class PsicoterapiaPacienteController {
         return new ResponseEntity<>("El tratamiento ha sido borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/paciente")
     public ResponseEntity<PsicoterapiaPacienteDto> modificarPaciente(@PathVariable Long id,
                                                                      @RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                      @RequestParam String opcion){
         return ResponseEntity.ok(service.modificarPaciente(id, pacienteIdODni, opcion));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/fecha-inicio")
     public ResponseEntity<PsicoterapiaPacienteDto> modificarFechaDeInicio(@PathVariable Long id,
                                                                           @RequestParam LocalDate inicio){
         return ResponseEntity.ok(service.modificarFechaDeInicio(id,inicio));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/fecha-final")
     public ResponseEntity<PsicoterapiaPacienteDto> modificarFechaDeFinal(@PathVariable Long id,
                                                                          @RequestParam LocalDate fin){
         return ResponseEntity.ok(service.modificarFechaDeFinal(id,fin));

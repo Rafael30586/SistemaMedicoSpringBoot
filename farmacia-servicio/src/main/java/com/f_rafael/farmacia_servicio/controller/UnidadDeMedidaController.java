@@ -27,13 +27,13 @@ public class UnidadDeMedidaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<UnidadDeMedida> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
     }
 
-    @GetMapping
+    @GetMapping("/simbolo")
     public ResponseEntity<UnidadDeMedida> buscarPorSimbolo(@RequestParam String simbolo){
         return ResponseEntity.ok(service.buscarPorSimbolo(simbolo));
     }

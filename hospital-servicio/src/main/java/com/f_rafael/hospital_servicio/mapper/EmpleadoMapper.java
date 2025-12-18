@@ -30,7 +30,7 @@ public class EmpleadoMapper {
         dtoARetornar.setRol(informacionEmpleado.getRol());
         dtoARetornar.setSalario(informacionEmpleado.getSalario());
         dtoARetornar.setTelefonos(informacionEmpleado.getTelefonos());
-        dtoARetornar.setMatriculaProfesional(informacionEmpleado.getMatriculaPorfesional());
+        dtoARetornar.setMatriculaProfesional(informacionEmpleado.getMatriculaProfesional());
 
         return dtoARetornar;
     }

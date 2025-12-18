@@ -1,10 +1,12 @@
 package com.f_rafael.lugares_servicio.utils;
 
 import com.f_rafael.lugares_servicio.exception.DatoIncorrectoException;
+import org.springframework.stereotype.Component;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Component
 public class Verificador {
 
     public void tieneEspaciosVacios(String cadena){

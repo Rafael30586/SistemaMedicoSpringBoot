@@ -27,12 +27,12 @@ public class TratamientoQuirurgicoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<TratamientoQuirurgico> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping
+    @GetMapping("/descripcion")
     public ResponseEntity<List<TratamientoQuirurgico>> buscarPorDescripcion(@RequestParam String secuencia){
         return ResponseEntity.ok(service.buscarPorDescripcion(secuencia));
     }
@@ -53,13 +53,13 @@ public class TratamientoQuirurgicoController {
         return new ResponseEntity<>("El tratamiento ha sido borrado",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<TratamientoQuirurgico> modificarNombre(@PathVariable Long id,
                                                                  @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/descripcion")
     public ResponseEntity<TratamientoQuirurgico> modificarDescripcion(@PathVariable Long id,
                                                                       @RequestBody TextoDto descripcion){
         return ResponseEntity.ok(service.modificarDescripcion(id, descripcion));

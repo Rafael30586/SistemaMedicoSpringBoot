@@ -17,6 +17,6 @@ public class EstudioMedico { //Un estudio médico como puede ser análisis de sa
     private Long id;
     @Column(nullable = false)
     private String nombre;
-    @Column(nullable = false)
+    @ManyToOne
     private EstudioMedicoClasificacion clasificacion;
 }

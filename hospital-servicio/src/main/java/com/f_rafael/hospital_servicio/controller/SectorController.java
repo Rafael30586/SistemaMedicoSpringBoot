@@ -26,7 +26,7 @@ public class SectorController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<Sector> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
@@ -47,7 +47,7 @@ public class SectorController {
         return new ResponseEntity<>("El sector ha sido borrado",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<Sector> modificarNombre(@PathVariable Long id,
                                                   @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));

@@ -28,17 +28,17 @@ public class SignoController {
         return ResponseEntity.ok(service. buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<SignoDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping
+    @GetMapping("/unidad")
     public ResponseEntity<List<SignoDto>> buscarPorUnidad(@RequestParam String unidad){
         return ResponseEntity.ok(service.buscarPorUnidad(unidad));
     }
 
-    @GetMapping
+    @GetMapping("/descripcion")
     public ResponseEntity<List<SignoDto>> buscarPorDescripcion(@RequestParam String secuencia){
         return ResponseEntity.ok(service.buscarPorDescripcion(secuencia));
     }
@@ -59,31 +59,31 @@ public class SignoController {
         return new ResponseEntity<>("El signo ha sido borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<SignoDto> modificarNombre(@PathVariable Long id,
                                                     @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/valor-minimo")
     public ResponseEntity<SignoDto> modificarValorMinimo(@PathVariable Long id,
                                                          @RequestParam("valor-minimo") Double valorMinimo){
         return ResponseEntity.ok(service.modificarValorMinimo(id, valorMinimo));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/valor-maximo")
     public ResponseEntity<SignoDto> modificarValorMaximo(@PathVariable Long id,
                                                          @RequestParam("valor-maximo") Double valorMaximo){
         return ResponseEntity.ok(service.modificarValorMaximo(id, valorMaximo));
     }
 
-    @PatchMapping("/id")
+    @PatchMapping("/id/unidad")
     public ResponseEntity<SignoDto> modificarUnidad(@PathVariable Long id,
                                                     @RequestParam("unidad-id") Long unidadId){
         return ResponseEntity.ok(service.modificarUnidad(id, unidadId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/descripcion")
     public ResponseEntity<SignoDto> modificarDescripcion(@PathVariable Long id,
                                                          @RequestBody TextoDto descripcion){
         return ResponseEntity.ok(service.modificarDescripcion(id, descripcion));

@@ -28,7 +28,7 @@ public class AdministracionFarmacoController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/via")
     public ResponseEntity<AdministracionFarmacoDto> buscarPorVia(@RequestParam String via){
         String viaSinGuiones = Transformacion.removerGuionesBajos(via);
         return ResponseEntity.ok(service.buscarPorVia(viaSinGuiones));

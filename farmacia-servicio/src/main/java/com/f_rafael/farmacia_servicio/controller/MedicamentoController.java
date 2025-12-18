@@ -28,25 +28,25 @@ public class MedicamentoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/principio-activo")
     public ResponseEntity<List<MedicamentoDto>> buscarPorPrincipioActivo(@RequestParam("nombre-principio-activo") String nombrePrincipioActivo){
         String principioActivoSinGuiones = Transformacion.removerGuionesBajos(nombrePrincipioActivo);
         return ResponseEntity.ok(service.buscarPorPrincipioActivo(principioActivoSinGuiones));
     }
 
-    @GetMapping
+    @GetMapping("/forma-farmaceutica")
     public ResponseEntity<List<MedicamentoDto>> buscarPorFormaFarmaceutica(@RequestParam("nombre-forma-farmaceutica") String nombreFormaFarmaceutica){
         String formaFarmaceuticaSinGuiones = Transformacion.removerGuionesBajos(nombreFormaFarmaceutica);
         return ResponseEntity.ok(service.buscarPorFormaFarmaceutica(formaFarmaceuticaSinGuiones));
     }
 
-    @GetMapping
+    @GetMapping("/administracion")
     public ResponseEntity<List<MedicamentoDto>> buscarPorAdminiastracion(@RequestParam("via") String via){
         String viaSinGuiones = Transformacion.removerGuionesBajos(via);
         return ResponseEntity.ok(service.buscarPorAdministracion(viaSinGuiones));
     }
 
-    @GetMapping
+    @GetMapping("/marca")
     public ResponseEntity<List<MedicamentoDto>> buscarPorMarca(@RequestParam("nombre-marca") String nombreMarca){
         String marcaSinGuiones = Transformacion.removerGuionesBajos(nombreMarca);
         return ResponseEntity.ok(service.buscarPorMarca(marcaSinGuiones));
@@ -68,28 +68,28 @@ public class MedicamentoController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/{id}/principio-activo")
     public ResponseEntity<String> asignarPrincipioActivo(@RequestParam Long id,
                                                          @RequestParam("principio-activo-id") Long principioActivoId){
         service.asignarPrincipioActivo(id,principioActivoId);
         return new ResponseEntity<>("Entidad midificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/{id}/forma-farmaceutica")
     public ResponseEntity<String> asignarFormaFarmaceutica(@RequestParam Long id,
                                                            @RequestParam("forma-farmaceutica-id") Long formaFarmaceuticaId){
         service.asignarFormaFarmaceutica(id,formaFarmaceuticaId);
         return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/{id}/administracion")
     public ResponseEntity<String> asignarAdministracion(@RequestParam Long id,
                                                         @RequestParam("administracion-id") Long administracionId){
         service.asignarAdministracion(id,administracionId);
         return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/{id}/marca")
     public ResponseEntity<String> asignarMarca(@RequestParam Long id,
                                                @RequestParam("marca-id") Long marcaId){
         service.asignarMarca(id,marcaId);

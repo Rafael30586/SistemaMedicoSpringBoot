@@ -26,12 +26,12 @@ public class RolEmpleadoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<RolEmpleado> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping
+    @GetMapping("/sector")
     public ResponseEntity<List<RolEmpleado>> buscarPorSector(@RequestParam String sector){
         return ResponseEntity.ok(service.buscarPorSector(sector));
     }
@@ -52,13 +52,13 @@ public class RolEmpleadoController {
         return new ResponseEntity<>("El rol ha sido borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<RolEmpleado> modificarNombre(@PathVariable Long id,
                                                        @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/sector")
     public ResponseEntity<RolEmpleado> modificarSector(@PathVariable Long id,
                                                        @RequestParam("sector-id") Long sectorId){
         return ResponseEntity.ok(service.modificarSector(id,sectorId));

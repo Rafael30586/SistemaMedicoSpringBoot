@@ -26,7 +26,7 @@ public class EstudioMedicoClasificacionController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<EstudioMedicoClasificacion> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
@@ -47,7 +47,7 @@ public class EstudioMedicoClasificacionController {
         return new ResponseEntity<>("La clasificación ha sido guardada",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<EstudioMedicoClasificacion> modificarNombre(@PathVariable Long id,
                                                                       @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));

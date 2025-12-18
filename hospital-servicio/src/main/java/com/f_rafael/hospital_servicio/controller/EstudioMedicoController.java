@@ -26,12 +26,12 @@ public class EstudioMedicoController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<EstudioMedico> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping
+    @GetMapping("/clasificacion")
     public ResponseEntity<List<EstudioMedico>> buscarPorClasificacion(@RequestParam String clasificacion){
         return ResponseEntity.ok(service.buscarPorClasificacion(clasificacion));
     }
@@ -52,13 +52,13 @@ public class EstudioMedicoController {
         return new ResponseEntity<>("Estudio médico borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<EstudioMedico> modificarNombre(@PathVariable Long id,
                                                          @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/clasificacion")
     public ResponseEntity<EstudioMedico> modificarClasificacion(@PathVariable Long id,
                                                                 @RequestParam("id-clasificacion") Long idClasificacion){
         return ResponseEntity.ok(service.modificarClasificacion(id, idClasificacion));

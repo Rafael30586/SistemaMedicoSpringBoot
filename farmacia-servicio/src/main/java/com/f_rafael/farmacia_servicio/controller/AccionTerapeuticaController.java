@@ -28,13 +28,13 @@ public class AccionTerapeuticaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<AccionTerapeuticaDto> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
     }
 
-    @GetMapping
+    @GetMapping("/secuencia-descripcion")
     public ResponseEntity<List<AccionTerapeuticaDto>> buscarPorSecuenciaEnDescripcion(@RequestParam String secuencia){
         String secuenciaSinGuiones = Transformacion.removerGuionesBajos(secuencia);
         return ResponseEntity.ok(service.buscarPorSecuenciaEnDescripcion(secuenciaSinGuiones));

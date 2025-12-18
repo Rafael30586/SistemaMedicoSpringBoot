@@ -29,18 +29,18 @@ public class CirugiaPacienteController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/paciente")
     public ResponseEntity<List<CirugiaPacienteDto>> buscarPorPaciente(@RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                       @RequestParam String opcion){
         return ResponseEntity.ok(service.buscarPorPaciente(pacienteIdODni,opcion));
     }
 
-    @GetMapping
+    @GetMapping("/cirugia")
     public ResponseEntity<List<CirugiaPacienteDto>> buscarPorCirugia(@RequestParam String cirugia){
         return ResponseEntity.ok(service.buscarPorCirugia(cirugia));
     }
 
-    @GetMapping
+    @GetMapping("/periodo")
     public ResponseEntity<List<CirugiaPacienteDto>> buscarPorPeriodo(@RequestParam LocalDate desde,
                                                                      @RequestParam LocalDate hasta){
         return ResponseEntity.ok(service.buscarPorPeriodo(desde, hasta));
@@ -62,32 +62,32 @@ public class CirugiaPacienteController {
         return new ResponseEntity<>("Cirugía en paciente borrada", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/paciente")
     public ResponseEntity<CirugiaPacienteDto> modificarPaciente(@PathVariable Long id,
                                                                 @RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                 @RequestParam String opcion){
         return ResponseEntity.ok(service.modificarPaciente(id, pacienteIdODni, opcion));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/cirugia")
     public ResponseEntity<CirugiaPacienteDto> modificarCirugia(@PathVariable Long id,
                                                                @RequestParam("cirugia-id") Long cirugiaId){
         return ResponseEntity.ok(service.modificarCirugia(id,cirugiaId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/fecha")
     public ResponseEntity<CirugiaPacienteDto> modificarFecha(@PathVariable Long id,
                                                              @RequestParam LocalDate fecha){
         return ResponseEntity.ok(service.modificarFecha(id,fecha));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/hora-inicio")
     public ResponseEntity<CirugiaPacienteDto> modificarHoraDeInicio(@PathVariable Long id,
                                                                     @RequestParam LocalTime inicio){
         return ResponseEntity.ok(service.modificarHoraInicio(id,inicio));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/hora-final")
     public ResponseEntity<CirugiaPacienteDto> modificarHoraDeFinal(@PathVariable Long id,
                                                                    @RequestParam LocalTime fin){
         return ResponseEntity.ok(service.modificarHoraFinal(id, fin));

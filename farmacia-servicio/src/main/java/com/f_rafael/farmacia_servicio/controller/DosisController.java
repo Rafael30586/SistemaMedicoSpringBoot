@@ -28,7 +28,7 @@ public class DosisController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/cantidad-unidad-intervalo")
     public ResponseEntity<Dosis> buscarPorCantidadUnidadEIntervalo(@RequestParam float cantidad,
                                                                    @RequestParam String nombreUnidad,
                                                                    @RequestParam int intervalo){

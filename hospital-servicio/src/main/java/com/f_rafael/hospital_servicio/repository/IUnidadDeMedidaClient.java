@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "FARMACIA-SERVICIO")
-public interface IUnidadDeMedidaClient {
+// @FeignClient(name = "FARMACIA-SERVICIO")
+public interface IUnidadDeMedidaClient { // Interfaz para borrar
 
     @GetMapping("/unidades-de-medida/{id}")
     public UnidadDeMedidaDto buscarPorId(@PathVariable("id") Long id);

@@ -27,7 +27,7 @@ public class SintomaController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<SintomaDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
@@ -48,7 +48,7 @@ public class SintomaController {
         return new ResponseEntity<>("El síntoma ha sido borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/nombre")
     public ResponseEntity<SintomaDto> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }

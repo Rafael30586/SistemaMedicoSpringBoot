@@ -27,13 +27,13 @@ public class DiagnosticoPacienteController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/pacidente")
     public ResponseEntity<List<DiagnosticoPacienteDto>> buscarPorPaciente(@RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                     @RequestParam String opcion){
         return ResponseEntity.ok(service.buscarPorPaciente(pacienteIdODni, opcion));
     }
 
-    @GetMapping
+    @GetMapping("/diagnostico")
     public ResponseEntity<List<DiagnosticoPacienteDto>> buscarPorDiagnostico(@RequestParam String diagnostico){
         return ResponseEntity.ok(service.buscarPorDiagnostico(diagnostico));
     }
@@ -54,26 +54,26 @@ public class DiagnosticoPacienteController {
         return new ResponseEntity<>("El diagnóstico para paciente ha sido borrado",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/paciente")
     public ResponseEntity<DiagnosticoPacienteDto> modificarPaciente(@PathVariable Long id,
                                                                     @RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                     @RequestParam String opcion){
         return ResponseEntity.ok(service.modificarPaciente(id, pacienteIdODni, opcion));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/diagnostico")
     public ResponseEntity<DiagnosticoPacienteDto> modificarDiagnostico(@PathVariable Long id,
                                                                        @RequestParam("diagnostico-id") Long diagnosticoId){
         return ResponseEntity.ok(service.modificarDiagnostico(id, diagnosticoId));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/fecha-inicio")
     public ResponseEntity<DiagnosticoPacienteDto> modificarFechaDeInicio(@PathVariable Long id,
                                                                          @RequestParam LocalDate inicio){
         return ResponseEntity.ok(service.modificarFechaDeInicio(id, inicio));
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/fecha-final")
     public ResponseEntity<DiagnosticoPacienteDto> modificarFechaDeFinal(@PathVariable Long id,
                                                                         @RequestParam LocalDate fin){
         return ResponseEntity.ok(service.modificarFechaFinal(id, fin));
