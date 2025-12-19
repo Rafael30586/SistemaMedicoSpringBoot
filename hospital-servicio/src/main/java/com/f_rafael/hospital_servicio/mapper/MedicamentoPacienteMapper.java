@@ -3,6 +3,7 @@ package com.f_rafael.hospital_servicio.mapper;
 import com.f_rafael.hospital_servicio.dto.MedicamentoPacienteDto;
 import com.f_rafael.hospital_servicio.model.MedicamentoPaciente;
 import com.f_rafael.hospital_servicio.repository.IDosisClient;
+import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.IMedicamentoClient;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,8 @@ public class MedicamentoPacienteMapper {
 
     private IPacienteClient pacienteClient;
     private IMedicamentoClient medicamentoClient;
-    private IDosisClient dosisClient;
+    // private IDosisClient dosisClient;
+    private IFarmaciaClient farmaciaClient;
 
     public MedicamentoPacienteDto obtenerDto(MedicamentoPaciente informacionTratamiento){
         MedicamentoPacienteDto dtoARetornar = new MedicamentoPacienteDto();
@@ -26,7 +28,7 @@ public class MedicamentoPacienteMapper {
         dtoARetornar.setId(informacionTratamiento.getId());
         dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionTratamiento.getPacienteId()));
         dtoARetornar.setMedicamento(medicamentoClient.buscarPorId(informacionTratamiento.getMedicamentoId()));
-        dtoARetornar.setDosis(dosisClient.buscarPorId(informacionTratamiento.getDosisId()));
+        dtoARetornar.setDosis(farmaciaClient.buscarDosisPorId(informacionTratamiento.getDosisId()));
         dtoARetornar.setInicio(informacionTratamiento.getInicio());
         dtoARetornar.setFin(informacionTratamiento.getFin());
 

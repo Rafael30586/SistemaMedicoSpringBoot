@@ -8,6 +8,7 @@ import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.SignoMapper;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Signo;
+import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.ISignoRepository;
 import com.f_rafael.hospital_servicio.repository.IUnidadDeMedidaClient;
 import com.f_rafael.hospital_servicio.utils.Verificador;
@@ -23,7 +24,8 @@ public class SignoService implements ISignoService{
 
     private ISignoRepository repository;
     private SignoMapper mapper;
-    private IUnidadDeMedidaClient unidadDeMedidaClient;
+    // private IUnidadDeMedidaClient unidadDeMedidaClient;
+    private IFarmaciaClient farmaciaClient;
     private Verificador verificador;
     private StringMapper stringMapper;
 
@@ -80,7 +82,7 @@ public class SignoService implements ISignoService{
     public List<SignoDto> buscarPorUnidad(String unidad) {
         List<SignoDto> listaParaRetornar = new LinkedList<>();
         List<Signo> informacionSignos = repository.findAll();
-        UnidadDeMedidaDto unidadParaBuscar = unidadDeMedidaClient.buscarPorNombre(unidad);
+        UnidadDeMedidaDto unidadParaBuscar = farmaciaClient.buscarUnidadPorNombre(unidad);
 
         for(Signo s : informacionSignos){
             if(s.getUnidadId().equals(unidadParaBuscar.getId())){

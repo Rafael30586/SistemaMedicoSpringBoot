@@ -7,6 +7,7 @@ import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.MedicamentoPacienteMapper;
 import com.f_rafael.hospital_servicio.model.MedicamentoPaciente;
+import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.IMedicamentoClient;
 import com.f_rafael.hospital_servicio.repository.IMedicamentoPacienteRepository;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
@@ -25,7 +26,8 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     private IMedicamentoPacienteRepository repository;
     private Verificador verificador;
     private IPacienteClient pacienteClient;
-    private IMedicamentoClient medicamentoClient;
+    // private IMedicamentoClient medicamentoClient;
+    private IFarmaciaClient farmaciaClient;
     @Override
     public MedicamentoPacienteDto buscarPorId(Long id) {
         return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento con medicamentoso no encontrado")));
@@ -98,7 +100,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
         List<MedicamentoPaciente> informacionTratamientos = repository.findAll();
 
         for(MedicamentoPaciente mp : informacionTratamientos){
-            if(medicamentoClient.buscarPorId(mp.getMedicamentoId()).getPrincipioActivo().equals(principioActivo)){
+            if(farmaciaClient.buscarMedicamentoPorId(mp.getMedicamentoId()).getPrincipioActivo().equals(principioActivo)){
                 listaParaRetornar.add(mapper.obtenerDto(mp));
             }
         }

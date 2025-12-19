@@ -3,6 +3,7 @@ package com.f_rafael.hospital_servicio.mapper;
 import com.f_rafael.hospital_servicio.dto.SignoDto;
 import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.Signo;
+import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.IUnidadDeMedidaClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SignoMapper {
 
-    private IUnidadDeMedidaClient unidadDeMedidaClient;
+    // private IUnidadDeMedidaClient unidadDeMedidaClient;
+    private IFarmaciaClient farmaciaClient;
 
     public SignoDto obtenerDto(Signo signo){
         SignoDto dtoARetornar = new SignoDto();
@@ -29,7 +31,7 @@ public class SignoMapper {
         dtoARetornar.setValorMinimo(signo.getValorMinimo());
         dtoARetornar.setValorMaximo(signo.getValorMaximo());
         dtoARetornar.setDescripcion(signo.getDescripcion());
-        dtoARetornar.setUnidad(unidadDeMedidaClient.buscarPorId(signo.getUnidadId()));
+        dtoARetornar.setUnidad(farmaciaClient.buscarUnidadPorId(signo.getUnidadId()));
 
         if(signo.getDiagnosticos() != null){
             informacionDiagnosticos = signo.getDiagnosticos();
