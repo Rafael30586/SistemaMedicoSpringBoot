@@ -82,7 +82,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
 
         if(opcion.equals("dni")){
             informacionTratamientos = repository.findAll();
-            informacionPaciente = pacienteClient.buscarPorDni(idODni);
+            informacionPaciente = pacienteClient.buscarPacientePorDni(idODni);
 
             for(FisioterapiaPaciente fp : informacionTratamientos){
                 if(fp.getPacienteId().equals(informacionPaciente.getId())){
@@ -115,7 +115,7 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
         }
 
         if(opcion.equals("dni")){
-            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODni).getId());
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(idODni).getId());
         }
 
         return this.actualizar(tratamientoParaActualizar);

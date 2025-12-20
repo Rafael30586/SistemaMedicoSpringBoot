@@ -20,7 +20,7 @@ public class PsicoterapiaPacienteMapper {
         PsicoterapiaPacienteDto dtoARetornar = new PsicoterapiaPacienteDto();
 
         dtoARetornar.setId(informacionPsicoterapia.getId());
-        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionPsicoterapia.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionPsicoterapia.getPacienteId()));
         dtoARetornar.setInicio(informacionPsicoterapia.getInicio());
         dtoARetornar.setFin(informacionPsicoterapia.getFin());
 

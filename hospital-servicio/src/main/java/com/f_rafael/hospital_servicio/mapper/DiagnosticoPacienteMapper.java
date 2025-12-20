@@ -20,7 +20,7 @@ public class DiagnosticoPacienteMapper {
         DiagnosticoPacienteDto dtoARetornar = new DiagnosticoPacienteDto();
 
         dtoARetornar.setId(informacionDiagnosticoPaciente.getId());
-        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionDiagnosticoPaciente.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionDiagnosticoPaciente.getPacienteId()));
         dtoARetornar.setDiagnostico(informacionDiagnosticoPaciente.getDiagnostico().getNombre());
         dtoARetornar.setInicio(informacionDiagnosticoPaciente.getInicio());
         dtoARetornar.setFin(informacionDiagnosticoPaciente.getFin());

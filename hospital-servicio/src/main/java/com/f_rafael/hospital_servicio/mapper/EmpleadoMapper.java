@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.mapper;
 
 import com.f_rafael.hospital_servicio.dto.EmpleadoDto;
 import com.f_rafael.hospital_servicio.model.Empleado;
+import com.f_rafael.hospital_servicio.repository.IContactoClient;
 import com.f_rafael.hospital_servicio.repository.IDireccionClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class EmpleadoMapper {
 
-    private IDireccionClient direccionClient;
+    // private IDireccionClient direccionClient;
+    private IContactoClient contactoClient;
 
     public EmpleadoDto obtenerDto(Empleado informacionEmpleado){
         EmpleadoDto dtoARetornar = new EmpleadoDto();
@@ -26,7 +28,7 @@ public class EmpleadoMapper {
         dtoARetornar.setApellidoPaterno(informacionEmpleado.getApellidoPaterno());
         dtoARetornar.setApellidoMaterno(informacionEmpleado.getApellidoMaterno());
         dtoARetornar.setEmail(informacionEmpleado.getEmail());
-        dtoARetornar.setDomicilio(direccionClient.buscarPorId(informacionEmpleado.getDomicilioId()));
+        dtoARetornar.setDomicilio(contactoClient.buscarDireccionPorId(informacionEmpleado.getDomicilioId()));
         dtoARetornar.setRol(informacionEmpleado.getRol());
         dtoARetornar.setSalario(informacionEmpleado.getSalario());
         dtoARetornar.setTelefonos(informacionEmpleado.getTelefonos());

@@ -81,7 +81,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
 
         if(opcion.equals("dni")){
             informacionDiagnosticos = repository.findAll();
-            informacionPaciente = pacienteClient.buscarPorDni(idODni);
+            informacionPaciente = pacienteClient.buscarPacientePorDni(idODni);
 
             for(DiagnosticoPaciente dp : informacionDiagnosticos){
                 if(dp.getPacienteId().equals(informacionPaciente.getId())){
@@ -109,7 +109,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
         }
 
         if(opcion.equals("dni")){
-            diagnosticoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODniPaciente).getId());
+            diagnosticoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(idODniPaciente).getId());
         }
 
         return this.actualizar(diagnosticoParaActualizar);

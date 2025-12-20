@@ -77,7 +77,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
         if(opcion.equals("dni")){
             informacionTratamientos = repository.findAll();
-            informacionPaciente = pacienteClient.buscarPorDni(idODni);
+            informacionPaciente = pacienteClient.buscarPacientePorDni(idODni);
 
             for(CirugiaPaciente cp : informacionTratamientos){
                 if(cp.getPacienteId().equals(informacionPaciente.getId())){
@@ -109,7 +109,7 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
         }
 
         if(opcion.equals("dni")){
-            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODni).getId());
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(idODni).getId());
         }
 
         return this.actualizar(tratamientoParaActualizar);

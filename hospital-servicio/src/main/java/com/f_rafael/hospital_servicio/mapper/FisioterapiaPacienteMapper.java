@@ -16,11 +16,12 @@ public class FisioterapiaPacienteMapper {
 
     private IPacienteClient pacienteClient;
 
+
     public FisioterapiaPacienteDto obtenerDto(FisioterapiaPaciente informacionFisioterapia){
         FisioterapiaPacienteDto dtoARetornar = new FisioterapiaPacienteDto();
 
         dtoARetornar.setId(informacionFisioterapia.getId());
-        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionFisioterapia.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionFisioterapia.getPacienteId()));
         dtoARetornar.setInicio(informacionFisioterapia.getInicio());
         dtoARetornar.setFin(informacionFisioterapia.getFin());
 

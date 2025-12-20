@@ -80,7 +80,7 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
             informacionTratamientos = repository.findAll();
 
             for(RadioterapiaPaciente rp : informacionTratamientos){
-                if(rp.getPacienteId().equals(pacienteClient.buscarPorDni(idODni).getId())){
+                if(rp.getPacienteId().equals(pacienteClient.buscarPacientePorDni(idODni).getId())){
                     listaParaRetornar.add(mapper.obtenerDto(rp));
                 }
             }
@@ -109,7 +109,7 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
         }
 
         if(opcion.equals("dni")){
-            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(pacienteIdODni).getId());
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(pacienteIdODni).getId());
         }
 
         return this.actualizar(tratamientoParaActualizar);

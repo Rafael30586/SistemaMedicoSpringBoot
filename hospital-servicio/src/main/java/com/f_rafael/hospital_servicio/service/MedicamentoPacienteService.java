@@ -81,7 +81,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
 
         if(idODni.equals("dni")){
             informacionTratamientos = repository.findAll();
-            paciente = pacienteClient.buscarPorDni(idODni);
+            paciente = pacienteClient.buscarPacientePorDni(idODni);
 
             for(MedicamentoPaciente mp : informacionTratamientos){
                 if(mp.getPacienteId().equals(paciente.getId())){
@@ -128,7 +128,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
         }
 
         if(opcion.equals("dni")){
-            medicamentoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(idODni).getId());
+            medicamentoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(idODni).getId());
         }
 
         return this.actualizar(medicamentoParaActualizar);

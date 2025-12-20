@@ -20,7 +20,7 @@ public class RadioterapiaPacienteMapper {
         RadioTerapiaPacienteDto dtoARetornar = new RadioTerapiaPacienteDto();
 
         dtoARetornar.setId(informacionTratamiento.getId());
-        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionTratamiento.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionTratamiento.getPacienteId()));
         dtoARetornar.setInicio(informacionTratamiento.getInicio());
         dtoARetornar.setFin(informacionTratamiento.getFin());
 

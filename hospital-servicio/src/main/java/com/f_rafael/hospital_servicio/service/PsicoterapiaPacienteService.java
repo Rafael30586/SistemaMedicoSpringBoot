@@ -80,7 +80,7 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
 
         if(opcion.equals("dni")){
             informacionTratamientos = repository.findAll();
-            informacionPaciente = pacienteClient.buscarPorDni(idODni);
+            informacionPaciente = pacienteClient.buscarPacientePorDni(idODni);
 
             for(PsicoterapiaPaciente pp : informacionTratamientos){
                 if(pp.getPacienteId().equals(informacionPaciente.getId())){
@@ -113,7 +113,7 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
         }
 
         if(opcion.equals("dni")){
-            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPorDni(pacienteIdODni).getId());
+            tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(pacienteIdODni).getId());
         }
 
         return this.actualizar(tratamientoParaActualizar);

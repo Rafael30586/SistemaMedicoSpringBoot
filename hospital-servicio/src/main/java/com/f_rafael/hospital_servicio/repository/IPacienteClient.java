@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface IPacienteClient {
 
     @GetMapping("/pacientes/{id}")
-    public PacienteDto buscarPorId(@PathVariable Long id);
+    public PacienteDto buscarPacientePorId(@PathVariable Long id);
 
     @GetMapping("/pacientes/{dni}")
-    public PacienteDto buscarPorDni(@PathVariable Long dni);
+    public PacienteDto buscarPacientePorDni(@PathVariable Long dni);
 }

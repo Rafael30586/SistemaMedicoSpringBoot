@@ -26,7 +26,7 @@ public class MedicamentoPacienteMapper {
         MedicamentoPacienteDto dtoARetornar = new MedicamentoPacienteDto();
 
         dtoARetornar.setId(informacionTratamiento.getId());
-        dtoARetornar.setPaciente(pacienteClient.buscarPorId(informacionTratamiento.getPacienteId()));
+        dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionTratamiento.getPacienteId()));
         dtoARetornar.setMedicamento(medicamentoClient.buscarPorId(informacionTratamiento.getMedicamentoId()));
         dtoARetornar.setDosis(farmaciaClient.buscarDosisPorId(informacionTratamiento.getDosisId()));
         dtoARetornar.setInicio(informacionTratamiento.getInicio());
