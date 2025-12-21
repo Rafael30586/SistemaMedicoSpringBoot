@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface ISignoRepository extends JpaRepository<Signo, Long> {
 
     public Optional<Signo> findByNombre(String nombre);
-    public List<Signo> findAllByDescripcionContainingIgnoreCase(String secuencia);
+    public List<Signo> findByDescripcionContaining(String secuencia);
 }

@@ -10,7 +10,6 @@ import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.ISignoRepository;
-import com.f_rafael.hospital_servicio.repository.IUnidadDeMedidaClient;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -95,7 +94,7 @@ public class SignoService implements ISignoService{
 
     @Override
     public List<SignoDto> buscarPorDescripcion(String secuencia) {
-        return mapper.obtenerListaDto(repository.findAllByDescripcionContainingIgnoreCase(secuencia));
+        return mapper.obtenerListaDto(repository.findByDescripcionContaining(secuencia));
     }
 
     @Override

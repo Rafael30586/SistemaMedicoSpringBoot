@@ -18,7 +18,7 @@ import java.util.List;
 public class MedicamentoPacienteMapper {
 
     private IPacienteClient pacienteClient;
-    private IMedicamentoClient medicamentoClient;
+    // private IMedicamentoClient medicamentoClient;
     // private IDosisClient dosisClient;
     private IFarmaciaClient farmaciaClient;
 
@@ -27,7 +27,7 @@ public class MedicamentoPacienteMapper {
 
         dtoARetornar.setId(informacionTratamiento.getId());
         dtoARetornar.setPaciente(pacienteClient.buscarPacientePorId(informacionTratamiento.getPacienteId()));
-        dtoARetornar.setMedicamento(medicamentoClient.buscarPorId(informacionTratamiento.getMedicamentoId()));
+        dtoARetornar.setMedicamento(farmaciaClient.buscarMedicamentoPorId(informacionTratamiento.getMedicamentoId()));
         dtoARetornar.setDosis(farmaciaClient.buscarDosisPorId(informacionTratamiento.getDosisId()));
         dtoARetornar.setInicio(informacionTratamiento.getInicio());
         dtoARetornar.setFin(informacionTratamiento.getFin());
