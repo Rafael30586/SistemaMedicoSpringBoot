@@ -18,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class ObraSocialMapper {
 
-    SedeMapper sedeMapper;
+    SubSedeMapper sedeMapper;
     SubPacienteMapper subPacienteMapper;
 
     public ObraSocialDto obtenerDto(ObraSocial obraSocial){
