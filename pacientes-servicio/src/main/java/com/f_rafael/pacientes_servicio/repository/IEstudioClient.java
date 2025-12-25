@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "HOSPITAL-SERVICIO")
+// @FeignClient(name = "HOSPITAL-SERVICIO")
 public interface IEstudioClient {
 
     @GetMapping("/estudios/{id}")
