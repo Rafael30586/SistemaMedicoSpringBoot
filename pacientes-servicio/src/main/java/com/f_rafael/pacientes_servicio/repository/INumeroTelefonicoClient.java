@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "CONTACTO-SERVICIO")
+// @FeignClient(name = "CONTACTO-SERVICIO")
 public interface INumeroTelefonicoClient { // Esta interface ya no sirve. Borrarla
 
     @GetMapping("/numeros-telefonicos/{id}")
