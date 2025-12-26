@@ -24,11 +24,12 @@ public class PacienteService implements IPacienteService{
 
     private IPacienteRepository repository;
     private PacienteMapper mapper;
-    private ILocalidadClient localidadClient;
-    private IDireccionClient direccionClient;
+    // private ILocalidadClient localidadClient;
+    // private IDireccionClient direccionClient;
     private StringMapper stringMapper;
     private IObraSocialRepository obraSocialRepository;
     private Verificador verificador;
+    private IContactoClient contactoClient;
 
     @Override
     public PacienteDto buscarPorId(Long id) {
@@ -137,7 +138,7 @@ public class PacienteService implements IPacienteService{
         List<Paciente> informacionPacientes = repository.findAll();
 
         for(Paciente p : informacionPacientes){
-            if(localidadClient.obtenerInformacionDeLocalidad(p.getLugarNacimientoId()).getNombre().equals(localidad)){
+            if(contactoClient.obtenerLocalidadPorId(p.getLugarNacimientoId()).getNombre().equals(localidad)){
                 listaARetornar.add(mapper.obtenerDto(p));
             }
         }
@@ -151,7 +152,7 @@ public class PacienteService implements IPacienteService{
         List<Paciente> informacionPacientes = repository.findAll();
 
         for(Paciente p : informacionPacientes){
-            if(direccionClient.obtenerInformacionDireccion(p.getDireccionId()).getCalle().equals(stringMapper.quitarGuionesBajos(calle))){
+            if(contactoClient.obtenerDireccionPorId(p.getDireccionId()).getCalle().equals(stringMapper.quitarGuionesBajos(calle))){
                 listaARetornar.add(mapper.obtenerDto(p));
             }
         }

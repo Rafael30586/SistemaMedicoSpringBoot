@@ -2,6 +2,7 @@ package com.f_rafael.pacientes_servicio.mapper;
 
 import com.f_rafael.pacientes_servicio.dto.*;
 import com.f_rafael.pacientes_servicio.model.Paciente;
+import com.f_rafael.pacientes_servicio.repository.IContactoClient;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.ILocalidadClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
@@ -18,15 +19,16 @@ import java.util.Set;
 public class PacienteMapper {
 
     private SubObraSocialMapper subObraSocialMapper;
-    private IDireccionClient direccionClient;
+    // private IDireccionClient direccionClient;
     // private INumeroTelefonicoClient numeroTelefonicoClient;
-    private ILocalidadClient localidadClient;
+    // private ILocalidadClient localidadClient;
+    private IContactoClient contactoClient;
 
     public PacienteDto obtenerDto(Paciente informacionPaciente){
         PacienteDto dtoARetornar = new PacienteDto();
         List<NumeroTelefonicoDto> numerosTelefonicosParaAsignar = new LinkedList<>();
-        DireccionDto direccionParaAsignar = direccionClient.obtenerInformacionDireccion(informacionPaciente.getDireccionId());
-        LocalidadDto lugarDeNacimientoParaAsignar = localidadClient.obtenerInformacionDeLocalidad(informacionPaciente.getLugarNacimientoId());
+        DireccionDto direccionParaAsignar = contactoClient.obtenerDireccionPorId(informacionPaciente.getDireccionId());
+        LocalidadDto lugarDeNacimientoParaAsignar = contactoClient.obtenerLocalidadPorId(informacionPaciente.getLugarNacimientoId());
         Set<String> telefonos = informacionPaciente.getTelefonos();
         SubObraSocialDto obraSocialParaAsignar;
 

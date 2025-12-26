@@ -6,9 +6,7 @@ import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
-import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
-import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
-import com.f_rafael.pacientes_servicio.repository.IResultadoDeEstudiosRepository;
+import com.f_rafael.pacientes_servicio.repository.*;
 import com.f_rafael.pacientes_servicio.mapper.ResultadosDeEstudiosMapper;
 import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
@@ -24,9 +22,10 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
 
     private IResultadoDeEstudiosRepository repository;
     private ResultadosDeEstudiosMapper mapper;
-    private IEstudioClient estudioClient;
+    // private IEstudioClient estudioClient;
     private IPacienteRepository pacienteRepository;
     private Verificador verificador;
+    private IHospitalClient hospitalClient;
 
 
     @Override
@@ -95,7 +94,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
             listaDeEstudios = rde.getEstudios();
 
             for(Long id : listaDeEstudios){
-                if(estudioClient.obtenerInformacionEstudio(id).getNombre().equals(nombreEstudio)){
+                if(hospitalClient.obtenerEstudioPorId(id).getNombre().equals(nombreEstudio)){
                     listaARetornar.add(mapper.obtenerDto(rde));
                 }
             }

@@ -3,6 +3,7 @@ package com.f_rafael.pacientes_servicio.mapper;
 import com.f_rafael.pacientes_servicio.dto.SubPacienteDto;
 import com.f_rafael.pacientes_servicio.dto.TurnoCitaDto;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
+import com.f_rafael.pacientes_servicio.repository.IHospitalClient;
 import com.f_rafael.pacientes_servicio.repository.IMedicoClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 public class TurnoCitaMapper {
 
-    private IMedicoClient medicoClient;
+    // private IMedicoClient medicoClient;
     private SubPacienteMapper subPacienteMapper;
+    private IHospitalClient hospitalClient;
 
     public TurnoCitaDto obtenerDto(TurnoCita informacionTurno){
         TurnoCitaDto dtoARetornar = new TurnoCitaDto();
@@ -35,7 +37,7 @@ public class TurnoCitaMapper {
         }
 
         if(informacionTurno.getProfesionalId() != null){
-            dtoARetornar.setMedico(medicoClient.obtenerInformacionMedico(informacionTurno.getProfesionalId()));
+            dtoARetornar.setMedico(hospitalClient.obtenerMedicoPorId(informacionTurno.getProfesionalId()));
         }
 
         return dtoARetornar;

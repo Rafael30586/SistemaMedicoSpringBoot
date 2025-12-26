@@ -2,6 +2,7 @@ package com.f_rafael.pacientes_servicio.mapper;
 
 import com.f_rafael.pacientes_servicio.dto.SubSedeDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
+import com.f_rafael.pacientes_servicio.repository.IContactoClient;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
 import lombok.AllArgsConstructor;
@@ -13,8 +14,9 @@ import java.util.*;
 @Component
 public class SubSedeMapper {
 
-    private INumeroTelefonicoClient numeroTelefonicoClient;
-    private IDireccionClient direccionClient;
+    // private INumeroTelefonicoClient numeroTelefonicoClient;
+    // private IDireccionClient direccionClient;
+    private IContactoClient contactoClient;
 
     public SubSedeDto obtenerDto(Sede informacionSede){
         SubSedeDto dtoARetornar = new SubSedeDto();
@@ -33,7 +35,7 @@ public class SubSedeMapper {
         dtoARetornar.setTelefonos(informacionSede.getTelefonos());
 
         if(informacionSede.getDireccionId() != null){
-            dtoARetornar.setDireccion(direccionClient.obtenerInformacionDireccion(informacionSede.getDireccionId()));
+            dtoARetornar.setDireccion(contactoClient.obtenerDireccionPorId(informacionSede.getDireccionId()));
         }
 
         return dtoARetornar;

@@ -3,6 +3,7 @@ package com.f_rafael.pacientes_servicio.mapper;
 import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.dto.SubObraSocialDto;
 import com.f_rafael.pacientes_servicio.model.Sede;
+import com.f_rafael.pacientes_servicio.repository.IContactoClient;
 import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,9 @@ import java.util.*;
 public class SedeMapper {
 
 
-    private IDireccionClient direccionClient;
+    // private IDireccionClient direccionClient;
     private SubObraSocialMapper subObraSocialMapper;
+    private IContactoClient contactoClient;
 
 
     public SedeDto obtenerDto(Sede informacionSede){
@@ -23,7 +25,7 @@ public class SedeMapper {
         SubObraSocialDto obraSocialParaAsignar;
 
         dtoaRetornar.setId(informacionSede.getId());
-        dtoaRetornar.setDireccion(direccionClient.obtenerInformacionDireccion(informacionSede.getDireccionId()));
+        dtoaRetornar.setDireccion(contactoClient.obtenerDireccionPorId(informacionSede.getDireccionId()));
         dtoaRetornar.setTelefonos(informacionSede.getTelefonos());
 
 

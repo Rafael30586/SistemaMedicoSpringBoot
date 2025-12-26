@@ -6,6 +6,7 @@ import com.f_rafael.pacientes_servicio.dto.TurnoEstudioDto;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
 import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
+import com.f_rafael.pacientes_servicio.repository.IHospitalClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +18,9 @@ import java.util.List;
 @Component
 public class TurnoEstudioMapper {
 
-    private IEstudioClient estudioClient;
+    // private IEstudioClient estudioClient;
     private SubPacienteMapper subPacienteMapper;
+    private IHospitalClient hospitalClient;
 
     public TurnoEstudioDto obtenerDto(TurnoEstudio informacionTurno){
         TurnoEstudioDto dtoARetornar = new TurnoEstudioDto();
@@ -35,7 +37,7 @@ public class TurnoEstudioMapper {
         dtoARetornar.setFechaSolicitud(informacionTurno.getFechaSolicitud());
 
         if(estudioId != null){
-            estudioParaAsignar = estudioClient.obtenerInformacionEstudio(estudioId);
+            estudioParaAsignar = hospitalClient.obtenerEstudioPorId(estudioId);
             dtoARetornar.setEstudio(estudioParaAsignar);
         }
 

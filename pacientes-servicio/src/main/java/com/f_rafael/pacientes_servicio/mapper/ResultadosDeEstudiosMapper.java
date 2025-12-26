@@ -4,6 +4,7 @@ import com.f_rafael.pacientes_servicio.dto.EstudioDto;
 import com.f_rafael.pacientes_servicio.dto.ResultadoDeEstudiosDto;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
 import com.f_rafael.pacientes_servicio.repository.IEstudioClient;
+import com.f_rafael.pacientes_servicio.repository.IHospitalClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,8 @@ import java.util.Set;
 public class ResultadosDeEstudiosMapper {
 
     private SubPacienteMapper subPacienteMapper;
-    private IEstudioClient estudioClient;
+    // private IEstudioClient estudioClient;
+    private IHospitalClient hospitalClient;
 
     public ResultadoDeEstudiosDto obtenerDto(ResultadosDeEstudios informacionResultado){
         ResultadoDeEstudiosDto dtoARetornar = new ResultadoDeEstudiosDto();
@@ -33,7 +35,7 @@ public class ResultadosDeEstudiosMapper {
             estudiosId = informacionResultado.getEstudios();
 
             for(Long id : estudiosId){
-                estudiosparaAsignar.add(estudioClient.obtenerInformacionEstudio(id));
+                estudiosparaAsignar.add(hospitalClient.obtenerEstudioPorId(id));
             }
             dtoARetornar.setEstudios(estudiosparaAsignar);
         }

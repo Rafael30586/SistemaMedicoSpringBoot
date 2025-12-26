@@ -18,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class ObraSocialMapper {
 
-    SubSedeMapper sedeMapper;
+    SubSedeMapper SubSedeMapper;
     SubPacienteMapper subPacienteMapper;
 
     public ObraSocialDto obtenerDto(ObraSocial obraSocial){
@@ -34,7 +34,7 @@ public class ObraSocialMapper {
         if(obraSocial.getSedes() != null){
             informacionSedes = obraSocial.getSedes();
 
-            sedesParaAsignar = sedeMapper.obtenerListaDto(informacionSedes);
+            sedesParaAsignar = SubSedeMapper.obtenerListaDto(informacionSedes);
             dtoARetornar.setSedes(sedesParaAsignar);
         }
 

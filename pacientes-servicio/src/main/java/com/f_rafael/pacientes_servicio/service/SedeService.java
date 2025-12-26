@@ -6,10 +6,7 @@ import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Sede;
-import com.f_rafael.pacientes_servicio.repository.IDireccionClient;
-import com.f_rafael.pacientes_servicio.repository.INumeroTelefonicoClient;
-import com.f_rafael.pacientes_servicio.repository.IObraSocialRepository;
-import com.f_rafael.pacientes_servicio.repository.ISedeRepository;
+import com.f_rafael.pacientes_servicio.repository.*;
 import com.f_rafael.pacientes_servicio.mapper.SedeMapper;
 import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
@@ -25,9 +22,10 @@ public class SedeService implements ISedeService{
 
     private ISedeRepository repository;
     private SedeMapper mapper;
-    private IDireccionClient direccionClient;
+    // private IDireccionClient direccionClient;
     private IObraSocialRepository obraSocialRepository;
     private Verificador verificador;
+    private IContactoClient contactoClient;
 
     @Override
     public SedeDto buscarPorId(Long id) {
@@ -87,7 +85,7 @@ public class SedeService implements ISedeService{
         List<Sede> informacionSedes = repository.findAll();
 
         for(Sede s : informacionSedes){
-            if(direccionClient.obtenerInformacionDireccion(s.getDireccionId()).getCalle().equals(calle)){
+            if(contactoClient.obtenerDireccionPorId(s.getDireccionId()).getCalle().equals(calle)){
                 listaARetornar.add(mapper.obtenerDto(s));
             }
         }
