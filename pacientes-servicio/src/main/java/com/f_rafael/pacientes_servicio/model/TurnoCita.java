@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "turnos_citas")
 @DiscriminatorValue("cita")
 @AllArgsConstructor
 @NoArgsConstructor

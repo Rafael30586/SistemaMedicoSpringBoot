@@ -28,43 +28,43 @@ public class PacienteController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/dni")
     public ResponseEntity<PacienteDto> buscarPorDni(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorDni(dni));
     }
 
-    @GetMapping
+    @GetMapping("/nombre")
     public ResponseEntity<List<PacienteDto>> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping
+    @GetMapping("/apellido")
     public ResponseEntity<List<PacienteDto>> buscarPorApellido(@RequestParam String apellido){
         return ResponseEntity.ok(service.buscarPorApellido(apellido));
     }
 
-    @GetMapping
+    @GetMapping("/email")
     public ResponseEntity<PacienteDto> buscarPorEmail(@RequestParam String email){
         return ResponseEntity.ok(service.buscarPorEmail(email));
     }
 
-    @GetMapping
+    @GetMapping("/telefono")
     public ResponseEntity<List<PacienteDto>> buscarPorTelefono(@RequestParam("numero-telefonico") String numeroTelefonico){
         return ResponseEntity.ok(service.buscarPorNumeroTelefonico(numeroTelefonico));
     }
 
-    @GetMapping
+    @GetMapping("/fecha-nacimiento")
     public ResponseEntity<List<PacienteDto>> buscarPorIntervaloNacimiento(@RequestParam Integer desde,
                                                                     @RequestParam Integer hasta){
         return ResponseEntity.ok(service.buscarPorIntervaloNacimiento(desde,hasta));
     }
 
-    @GetMapping
+    @GetMapping("lugar-nacimiento")
     public ResponseEntity<List<PacienteDto>> buscarPorLugarNacimiento(@RequestParam String localidad){
         return ResponseEntity.ok(service.buscarPorLugarNacimiento(localidad));
     }
 
-    @GetMapping
+    @GetMapping("/domicilio")
     public ResponseEntity<List<PacienteDto>> buscarPorDomicilio(@RequestParam String calle){
         return ResponseEntity.ok(service.buscarPorDomicilio(calle));
     }
@@ -85,83 +85,83 @@ public class PacienteController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/dni")
     public ResponseEntity<PacienteDto> actualizarDni(@RequestParam Long id,
                                                      @RequestParam Long dni){
         return ResponseEntity.ok(service.actulizarDni(id, dni));
     }
 
-    @PatchMapping
+    @PatchMapping("/primer-nombre")
     public ResponseEntity<PacienteDto> actualizarPrimerNombre(@RequestParam("id-o-dni") Long idODni,
                                                               @RequestParam String opcion,
                                                               @RequestParam String primerNombre){
         return ResponseEntity.ok(service.actulizarPrimerNombre(idODni,opcion,primerNombre));
     }
 
-    @PatchMapping
+    @PatchMapping("/segundo-nombre")
     public ResponseEntity<PacienteDto> actualizarSegundoNombre(@RequestParam("id-o-dni") Long idODni,
                                                                @RequestParam String opcion,
                                                                @RequestParam String segundoNombre){
         return ResponseEntity.ok(service.actulizarSegundoNombre(idODni,opcion,segundoNombre));
     }
 
-    @PatchMapping
+    @PatchMapping("/apellido-paterno")
     public ResponseEntity<PacienteDto> actualizarApellidoPaterno(@RequestParam("id-o-dni") Long idODni,
                                                                  @RequestParam String opcion,
                                                                  @RequestParam String apellidoPaterno){
         return ResponseEntity.ok(service.actulizarApellidoPaterno(idODni,opcion,apellidoPaterno));
     }
 
-    @PatchMapping
+    @PatchMapping("/apellido-materno")
     public ResponseEntity<PacienteDto> actualizarApellidoMaterno(@RequestParam("id-o-dni") Long idODni,
                                                                  @RequestParam String opcion,
                                                                  @RequestParam String apellidoMaterno){
         return ResponseEntity.ok(service.actualizarApellidoMaterno(idODni,opcion,apellidoMaterno));
     }
 
-    @PatchMapping
+    @PatchMapping("/email")
     public ResponseEntity<PacienteDto> actualizarEmail(@RequestParam("id-o-dni") Long idODni,
                                                        @RequestParam String opcion,
                                                        @RequestParam String email){
         return ResponseEntity.ok(service.actualizarEmail(idODni,opcion,email));
     }
 
-    @PatchMapping
+    @PatchMapping("/agregar-telefono")
     public ResponseEntity<PacienteDto> agregarNumeroTelefonico(@RequestParam("id-o-dni")Long idODni,
                                                        @RequestParam String opcion,
                                                        @RequestParam String telefonoParaAgregar){
         return ResponseEntity.ok(service.agregarNumeroTelefonico(idODni,opcion,telefonoParaAgregar));
     }
 
-    @PatchMapping
+    @PatchMapping("/quitar-telfono")
     public ResponseEntity<PacienteDto> quitarNumeroTelefonico(@RequestParam("id-o-dni")Long idODni,
                                                               @RequestParam String opcion,
                                                               @RequestParam String telefonoParaQuitar){
         return ResponseEntity.ok(service.quitarNumeroTelefonico(idODni,opcion,telefonoParaQuitar));
     }
 
-    @PatchMapping
+    @PatchMapping("/fecha-nacimiento")
     public ResponseEntity<PacienteDto> actualizarFechaNacimiento(@RequestParam("id-o-dni")Long idODni,
                                                                  @RequestParam String opcion,
                                                                  @RequestParam LocalDate fechaNacimiento){
         return ResponseEntity.ok(service.actualizarFechaNacimiento(idODni,opcion,fechaNacimiento));
     }
 
-    @PatchMapping
+    @PatchMapping("/lugar-nacimiento")
     public ResponseEntity<PacienteDto> actualizaLugarNacimiento(@RequestParam("id-o-dni")Long idODni,
                                                                 @RequestParam String opcion,
                                                                 @RequestParam Long localidadId){
         return ResponseEntity.ok(service.actualizarLugarNacimiento(idODni,opcion,localidadId));
     }
 
-    @PatchMapping
+    @PatchMapping("/domicilio")
     public ResponseEntity<PacienteDto> actualizarDomicilio(@RequestParam("id-o-dni")Long idODni,
                                                            @RequestParam String opcion,
                                                            @RequestParam Long direccionId){
         return ResponseEntity.ok(service.actualizarDomicilio(idODni,opcion,direccionId));
     }
 
-    @PatchMapping
+    @PatchMapping("/obra-social")
     public ResponseEntity<PacienteDto> actualizarObraSocial(@RequestParam("id-o-dni")Long idODni,
                                                             @RequestParam String opcion,
                                                             @RequestParam Long obraSocialId){

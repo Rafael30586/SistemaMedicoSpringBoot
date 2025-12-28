@@ -27,12 +27,12 @@ public class SedeController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping
+    @GetMapping("/direccion")
     public ResponseEntity<List<SedeDto>> buscarPorDireccion(@RequestParam String calle){
         return ResponseEntity.ok(service.buscarPorDireccion(calle));
     }
 
-    @GetMapping
+    @GetMapping("/telefono")
     public ResponseEntity<SedeDto> buscarPorTelefono(@RequestParam String telefono){
         return ResponseEntity.ok(service.buscarPortelefono(telefono));
     }
@@ -53,25 +53,25 @@ public class SedeController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/direccion")
     public ResponseEntity<SedeDto> actualizarDireccion(@RequestParam Long id,
                                                        @RequestParam("direccion-id") Long direccionId){
         return ResponseEntity.ok(service.actualizarDireccion(id,direccionId));
     }
 
-    @PatchMapping
+    @PatchMapping("/agregar-telefono")
     public ResponseEntity<SedeDto> agregarTelefono(@RequestParam Long id,
                                                    @RequestParam String telefono){
         return ResponseEntity.ok(service.agregarTelefono(id,telefono));
     }
 
-    @PatchMapping
+    @PatchMapping("/quitar-telefono")
     public ResponseEntity<SedeDto> quitarTelefono(@RequestParam Long id,
                                                   @RequestParam String telefono){
         return ResponseEntity.ok(service.quitarTelefono(id,telefono));
     }
 
-    @PatchMapping
+    @PatchMapping("/obra-social")
     public ResponseEntity<SedeDto> actualizarObraSocial(@RequestParam Long id,
                                                         @RequestParam("obra-social-id") Long obraSocialId){
         return ResponseEntity.ok(service.actualizarObraSocial(id,obraSocialId));

@@ -29,28 +29,28 @@ public class TurnoCitaController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping
+    @GetMapping("/paciente")
     public ResponseEntity<List<TurnoCitaDto>> buscarPorPaciente(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorPaciente(dni));
     }
 
-    @GetMapping
+    @GetMapping("/fecha-turno")
     public ResponseEntity<List<TurnoCitaDto>> buscarPorFechaTurno(@RequestParam LocalDate fechaTurno){
         return ResponseEntity.ok(service.buscarPorFechaTurno(fechaTurno));
     }
 
-    @GetMapping
+    @GetMapping("/periodo")
     public ResponseEntity<List<TurnoCitaDto>> buscarPorPeriodo(@RequestParam LocalDate desde,
                                                                @RequestParam LocalDate hasta){
         return ResponseEntity.ok(service.buscarPorPeriodo(desde,hasta));
     }
 
-    @GetMapping
+    @GetMapping("/estado")
     public ResponseEntity<List<TurnoCitaDto>> buscarPorEstado(@RequestParam String estado){
         return ResponseEntity.ok(service.buscarPorEstado(estado));
     }
 
-    @GetMapping
+    @GetMapping("/profesional")
     public ResponseEntity<List<TurnoCitaDto>> buscarPorProfesional(@RequestParam Long id){
         return ResponseEntity.ok(service.buscarPorProfesional(id));
     }
@@ -71,33 +71,33 @@ public class TurnoCitaController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/paciente")
     public ResponseEntity<TurnoCitaDto> actualizarPaciente(@RequestParam Long id,
                                                            @RequestParam("id-o-dni-paciente") Long idODniPaciente,
                                                            @RequestParam String opcion){
         return ResponseEntity.ok(service.actualizarPaciente(id,idODniPaciente,opcion));
     }
 
-    @PatchMapping
+    @PatchMapping("/fecha-solicitud")
     public ResponseEntity<TurnoCitaDto> actualizarFechaSolicitud(@RequestParam Long id,
                                                                  @RequestParam("fecha-solicitud") LocalDate fechaSolicitud){
         return ResponseEntity.ok(service.actualizarFechaSolicitud(id,fechaSolicitud));
     }
 
-    @PatchMapping
+    @PatchMapping("/horario")
     public ResponseEntity<TurnoCitaDto> actualizarHorario(@RequestParam Long id,
                                                           @RequestParam LocalTime inicio,
                                                           @RequestParam LocalTime fin){
         return ResponseEntity.ok(service.actualizarHorario(id,inicio,fin));
     }
 
-    @PatchMapping
+    @PatchMapping("/estado")
     public ResponseEntity<TurnoCitaDto> actualizarEstado(@RequestParam Long id,
                                                          @RequestParam String estado){
         return ResponseEntity.ok(service.actualizarEstado(id,estado));
     }
 
-    @PatchMapping
+    @PatchMapping("/cobertura")
     public ResponseEntity<TurnoCitaDto> actualizarCobertura(@RequestParam Long id,
                                                              @RequestParam String cobertura){
         return ResponseEntity.ok(service.actualizarCobertura(id,cobertura));

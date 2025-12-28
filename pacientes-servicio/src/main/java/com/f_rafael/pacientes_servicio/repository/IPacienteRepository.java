@@ -25,6 +25,6 @@ public interface IPacienteRepository extends JpaRepository<Paciente, Long> {
     @Query("SELECT p FROM Paciente p JOIN p.telefonos t WHERE t = :numero")
     public List<Paciente> buscarPorNumeroTelefonico(@Param("numero") String numero);
 
-    @Query("SELECT p FROM Paciente p WHERE YEAR(p.fechaNacimento) BETWEEN :desde AND :hasta ")
-    public List<Paciente> buscarPorIntervaloNacimiento(Integer desde, Integer hasta);
+    @Query("SELECT p FROM Paciente p WHERE YEAR(p.fechaNacimiento) BETWEEN :desde AND :hasta ")
+    public List<Paciente> buscarPorIntervaloNacimiento(@Param("desde") Integer desde, @Param("hasta") Integer hasta);
 }

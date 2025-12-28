@@ -27,12 +27,12 @@ public class ResultadosDeEstudiosController {
         return ResponseEntity.ok(service.buscartodos());
     }
 
-    @GetMapping
+    @GetMapping("/paciente")
     public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorPaciente(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorPaciente(dni));
     }
 
-    @GetMapping
+    @GetMapping("/estudio")
     public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorEstudio(@RequestParam("nombre-estudio") String nombreEstudio){
         return ResponseEntity.ok(service.buscarPorEstudio(nombreEstudio));
     }
@@ -53,26 +53,26 @@ public class ResultadosDeEstudiosController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping
+    @PatchMapping("/paciente")
     public ResponseEntity<ResultadoDeEstudiosDto> actualizarPaciente(@RequestParam Long id,
                                                                      @RequestParam("id-o-dni-paciente") Long idODniPaciente,
                                                                      @RequestParam String opcion){
         return ResponseEntity.ok(service.actualizarPaciente(id,idODniPaciente,opcion));
     }
 
-    @PatchMapping
+    @PatchMapping("/agregar-estudio")
     public ResponseEntity<ResultadoDeEstudiosDto> agregarEstudio(@RequestParam Long id,
                                                                  @RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.agregarEstudio(id,estudioId));
     }
 
-    @PatchMapping
+    @PatchMapping("/quitar-estudio")
     public ResponseEntity<ResultadoDeEstudiosDto> quitarEstudio(@RequestParam Long id,
                                                                 @RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.quitarEstudio(id,estudioId));
     }
 
-    @PatchMapping
+    @PatchMapping("/url-informe")
     public ResponseEntity<ResultadoDeEstudiosDto> actualizarUrlInforme(@RequestParam Long id,
                                                                        @RequestParam String urlInforme){
         return ResponseEntity.ok(service.actualizarUrlInforme(id,urlInforme));
