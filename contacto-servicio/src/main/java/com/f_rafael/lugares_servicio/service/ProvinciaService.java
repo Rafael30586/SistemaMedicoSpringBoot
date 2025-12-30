@@ -76,12 +76,13 @@ public class ProvinciaService implements IProvinciaService{
 
     @Override
     public Provincia buscarPorNombre(String nombre) {
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
 
-        if(repository.findByNombre(nombre).isEmpty()){
+        if(repository.findByNombre(nombreSinGuiones).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return repository.findByNombre(nombre).get();
+        return repository.findByNombre(nombreSinGuiones).get();
     }
 
     @Override
