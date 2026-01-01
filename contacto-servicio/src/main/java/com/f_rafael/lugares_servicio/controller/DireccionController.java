@@ -18,44 +18,44 @@ public class DireccionController {
 
     private IDireccionService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // Funciona
     public ResponseEntity<Direccion> buscarPorId(@PathVariable Long id){
         return new ResponseEntity<>(service.buscarPorId(id),HttpStatusCode.valueOf(200));
 
     }
 
-    @GetMapping
+    @GetMapping // Funciona
     public ResponseEntity<List<Direccion>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/localidad")
+    @GetMapping("/localidad") // Funciona
     public ResponseEntity<List<Direccion>> buscarPorLocalidad(@RequestParam String localidad){
         return ResponseEntity.ok(service.buscarPorLocalidad(localidad));
     }
 
-    @GetMapping("/provincia")
+    @GetMapping("/provincia") // Funciona
     public ResponseEntity<List<Direccion>> buscarPorProvincia(@RequestParam String provincia){
         return ResponseEntity.ok(service.buscarPorProvincia(provincia));
     }
 
-    @PostMapping
+    @PostMapping // Funciona
     public ResponseEntity<Direccion> guardar(@RequestBody Direccion direccion){
         return new ResponseEntity<>(service.guardar(direccion),HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // Funciona
     public ResponseEntity<Direccion> actualizar(@RequestBody Direccion direccion){
         return ResponseEntity.ok(service.actualizar(direccion));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // Funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/calle")
+    @PatchMapping("/{id}/calle") // Funciona
     public ResponseEntity<String> editarCalle(@PathVariable Long id,
                                                  @RequestParam("calle") String calle){
         // String calleSinGuiones = Transform.removerGuiones(calle);
@@ -63,14 +63,14 @@ public class DireccionController {
         return new ResponseEntity<>("Direccion editada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/altura")
+    @PatchMapping("/{id}/altura") // Funciona
     public ResponseEntity<String> editarAltura(@PathVariable Long id,
                                                  @RequestParam("altura") Integer altura){
         service.editarAltura(id,altura);
         return new ResponseEntity<>("Entidad editada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/departamento") // El departamento va con guiones bajos en lugar de espacios vacíos
+    @PatchMapping("/{id}/departamento") // Funciona
     public ResponseEntity<String> editarDepartamento(@PathVariable Long id,
                                                  @RequestParam("departamento") String departamento){
         // String departamentoSinGuiones = Transform.removerGuiones(departamento);

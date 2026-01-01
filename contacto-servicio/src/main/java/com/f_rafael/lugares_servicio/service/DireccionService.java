@@ -73,9 +73,10 @@ public class DireccionService implements IDireccionService{
     public List<Direccion> buscarPorLocalidad(String localidad) {
         List<Direccion> todasLasDirecciones = repository.findAll();
         List<Direccion> direccionesARetornar = new LinkedList<>();
+        String localidadSinGuiones = stringMapper.quitarGuionesBajos(localidad);
 
         todasLasDirecciones.stream().parallel().forEach(direccion -> {
-            if(direccion.getLocalidad().getNombre().equals(localidad)){
+            if(direccion.getLocalidad().getNombre().equals(localidadSinGuiones)){
                 direccionesARetornar.add(direccion);
             }
         });
@@ -87,9 +88,10 @@ public class DireccionService implements IDireccionService{
     public List<Direccion> buscarPorProvincia(String provincia) {
         List<Direccion> todasLasDirecciones = repository.findAll();
         List<Direccion> direccionesARetornar = new LinkedList<>();
+        String provinciaSinGuiones = stringMapper.quitarGuionesBajos(provincia);
 
         todasLasDirecciones.stream().parallel().forEach(direccion -> {
-            if(direccion.getLocalidad().getProvincia().getNombre().equals(provincia)){
+            if(direccion.getLocalidad().getProvincia().getNombre().equals(provinciaSinGuiones)){
                 direccionesARetornar.add(direccion);
             }
         });
