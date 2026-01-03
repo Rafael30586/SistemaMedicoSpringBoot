@@ -18,23 +18,23 @@ public class AdministracionFarmacoController {
 
     private IAdministracionFarmacoService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<AdministracionFarmacoDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<AdministracionFarmacoDto>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/via")
+    @GetMapping("/via") // funciona
     public ResponseEntity<AdministracionFarmacoDto> buscarPorVia(@RequestParam String via){
         String viaSinGuiones = Transformacion.removerGuionesBajos(via);
         return ResponseEntity.ok(service.buscarPorVia(viaSinGuiones));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<AdministracionFarmacoDto> guardar(@RequestBody AdministracionFarmaco administracionFarmaco){
         return new ResponseEntity<>(service.guardar(administracionFarmaco),
                 HttpStatusCode.valueOf(201));

@@ -17,5 +17,6 @@ public interface IDireccionService {
     public void editarCalle(Long id,String calle);
     public void editarAltura(Long id, Integer altura);
     public void editarDepartamento(Long id, String departamento);
+    public void editarLocalidad(Long id, Long localidadId);
 
 }

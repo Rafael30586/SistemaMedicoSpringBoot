@@ -29,7 +29,7 @@ public class Verificador {
     }
 
     public void soloLetrasMinusculasEspaciosYGuionesMedios(String cadena){
-        Pattern pattern = Pattern.compile("^[a-z]+(?:[- ][a-z]+)*$\n");
+        Pattern pattern = Pattern.compile("^[a-záéíóúñ]+(?:[- ][a-záéíóúñ]+)*$");
         Matcher matcher = pattern.matcher(cadena);
 
         if(!matcher.matches()) throw new DatoIncorrectoException("La cadena tiene caracteres no permitidos");

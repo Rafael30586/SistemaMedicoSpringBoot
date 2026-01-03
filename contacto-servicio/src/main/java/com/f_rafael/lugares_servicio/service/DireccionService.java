@@ -4,7 +4,9 @@ import com.f_rafael.lugares_servicio.exception.CampoNuloException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Direccion;
+import com.f_rafael.lugares_servicio.model.Localidad;
 import com.f_rafael.lugares_servicio.repository.IDireccionRepository;
+import com.f_rafael.lugares_servicio.repository.ILocalidadRepository;
 import com.f_rafael.lugares_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ public class DireccionService implements IDireccionService{
     private IDireccionRepository repository;
     private StringMapper stringMapper;
     private Verificador verificador;
+    private ILocalidadRepository localidadRepository;
 
     @Override
     public Direccion buscarPorId(Long id) {
@@ -143,5 +146,25 @@ public class DireccionService implements IDireccionService{
         direccionAEditar.setDepartamento(departamentoSinGuiones);
 
         this.guardar(direccionAEditar);
+    }
+
+    @Override
+    public void editarLocalidad(Long id, Long localidadId) {
+        Direccion direccionAEditar = devolverPorId(id);
+        Localidad localidadParaAsignar = new Localidad();
+
+        localidadParaAsignar.setId(localidadId);
+
+        // Comprobar si la localidad existe
+        if(!localidadRepository.existsById(localidadId)){
+            throw new EntidadNoEncontradaException("Localidad no encontrada");
+        }
+
+        direccionAEditar.setLocalidad(localidadParaAsignar);
+        this.actualizar(direccionAEditar);
+    }
+
+    private Direccion devolverPorId(Long id){
+        return repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Direccion no encontrada"));
     }
 }

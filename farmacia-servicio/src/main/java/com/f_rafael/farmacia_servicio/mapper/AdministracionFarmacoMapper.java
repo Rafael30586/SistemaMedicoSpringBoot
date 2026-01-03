@@ -16,12 +16,13 @@ public class AdministracionFarmacoMapper {
         AdministracionFarmacoDto dtoARetornar = new AdministracionFarmacoDto();
         SubMedicamentoDto medicamentoAAsignar;
         Set<SubMedicamentoDto> medicamentosAAsignar;
-        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(administracion.getMedicamentos());
-        Set<Medicamento> informacionMedicamentos;
+        //Optional<Set<Medicamento>> medicamentosOptional = Optional.of(administracion.getMedicamentos()); // parece que acá da un null pointer exception
 
-        if(medicamentosOptional.isPresent()){
+        Set<Medicamento> informacionMedicamentos = administracion.getMedicamentos();
 
-            informacionMedicamentos = administracion.getMedicamentos();
+        if(informacionMedicamentos != null){
+
+            // informacionMedicamentos = administracion.getMedicamentos();
             medicamentosAAsignar = new HashSet<>();
 
             for(Medicamento m : informacionMedicamentos){

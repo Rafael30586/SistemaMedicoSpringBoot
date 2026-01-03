@@ -78,4 +78,11 @@ public class DireccionController {
         service.editarDepartamento(id,departamento);
         return new ResponseEntity<>("Entidad editada correctamente",HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping("/{id}/localidad")
+    public ResponseEntity<String> editarLocalidad(@PathVariable Long id,
+                                                  @RequestParam("localidad-id") Long localidadId){
+        service.editarLocalidad(id, localidadId);
+        return new ResponseEntity<>("Dirección editada correctamente", HttpStatusCode.valueOf(204));
+    }
 }
