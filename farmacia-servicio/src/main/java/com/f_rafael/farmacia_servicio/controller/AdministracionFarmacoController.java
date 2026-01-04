@@ -50,4 +50,10 @@ public class AdministracionFarmacoController {
         service.buscarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente", HttpStatusCode.valueOf(204));
     }
+
+    @PatchMapping("/{id}/via")
+    public ResponseEntity<String> modificarVia(@PathVariable Long id,@RequestParam String via){
+        service.modificarVia(id, via);
+        return new ResponseEntity<>("Administración modificada correctamente",HttpStatusCode.valueOf(204));
+    }
 }
