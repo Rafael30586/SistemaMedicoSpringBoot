@@ -40,18 +40,18 @@ public class AdministracionFarmacoController {
                 HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<AdministracionFarmacoDto> actualizar(@RequestBody AdministracionFarmaco administracionFarmaco){
         return ResponseEntity.ok(service.actualizar(administracionFarmaco));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.buscarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/via")
+    @PatchMapping("/{id}/via") // funciona
     public ResponseEntity<String> modificarVia(@PathVariable Long id,@RequestParam String via){
         service.modificarVia(id, via);
         return new ResponseEntity<>("Administración modificada correctamente",HttpStatusCode.valueOf(204));

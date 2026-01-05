@@ -13,13 +13,13 @@ public class FormaFarmaceuticaMapper {
 
     public FormaFarmaceuticaDto obtenerDto(FormaFarmaceutica formaFarmaceutica){
         FormaFarmaceuticaDto dtoARetornar = new FormaFarmaceuticaDto();
-        Set<Medicamento> informacionMedicamentos;
-        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(formaFarmaceutica.getMedicamentos());
+        Set<Medicamento> informacionMedicamentos = formaFarmaceutica.getMedicamentos();
+        // Optional<Set<Medicamento>> medicamentosOptional = Optional.of(formaFarmaceutica.getMedicamentos());
         SubMedicamentoDto medicamentoParaAgregar;
         Set<SubMedicamentoDto> medicamentosParaAsignar;
 
-        if(medicamentosOptional.isPresent()){
-            informacionMedicamentos = formaFarmaceutica.getMedicamentos();
+        if(informacionMedicamentos != null){
+            // informacionMedicamentos = formaFarmaceutica.getMedicamentos();
             medicamentosParaAsignar = new HashSet<>();
 
             for(Medicamento m : informacionMedicamentos){

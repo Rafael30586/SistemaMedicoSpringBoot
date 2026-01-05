@@ -18,35 +18,41 @@ public class FormaFarmaceuticaController {
 
     private IFormaFarmaceuticaService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<FormaFarmaceuticaDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<FormaFarmaceuticaDto>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<FormaFarmaceuticaDto> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<FormaFarmaceuticaDto> guardar(@RequestBody FormaFarmaceutica formaFarmaceutica){
         return ResponseEntity.ok(service.guardar(formaFarmaceutica));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<FormaFarmaceuticaDto> actualizar(@RequestBody FormaFarmaceutica formaFarmaceutica){
         return ResponseEntity.ok(service.actualizar(formaFarmaceutica));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping("/{id}/nombre")
+    public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
+        service.modificarNombre(id,nombre);
+        return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
     }
 }
