@@ -50,7 +50,7 @@ public class FormaFarmaceuticaController {
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
         service.modificarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));

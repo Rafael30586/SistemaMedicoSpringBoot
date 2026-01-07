@@ -52,15 +52,15 @@ public class MarcaMedicamentoService implements IMarcaMedicamentoService{
     @Override
     public MarcaMedicamentoDto actualizar(MarcaMedicamento marca) {
         Long id = marca.getId();
-        String nuevoNombre = marca.getNombre();
+        // String nuevoNombre = marca.getNombre();
 
         if(id == null){
             throw new CampoNuloException("El id y no puede ser nulo");
         }
-
-        if(nuevoNombre != repository.findById(id).get().getNombre()){
+/*
+        if(repository.findByNombre(nuevoNombre) == null){
             throw new DatoIncorrectoException("El nombre ya existe para otra entidad");
-        }
+        }*/
 
         return this.guardar(marca);
     }

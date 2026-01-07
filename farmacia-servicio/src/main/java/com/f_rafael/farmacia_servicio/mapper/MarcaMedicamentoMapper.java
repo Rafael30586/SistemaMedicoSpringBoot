@@ -13,13 +13,13 @@ public class MarcaMedicamentoMapper {
 
     public MarcaMedicamentoDto obtenerDto(MarcaMedicamento marca){
         MarcaMedicamentoDto dtoARetornar = new MarcaMedicamentoDto();
-        Set<Medicamento> informacionMedicamentos;
-        Optional<Set<Medicamento>> medicamentosOptional = Optional.of(marca.getMedicamentos());
+        Set<Medicamento> informacionMedicamentos = marca.getMedicamentos();
+        // Optional<Set<Medicamento>> medicamentosOptional = Optional.of(marca.getMedicamentos());
         Set<SubMedicamentoDto> medicamentosParaAsignar;
         SubMedicamentoDto medicamentoParaAgregar;
 
-        if(medicamentosOptional.isPresent()){
-            informacionMedicamentos = marca.getMedicamentos();
+        if(informacionMedicamentos != null){
+            // informacionMedicamentos = marca.getMedicamentos();
             medicamentosParaAsignar = new HashSet<>();
 
             for(Medicamento m : informacionMedicamentos){
