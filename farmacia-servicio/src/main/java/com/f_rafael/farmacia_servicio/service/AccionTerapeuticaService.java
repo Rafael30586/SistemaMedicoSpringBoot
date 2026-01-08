@@ -101,7 +101,8 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
 
     @Override
     public List<AccionTerapeuticaDto> buscarPorSecuenciaEnDescripcion(String secuencia) {
-        return mapper.obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuencia));
+        String secuenciaSinGuiones = stringMapper.removerGuionesBajos(secuencia);
+        return mapper.obtenerListaDto(repository.buscarPorSecuenciaEnDescripcion(secuenciaSinGuiones));
     }
 
     @Override

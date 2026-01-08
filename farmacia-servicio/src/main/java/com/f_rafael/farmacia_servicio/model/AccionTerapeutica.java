@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter @Setter
 @Entity
 @Table(name = "acciones_terapeuticas")
-public class AccionTerapeutica {
+public class AccionTerapeutica { // Ejemplos: analgésico, antidepresivo, antifúngico, ansiolítico
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

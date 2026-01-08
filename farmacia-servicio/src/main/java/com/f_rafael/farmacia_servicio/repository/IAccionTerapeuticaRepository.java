@@ -14,6 +14,6 @@ public interface IAccionTerapeuticaRepository extends JpaRepository<AccionTerape
 
     public Optional<AccionTerapeutica> findByNombre(String nombre);
 
-    @Query("SELECT at FROM AccionTerapeutica at WHERE at.descripcion LIKE '%:secuencia%'")
+    @Query("SELECT at FROM AccionTerapeutica at WHERE at.descripcion LIKE CONCAT('%', :secuencia, '%')")
     public List<AccionTerapeutica> buscarPorSecuenciaEnDescripcion(@Param("secuencia") String secuencia);
 }

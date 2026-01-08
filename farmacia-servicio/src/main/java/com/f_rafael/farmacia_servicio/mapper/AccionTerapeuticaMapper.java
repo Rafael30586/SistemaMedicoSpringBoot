@@ -12,17 +12,18 @@ import java.util.*;
 public class AccionTerapeuticaMapper {
 
     public AccionTerapeuticaDto obtenerDto(AccionTerapeutica informacionAccionTerapeutica){
-        Optional<Set<PrincipioActivo>> principiosActivosOpcional = Optional.of(informacionAccionTerapeutica.getPrincipiosActivos());
-        Set<PrincipioActivo> informacionPrincipiosActivos;
+        // Optional<Set<PrincipioActivo>> principiosActivosOpcional = Optional.of(informacionAccionTerapeutica.getPrincipiosActivos());
+        Set<PrincipioActivo> informacionPrincipiosActivos = informacionAccionTerapeutica.getPrincipiosActivos();
         AccionTerapeuticaDto dtoARetornar = new AccionTerapeuticaDto();
         Set<SubPrincipioActivoDto> principiosActivosParaAsignar;
         SubPrincipioActivoDto principioActivoParaAsignar;
 
         dtoARetornar.setId(informacionAccionTerapeutica.getId());
         dtoARetornar.setNombre(informacionAccionTerapeutica.getNombre());
+        dtoARetornar.setDescripcion(informacionAccionTerapeutica.getDescripcion());
 
-        if(principiosActivosOpcional.isPresent()){
-            informacionPrincipiosActivos = principiosActivosOpcional.get();
+        if(informacionPrincipiosActivos != null){
+            // informacionPrincipiosActivos = principiosActivosOpcional.get();
             principiosActivosParaAsignar = new HashSet<>();
 
             for(PrincipioActivo pa : informacionPrincipiosActivos){
