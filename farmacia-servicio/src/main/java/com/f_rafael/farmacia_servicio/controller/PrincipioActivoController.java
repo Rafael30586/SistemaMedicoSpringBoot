@@ -18,53 +18,53 @@ public class PrincipioActivoController {
 
     private IPrincipioActivoService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<PrincipioActivoDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<PrincipioActivoDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<PrincipioActivoDto> buscarPorNombre(@RequestParam String nombre){
-        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        //String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return new ResponseEntity<>(service.buscarPorNombre(nombre),HttpStatusCode.valueOf(200));
     }
 
-    @GetMapping("/acciopn-terapeutica")
+    @GetMapping("/accion-terapeutica") // funciona
     public ResponseEntity<List<PrincipioActivoDto>> buscarPorAccionTerapeutica(@RequestParam("nombre-accion-terapeutica") String nombreAccionTerapeutica){
-        String accionTerapeuticaSinGuiones = Transformacion.removerGuionesBajos(nombreAccionTerapeutica);
-        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(accionTerapeuticaSinGuiones));
+        // String accionTerapeuticaSinGuiones = Transformacion.removerGuionesBajos(nombreAccionTerapeutica);
+        return ResponseEntity.ok(service.buscarPorAccionTerapeutica(nombreAccionTerapeutica));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<PrincipioActivoDto> guardar(@RequestBody PrincipioActivo principioActivo){
         return new ResponseEntity<>(service.guardar(principioActivo),HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<PrincipioActivoDto> actualizar(@RequestBody PrincipioActivo principioActivo){
         return ResponseEntity.ok(service.actualizar(principioActivo));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/agregar-accion-terapeutica")
-    public ResponseEntity<String> agregarAccionTerapeutica(@RequestParam Long id,
+    @PatchMapping("/{id}/agregar-accion-terapeutica") // funciona
+    public ResponseEntity<String> agregarAccionTerapeutica(@PathVariable Long id,
                                                            @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
         service.agregarAccionTerapeutica(id,accionTerapeuticaId);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/quitar-accion-terapeutica")
-    public ResponseEntity<String> quitarAccionTerapeutica(@RequestParam Long id,
+    @PatchMapping("/{id}/quitar-accion-terapeutica") // funciona
+    public ResponseEntity<String> quitarAccionTerapeutica(@PathVariable Long id,
                                                            @RequestParam("accion-terapeutica-id") Long accionTerapeuticaId){
         service.quitarAccionTerapeutica(id,accionTerapeuticaId);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));

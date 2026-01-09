@@ -17,19 +17,19 @@ public class PrincipioActivoMapper {
 
         Set<SubAccionTerapeuticaDto> accionesTerapeuticasParaAsignar;
         SubAccionTerapeuticaDto accionTerapeuticaParaAsignar;
-        Set<AccionTerapeutica> informacionAccionesTerapeuticas;
-        Optional<Set<AccionTerapeutica>> accionesTerapeutciasOptional = Optional.of(principioActivo.getAccionesTerapeuticas());
+        Set<AccionTerapeutica> informacionAccionesTerapeuticas = principioActivo.getAccionesTerapeuticas();
+        // Optional<Set<AccionTerapeutica>> accionesTerapeutciasOptional = Optional.of(principioActivo.getAccionesTerapeuticas());
 
         SubMedicamentoDto medicamentoParaAsignar;
         Set<SubMedicamentoDto> medicamentosParaAsignar;
-        Optional<Set<Medicamento>> optionalMedicamentos = Optional.of(principioActivo.getMedicamentos());
-        Set<Medicamento> informacionMedicamentos;
+        // Optional<Set<Medicamento>> optionalMedicamentos = Optional.of(principioActivo.getMedicamentos());
+        Set<Medicamento> informacionMedicamentos = principioActivo.getMedicamentos();
 
         dtoARetornar.setId(principioActivo.getId());
         dtoARetornar.setNombre(principioActivo.getNombre());
 
-        if(accionesTerapeutciasOptional.isPresent()){
-            informacionAccionesTerapeuticas = principioActivo.getAccionesTerapeuticas();
+        if(informacionAccionesTerapeuticas != null){
+            // informacionAccionesTerapeuticas = principioActivo.getAccionesTerapeuticas();
             accionesTerapeuticasParaAsignar = new HashSet<>();
 
             for(AccionTerapeutica at : informacionAccionesTerapeuticas){
@@ -40,8 +40,8 @@ public class PrincipioActivoMapper {
             dtoARetornar.setAccionesTerapeuticas(accionesTerapeuticasParaAsignar);
         }
 
-        if(optionalMedicamentos.isPresent()){
-            informacionMedicamentos = principioActivo.getMedicamentos();
+        if(informacionMedicamentos != null){
+            // informacionMedicamentos = principioActivo.getMedicamentos();
             medicamentosParaAsignar = new HashSet<>();
 
             for(Medicamento m : informacionMedicamentos){
