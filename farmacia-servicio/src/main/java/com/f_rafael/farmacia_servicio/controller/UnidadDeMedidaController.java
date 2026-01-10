@@ -17,33 +17,33 @@ public class UnidadDeMedidaController {
 
     private IUnidadDeMedidaService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<UnidadDeMedida> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<UnidadDeMedida>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<UnidadDeMedida> buscarPorNombre(@RequestParam String nombre){
         String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
         return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
     }
 
-    @GetMapping("/simbolo")
+    @GetMapping("/simbolo") // funciona
     public ResponseEntity<UnidadDeMedida> buscarPorSimbolo(@RequestParam String simbolo){
         return ResponseEntity.ok(service.buscarPorSimbolo(simbolo));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<UnidadDeMedida> guardar(@RequestBody UnidadDeMedida unidad){
         return new ResponseEntity<>(service.guardar(unidad),HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<UnidadDeMedida> actualizar(@RequestBody UnidadDeMedida unidad){
         return ResponseEntity.ok(service.actualizar(unidad));
     }
@@ -52,5 +52,17 @@ public class UnidadDeMedidaController {
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada exitosamente",HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping("/{id}/nombre")
+    public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
+        service.modificarNombre(id,nombre);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping("/{id}/simbolo")
+    public ResponseEntity<String> modificarSimbolo(@PathVariable Long id, @RequestParam String simbolo){
+        service.modificarSimbolo(id, simbolo);
+        return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 }
