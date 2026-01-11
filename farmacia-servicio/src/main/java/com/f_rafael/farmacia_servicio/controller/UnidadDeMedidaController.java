@@ -48,19 +48,19 @@ public class UnidadDeMedidaController {
         return ResponseEntity.ok(service.actualizar(unidad));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada exitosamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
         service.modificarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/simbolo")
+    @PatchMapping("/{id}/simbolo") // funciona
     public ResponseEntity<String> modificarSimbolo(@PathVariable Long id, @RequestParam String simbolo){
         service.modificarSimbolo(id, simbolo);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));

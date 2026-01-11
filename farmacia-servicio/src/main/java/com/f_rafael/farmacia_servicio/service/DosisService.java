@@ -2,6 +2,7 @@ package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.Dosis;
 import com.f_rafael.farmacia_servicio.model.UnidadDeMedida;
 import com.f_rafael.farmacia_servicio.repository.IDosisRepository;
@@ -18,6 +19,7 @@ public class DosisService implements IDosisService{
 
     private IDosisRepository repository;
     private IUnidadDeMedidaRepository unidadDeMedidaRepository;
+    private StringMapper stringMapper;
 
     @Override
     public Dosis buscarPorId(Long id) {
@@ -67,11 +69,13 @@ public class DosisService implements IDosisService{
     @Override
     public Dosis buscarPorCantidadUnidadEIntervalo(float cantidad, String nombreUnidad, int intervaloHoras) {
 
-        if(repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervaloHoras).isEmpty()){
+        String unidadSinGuiones = stringMapper.removerGuionesBajos(nombreUnidad);
+
+        if(repository.buscarPorCantidadUnidadEIntervalo(cantidad,unidadSinGuiones,intervaloHoras).isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,nombreUnidad,intervaloHoras).get();
+        return repository.buscarPorCantidadUnidadEIntervalo(cantidad,unidadSinGuiones,intervaloHoras).get();
     }
 
     @Override
