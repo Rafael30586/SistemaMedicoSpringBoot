@@ -46,7 +46,7 @@ public class PrincipioActivoMapper {
 
             for(Medicamento m : informacionMedicamentos){
                 medicamentoParaAsignar = new SubMedicamentoDto(m.getId(),
-                        m.getPrincipioActivo().getNombre(),
+                        m.getNombre(),
                         m.getFormaFarmaceutica().getNombre(),
                         m.getAdministracion().getVia(),
                         m.getMarca().getNombre());

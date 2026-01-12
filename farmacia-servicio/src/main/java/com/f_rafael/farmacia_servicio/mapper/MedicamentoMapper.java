@@ -4,10 +4,7 @@ import com.f_rafael.farmacia_servicio.dto.*;
 import com.f_rafael.farmacia_servicio.model.*;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class MedicamentoMapper {
@@ -15,35 +12,46 @@ public class MedicamentoMapper {
     public MedicamentoDto obtenerDto(Medicamento medicamento){
         MedicamentoDto dtoARetornar = new MedicamentoDto();
 
-        Optional<PrincipioActivo> optionalPrincipioActivo = Optional.of(medicamento.getPrincipioActivo());
-        Optional<FormaFarmaceutica> optionalFormaFarmaceutica = Optional.of(medicamento.getFormaFarmaceutica());
-        Optional<AdministracionFarmaco> optionalAdministracionFarmaco = Optional.of(medicamento.getAdministracion());
-        Optional<MarcaMedicamento> optionalMarca = Optional.of(medicamento.getMarca());
+        // Optional<PrincipioActivo> optionalPrincipioActivo = Optional.of(medicamento.getPrincipioActivo());
+        // Optional<FormaFarmaceutica> optionalFormaFarmaceutica = Optional.of(medicamento.getFormaFarmaceutica());
+        // Optional<AdministracionFarmaco> optionalAdministracionFarmaco = Optional.of(medicamento.getAdministracion());
+        // Optional<MarcaMedicamento> optionalMarca = Optional.of(medicamento.getMarca());
 
-        SubPrincipioActivoDto principioActivoParaAsignar;
+        Set<SubPrincipioActivoDto> principiosActivosParaAsignar;
+        SubPrincipioActivoDto princpioActivoParaAgregar;
         SubFormaFarmaceuticaDto formafarmaceuticaParaAsignar;
         SubAdministracionFarmacoDto administracionParaAsignar;
         SubMarcaMedicamentoDto marcaParaAsignar;
+        Set<PrincipioActivo> informacionPrincipiosActivos = medicamento.getPrincipiosActivos();
 
-        if(optionalPrincipioActivo.isPresent()){
-            principioActivoParaAsignar = new SubPrincipioActivoDto(medicamento.getPrincipioActivo().getId(),
-                    medicamento.getPrincipioActivo().getNombre());
-            dtoARetornar.setPrincipioActivo(principioActivoParaAsignar);
+        if(informacionPrincipiosActivos != null){/*
+            principiosActivosParaAsignar = new SubPrincipioActivoDto(medicamento.getPrincipiosActivos().getId(),
+                    medicamento.getPrincipiosActivos().getNombre());
+            dtoARetornar.setPrincipioActivo(principiosActivosParaAsignar);*/
+
+            principiosActivosParaAsignar = new HashSet<>();
+
+            for(PrincipioActivo pa : informacionPrincipiosActivos){
+                princpioActivoParaAgregar = new SubPrincipioActivoDto(pa.getId(), pa.getNombre());
+                principiosActivosParaAsignar.add(princpioActivoParaAgregar);
+            }
+
+            dtoARetornar.setPrincipiosActivos(principiosActivosParaAsignar);
         }
 
-        if(optionalFormaFarmaceutica.isPresent()){
+        if(medicamento.getFormaFarmaceutica() != null){
             formafarmaceuticaParaAsignar = new SubFormaFarmaceuticaDto(medicamento.getFormaFarmaceutica().getId(),
                     medicamento.getFormaFarmaceutica().getNombre());
             dtoARetornar.setFormaFarmaceutica(formafarmaceuticaParaAsignar);
         }
 
-        if(optionalAdministracionFarmaco.isPresent()){
+        if(medicamento.getAdministracion() != null){
             administracionParaAsignar = new SubAdministracionFarmacoDto(medicamento.getAdministracion().getId(),
                     medicamento.getAdministracion().getVia());
             dtoARetornar.setAdministracion(administracionParaAsignar);
         }
 
-        if(optionalMarca.isPresent()){
+        if(medicamento.getMarca() !=  null){
             marcaParaAsignar = new SubMarcaMedicamentoDto(medicamento.getMarca().getId(),
                     medicamento.getMarca().getNombre());
             dtoARetornar.setMarca(marcaParaAsignar);

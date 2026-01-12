@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
@@ -15,12 +17,13 @@ public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    private String nombre;
+    @ManyToMany
     @JoinColumn(
             name = "principio_activo_id",
             nullable = false
     )
-    private PrincipioActivo principioActivo;
+    private Set<PrincipioActivo> principiosActivos; // Crear una lista o un conjunto y una relación muchos a muchos
     @ManyToOne
     @JoinColumn(
             name = "forma_farmaceutica_id"
