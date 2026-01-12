@@ -5,6 +5,7 @@ import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
 import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.MedicamentoMapper;
+import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.*;
 import com.f_rafael.farmacia_servicio.repository.*;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,11 +23,12 @@ import java.util.Set;
 public class MedicamentoService implements IMedicamentoService{
 
     private IMedicamentoRepository repository;
-    private IPrincipioActivoRepository principioActivoRepository;
+    // private IPrincipioActivoRepository principioActivoRepository;
     private IFormaFarmaceuticaRepository formaFarmaceuticaRepository;
     private IAdministracionFarmacoRepository administracionFarmacoRepository;
     private IMarcaMedicamentoRepository marcaMedicamentoRepository;
     private MedicamentoMapper mapper;
+    private StringMapper stringMapper;
 
     @Override
     public MedicamentoDto buscarPorId(Long id) {
@@ -74,23 +77,42 @@ public class MedicamentoService implements IMedicamentoService{
 
     @Override
     public List<MedicamentoDto> buscarPorPrincipioActivo(String nombrePrincipioActivo) {
-        return mapper.obtenerListaDto(repository.buscarPorPrincipioActivo(nombrePrincipioActivo));
+        List<Medicamento> medicamentos = repository.findAll();
+        List<MedicamentoDto> listaARetornar = new LinkedList<>();
+        Set<PrincipioActivo> principiosActivos;
+        String principioActivoSinGuiones = stringMapper.removerGuionesBajos(nombrePrincipioActivo);
+
+        for(Medicamento m : medicamentos){
+            principiosActivos = m.getPrincipiosActivos();
+
+            for(PrincipioActivo pa : principiosActivos){
+                if(pa.getNombre().equals(principioActivoSinGuiones)){
+                    listaARetornar.add(mapper.obtenerDto(m));
+                }
+            }
+        }
+
+        return listaARetornar;
+        // return mapper.obtenerListaDto(repository.buscarPorPrincipioActivo(nombrePrincipioActivo));
     }
 
 
     @Override
     public List<MedicamentoDto> buscarPorFormaFarmaceutica(String nombreFormaFarmaceutica) {
-        return mapper.obtenerListaDto(repository.buscarPorFormaFarmaceutica(nombreFormaFarmaceutica));
+        String formaFarmaceuticaSinGuiones = stringMapper.removerGuionesBajos(nombreFormaFarmaceutica);
+        return mapper.obtenerListaDto(repository.buscarPorFormaFarmaceutica(formaFarmaceuticaSinGuiones));
     }
 
     @Override
     public List<MedicamentoDto> buscarPorAdministracion(String via) {
-        return mapper.obtenerListaDto(repository.buscarPorAdministracion(via));
+        String viaSinGuiones = stringMapper.removerGuionesBajos(via);
+        return mapper.obtenerListaDto(repository.buscarPorAdministracion(viaSinGuiones));
     }
 
     @Override
     public List<MedicamentoDto> buscarPorMarca(String nombreMarca) {
-        return mapper.obtenerListaDto(repository.buscarPorMarca(nombreMarca));
+        String marcaSinGuiones = stringMapper.removerGuionesBajos(nombreMarca);
+        return mapper.obtenerListaDto(repository.buscarPorMarca(marcaSinGuiones));
     }
 
     @Override
