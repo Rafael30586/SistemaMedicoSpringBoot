@@ -2,6 +2,7 @@ package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.dto.*;
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.MedicamentoMapper;
 import com.f_rafael.farmacia_servicio.model.*;
@@ -10,7 +11,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -37,7 +40,7 @@ public class MedicamentoService implements IMedicamentoService{
     @Override
     public MedicamentoDto guardar(Medicamento medicamento) {
 
-        if(medicamento.getPrincipioActivo() == null || medicamento.getFormaFarmaceutica() == null || medicamento.getAdministracion() == null || medicamento.getMarca() == null){
+        if(medicamento.getPrincipiosActivos() == null || medicamento.getFormaFarmaceutica() == null || medicamento.getAdministracion() == null || medicamento.getMarca() == null){
             throw new CampoNuloException("Hay campos que no pueden ser nulos");
         }
         return mapper.obtenerDto(repository.save(medicamento));
@@ -91,6 +94,45 @@ public class MedicamentoService implements IMedicamentoService{
     }
 
     @Override
+    public void agregarPrincpioActivo(Long id, Long principioActivoId) {
+        Medicamento medicamentoParaEditar = devolverPorId(id);
+        Set<PrincipioActivo> principiosActivosParaAsignar = medicamentoParaEditar.getPrincipiosActivos();
+        PrincipioActivo principioActivoParaAgregar = new PrincipioActivo();
+
+        principioActivoParaAgregar.setId(principioActivoId);
+        principiosActivosParaAsignar.add(principioActivoParaAgregar);
+
+        this.actualizar(medicamentoParaEditar);
+    }
+
+    @Override
+    public void quitarPrincipioActivo(Long id, Long principioActivoId) {
+        Medicamento medicamentoParaEditar = devolverPorId(id);
+        Set<PrincipioActivo> principiosActivosParaAsignar = medicamentoParaEditar.getPrincipiosActivos();
+        Iterator<PrincipioActivo> iterador = principiosActivosParaAsignar.iterator();
+        boolean principioActivoPresente = false;
+
+        if(principiosActivosParaAsignar.size() < 2){
+            throw new DatoIncorrectoException("La cantidad de principios activos en un medicamento tiene que ser mayor o igual a uno");
+        }
+
+        while(iterador.hasNext()){
+            if(iterador.next().getId() == principioActivoId){
+                iterador.remove();
+                principioActivoPresente = true;
+            }
+        }
+
+        if(!principioActivoPresente){
+            throw new DatoIncorrectoException("El id no corresponde a ningún principio activo presente en el medicamento");
+        }
+
+        medicamentoParaEditar.setPrincipiosActivos(principiosActivosParaAsignar);
+
+        this.actualizar(medicamentoParaEditar);
+    }
+/*
+    @Override
     public MedicamentoDto asignarPrincipioActivo(Long id, Long principioActivoId) {
         Medicamento medicamentoAEditar;
         PrincipioActivo principioActivoAAsignar = new PrincipioActivo();
@@ -103,7 +145,7 @@ public class MedicamentoService implements IMedicamentoService{
         principioActivoAAsignar.setId(principioActivoId);
         medicamentoAEditar.setPrincipioActivo(principioActivoAAsignar);
         return this.actualizar(medicamentoAEditar);
-    }
+    }*/
 
     @Override
     public MedicamentoDto asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId) {

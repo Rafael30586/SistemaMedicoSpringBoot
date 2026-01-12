@@ -15,7 +15,9 @@ public interface IMedicamentoService {
     public List<MedicamentoDto> buscarPorFormaFarmaceutica(String nombreFormaFarmaceutica);
     public List<MedicamentoDto> buscarPorAdministracion(String via);
     public List<MedicamentoDto> buscarPorMarca(String nombreMarca);
-    public MedicamentoDto asignarPrincipioActivo(Long id, Long principioActivoId);
+    // public MedicamentoDto asignarPrincipioActivo(Long id, Long principioActivoId);
+    public void agregarPrincpioActivo(Long id, Long principioActivoId);
+    public void quitarPrincipioActivo(Long id, Long principioActivoId);
     public MedicamentoDto asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId);
     public MedicamentoDto asignarAdministracion(Long id, Long administracionId);
     public MedicamentoDto asignarMarca(Long id, Long marcaId);
