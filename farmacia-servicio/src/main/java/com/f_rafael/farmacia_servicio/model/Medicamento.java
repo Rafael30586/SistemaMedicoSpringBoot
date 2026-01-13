@@ -19,11 +19,12 @@ public class Medicamento {
     private Long id;
     private String nombre;
     @ManyToMany
-    @JoinColumn(
-            name = "principio_activo_id",
-            nullable = false
+    @JoinTable(
+            name = "medicamento_principio_activo",
+            joinColumns = @JoinColumn(name = "medicamento_id"),
+            inverseJoinColumns = @JoinColumn(name = "principio_activo_id")
     )
-    private Set<PrincipioActivo> principiosActivos; // Crear una lista o un conjunto y una relación muchos a muchos
+    private Set<PrincipioActivo> principiosActivos;
     @ManyToOne
     @JoinColumn(
             name = "forma_farmaceutica_id"

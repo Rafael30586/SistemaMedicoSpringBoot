@@ -27,7 +27,7 @@ public class AdministracionFarmacoMapper {
 
             for(Medicamento m : informacionMedicamentos){
                 medicamentoAAsignar = new SubMedicamentoDto(m.getId(),
-                        m.getPrincipioActivo().getNombre(),
+                        m.getNombre(),
                         m.getFormaFarmaceutica().getNombre(),
                         m.getAdministracion().getVia(),
                         m.getMarca().getNombre());

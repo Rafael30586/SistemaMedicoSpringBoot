@@ -24,7 +24,7 @@ public class FormaFarmaceuticaMapper {
 
             for(Medicamento m : informacionMedicamentos){
                 medicamentoParaAgregar = new SubMedicamentoDto(m.getId(),
-                        m.getPrincipioActivo().getNombre(),
+                        m.getNombre(),
                         m.getFormaFarmaceutica().getNombre(),
                         m.getAdministracion().getVia(),
                         m.getMarca().getNombre());

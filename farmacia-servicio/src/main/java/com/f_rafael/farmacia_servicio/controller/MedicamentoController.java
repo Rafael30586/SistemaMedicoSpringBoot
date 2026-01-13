@@ -77,14 +77,14 @@ public class MedicamentoController {
         return new ResponseEntity<>("Entidad midificada correctamente",HttpStatusCode.valueOf(204));
     }*/
 
-    @PatchMapping("/{id}/principio-activo")
+    @PatchMapping("/{id}/agregar-principio-activo")
     public ResponseEntity<String> agregarPrincipioActivo(@PathVariable Long id,
                                                          @RequestParam("principio-activo-id") Long principioActivoId){
         service.agregarPrincpioActivo(id, principioActivoId);
         return new ResponseEntity<>("Entidad modificada correctamente", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/principio-activo")
+    @PatchMapping("/{id}/quitar-principio-activo")
     public ResponseEntity<String> quitarPrincipioActivo(@PathVariable Long id,
                                                         @RequestParam("principio-activo-id") Long principioActivoId){
         service.quitarPrincipioActivo(id, principioActivoId);
