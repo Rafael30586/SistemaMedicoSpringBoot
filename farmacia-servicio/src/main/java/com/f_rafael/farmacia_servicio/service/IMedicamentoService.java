@@ -11,11 +11,13 @@ public interface IMedicamentoService {
     public MedicamentoDto guardar(Medicamento medicamento);
     public MedicamentoDto actualizar(Medicamento medicamento);
     public void borrarPorId(Long id);
+    public MedicamentoDto buscarPorNombre(String nombre);
     public List<MedicamentoDto> buscarPorPrincipioActivo(String nombrePrincipioActivo);
     public List<MedicamentoDto> buscarPorFormaFarmaceutica(String nombreFormaFarmaceutica);
     public List<MedicamentoDto> buscarPorAdministracion(String via);
     public List<MedicamentoDto> buscarPorMarca(String nombreMarca);
     // public MedicamentoDto asignarPrincipioActivo(Long id, Long principioActivoId);
+    public void modificarNombre(Long id, String nombre);
     public void agregarPrincpioActivo(Long id, Long principioActivoId);
     public void quitarPrincipioActivo(Long id, Long principioActivoId);
     public MedicamentoDto asignarFormaFarmaceutica(Long id, Long formaFarmaceuticaId);

@@ -57,6 +57,9 @@ public class MedicamentoMapper {
             dtoARetornar.setMarca(marcaParaAsignar);
         }
 
+        dtoARetornar.setNombre(medicamento.getNombre());
+        dtoARetornar.setId(medicamento.getId());
+
         return dtoARetornar;
     }
 

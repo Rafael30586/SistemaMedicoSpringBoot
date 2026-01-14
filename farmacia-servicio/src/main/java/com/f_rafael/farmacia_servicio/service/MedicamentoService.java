@@ -8,14 +8,12 @@ import com.f_rafael.farmacia_servicio.mapper.MedicamentoMapper;
 import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.*;
 import com.f_rafael.farmacia_servicio.repository.*;
+import com.f_rafael.farmacia_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -29,6 +27,7 @@ public class MedicamentoService implements IMedicamentoService{
     private IMarcaMedicamentoRepository marcaMedicamentoRepository;
     private MedicamentoMapper mapper;
     private StringMapper stringMapper;
+    private Verificador verificador;
 
     @Override
     public MedicamentoDto buscarPorId(Long id) {
@@ -76,6 +75,18 @@ public class MedicamentoService implements IMedicamentoService{
     }
 
     @Override
+    public MedicamentoDto buscarPorNombre(String nombre) {
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
+        Optional<Medicamento> optionalMedicamento = repository.findByNombre(nombreSinGuiones);
+
+        if(optionalMedicamento.isEmpty()){
+            throw new EntidadNoEncontradaException("Entidad no encontrada");
+        }
+
+        return mapper.obtenerDto(optionalMedicamento.get());
+    }
+
+    @Override
     public List<MedicamentoDto> buscarPorPrincipioActivo(String nombrePrincipioActivo) {
         List<Medicamento> medicamentos = repository.findAll();
         List<MedicamentoDto> listaARetornar = new LinkedList<>();
@@ -113,6 +124,17 @@ public class MedicamentoService implements IMedicamentoService{
     public List<MedicamentoDto> buscarPorMarca(String nombreMarca) {
         String marcaSinGuiones = stringMapper.removerGuionesBajos(nombreMarca);
         return mapper.obtenerListaDto(repository.buscarPorMarca(marcaSinGuiones));
+    }
+
+    @Override
+    public void modificarNombre(Long id, String nombre) {
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
+        Medicamento medicamentoParaEditar = devolverPorId(id);
+
+        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSinGuiones);
+        medicamentoParaEditar.setNombre(nombreSinGuiones);
+
+        this.actualizar(medicamentoParaEditar);
     }
 
     @Override

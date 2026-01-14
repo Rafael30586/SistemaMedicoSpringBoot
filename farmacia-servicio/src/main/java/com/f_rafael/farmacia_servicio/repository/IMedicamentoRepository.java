@@ -15,6 +15,8 @@ public interface IMedicamentoRepository extends JpaRepository<Medicamento, Long>
     @Query("SELECT m FROM Medicamento m LEFT JOIN FETCH m.principioActivo WHERE m.principioActivo.nombre = :nombre")
     public List<Medicamento> buscarPorPrincipioActivo(@Param("nombre") String nombre);*/
 
+    public Optional<Medicamento> findByNombre(String nombre);
+
     @Query("SELECT m FROM Medicamento m LEFT JOIN FETCH m.formaFarmaceutica WHERE m.formaFarmaceutica.nombre = :nombre")
     public List<Medicamento> buscarPorFormaFarmaceutica(@Param("nombre") String nombre);
 
