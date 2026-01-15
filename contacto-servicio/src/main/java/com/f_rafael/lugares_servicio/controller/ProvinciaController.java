@@ -16,43 +16,43 @@ public class ProvinciaController {
 
     private IProvinciaService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<Provincia> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<Provincia>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<Provincia> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<Provincia> guardar(@RequestBody Provincia provincia){
         return new ResponseEntity<>(service.guardar(provincia),HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<Provincia> actualizar(@RequestBody Provincia provincia){
         return ResponseEntity.ok(service.actualizar(provincia));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<Provincia> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}/pais")
+    @PatchMapping("/{id}/pais") // funciona
     public ResponseEntity<Provincia> modificarPais(@PathVariable Long id,@RequestParam("pais-id") Long paisId){
         return ResponseEntity.ok(service.modificarProvincia(id, paisId));
     }

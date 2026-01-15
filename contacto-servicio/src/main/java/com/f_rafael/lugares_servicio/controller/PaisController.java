@@ -16,33 +16,33 @@ public class PaisController {
 
     private IPaisService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<Pais> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<Pais>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<Pais> guardar(@RequestBody Pais pais){
         return new ResponseEntity<>(service.guardar(pais), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<Pais> actualizar(@RequestBody Pais pais){
         return new ResponseEntity<>(service.actualizar(pais),HttpStatusCode.valueOf(200));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<Pais> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id,nombre));
     }

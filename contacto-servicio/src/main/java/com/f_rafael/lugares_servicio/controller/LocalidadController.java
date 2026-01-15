@@ -17,40 +17,40 @@ public class LocalidadController {
 
     private ILocalidadService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<Localidad> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping //funciona
     public ResponseEntity<List<Localidad>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @PostMapping
+    @PostMapping //funciona
     public ResponseEntity<Localidad> guardar(@RequestBody Localidad localidad){
         return new ResponseEntity<>(service.guardar(localidad),HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping //funciona
     public ResponseEntity<Localidad> actualizar(@RequestBody Localidad localidad){
         return ResponseEntity.ok(service.actualizar(localidad));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada corrctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<String> modificarNombre(@PathVariable Long id,@RequestParam String nombre){
         // String nombreSinGuiones = Transform.removerGuiones(nombre);
         service.cambiarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/provincia")
+    @PatchMapping("/{id}/provincia") // funciona
     public ResponseEntity<String> modificarProvincia(@PathVariable Long id,
                                                      @RequestParam("provincia-id") Long provinciaId){
         service.cambiarProvincia(id,provinciaId);

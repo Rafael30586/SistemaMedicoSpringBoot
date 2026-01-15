@@ -17,38 +17,38 @@ public class ObraSocialController {
 
     private IObraSocialService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<ObraSocialDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<ObraSocialDto>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<ObraSocialDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<ObraSocialDto> guardar(@RequestBody ObraSocial obraSocial){
         return new ResponseEntity<>(service.guardar(obraSocial), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<ObraSocialDto> actualizar(@RequestBody ObraSocial obraSocial){
         return ResponseEntity.ok(service.actualizar(obraSocial));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<ObraSocialDto> actualizarNombre(@PathVariable Long id, @RequestParam String nombre){
         return ResponseEntity.ok(service.actualizarNombre(id,nombre));
     }

@@ -11,6 +11,7 @@ import com.f_rafael.pacientes_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -43,12 +44,14 @@ public class ObraSocialService implements IObraSocialService{
     @Override
     public ObraSocialDto buscarPorNombre(String nombre) {
         ObraSocialDto dtoaRetornar;
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombre);
+        Optional<ObraSocial> optionalObraSocial = repository.findByNombre(nombreSinGuiones);
 
-        if(repository.findByNombre(nombre).isEmpty()){
+        if(optionalObraSocial.isEmpty()){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        dtoaRetornar = mapper.obtenerDto(repository.findByNombre(nombre).get());
+        dtoaRetornar = mapper.obtenerDto(optionalObraSocial.get());
 
         return dtoaRetornar;
     }
