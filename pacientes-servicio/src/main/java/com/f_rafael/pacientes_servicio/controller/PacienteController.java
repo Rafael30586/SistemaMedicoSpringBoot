@@ -18,12 +18,12 @@ public class PacienteController {
 
     private IPacienteService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<PacienteDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<PacienteDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }

@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class Paciente {
     @CollectionTable(name = "paciente_telefono", joinColumns = @JoinColumn(name = "paciente_id"))
     private Set<String> telefonos;
     @Column(name = "fecha_nacimiento", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaNacimiento;
     @Column(nullable = false)
     private Long lugarNacimientoId;

@@ -18,7 +18,7 @@ public class Verificador {
     }
 
     public void esEmail(String cadena){
-        Pattern pattern = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\n");
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([._%+-][a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z]{2,}$");
         Matcher matcher = pattern.matcher(cadena);
 
         if(!matcher.matches()) throw new DatoIncorrectoException("La dirección de email tiene un formato incorrecto");
@@ -29,7 +29,7 @@ public class Verificador {
     }
 
     public void esNumeroTelefonico(String cadena){
-        Pattern pattern = Pattern.compile("^\\\\d+(?:-\\\\d+)*$\n");
+        Pattern pattern = Pattern.compile("^\\d+(?:-\\d+)*$");
         Matcher matcher = pattern.matcher(cadena);
 
         if(!matcher.matches()) throw new DatoIncorrectoException("La cadena de caracteres  no es un número telefónico válido");

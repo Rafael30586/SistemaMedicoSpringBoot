@@ -26,7 +26,7 @@ public class PacienteMapper {
 
     public PacienteDto obtenerDto(Paciente informacionPaciente){
         PacienteDto dtoARetornar = new PacienteDto();
-        List<NumeroTelefonicoDto> numerosTelefonicosParaAsignar = new LinkedList<>();
+        // List<NumeroTelefonicoDto> numerosTelefonicosParaAsignar = new LinkedList<>();
         DireccionDto direccionParaAsignar = contactoClient.obtenerDireccionPorId(informacionPaciente.getDireccionId());
         LocalidadDto lugarDeNacimientoParaAsignar = contactoClient.obtenerLocalidadPorId(informacionPaciente.getLugarNacimientoId());
         Set<String> telefonos = informacionPaciente.getTelefonos();

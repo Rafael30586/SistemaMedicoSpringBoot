@@ -60,15 +60,24 @@ public class PacienteService implements IPacienteService{
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(primerNombre);
         verificador.tieneEspaciosVacios(primerNombre);
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(segundoNombre);
-        verificador.tieneEspaciosVacios(segundoNombre);
+
+        if(segundoNombre != null){
+            verificador.soloLetrasMinusculasEspaciosYGuionesMedios(segundoNombre);
+            verificador.tieneEspaciosVacios(segundoNombre);
+        }
+
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoPaterno);
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
+
+        if(apellidoMaterno != null){
+            verificador.soloLetrasMinusculasEspaciosYGuionesMedios(apellidoMaterno);
+        }
 
         verificador.esEmail(paciente.getEmail());
 
-        telefonos.stream().forEach(verificador::esNumeroTelefonico);
+        if(telefonos != null){
+            telefonos.stream().forEach(verificador::esNumeroTelefonico);
+        }
 
         return mapper.obtenerDto(repository.save(paciente));
     }

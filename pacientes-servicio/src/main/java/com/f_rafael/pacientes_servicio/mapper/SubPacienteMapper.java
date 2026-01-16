@@ -1,8 +1,10 @@
 package com.f_rafael.pacientes_servicio.mapper;
 
 
+import com.f_rafael.pacientes_servicio.dto.LocalidadDto;
 import com.f_rafael.pacientes_servicio.dto.SubPacienteDto;
 import com.f_rafael.pacientes_servicio.model.Paciente;
+import com.f_rafael.pacientes_servicio.repository.IContactoClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +15,12 @@ import java.util.*;
 public class SubPacienteMapper {
 
     // private INumeroTelefonicoClient numeroTelefonicoClient;
+    private IContactoClient contactoClient;
 
     public SubPacienteDto obtenerDto(Paciente paciente){
         SubPacienteDto dtoARetornar = new SubPacienteDto();
-        //Set<Long> telefonosIds;
-        //Set<NumeroTelefonicoDto> telefonosParaAsignar;
+        LocalidadDto localidadParaAsignar;
+        Long lugarNacimentoId = paciente.getLugarNacimientoId();
 
         dtoARetornar.setId(paciente.getId());
         dtoARetornar.setDni(paciente.getDni());
@@ -28,17 +31,11 @@ public class SubPacienteMapper {
         dtoARetornar.setFechaNacimiento(paciente.getFechaNacimiento());
         dtoARetornar.setEmail(paciente.getEmail());
         dtoARetornar.setTelefonos(paciente.getTelefonos());
-/*
-        if(paciente.getTelefonosId() != null){
-            telefonosIds = paciente.getTelefonosId();
-            telefonosParaAsignar = new HashSet<>();
 
-            for(Long id : telefonosIds){
-                telefonosParaAsignar.add(numeroTelefonicoClient.buscarPorId(id));
-            }
-
-            dtoARetornar.setTelefonos(telefonosParaAsignar);
-        }*/
+        if(lugarNacimentoId != null){
+            localidadParaAsignar = contactoClient.obtenerLocalidadPorId(lugarNacimentoId);
+            dtoARetornar.setLugarNacimiento(localidadParaAsignar);
+        }
 
         return dtoARetornar;
     }
