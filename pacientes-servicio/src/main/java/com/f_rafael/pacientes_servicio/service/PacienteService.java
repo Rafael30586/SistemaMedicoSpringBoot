@@ -145,9 +145,10 @@ public class PacienteService implements IPacienteService{
     public List<PacienteDto> buscarPorLugarNacimiento(String localidad) {
         List<PacienteDto> listaARetornar = new LinkedList<>();
         List<Paciente> informacionPacientes = repository.findAll();
+        String localidadSinGuiones = stringMapper.quitarGuionesBajos(localidad);
 
         for(Paciente p : informacionPacientes){
-            if(contactoClient.obtenerLocalidadPorId(p.getLugarNacimientoId()).getNombre().equals(localidad)){
+            if(contactoClient.obtenerLocalidadPorId(p.getLugarNacimientoId()).getNombre().equals(localidadSinGuiones)){
                 listaARetornar.add(mapper.obtenerDto(p));
             }
         }
