@@ -47,7 +47,7 @@ public class DireccionService implements IDireccionService{
             throw new CampoNuloException("La calle no puede ser nula");
         }
 
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(calle);
+        verificador.esNombreCompleto(calle);
 
         return repository.save(direccion);
     }
@@ -107,7 +107,7 @@ public class DireccionService implements IDireccionService{
         Direccion direccionAEditar;
         String calleSinGuiones = stringMapper.quitarGuionesBajos(calle);
 
-        verificador.soloLetrasMinusculasEspaciosYGuionesMedios(calleSinGuiones);
+        verificador.esNombreCompleto(calle);
 
         if(!repository.existsById(id)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");

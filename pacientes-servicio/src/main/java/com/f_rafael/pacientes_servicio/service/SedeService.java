@@ -4,6 +4,7 @@ import com.f_rafael.pacientes_servicio.dto.SedeDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.mapper.StringMapper;
 import com.f_rafael.pacientes_servicio.model.ObraSocial;
 import com.f_rafael.pacientes_servicio.model.Sede;
 import com.f_rafael.pacientes_servicio.repository.*;
@@ -26,6 +27,7 @@ public class SedeService implements ISedeService{
     private IObraSocialRepository obraSocialRepository;
     private Verificador verificador;
     private IContactoClient contactoClient;
+    private StringMapper stringMapper;
 
     @Override
     public SedeDto buscarPorId(Long id) {
@@ -84,8 +86,10 @@ public class SedeService implements ISedeService{
         List<SedeDto> listaARetornar = new LinkedList<>();
         List<Sede> informacionSedes = repository.findAll();
 
+        String calleSinGuiones = stringMapper.quitarGuionesBajos(calle);
+
         for(Sede s : informacionSedes){
-            if(contactoClient.obtenerDireccionPorId(s.getDireccionId()).getCalle().equals(calle)){
+            if(contactoClient.obtenerDireccionPorId(s.getDireccionId()).getCalle().equals(calleSinGuiones)){
                 listaARetornar.add(mapper.obtenerDto(s));
             }
         }

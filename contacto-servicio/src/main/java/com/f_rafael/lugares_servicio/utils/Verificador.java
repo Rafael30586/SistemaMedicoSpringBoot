@@ -23,4 +23,11 @@ public class Verificador {
     public void contieneGuiones(String cadena){
         if(cadena.contains("-")) throw new DatoIncorrectoException("LAcdena de caracteres no puede contener guiones medios");
     }
+
+    public void esNombreCompleto(String cadena){
+        Pattern pattern = Pattern.compile("^[a-záéíóúñ .-]+$");
+        Matcher matcher = pattern.matcher(cadena);
+
+        if(!matcher.matches()) throw new DatoIncorrectoException("La cadena tiene caracteres no permitidos");
+    }
 }

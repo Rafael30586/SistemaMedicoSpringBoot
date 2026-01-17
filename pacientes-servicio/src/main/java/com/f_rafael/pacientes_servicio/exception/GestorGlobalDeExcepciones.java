@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.exception;
 
+import feign.FeignException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -41,5 +42,16 @@ public class GestorGlobalDeExcepciones {
         objetoDeError.setMarcaDeTiempo(LocalDateTime.now());
 
         return new ResponseEntity<>(objetoDeError,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FeignException.class)
+    public ResponseEntity<ObjetoDeError> controlarFeignExeption(FeignException exception){
+        ObjetoDeError objetoDeError = new ObjetoDeError();
+
+        objetoDeError.setCodigoDeEstado(HttpStatus.BAD_REQUEST.value());
+        objetoDeError.setMensaje(exception.getMessage());
+        objetoDeError.setMarcaDeTiempo(LocalDateTime.now());
+
+        return new ResponseEntity<>(objetoDeError, HttpStatus.BAD_REQUEST);
     }
 }

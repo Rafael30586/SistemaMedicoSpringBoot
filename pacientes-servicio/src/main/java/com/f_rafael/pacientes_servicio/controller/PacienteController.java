@@ -79,7 +79,7 @@ public class PacienteController {
         return ResponseEntity.ok(service.actualizar(paciente));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));

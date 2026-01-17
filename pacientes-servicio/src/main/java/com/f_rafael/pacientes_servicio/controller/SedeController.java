@@ -17,62 +17,62 @@ public class SedeController {
 
     private ISedeService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<SedeDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<SedeDto>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/direccion")
+    @GetMapping("/direccion") // funciona
     public ResponseEntity<List<SedeDto>> buscarPorDireccion(@RequestParam String calle){
         return ResponseEntity.ok(service.buscarPorDireccion(calle));
     }
 
-    @GetMapping("/telefono")
+    @GetMapping("/telefono") // funciona
     public ResponseEntity<SedeDto> buscarPorTelefono(@RequestParam String telefono){
         return ResponseEntity.ok(service.buscarPortelefono(telefono));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<SedeDto> guardar(@RequestBody Sede sede){
         return new ResponseEntity<>(service.guardar(sede), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<SedeDto> actualizar(@RequestBody Sede sede){
         return ResponseEntity.ok(service.actualizar(sede));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarporId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/direccion")
-    public ResponseEntity<SedeDto> actualizarDireccion(@RequestParam Long id,
+    @PatchMapping("/{id}/direccion") // funciona
+    public ResponseEntity<SedeDto> actualizarDireccion(@PathVariable Long id,
                                                        @RequestParam("direccion-id") Long direccionId){
         return ResponseEntity.ok(service.actualizarDireccion(id,direccionId));
     }
 
-    @PatchMapping("/agregar-telefono")
-    public ResponseEntity<SedeDto> agregarTelefono(@RequestParam Long id,
+    @PatchMapping("/{id}/agregar-telefono") // funciona
+    public ResponseEntity<SedeDto> agregarTelefono(@PathVariable Long id,
                                                    @RequestParam String telefono){
         return ResponseEntity.ok(service.agregarTelefono(id,telefono));
     }
 
-    @PatchMapping("/quitar-telefono")
-    public ResponseEntity<SedeDto> quitarTelefono(@RequestParam Long id,
+    @PatchMapping("/{id}/quitar-telefono") // funciona
+    public ResponseEntity<SedeDto> quitarTelefono(@PathVariable Long id,
                                                   @RequestParam String telefono){
         return ResponseEntity.ok(service.quitarTelefono(id,telefono));
     }
 
-    @PatchMapping("/obra-social")
-    public ResponseEntity<SedeDto> actualizarObraSocial(@RequestParam Long id,
+    @PatchMapping("/{id}/obra-social") // funciona
+    public ResponseEntity<SedeDto> actualizarObraSocial(@PathVariable Long id,
                                                         @RequestParam("obra-social-id") Long obraSocialId){
         return ResponseEntity.ok(service.actualizarObraSocial(id,obraSocialId));
     }

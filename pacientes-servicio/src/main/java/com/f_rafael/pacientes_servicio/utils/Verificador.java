@@ -47,4 +47,5 @@ public class Verificador {
         if(cadena.contains("-")) throw new DatoIncorrectoException("LAcdena de caracteres no puede contener guiones medios");
     }
 
+
 }
