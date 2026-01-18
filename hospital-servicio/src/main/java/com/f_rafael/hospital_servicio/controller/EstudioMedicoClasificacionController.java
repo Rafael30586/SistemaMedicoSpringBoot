@@ -16,38 +16,38 @@ public class EstudioMedicoClasificacionController {
 
     private IEstudioMedicoClasificacionService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<EstudioMedicoClasificacion> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<EstudioMedicoClasificacion>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<EstudioMedicoClasificacion> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<EstudioMedicoClasificacion> guardar(@RequestBody EstudioMedicoClasificacion clasificacion){
         return new ResponseEntity<>(service.guardar(clasificacion), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<EstudioMedicoClasificacion> actualizar(@RequestBody EstudioMedicoClasificacion clasificacion){
         return ResponseEntity.ok(service.actualizar(clasificacion));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("La clasificación ha sido guardada",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<EstudioMedicoClasificacion> modificarNombre(@PathVariable Long id,
                                                                       @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
