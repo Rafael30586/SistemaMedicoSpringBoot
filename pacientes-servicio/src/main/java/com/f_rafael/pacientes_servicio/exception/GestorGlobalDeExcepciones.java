@@ -47,9 +47,10 @@ public class GestorGlobalDeExcepciones {
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<ObjetoDeError> controlarFeignExeption(FeignException exception){
         ObjetoDeError objetoDeError = new ObjetoDeError();
+        String mensaje = "La conexión con otro microservicio ha fallado";
 
         objetoDeError.setCodigoDeEstado(HttpStatus.BAD_REQUEST.value());
-        objetoDeError.setMensaje(exception.getMessage());
+        objetoDeError.setMensaje(mensaje);
         objetoDeError.setMarcaDeTiempo(LocalDateTime.now());
 
         return new ResponseEntity<>(objetoDeError, HttpStatus.BAD_REQUEST);
