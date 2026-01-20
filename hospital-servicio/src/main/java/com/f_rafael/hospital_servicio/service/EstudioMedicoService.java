@@ -49,7 +49,8 @@ public class EstudioMedicoService implements IEstudioMedicoService{
         if(estudioMedico.getId() == null){
             throw new CampoNuloException("El id no puede ser nulo durante una actualización");
         }
-        return null;
+
+        return this.guardar(estudioMedico);
     }
 
     @Override

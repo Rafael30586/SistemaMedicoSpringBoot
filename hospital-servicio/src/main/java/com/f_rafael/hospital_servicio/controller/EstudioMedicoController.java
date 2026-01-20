@@ -16,32 +16,32 @@ public class EstudioMedicoController {
 
     private IEstudioMedicoService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<EstudioMedico> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<EstudioMedico>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<EstudioMedico> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping("/clasificacion")
+    @GetMapping("/clasificacion") // funciona
     public ResponseEntity<List<EstudioMedico>> buscarPorClasificacion(@RequestParam String clasificacion){
         return ResponseEntity.ok(service.buscarPorClasificacion(clasificacion));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<EstudioMedico> guardar(@RequestBody EstudioMedico estudioMedico){
         return new ResponseEntity<>(service.guardar(estudioMedico), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<EstudioMedico> actualizar(@RequestBody EstudioMedico estudioMedico){
         return ResponseEntity.ok(service.actualizar(estudioMedico));
     }
@@ -52,13 +52,13 @@ public class EstudioMedicoController {
         return new ResponseEntity<>("Estudio médico borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<EstudioMedico> modificarNombre(@PathVariable Long id,
                                                          @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
 
-    @PatchMapping("/{id}/clasificacion")
+    @PatchMapping("/{id}/clasificacion") // funciona
     public ResponseEntity<EstudioMedico> modificarClasificacion(@PathVariable Long id,
                                                                 @RequestParam("id-clasificacion") Long idClasificacion){
         return ResponseEntity.ok(service.modificarClasificacion(id, idClasificacion));
