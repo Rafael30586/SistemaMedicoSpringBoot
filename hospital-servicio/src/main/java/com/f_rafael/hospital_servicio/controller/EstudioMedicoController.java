@@ -46,7 +46,7 @@ public class EstudioMedicoController {
         return ResponseEntity.ok(service.actualizar(estudioMedico));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Estudio médico borrado", HttpStatusCode.valueOf(204));

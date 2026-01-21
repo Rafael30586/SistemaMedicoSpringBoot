@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.controller;
 
 import com.f_rafael.hospital_servicio.dto.FisioterapiaPacienteDto;
 import com.f_rafael.hospital_servicio.model.FisioterapiaPaciente;
+import com.f_rafael.hospital_servicio.repository.IFisioterapiaPacienteRepository;
 import com.f_rafael.hospital_servicio.service.IFisioterapiaPacienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
@@ -17,8 +18,9 @@ import java.util.List;
 public class FisioterapiaPacienteController {
 
     private IFisioterapiaPacienteService service;
+    private IFisioterapiaPacienteRepository repository; // atributo para hacer pruebas
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<FisioterapiaPacienteDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
@@ -28,7 +30,12 @@ public class FisioterapiaPacienteController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/paciente")
+    @GetMapping("/todas") // método para hacer pruebas
+    public List<FisioterapiaPaciente> buscarToditas(){
+        return repository.findAll();
+    }
+
+    @GetMapping("/paciente") // Este método no funciona cuando se utiliza la opción de dni porque and mal el findAll() del repositorio
     public ResponseEntity<List<FisioterapiaPacienteDto>> buscarPorPaciente(@RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                      @RequestParam String opcion){
         return ResponseEntity.ok(service.buscarPorPaciente(pacienteIdODni, opcion));
@@ -46,7 +53,7 @@ public class FisioterapiaPacienteController {
         return ResponseEntity.ok(service.buscarPorFechaDeFinal(desde, hasta));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<FisioterapiaPacienteDto> guardar(@RequestBody FisioterapiaPaciente fisioterapiaPaciente){
         return new ResponseEntity<>(service.guardar(fisioterapiaPaciente), HttpStatusCode.valueOf(201));
     }

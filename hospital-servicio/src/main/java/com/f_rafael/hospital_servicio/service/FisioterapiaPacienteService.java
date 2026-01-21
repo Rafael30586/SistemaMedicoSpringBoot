@@ -45,6 +45,8 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
             throw new CampoNuloException("Algunos campos de fisioterapia para paciente no pueden ser nulos");
         }
 
+        pacienteClient.buscarPacientePorId(fisioterapiaPaciente.getPacienteId()); // Esto sirve para saber si el paciente existe en el otro microservicio. Si el peciente no existe, lanzará una excepción
+
         return mapper.obtenerDto(repository.save(fisioterapiaPaciente));
     }
 

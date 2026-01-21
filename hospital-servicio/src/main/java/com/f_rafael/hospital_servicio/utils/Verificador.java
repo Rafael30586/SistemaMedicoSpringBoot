@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class Verificador {
 
     public void esIdODni(String opcion){
-        if(opcion != "id" && opcion != "dni") throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
+        if(!opcion.equals("id") && !opcion.equals("dni")) throw new DatoIncorrectoException("Las opciones disponibles son id y dni");
     }
 
     public void esAnterior(LocalDate inicio, LocalDate fin){
