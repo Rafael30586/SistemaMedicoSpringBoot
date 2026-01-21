@@ -98,11 +98,13 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
 
     @Override
     public List<FisioterapiaPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde,hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeInicio(desde,hasta));
     }
 
     @Override
     public List<FisioterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde,hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
 
@@ -113,10 +115,12 @@ public class FisioterapiaPacienteService implements IFisioterapiaPacienteService
         verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
+            pacienteClient.buscarPacientePorId(idODni); // verifica si el paciente existe en el otro microservicio
             tratamientoParaActualizar.setPacienteId(idODni);
         }
 
         if(opcion.equals("dni")){
+            pacienteClient.buscarPacientePorDni(idODni); // verifica si el paciente existe en el otro microservicio
             tratamientoParaActualizar.setPacienteId(pacienteClient.buscarPacientePorDni(idODni).getId());
         }
 
