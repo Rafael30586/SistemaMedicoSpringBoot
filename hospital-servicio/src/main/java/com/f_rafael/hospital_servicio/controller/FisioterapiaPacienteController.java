@@ -25,7 +25,7 @@ public class FisioterapiaPacienteController {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<FisioterapiaPacienteDto>> buscarTodas(){
         return ResponseEntity.ok(service.buscarTodas());
     }
@@ -35,7 +35,7 @@ public class FisioterapiaPacienteController {
         return repository.findAll();
     }
 
-    @GetMapping("/paciente") // Este método no funciona cuando se utiliza la opción de dni porque and mal el findAll() del repositorio
+    @GetMapping("/paciente")
     public ResponseEntity<List<FisioterapiaPacienteDto>> buscarPorPaciente(@RequestParam("paciente-id-o-dni") Long pacienteIdODni,
                                                                      @RequestParam String opcion){
         return ResponseEntity.ok(service.buscarPorPaciente(pacienteIdODni, opcion));
