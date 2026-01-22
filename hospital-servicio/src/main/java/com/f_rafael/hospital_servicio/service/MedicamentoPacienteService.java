@@ -2,10 +2,12 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.dto.MedicamentoPacienteDto;
 import com.f_rafael.hospital_servicio.dto.PacienteDto;
+import com.f_rafael.hospital_servicio.dto.PrincipioActivoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.MedicamentoPacienteMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.MedicamentoPaciente;
 import com.f_rafael.hospital_servicio.repository.IFarmaciaClient;
 import com.f_rafael.hospital_servicio.repository.IMedicamentoClient;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +31,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     private IPacienteClient pacienteClient;
     // private IMedicamentoClient medicamentoClient;
     private IFarmaciaClient farmaciaClient;
+    private StringMapper stringMapper;
     @Override
     public MedicamentoPacienteDto buscarPorId(Long id) {
         return mapper.obtenerDto(repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Tratamiento con medicamentoso no encontrado")));
@@ -42,8 +46,15 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     public MedicamentoPacienteDto guardar(MedicamentoPaciente medicamentoPaciente) {
 
         if(medicamentoPaciente.getMedicamentoId() == null || medicamentoPaciente.getPacienteId() == null || medicamentoPaciente.getInicio() == null || medicamentoPaciente.getDosisId() == null){
-            throw new CampoNuloException("Algunos campois de tratamiento medicamentoso no pueden ser nulos");
+            throw new CampoNuloException("Algunos campos de tratamiento medicamentoso no pueden ser nulos");
         }
+
+        pacienteClient.buscarPacientePorId(medicamentoPaciente.getPacienteId());
+        farmaciaClient.buscarMedicamentoPorId(medicamentoPaciente.getMedicamentoId());
+        farmaciaClient.buscarDosisPorId(medicamentoPaciente.getDosisId());
+
+        verificador.esAnterior(medicamentoPaciente.getInicio(),medicamentoPaciente.getFin());
+
         return mapper.obtenerDto(repository.save(medicamentoPaciente));
     }
 
@@ -74,12 +85,12 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
 
         verificador.esIdODni(opcion);
 
-        if(idODni.equals("id")){
+        if(opcion.equals("id")){
             listaParaRetornar = mapper.obtenerListaDto(repository.findByPacienteId(idODni));
             System.gc();
         }
 
-        if(idODni.equals("dni")){
+        if(opcion.equals("dni")){
             informacionTratamientos = repository.findAll();
             paciente = pacienteClient.buscarPacientePorDni(idODni);
 
@@ -98,10 +109,18 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
     public List<MedicamentoPacienteDto> buscarPorPrincipioActivo(String principioActivo) {
         List<MedicamentoPacienteDto> listaParaRetornar = new LinkedList<>();
         List<MedicamentoPaciente> informacionTratamientos = repository.findAll();
+        Set<PrincipioActivoDto> pricipiosActivos;
+        String principioActivosSinGuiones = stringMapper.quitarGuionesBajos(principioActivo);
 
         for(MedicamentoPaciente mp : informacionTratamientos){
-            if(farmaciaClient.buscarMedicamentoPorId(mp.getMedicamentoId()).getPrincipioActivo().equals(principioActivo)){
-                listaParaRetornar.add(mapper.obtenerDto(mp));
+
+            pricipiosActivos = farmaciaClient.buscarMedicamentoPorId(mp.getMedicamentoId()).getPrincipiosActivos();
+
+            for(PrincipioActivoDto pad : pricipiosActivos){
+
+                if(pad.getNombre().equals(principioActivosSinGuiones)){
+                    listaParaRetornar.add(mapper.obtenerDto(mp));
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,8 @@ public class MedicamentoPaciente { // Un tratamiento con medicamento en un pacie
     private Long pacienteId;
     private Long medicamentoId;
     private Long dosisId;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate inicio;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fin;
 }

@@ -50,7 +50,7 @@ public class GestorGlobalDeExcepciones {
         String mensaje = "La conexión con otro microservicio ha fallado";
 
         objetoDeError.setCodigoDeEstado(HttpStatus.BAD_REQUEST.value());
-        objetoDeError.setMensaje(mensaje);
+        objetoDeError.setMensaje(mensaje + " " + exception.getMessage());
         objetoDeError.setMarcaDeTiempo(LocalDateTime.now());
 
         return new ResponseEntity<>(objetoDeError, HttpStatus.BAD_REQUEST);

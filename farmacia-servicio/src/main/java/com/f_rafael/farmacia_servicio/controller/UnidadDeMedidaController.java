@@ -29,8 +29,8 @@ public class UnidadDeMedidaController {
 
     @GetMapping("/nombre") // funciona
     public ResponseEntity<UnidadDeMedida> buscarPorNombre(@RequestParam String nombre){
-        String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
-        return ResponseEntity.ok(service.buscarPorNombre(nombreSinGuiones));
+        //String nombreSinGuiones = Transformacion.removerGuionesBajos(nombre);
+        return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
     @GetMapping("/simbolo") // funciona
@@ -54,7 +54,7 @@ public class UnidadDeMedidaController {
         return new ResponseEntity<>("Entidad borrada exitosamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre") // funciona
+    @PatchMapping("/{id}/nombre") //funciona
     public ResponseEntity<String> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
         service.modificarNombre(id,nombre);
         return new ResponseEntity<>("Entidad modificada correctamente",HttpStatusCode.valueOf(204));
