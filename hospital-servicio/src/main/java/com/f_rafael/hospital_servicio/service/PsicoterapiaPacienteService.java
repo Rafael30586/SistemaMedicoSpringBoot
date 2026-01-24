@@ -42,6 +42,10 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
             throw new CampoNuloException("Algunos campos de tratamiento por psicoterapia no pueden ser nulos");
         }
 
+        pacienteClient.buscarPacientePorId(psicoterapiaPaciente.getPacienteId());
+
+        verificador.esAnterior(psicoterapiaPaciente.getInicio(), psicoterapiaPaciente.getFin());
+
         return mapper.obtenerDto(repository.save(psicoterapiaPaciente));
     }
 
@@ -94,11 +98,13 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
 
     @Override
     public List<PsicoterapiaPacienteDto> buscarPorFechaDeInicio(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde,hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeInicio(desde,hasta));
     }
 
     @Override
     public List<PsicoterapiaPacienteDto> buscarPorFechaDeFinal(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde, hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
 

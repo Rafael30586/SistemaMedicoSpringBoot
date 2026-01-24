@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,8 @@ public class PsicoterapiaPaciente { // Un tratamiento de psicoterapia en un paci
     private Long id;
     @Column(name = "paciente_id", nullable = false)
     private Long pacienteId;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate inicio;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fin;
 }
