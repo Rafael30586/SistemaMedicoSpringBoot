@@ -115,6 +115,7 @@ public class PsicoterapiaPacienteService implements IPsicoterapiaPacienteService
         verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
+            // pacienteClient.buscarPacientePorId(pacienteIdODni);
             tratamientoParaActualizar.setPacienteId(pacienteIdODni);
         }
 

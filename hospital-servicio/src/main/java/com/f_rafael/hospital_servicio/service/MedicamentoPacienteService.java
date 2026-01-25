@@ -143,6 +143,7 @@ public class MedicamentoPacienteService implements IMedicamentoPacienteService{
         verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
+            // pacienteClient.buscarPacientePorId(idODni);
             medicamentoParaActualizar.setPacienteId(idODni);
         }
 

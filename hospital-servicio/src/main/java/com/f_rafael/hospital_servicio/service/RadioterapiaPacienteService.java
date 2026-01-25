@@ -41,6 +41,10 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
         if(radioTerapiaPaciente.getPacienteId() == null || radioTerapiaPaciente.getInicio() == null){
             throw new CampoNuloException("Algunos campos de tratamiento por radioterapia no pueden ser nulos");
         }
+
+        pacienteClient.buscarPacientePorId(radioTerapiaPaciente.getPacienteId());
+        verificador.esAnterior(radioTerapiaPaciente.getInicio(),radioTerapiaPaciente.getFin());
+
         return mapper.obtenerDto(repository.save(radioTerapiaPaciente));
     }
 
@@ -90,11 +94,13 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
 
     @Override
     public List<RadioTerapiaPacienteDto> buscarPorFechaInicio(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde, hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeInicio(desde,hasta));
     }
 
     @Override
     public List<RadioTerapiaPacienteDto> buscarPorFechaFinal(LocalDate desde, LocalDate hasta) {
+        verificador.esAnterior(desde, hasta);
         return mapper.obtenerListaDto(repository.buscarPorFechaDeFinal(desde,hasta));
     }
 
@@ -105,6 +111,7 @@ public class RadioterapiaPacienteService implements IRadioterapiaPacienteService
         verificador.esIdODni(opcion);
 
         if(opcion.equals("id")){
+            // pacienteClient.buscarPacientePorId(pacienteIdODni);
             tratamientoParaActualizar.setPacienteId(pacienteIdODni);
         }
 
