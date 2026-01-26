@@ -16,38 +16,38 @@ public class SectorController {
 
     private ISectorService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<Sector> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<Sector>> buscartodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // fuciona
     public ResponseEntity<Sector> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<Sector> guardar(@RequestBody Sector sector){
         return new ResponseEntity<>(service.guardar(sector), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<Sector> actualizar(@RequestBody Sector sector){
         return ResponseEntity.ok(service.actualizar(sector));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("El sector ha sido borrado",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<Sector> modificarNombre(@PathVariable Long id,
                                                   @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));

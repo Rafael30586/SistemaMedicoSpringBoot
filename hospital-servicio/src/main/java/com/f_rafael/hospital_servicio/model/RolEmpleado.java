@@ -15,7 +15,7 @@ public class RolEmpleado { // El rol que desempeña un empleado, ej: cirugano, c
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre; // Cardiólogo, cirujano, secreatario, etc.
+    private String nombre; // Cardiólogo, cirujano, secretario, etc.
     @ManyToOne
     private Sector sector;
 
