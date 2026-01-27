@@ -25,13 +25,17 @@ public class SignoMapper {
         SignoDto dtoARetornar = new SignoDto();
         Set<Diagnostico> informacionDiagnosticos;
         Set<String> diagnosticosParaAsignar;
+        Long unidadId = signo.getUnidadId();
 
         dtoARetornar.setId(signo.getId());
         dtoARetornar.setNombre(signo.getNombre());
         dtoARetornar.setValorMinimo(signo.getValorMinimo());
         dtoARetornar.setValorMaximo(signo.getValorMaximo());
         dtoARetornar.setDescripcion(signo.getDescripcion());
-        dtoARetornar.setUnidad(farmaciaClient.buscarUnidadPorId(signo.getUnidadId()));
+
+        if(unidadId != null){
+            dtoARetornar.setUnidad(farmaciaClient.buscarUnidadPorId(signo.getUnidadId()));
+        }
 
         if(signo.getDiagnosticos() != null){
             informacionDiagnosticos = signo.getDiagnosticos();

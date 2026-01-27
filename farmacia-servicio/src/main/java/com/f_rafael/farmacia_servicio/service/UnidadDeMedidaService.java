@@ -76,12 +76,13 @@ public class UnidadDeMedidaService implements IUnidadDeMedidaService{
 
     @Override
     public UnidadDeMedida buscarPorNombre(String nombre) {
+        String nombreSinGuiones = stringMapper.removerGuionesBajos(nombre);
 
-        if(!existePorNombre(nombre)){
+        if(!existePorNombre(nombreSinGuiones)){
             throw new EntidadNoEncontradaException("Entidad no encontrada");
         }
 
-        return repository.findByNombre(nombre).get();
+        return repository.findByNombre(nombreSinGuiones).get();
     }
 
     @Override

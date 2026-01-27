@@ -41,12 +41,17 @@ public class SignoService implements ISignoService{
     @Override
     public SignoDto guardar(Signo signo) {
         String nombreSigno = signo.getNombre();
+        Long unidadId = signo.getUnidadId();
 
         if(nombreSigno == null || (signo.getValorMinimo() == null && signo.getValorMaximo() == null)){
             throw new CampoNuloException("Algunos campos de signo no pueden ser nulos");
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreSigno);
+
+        if(unidadId != null){
+            farmaciaClient.buscarUnidadPorId(unidadId);
+        }
 
         return mapper.obtenerDto(repository.save(signo));
     }
@@ -81,10 +86,11 @@ public class SignoService implements ISignoService{
     public List<SignoDto> buscarPorUnidad(String unidad) {
         List<SignoDto> listaParaRetornar = new LinkedList<>();
         List<Signo> informacionSignos = repository.findAll();
+        //String unidadSinGuiones = stringMapper.quitarGuionesBajos(unidad);
         UnidadDeMedidaDto unidadParaBuscar = farmaciaClient.buscarUnidadPorNombre(unidad);
 
         for(Signo s : informacionSignos){
-            if(s.getUnidadId().equals(unidadParaBuscar.getId())){
+            if(unidadParaBuscar.getId().equals(s.getUnidadId())){
                 listaParaRetornar.add(mapper.obtenerDto(s));
             }
         }
@@ -131,6 +137,7 @@ public class SignoService implements ISignoService{
     @Override
     public SignoDto modificarUnidad(Long id, Long unidadId) {
         Signo signoParaActualizar = devolverPorId(id);
+        farmaciaClient.buscarUnidadPorId(unidadId);
         signoParaActualizar.setUnidadId(unidadId);
 
         return this.actualizar(signoParaActualizar);
