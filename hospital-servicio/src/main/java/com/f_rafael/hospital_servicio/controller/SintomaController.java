@@ -17,38 +17,38 @@ public class SintomaController {
 
     private ISintomaService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<SintomaDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<SintomaDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<SintomaDto> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<SintomaDto> guardar(@RequestBody Sintoma sintoma){
         return new ResponseEntity<>(service.guardar(sintoma), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<SintomaDto> actualizar(@RequestBody Sintoma sintoma){
         return ResponseEntity.ok(service.actualizar(sintoma));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("El síntoma ha sido borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/nombre")
+    @PatchMapping("/{id}/nombre") // funciona
     public ResponseEntity<SintomaDto> modificarNombre(@PathVariable Long id, @RequestParam String nombre){
         return ResponseEntity.ok(service.modificarNombre(id, nombre));
     }
