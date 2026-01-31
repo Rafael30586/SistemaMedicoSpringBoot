@@ -7,10 +7,12 @@ import com.f_rafael.hospital_servicio.exception.CampoNuloException;
 import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.CirugiaPacienteMapper;
+import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.CirugiaPaciente;
 import com.f_rafael.hospital_servicio.model.TratamientoQuirurgico;
 import com.f_rafael.hospital_servicio.repository.ICirugiaPacienteRepository;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
+import com.f_rafael.hospital_servicio.repository.ITratamientoQuirurgicoRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
     private ICirugiaPacienteRepository repository;
     private Verificador verificador;
     private IPacienteClient pacienteClient;
+    private ITratamientoQuirurgicoRepository tratamientoQuirurgicoRepository;
+    private StringMapper stringMapper;
 
     @Override
     public CirugiaPacienteDto buscarPorId(Long id) {
@@ -41,6 +45,20 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     @Override
     public CirugiaPacienteDto guardar(CirugiaPaciente cirugiaPaciente) {
+        TratamientoQuirurgico cirugia = cirugiaPaciente.getCirugia();
+
+        if(cirugiaPaciente.getCirugia() == null || cirugiaPaciente.getPacienteId() == null || cirugiaPaciente.getFecha() == null || cirugiaPaciente.getInicio() == null){
+            throw new DatoIncorrectoException("Algunos datos no pueden ser nulos");
+        }
+
+        pacienteClient.buscarPacientePorId(cirugiaPaciente.getPacienteId());
+
+        if(cirugiaPaciente.getFin() != null){
+            verificador.esAnterior(cirugiaPaciente.getInicio(), cirugiaPaciente.getFin());
+        }
+
+        tratamientoQuirurgicoRepository.findById(cirugia.getId()).orElseThrow(()-> new EntidadNoEncontradaException("Cirugía no encontrada"));
+
         return mapper.obtenerDto(repository.save(cirugiaPaciente));
     }
 
@@ -90,7 +108,8 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
 
     @Override
     public List<CirugiaPacienteDto> buscarPorCirugia(String cirugia) {
-        return mapper.obtenerListaDto(repository.buscarPorCirugia(cirugia));
+        String cirugiaSinGuiones = stringMapper.quitarGuionesBajos(cirugia);
+        return mapper.obtenerListaDto(repository.buscarPorCirugia(cirugiaSinGuiones));
     }
 
     @Override
