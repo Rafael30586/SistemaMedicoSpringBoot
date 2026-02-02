@@ -9,6 +9,7 @@ import com.f_rafael.hospital_servicio.mapper.DiagnosticoPacienteMapper;
 import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.DiagnosticoPaciente;
 import com.f_rafael.hospital_servicio.repository.IDiagnosticoPacienteRepository;
+import com.f_rafael.hospital_servicio.repository.IDiagnosticoRepository;
 import com.f_rafael.hospital_servicio.repository.IPacienteClient;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
     private IDiagnosticoPacienteRepository repository;
     private Verificador verificador;
     private IPacienteClient pacienteClient;
+    private IDiagnosticoRepository diagnosticoRepository;
 
     @Override
     public DiagnosticoPacienteDto buscarPorId(Long id) {
@@ -43,6 +45,10 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
         if(diagnosticoPaciente.getPacienteId() == null || diagnosticoPaciente.getDiagnostico() == null || diagnosticoPaciente.getInicio() == null){
             throw new CampoNuloException("Algunos campos de diagnóstico para paciente no pueden ser nulos");
         }
+
+        pacienteClient.buscarPacientePorId(diagnosticoPaciente.getPacienteId());
+        diagnosticoRepository.findById(diagnosticoPaciente.getDiagnostico().getId()).orElseThrow(()-> new DatoIncorrectoException("El diagnóstico no coincide con ninguno en la base de datos."));
+        verificador.esAnterior(diagnosticoPaciente.getInicio(),diagnosticoPaciente.getFin());
 
         return mapper.obtenerDto(repository.save(diagnosticoPaciente));
     }

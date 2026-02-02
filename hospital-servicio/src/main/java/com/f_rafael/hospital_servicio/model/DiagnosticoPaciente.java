@@ -1,5 +1,6 @@
 package com.f_rafael.hospital_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,8 @@ public class DiagnosticoPaciente { // Un diagnóstico que se le da  a un pacient
     @JoinColumn(name = "diagnostico_id", nullable = false)
     private Diagnostico diagnostico;
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate inicio;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fin;
 }
