@@ -7,6 +7,7 @@ import com.f_rafael.hospital_servicio.mapper.EmpleadoMapper;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.Empleado;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
+import com.f_rafael.hospital_servicio.repository.IContactoClient;
 import com.f_rafael.hospital_servicio.repository.IEmpleadoRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class EmpleadoService implements IEmpleadoService{
     private EmpleadoMapper mapper;
     private StringMapper stringMapper;
     private Verificador verificador;
+    private IContactoClient contactoClient;
 
     @Override
     public EmpleadoDto buscarPorId(Long id) {
@@ -62,6 +64,8 @@ public class EmpleadoService implements IEmpleadoService{
         for(String t : telefonos){
             verificador.esNumeroTelefonico(t);
         }
+
+        contactoClient.buscarDireccionPorId(empleado.getDomicilioId());
 
         return mapper.obtenerDto(repository.save(empleado));
     }

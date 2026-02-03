@@ -1,11 +1,13 @@
 package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
+import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.model.Sector;
 import com.f_rafael.hospital_servicio.repository.IRolEmpleadoRepository;
+import com.f_rafael.hospital_servicio.repository.ISectorRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class RolEmpleadoService implements IRolEmpleadoService{
     private IRolEmpleadoRepository repository;
     private StringMapper stringMapper;
     private Verificador verificador;
+    private ISectorRepository sectorRepository;
 
     @Override
     public RolEmpleado buscarPorId(Long id) {
@@ -39,6 +42,10 @@ public class RolEmpleadoService implements IRolEmpleadoService{
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreRol);
+
+        if(!sectorRepository.existsById(rolEmpleado.getSector().getId())){
+            throw new DatoIncorrectoException("El id asignado no corresponde a ningún sector de la base de datos");
+        }
 
         return repository.save(rolEmpleado);
     }
