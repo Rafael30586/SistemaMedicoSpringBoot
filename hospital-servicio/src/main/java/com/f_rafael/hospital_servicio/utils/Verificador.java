@@ -40,7 +40,7 @@ public class Verificador {
     }
 
     public void esNumeroTelefonico(String cadena){
-        Pattern pattern = Pattern.compile("^\\d+(?:-\\d+)*$\n");
+        Pattern pattern = Pattern.compile("^\\d+(?:-\\d+)*$");
         Matcher matcher = pattern.matcher(cadena);
 
         if(!matcher.matches()) throw new DatoIncorrectoException("La cadena de caracteres  no es un número telefónico válido");
@@ -55,6 +55,6 @@ public class Verificador {
     }
 
     public void contieneGuiones(String cadena){
-        if(cadena.contains("-")) throw new DatoIncorrectoException("LAcdena de caracteres no puede contener guiones medios");
+        if(cadena.contains("-")) throw new DatoIncorrectoException("La cadena de caracteres no puede contener guiones medios");
     }
 }

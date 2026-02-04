@@ -1,2 +1,8 @@
 Crear una entidad "Medición" en el microservicio de Farmacia que tenga los siguientes campos: Float valorMinimo, Float valorMaximo, UnidaDeMedida unidad, String descripción.
 Modificar el campo Signo del mircoservicio de Hospital quitándole los campos valorMinimo, valorMaximo y unidadId. Agregar un campo que sea un Set<Long> llamado meidicionesIds. Esto es así porque, por ejemplo, en la fiebre pueden realizarse varias mediciones con valores distintos (medir la temperatura en nalgas, boca y axila).
+
+El salario de los empleados debería ser de tipo Double o Long.
+
+A empleados y pacientes colocarles el sexo o género.
+
+Colocar métodos que modifiquen argumentos para que se adapten a los datos de las bases de datos, por ejemplo, en los métodos de búsqueda por nombre, colocar un método que pase el argumento a letras minúsculas.

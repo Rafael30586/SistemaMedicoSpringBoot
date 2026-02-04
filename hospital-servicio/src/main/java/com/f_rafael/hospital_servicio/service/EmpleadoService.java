@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.dto.EmpleadoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
+import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.EmpleadoMapper;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
@@ -9,6 +10,7 @@ import com.f_rafael.hospital_servicio.model.Empleado;
 import com.f_rafael.hospital_servicio.model.RolEmpleado;
 import com.f_rafael.hospital_servicio.repository.IContactoClient;
 import com.f_rafael.hospital_servicio.repository.IEmpleadoRepository;
+import com.f_rafael.hospital_servicio.repository.IRolEmpleadoRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,7 @@ public class EmpleadoService implements IEmpleadoService{
     private StringMapper stringMapper;
     private Verificador verificador;
     private IContactoClient contactoClient;
+    private IRolEmpleadoRepository rolEmpleadoRepository;
 
     @Override
     public EmpleadoDto buscarPorId(Long id) {
@@ -66,6 +69,10 @@ public class EmpleadoService implements IEmpleadoService{
         }
 
         contactoClient.buscarDireccionPorId(empleado.getDomicilioId());
+
+        if(!rolEmpleadoRepository.existsById(empleado.getRol().getId())){
+            throw new DatoIncorrectoException("El id del rol no corresponde a ninguno de la base de datos");
+        }
 
         return mapper.obtenerDto(repository.save(empleado));
     }
@@ -123,6 +130,7 @@ public class EmpleadoService implements IEmpleadoService{
 
     @Override
     public List<EmpleadoDto> buscarPorRangoSalarial(Float minimo, Float maximo) {
+        verificador.esMenor((double)minimo,(double)maximo);
         return mapper.obtenerListaDto(repository.buscarPorRangoSalarial(minimo,maximo));
     }
 

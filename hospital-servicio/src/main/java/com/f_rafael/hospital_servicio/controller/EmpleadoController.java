@@ -17,58 +17,58 @@ public class EmpleadoController {
 
     private IEmpleadoService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<EmpleadoDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<EmpleadoDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/dni")
+    @GetMapping("/dni") // funciona
     public ResponseEntity<EmpleadoDto> buscarPorDni(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorDni(dni));
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/nombre") // funciona
     public ResponseEntity<List<EmpleadoDto>> buscarPorNombre(@RequestParam String nombre){
         return ResponseEntity.ok(service.buscarPorNombre(nombre));
     }
 
-    @GetMapping("/apellido")
+    @GetMapping("/apellido") // funciona
     public ResponseEntity<List<EmpleadoDto>> buscarPorApellido(@RequestParam String apellido){
         return ResponseEntity.ok(service.buscarPorApellido(apellido));
     }
 
-    @GetMapping("/email")
+    @GetMapping("/email") // funciona
     public ResponseEntity<EmpleadoDto> buscarPorEmail(@RequestParam String email){
         return ResponseEntity.ok(service.buscarPorEmail(email));
     }
 
-    @GetMapping("/matricula")
+    @GetMapping("/matricula") // funciona
     public ResponseEntity<EmpleadoDto> buscarPorMatriculaProfesional(@RequestParam String matricula){
         return ResponseEntity.ok(service.buscarPorMatriculaProfesional(matricula));
     }
 
-    @GetMapping("/rol")
+    @GetMapping("/rol") // funciona
     public ResponseEntity<List<EmpleadoDto>> buscarPorRol(@RequestParam String rol){
         return ResponseEntity.ok(service.buscarPorRol(rol));
     }
 
-    @GetMapping("/rango-salarial")
+    @GetMapping("/rango-salarial") // funciona
     public ResponseEntity<List<EmpleadoDto>> buscarPorRangoSalarial(@RequestParam Float minimo,
                                                                     @RequestParam Float maximo){
         return ResponseEntity.ok(service.buscarPorRangoSalarial(minimo, maximo));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<EmpleadoDto> guardar(@RequestBody Empleado empleado){
         return new ResponseEntity(service.guardar(empleado), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<EmpleadoDto> actualizar(@RequestBody Empleado empleado){
         return ResponseEntity.ok(service.actualizar(empleado));
     }
@@ -79,73 +79,73 @@ public class EmpleadoController {
         return new ResponseEntity<>("El emepleado se ha borrado", HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/{id}/dni")
+    @PatchMapping("/{id}/dni") // funciona
     public ResponseEntity<EmpleadoDto> modificarDni(@PathVariable Long id,
                                                     @RequestParam Long dni){
         return ResponseEntity.ok(service.modificarDni(id,dni));
     }
 
-    @PatchMapping("/{id}/primer-nombre")
+    @PatchMapping("/{id}/primer-nombre") // funciona
     public ResponseEntity<EmpleadoDto> modificarPrimerNombre(@PathVariable Long id,
                                                              @RequestParam("primer-nombre") String primerNombre){
         return ResponseEntity.ok(service.modificarPrimerNombre(id,primerNombre));
     }
 
-    @PatchMapping("/{id}/segundo-nombre")
+    @PatchMapping("/{id}/segundo-nombre") // funciona
     public ResponseEntity<EmpleadoDto> modificarSegundoNombre(@PathVariable Long id,
                                                               @RequestParam("segundo-nombre") String segundoNombre){
         return ResponseEntity.ok(service.modificarSegundoNombre(id, segundoNombre));
     }
 
-    @PatchMapping("/{id}/apellido-paterno")
+    @PatchMapping("/{id}/apellido-paterno") // funciona
     public ResponseEntity<EmpleadoDto> modificarApellidopPaterno(@PathVariable Long id,
                                                                  @RequestParam("apellido-paterno") String apellidoPaterno){
         return ResponseEntity.ok(service.modificarApellidoPaterno(id, apellidoPaterno));
     }
 
-    @PatchMapping("/{id}/apellido-materno")
+    @PatchMapping("/{id}/apellido-materno") // funciona
     public ResponseEntity<EmpleadoDto> nmodificarApellidoMaterno(@PathVariable Long id,
                                                                  @RequestParam("apellido-materno") String apellidoMaterno){
         return ResponseEntity.ok(service.modificarApellidoMaterno(id, apellidoMaterno));
     }
 
-    @PatchMapping("/{id}/email")
+    @PatchMapping("/{id}/email") // funciona
     public ResponseEntity<EmpleadoDto> modificarEmail(@PathVariable Long id,
                                                       @RequestParam String email){
         return ResponseEntity.ok(service.modificarEmail(id,email));
     }
 
-    @PatchMapping("/{id}/domicilio")
+    @PatchMapping("/{id}/domicilio") // funciona
     public ResponseEntity<EmpleadoDto> modificarDomicilio(@PathVariable Long id,
                                                           @RequestParam("domicilio-id") Long domicilioId){
         return ResponseEntity.ok(service.modificarDomicilio(id, domicilioId));
     }
 
-    @PatchMapping("/{id}/agregar-telefono")
+    @PatchMapping("/{id}/agregar-telefono") // funciona
     public ResponseEntity<EmpleadoDto> agregarTelefono(@PathVariable Long id,
                                                        @RequestParam String telefono){
         return ResponseEntity.ok(service.agregarTelefono(id, telefono));
     }
 
-    @PatchMapping("/{id}/quitar-telefono")
+    @PatchMapping("/{id}/quitar-telefono") // funciona
     public ResponseEntity<EmpleadoDto> quitarTelefono(@PathVariable Long id,
                                                       @RequestParam String telefono){
         return ResponseEntity.ok(service.quitarTelefono(id, telefono));
     }
 
-    @PatchMapping("/{id}/matricula")
+    @PatchMapping("/{id}/matricula") // funciona
     public ResponseEntity<EmpleadoDto> modificarMatriculaProfesional(@PathVariable Long id,
                                                                      @RequestParam String matricula){
         return ResponseEntity.ok(service.modificarMatriculaProfesional(id, matricula));
     }
 
-    @PatchMapping("/{id}/rol")
+    @PatchMapping("/{id}/rol") // funciona
     public ResponseEntity<EmpleadoDto> modificarRol(@PathVariable Long id,
                                                     @RequestParam("rol-id") Long rolId){
         return ResponseEntity.ok(service.modificarRol(id,rolId));
     }
 
-    @PatchMapping("/{id}/salario")
+    @PatchMapping("/{id}/salario") // funciona
     public ResponseEntity<EmpleadoDto> modificarSalario(@PathVariable Long id,
                                                         @RequestParam Float salario){
         return ResponseEntity.ok(service.modificarSalario(id, salario));
