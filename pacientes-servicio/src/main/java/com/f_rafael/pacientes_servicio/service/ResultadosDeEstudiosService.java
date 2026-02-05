@@ -4,6 +4,7 @@ import com.f_rafael.pacientes_servicio.dto.ResultadoDeEstudiosDto;
 import com.f_rafael.pacientes_servicio.exception.CampoNuloException;
 import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.pacientes_servicio.exception.EntidadNoEncontradaException;
+import com.f_rafael.pacientes_servicio.mapper.StringMapper;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.ResultadosDeEstudios;
 import com.f_rafael.pacientes_servicio.repository.*;
@@ -26,6 +27,7 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     private IPacienteRepository pacienteRepository;
     private Verificador verificador;
     private IHospitalClient hospitalClient;
+    private StringMapper stringMapper;
 
 
     @Override
@@ -46,9 +48,20 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     @Override
     public ResultadoDeEstudiosDto guardar(ResultadosDeEstudios resultadosDeEstudios) {
 
-        if(resultadosDeEstudios.getPaciente() == null || resultadosDeEstudios.getEstudios() == null || resultadosDeEstudios.getUrlInforme() == null){
+        Set<Long> estudios = resultadosDeEstudios.getEstudios();
+        Paciente paciente = resultadosDeEstudios.getPaciente();
+
+        if(paciente == null || estudios == null || resultadosDeEstudios.getUrlInforme() == null){
             throw new CampoNuloException("Hay campos que no pueden ser nulos");
         } // Averiguar como hacer con el tema de los estudios ya que puede que no existan en el otro microservicio
+
+        for(Long re : estudios){
+            hospitalClient.obtenerEstudioPorId(re);
+        }
+
+        if(!pacienteRepository.existsById(paciente.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a un paciente en la base de datos");
+        }
 
         return mapper.obtenerDto(repository.save(resultadosDeEstudios));
     }
@@ -74,14 +87,14 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
     @Override
     public List<ResultadoDeEstudiosDto> buscarPorPaciente(Long dni) {
         List<ResultadosDeEstudios> informacionResultadosDeEstudios = repository.findAll();
-        List<ResultadoDeEstudiosDto> listaaRetornar = new LinkedList<>();
+        List<ResultadoDeEstudiosDto> listaARetornar = new LinkedList<>();
 
         for(ResultadosDeEstudios rde : informacionResultadosDeEstudios){
-            if(rde.getPaciente().getDni() == dni){
-                listaaRetornar.add(mapper.obtenerDto(rde));
+            if(rde.getPaciente().getDni().equals(dni)){
+                listaARetornar.add(mapper.obtenerDto(rde));
             }
         }
-        return listaaRetornar;
+        return listaARetornar;
     }
 
     @Override
@@ -89,12 +102,13 @@ public class ResultadosDeEstudiosService implements IResultadosDeEstudiosService
         List<ResultadosDeEstudios> informacionResultadosDeEstudios = repository.findAll();
         List<ResultadoDeEstudiosDto> listaARetornar = new LinkedList<>();
         Set<Long> listaDeEstudios;
+        String nombreSinGuiones = stringMapper.quitarGuionesBajos(nombreEstudio);
 
         for(ResultadosDeEstudios rde : informacionResultadosDeEstudios){
             listaDeEstudios = rde.getEstudios();
 
             for(Long id : listaDeEstudios){
-                if(hospitalClient.obtenerEstudioPorId(id).getNombre().equals(nombreEstudio)){
+                if(hospitalClient.obtenerEstudioPorId(id).getNombre().equals(nombreSinGuiones)){
                     listaARetornar.add(mapper.obtenerDto(rde));
                 }
             }

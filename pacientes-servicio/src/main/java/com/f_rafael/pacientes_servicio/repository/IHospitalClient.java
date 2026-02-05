@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "HOSPITAL-SERVICIO")
 public interface IHospitalClient {
 
-    @GetMapping("/estudios/{id}")
+    @GetMapping("/estudios-medicos/{id}")
     public EstudioDto obtenerEstudioPorId(@PathVariable Long id);
 
     @GetMapping("/empleados/{id}")

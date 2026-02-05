@@ -17,64 +17,64 @@ public class ResultadosDeEstudiosController {
 
     private IResultadosDeEstudiosService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<ResultadoDeEstudiosDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscartodos());
     }
 
-    @GetMapping("/paciente")
+    @GetMapping("/paciente") // funciona
     public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorPaciente(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorPaciente(dni));
     }
 
-    @GetMapping("/estudio")
+    @GetMapping("/estudio") // funciona
     public ResponseEntity<List<ResultadoDeEstudiosDto>> buscarPorEstudio(@RequestParam("nombre-estudio") String nombreEstudio){
         return ResponseEntity.ok(service.buscarPorEstudio(nombreEstudio));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<ResultadoDeEstudiosDto> guardar(@RequestBody ResultadosDeEstudios resultadosDeEstudios){
         return new ResponseEntity<>(service.guardar(resultadosDeEstudios), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<ResultadoDeEstudiosDto> actualizar(@RequestBody ResultadosDeEstudios resultadosDeEstudios){
         return ResponseEntity.ok(service.actualizar(resultadosDeEstudios));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/paciente")
-    public ResponseEntity<ResultadoDeEstudiosDto> actualizarPaciente(@RequestParam Long id,
+    @PatchMapping("/{id}/paciente") // funciona
+    public ResponseEntity<ResultadoDeEstudiosDto> actualizarPaciente(@PathVariable Long id,
                                                                      @RequestParam("id-o-dni-paciente") Long idODniPaciente,
                                                                      @RequestParam String opcion){
         return ResponseEntity.ok(service.actualizarPaciente(id,idODniPaciente,opcion));
     }
 
-    @PatchMapping("/agregar-estudio")
-    public ResponseEntity<ResultadoDeEstudiosDto> agregarEstudio(@RequestParam Long id,
+    @PatchMapping("/{id}/agregar-estudio") // funciona
+    public ResponseEntity<ResultadoDeEstudiosDto> agregarEstudio(@PathVariable Long id,
                                                                  @RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.agregarEstudio(id,estudioId));
     }
 
-    @PatchMapping("/quitar-estudio")
-    public ResponseEntity<ResultadoDeEstudiosDto> quitarEstudio(@RequestParam Long id,
+    @PatchMapping("/{id}/quitar-estudio") // funciona
+    public ResponseEntity<ResultadoDeEstudiosDto> quitarEstudio(@PathVariable Long id,
                                                                 @RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.quitarEstudio(id,estudioId));
     }
 
-    @PatchMapping("/url-informe")
-    public ResponseEntity<ResultadoDeEstudiosDto> actualizarUrlInforme(@RequestParam Long id,
-                                                                       @RequestParam String urlInforme){
+    @PatchMapping("/{id}/url-informe") // funciona
+    public ResponseEntity<ResultadoDeEstudiosDto> actualizarUrlInforme(@PathVariable Long id,
+                                                                       @RequestParam("url-informe") String urlInforme){
         return ResponseEntity.ok(service.actualizarUrlInforme(id,urlInforme));
     }
 }

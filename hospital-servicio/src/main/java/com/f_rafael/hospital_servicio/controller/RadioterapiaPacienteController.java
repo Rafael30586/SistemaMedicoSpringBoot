@@ -56,7 +56,7 @@ public class RadioterapiaPacienteController {
         return ResponseEntity.ok(service.actualizar(radioterapiaPaciente));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("El tratamiento ha sido borrado", HttpStatusCode.valueOf(204));
