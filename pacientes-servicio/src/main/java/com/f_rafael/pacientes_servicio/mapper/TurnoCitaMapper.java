@@ -29,6 +29,7 @@ public class TurnoCitaMapper {
         dtoARetornar.setInicio(informacionTurno.getInicio());
         dtoARetornar.setFin(informacionTurno.getFin());
         dtoARetornar.setEstado(informacionTurno.getEstado());
+        dtoARetornar.setCobertura(informacionTurno.getCobertura());
         dtoARetornar.setFechaSolicitud(informacionTurno.getFechaSolicitud());
 
         if(informacionTurno.getPaciente() != null){

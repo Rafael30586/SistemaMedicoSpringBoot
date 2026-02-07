@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,12 +19,15 @@ import java.time.LocalTime;
 @DiscriminatorColumn(name = "tipo")
 public class Turno {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     @ManyToOne
     protected Paciente paciente;
     @Column(name = "fecha_solicitud",nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     protected LocalDate fechaSolicitud;
     @Column(name = "fecha_turno",nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     protected LocalDate fechaTurno;
     protected LocalTime inicio;
     protected LocalTime fin;

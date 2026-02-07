@@ -8,6 +8,7 @@ import com.f_rafael.pacientes_servicio.model.Cobertura;
 import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.TurnoCita;
+import com.f_rafael.pacientes_servicio.repository.IHospitalClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoCitaRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoCitaMapper;
@@ -27,6 +28,7 @@ public class TurnoCitaService implements ITurnoCitaService{
     private TurnoCitaMapper mapper;
     private IPacienteRepository pacienteRepository;
     private Verificador verificador;
+    private IHospitalClient hospitalClient;
     @Override
     public TurnoCitaDto buscarPorId(Long id) {
         if(!repository.existsById(id)){
@@ -43,9 +45,28 @@ public class TurnoCitaService implements ITurnoCitaService{
 
     @Override
     public TurnoCitaDto guardar(TurnoCita turnoCita) {
-        if(turnoCita.getPaciente() == null || turnoCita.getFechaSolicitud() == null || turnoCita.getFechaTurno() == null || turnoCita.getInicio() == null || turnoCita.getEstado() == null){
+        Paciente paciente = turnoCita.getPaciente();
+        Long profesionalId = turnoCita.getProfesionalId();
+        LocalDate fechaSolicitud = turnoCita.getFechaSolicitud();
+        LocalDate fechaTurno = turnoCita.getFechaTurno();
+        LocalTime inicio = turnoCita.getInicio();
+        LocalTime fin = turnoCita.getFin();
+
+        if(paciente == null || fechaSolicitud == null || fechaTurno == null || inicio == null || turnoCita.getEstado() == null || profesionalId == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
+
+        if(!pacienteRepository.existsById(paciente.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ningún paciente de la base de datos.");
+        }
+
+        verificador.esAnterior(fechaSolicitud,fechaTurno);
+
+        if(fin != null){
+            verificador.esAnterior(inicio,fin);
+        }
+
+        hospitalClient.obtenerMedicoPorId(profesionalId);
         return mapper.obtenerDto(repository.save(turnoCita));
     }
 
@@ -85,7 +106,21 @@ public class TurnoCitaService implements ITurnoCitaService{
 
     @Override
     public List<TurnoCitaDto> buscarPorEstado(String estado) {
-        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
+        EstadoTurno[] estados = EstadoTurno.values();
+        EstadoTurno estadoParaBuscar;
+        boolean existe = false;
+
+        for(EstadoTurno et : estados){
+            if(et.toString().equals(estado)){
+                estadoParaBuscar = et;
+                existe = true;
+                return mapper.obtenerListaDto(repository.buscarPorEstado(estadoParaBuscar));
+            }
+        }
+
+        if(!existe) throw new DatoIncorrectoException("El estado con corresponde a ninguno de la base de datos");
+
+        return List.of(new TurnoCitaDto());
     }
 
     @Override
@@ -119,6 +154,8 @@ public class TurnoCitaService implements ITurnoCitaService{
     public TurnoCitaDto actualizarFechaSolicitud(Long id, LocalDate fechaSolicitud) {
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
 
+        verificador.esAnterior(fechaSolicitud,turnoParaActualizar.getFechaTurno());
+
         turnoParaActualizar.setFechaSolicitud(fechaSolicitud);
 
         return this.actualizar(turnoParaActualizar);
@@ -132,6 +169,8 @@ public class TurnoCitaService implements ITurnoCitaService{
             throw new DatoIncorrectoException("El horario de inicio debe ser anterior al horario de final");
         }
 
+        verificador.esAnterior(inicio,fin);
+
         turnoParaActualizar.setInicio(inicio);
         turnoParaActualizar.setFin(fin);
 
@@ -143,9 +182,10 @@ public class TurnoCitaService implements ITurnoCitaService{
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
         boolean estadoExiste = false;
         EstadoTurno[] estados = EstadoTurno.values();
+        String estadoEnMayusculas = estado.toUpperCase();
 
         for(EstadoTurno et : estados){
-            if(et.toString().equals(estado)) estadoExiste = true;
+            if(et.toString().equals(estadoEnMayusculas)) estadoExiste = true;
         }
 
         if(!estadoExiste){
@@ -163,9 +203,10 @@ public class TurnoCitaService implements ITurnoCitaService{
         TurnoCita turnoParaActualizar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
         boolean coberturaExiste = false;
         Cobertura[] coberturas = Cobertura.values();
+        String coberturaEnMayusculas = cobertura.toUpperCase();
 
         for(Cobertura c : coberturas){
-            if(c.toString().equals(cobertura)) coberturaExiste = true;
+            if(c.toString().equals(coberturaEnMayusculas)) coberturaExiste = true;
         }
 
         if(!coberturaExiste){

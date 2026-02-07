@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.dto;
 
+import com.f_rafael.pacientes_servicio.model.Cobertura;
 import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class TurnoCitaDto {
     private LocalTime inicio;
     private LocalTime fin;
     private EstadoTurno estado;
+    private Cobertura cobertura;
     private MedicoDto medico;
 }

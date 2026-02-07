@@ -4,6 +4,8 @@ import com.f_rafael.pacientes_servicio.exception.DatoIncorrectoException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,6 +47,14 @@ public class Verificador {
 
     public void contieneGuiones(String cadena){
         if(cadena.contains("-")) throw new DatoIncorrectoException("LAcdena de caracteres no puede contener guiones medios");
+    }
+
+    public void esAnterior(LocalDate inicio, LocalDate fin){
+        if(inicio.isAfter(fin) && fin != null) throw new DatoIncorrectoException("La primera fecha debe ser anterior a la segunda");
+    }
+
+    public void esAnterior(LocalTime inicio, LocalTime fin){
+        if(inicio.isAfter(fin)) throw new DatoIncorrectoException("El primer horario debe ser anterior al segundo");
     }
 
 
