@@ -24,7 +24,7 @@ public class TurnoEstudioMapper {
 
     public TurnoEstudioDto obtenerDto(TurnoEstudio informacionTurno){
         TurnoEstudioDto dtoARetornar = new TurnoEstudioDto();
-        Long estudioId = informacionTurno.getId();
+        Long estudioId = informacionTurno.getEstudioId();
         EstudioDto estudioParaAsignar;
         Paciente pacienteParaMapear = informacionTurno.getPaciente();
         SubPacienteDto pacienteParaAsignar;
@@ -33,6 +33,7 @@ public class TurnoEstudioMapper {
         dtoARetornar.setInicio(informacionTurno.getInicio());
         dtoARetornar.setFin(informacionTurno.getFin());
         dtoARetornar.setEstado(informacionTurno.getEstado());
+        dtoARetornar.setCobertura(informacionTurno.getCobertura());
         dtoARetornar.setFechaTurno(informacionTurno.getFechaTurno());
         dtoARetornar.setFechaSolicitud(informacionTurno.getFechaSolicitud());
 

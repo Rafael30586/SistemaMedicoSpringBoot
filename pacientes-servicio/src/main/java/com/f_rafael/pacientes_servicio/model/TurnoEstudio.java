@@ -5,6 +5,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -12,6 +13,7 @@ import lombok.Setter;
 @DiscriminatorValue("estudio")
 @Getter @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TurnoEstudio extends Turno{
     @Column(name = "estudio_id")
     private Long estudioId;

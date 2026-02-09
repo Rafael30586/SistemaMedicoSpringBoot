@@ -8,6 +8,7 @@ import com.f_rafael.pacientes_servicio.model.Cobertura;
 import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.Paciente;
 import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
+import com.f_rafael.pacientes_servicio.repository.IHospitalClient;
 import com.f_rafael.pacientes_servicio.repository.IPacienteRepository;
 import com.f_rafael.pacientes_servicio.repository.ITurnoEstudioRepository;
 import com.f_rafael.pacientes_servicio.mapper.TurnoEstudioMapper;
@@ -28,6 +29,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
     private TurnoEstudioMapper mapper;
     private IPacienteRepository pacienteRepository;
     private Verificador verificador;
+    private IHospitalClient hospitalClient;
 
     @Override
     public TurnoEstudioDto buscarPorId(Long id) {
@@ -46,10 +48,28 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto guardar(TurnoEstudio turnoEstudio) {
+        LocalDate fechaSolicitud = turnoEstudio.getFechaSolicitud();
+        LocalDate fechaTurno = turnoEstudio.getFechaTurno();
+        LocalTime inicio = turnoEstudio.getInicio();
+        LocalTime fin = turnoEstudio.getFin();
+        Paciente paciente = turnoEstudio.getPaciente();
+        Long estudioId = turnoEstudio.getEstudioId();
 
-        if(turnoEstudio.getFechaTurno() == null || turnoEstudio.getFechaSolicitud() == null || turnoEstudio.getInicio() == null || turnoEstudio.getEstado() == null || turnoEstudio.getPaciente() == null){
+        if(fechaTurno == null || fechaSolicitud == null || inicio == null || turnoEstudio.getEstado() == null || paciente == null || estudioId == null || turnoEstudio.getCobertura() == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
         }
+
+        verificador.esAnterior(fechaSolicitud, fechaTurno);
+
+        if(fin != null){
+            verificador.esAnterior(inicio, fin);
+        }
+
+        if(!pacienteRepository.existsById(paciente.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ningún paciente de la base de datos");
+        }
+
+        hospitalClient.obtenerEstudioPorId(estudioId);
 
         return mapper.obtenerDto(repository.save(turnoEstudio));
     }
@@ -79,7 +99,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
         List<TurnoEstudio> informacionTurnosEstudios = repository.findAll();
 
         for(TurnoEstudio te : informacionTurnosEstudios){
-            if(te.getPaciente().getDni() == dni){
+            if(te.getPaciente().getDni().equals(dni)){
                 listaARetornar.add(mapper.obtenerDto(te));
             }
         }
@@ -99,7 +119,15 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public List<TurnoEstudioDto> buscarPorEstado(String estado) {
-        return mapper.obtenerListaDto(repository.buscarPorEstado(estado.toUpperCase()));
+        EstadoTurno[] estadosTurno = EstadoTurno.values();
+        String estadoEnMayusculas = estado.toUpperCase();
+        EstadoTurno estadoTurno = EstadoTurno.EN_PROCESO;
+
+        for(EstadoTurno et : estadosTurno){
+            if(et.toString().equals(estadoEnMayusculas)) estadoTurno = et;
+        }
+
+        return mapper.obtenerListaDto(repository.buscarPorEstado(estadoTurno));
     }
 
     @Override
@@ -131,7 +159,9 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarFechaSolicitud(Long id, LocalDate fechaSolicitud) {
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
+
+        verificador.esAnterior(fechaSolicitud,turnoParaEditar.getFechaTurno());
 
         turnoParaEditar.setFechaSolicitud(fechaSolicitud);
 
@@ -140,7 +170,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarFechaTurno(Long id, LocalDate fechaTurno) {
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
 
         turnoParaEditar.setFechaTurno(fechaTurno);
 
@@ -150,7 +180,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarHorario(Long id, LocalTime inicio, LocalTime fin) {
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
 
         if(fin.isBefore(inicio)){
             throw new DatoIncorrectoException("El horario de fin debe ser posterior al horario de inicio");
@@ -164,7 +194,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarEstado(Long id, String estado) {
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
         EstadoTurno[] estados = EstadoTurno.values();
         boolean estadoExiste = false;
 
@@ -183,7 +213,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarCobertura(Long id, String cobertura) {
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
         Cobertura[] coberturas = Cobertura.values();
         boolean coberturaExiste = false;
 
@@ -202,7 +232,7 @@ public class TurnoEstudioService implements ITurnoEstudioService{
 
     @Override
     public TurnoEstudioDto actualizarEstudio(Long id, Long estudioId) { // Realizar validación para saber si el estudio existe en el otro microservicio
-        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no wencontrado"));
+        TurnoEstudio turnoParaEditar = repository.findById(id).orElseThrow(()-> new EntidadNoEncontradaException("Turno no encontrado"));
 
         turnoParaEditar.setEstudioId(estudioId);
 

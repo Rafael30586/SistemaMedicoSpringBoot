@@ -1,5 +1,6 @@
 package com.f_rafael.pacientes_servicio.repository;
 
+import com.f_rafael.pacientes_servicio.model.EstadoTurno;
 import com.f_rafael.pacientes_servicio.model.TurnoEstudio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +16,7 @@ public interface ITurnoEstudioRepository extends JpaRepository<TurnoEstudio, Lon
     @Query("SELECT te FROM TurnoEstudio te WHERE te.fechaTurno = :fechaTurno")
     public List<TurnoEstudio> buscarPorFechaTurno(@Param("fechaTurno") LocalDate fechaTurno);
     @Query("SELECT te FROM TurnoEstudio te WHERE te.estado = :estado")
-    public List<TurnoEstudio> buscarPorEstado(@Param("estado") String estado);
+    public List<TurnoEstudio> buscarPorEstado(@Param("estado") EstadoTurno estado);
     public List<TurnoEstudio> findByEstudioId(Long id);
     @Query("SELECT te FROM TurnoEstudio te WHERE te.fechaTurno BETWEEN :desde AND :hasta")
     public List<TurnoEstudio> buscarPorPeriodo(LocalDate desde, LocalDate hasta);

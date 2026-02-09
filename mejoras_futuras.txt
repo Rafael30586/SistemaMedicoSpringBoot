@@ -6,3 +6,5 @@ El salario de los empleados debería ser de tipo Double o Long.
 A empleados y pacientes colocarles el sexo o género.
 
 Colocar métodos que modifiquen argumentos para que se adapten a los datos de las bases de datos, por ejemplo, en los métodos de búsqueda por nombre, colocar un método que pase el argumento a letras minúsculas.
+
+Realizar búsqueda de turnos por cobertura.

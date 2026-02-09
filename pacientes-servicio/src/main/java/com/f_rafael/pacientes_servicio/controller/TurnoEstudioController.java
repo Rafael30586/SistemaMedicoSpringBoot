@@ -20,98 +20,98 @@ public class TurnoEstudioController {
 
     private ITurnoEstudioService service;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // funciona
     public ResponseEntity<TurnoEstudioDto> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @GetMapping
+    @GetMapping // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarTodos(){
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @GetMapping("/paciente")
+    @GetMapping("/paciente") // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarPorPaciente(@RequestParam Long dni){
         return ResponseEntity.ok(service.buscarPorPaciente(dni));
     }
 
-    @GetMapping("/fecha-turno")
+    @GetMapping("/fecha-turno") // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarPorFechaTurno(@RequestParam("fecha-turno") LocalDate fechaTurno){
         return ResponseEntity.ok(service.buscarPorFechaTurno(fechaTurno));
     }
 
-    @GetMapping("/periodo")
+    @GetMapping("/periodo") // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarPorPeriodo(@RequestParam LocalDate desde,
                                                                   @RequestParam LocalDate hasta){
         return ResponseEntity.ok(service.buscarPorPeriodo(desde,hasta));
     }
 
-    @GetMapping("/estado")
+    @GetMapping("/estado") // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarPorEstado(@RequestParam String estado){
         return ResponseEntity.ok(service.buscarPorEstado(estado));
     }
 
-    @GetMapping("/estudio")
+    @GetMapping("/estudio") // funciona
     public ResponseEntity<List<TurnoEstudioDto>> buscarPorEstudio(@RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.buscarPorEstudioId(estudioId));
     }
 
-    @PostMapping
+    @PostMapping // funciona
     public ResponseEntity<TurnoEstudioDto> guardar(@RequestBody TurnoEstudio turnoEstudio){
         return new ResponseEntity<>(service.guardar(turnoEstudio), HttpStatusCode.valueOf(201));
     }
 
-    @PutMapping
+    @PutMapping // funciona
     public ResponseEntity<TurnoEstudioDto> actualizar(@RequestBody TurnoEstudio turnoEstudio){
         return ResponseEntity.ok(service.actualizar(turnoEstudio));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") // funciona
     public ResponseEntity<String> borrarPorId(@PathVariable Long id){
         service.borrarPorId(id);
         return new ResponseEntity<>("Entidad borrada correctamente",HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/paciente")
-    public ResponseEntity<TurnoEstudioDto> actualizarPaciente(@RequestParam Long id,
+    @PatchMapping("/{id}/paciente") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarPaciente(@PathVariable Long id,
                                                               @RequestParam("id-o-dni-paciente") Long idODniPaciente,
                                                               @RequestParam String opcion){
         return ResponseEntity.ok(service.actualizarPaciente(id,idODniPaciente,opcion));
     }
 
-    @PatchMapping("/fecha-solicitud")
-    public ResponseEntity<TurnoEstudioDto> actualizarFechaSolicitud(@RequestParam Long id,
+    @PatchMapping("/{id}/fecha-solicitud") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarFechaSolicitud(@PathVariable Long id,
                                                                     @RequestParam("fecha-solicitud") LocalDate fechaSolicitud){
         return ResponseEntity.ok(service.actualizarFechaSolicitud(id,fechaSolicitud));
     }
 
-    @PatchMapping("/fecha-turno")
-    public ResponseEntity<TurnoEstudioDto> actualizarFechaTurno(@RequestParam Long id,
-                                                                @RequestParam LocalDate fechaTurno){
+    @PatchMapping("/{id}/fecha-turno") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarFechaTurno(@PathVariable Long id,
+                                                                @RequestParam("fecha-turno") LocalDate fechaTurno){
         return ResponseEntity.ok(service.actualizarFechaTurno(id,fechaTurno));
     }
 
-    @PatchMapping("/horario")
-    public ResponseEntity<TurnoEstudioDto> actualizarHorario(@RequestParam Long id,
+    @PatchMapping("/{id}/horario") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarHorario(@PathVariable Long id,
                                                              @RequestParam LocalTime inicio,
                                                              @RequestParam LocalTime fin){
         return ResponseEntity.ok(service.actualizarHorario(id,inicio,fin));
     }
 
-    @PatchMapping("/estado")
-    public ResponseEntity<TurnoEstudioDto> actualizarEstado(@RequestParam Long id,
+    @PatchMapping("/{id}/estado") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarEstado(@PathVariable Long id,
                                                             @RequestParam String estado){
         return ResponseEntity.ok(service.actualizarEstado(id,estado));
     }
 
-    @PatchMapping("/cobertura")
-    public ResponseEntity<TurnoEstudioDto> actualizarCobertura(@RequestParam Long id,
+    @PatchMapping("/{id}/cobertura") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarCobertura(@PathVariable Long id,
                                                                @RequestParam String cobertura){
         return ResponseEntity.ok(service.actualizarCobertura(id,cobertura));
     }
 
-    @PatchMapping("/estudio")
-    public ResponseEntity<TurnoEstudioDto> actualizarEstudio(@RequestParam Long id,
+    @PatchMapping("/{id}/estudio") // funciona
+    public ResponseEntity<TurnoEstudioDto> actualizarEstudio(@PathVariable Long id,
                                                              @RequestParam("estudio-id") Long estudioId){
         return ResponseEntity.ok(service.actualizarEstudio(id,estudioId));
     }
