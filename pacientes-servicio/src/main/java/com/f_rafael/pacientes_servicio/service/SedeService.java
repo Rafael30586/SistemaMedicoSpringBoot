@@ -51,12 +51,19 @@ public class SedeService implements ISedeService{
     public SedeDto guardar(Sede sede) {
         SedeDto dtoARetornar;
         Set<String> telefonos = sede.getTelefonos();
+        ObraSocial obraSocial = sede.getObraSocial();
 
         if(sede.getDireccionId() == null){ // ¿Cómo podría hacer para confirmar que la direccion existe si está en otro microservicio?
             throw new CampoNuloException("La direccion no puede ser nula");
         }
 
         telefonos.stream().forEach(verificador::esNumeroTelefonico);
+
+        if(obraSocial != null){
+            if(!obraSocialRepository.existsById(obraSocial.getId())){
+                throw new DatoIncorrectoException("El id no corresponde a ninguna obra social de la base de datos");
+            }
+        }
 
         dtoARetornar = mapper.obtenerDto(repository.save(sede));
         return dtoARetornar;

@@ -57,7 +57,9 @@ public class CirugiaPacienteService implements ICirugiaPacienteService{
             verificador.esAnterior(cirugiaPaciente.getInicio(), cirugiaPaciente.getFin());
         }
 
-        tratamientoQuirurgicoRepository.findById(cirugia.getId()).orElseThrow(()-> new EntidadNoEncontradaException("Cirugía no encontrada"));
+        if(!tratamientoQuirurgicoRepository.existsById(cirugia.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna cirugía de la base de datos");
+        }
 
         return mapper.obtenerDto(repository.save(cirugiaPaciente));
     }

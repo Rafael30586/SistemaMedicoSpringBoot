@@ -53,6 +53,7 @@ public class PacienteService implements IPacienteService{
         String apellidoPaterno = paciente.getApellidoPaterno();
         String apellidoMaterno = paciente.getApellidoMaterno();
         Set<String> telefonos = paciente.getTelefonos();
+        ObraSocial obraSocial = paciente.getObraSocial();
 
         if(primerNombre == null || apellidoPaterno == null || paciente.getFechaNacimiento() == null || paciente.getLugarNacimientoId() == null || paciente.getDni() == null){
             throw new CampoNuloException("Algunos campos no pueden ser nulos");
@@ -77,6 +78,12 @@ public class PacienteService implements IPacienteService{
 
         if(telefonos != null){
             telefonos.stream().forEach(verificador::esNumeroTelefonico);
+        }
+
+        if(obraSocial != null){
+            if(!obraSocialRepository.existsById(obraSocial.getId())){
+                throw new DatoIncorrectoException("El id no corresponde a ninguna obra social en la base de datos");
+            }
         }
 
         return mapper.obtenerDto(repository.save(paciente));

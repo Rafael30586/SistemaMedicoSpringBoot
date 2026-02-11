@@ -40,9 +40,18 @@ public class PrincipioActivoService implements IPrincipioActivoService{
     @Override
     public PrincipioActivoDto guardar(PrincipioActivo principioActivo) {
         String nombre = principioActivo.getNombre();
+        Set<AccionTerapeutica> accionesTerapeuticas = principioActivo.getAccionesTerapeuticas();
 
         if(nombre == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
+        }
+
+        if(accionesTerapeuticas != null){
+            for(AccionTerapeutica at : accionesTerapeuticas){
+                if(!accionTerapeuticaRepository.existsById(at.getId())){
+                    throw new DatoIncorrectoException("El id no corresponde a ninguna acción terapéutica");
+                }
+            }
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombre);

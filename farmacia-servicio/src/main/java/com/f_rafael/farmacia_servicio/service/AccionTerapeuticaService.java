@@ -27,7 +27,6 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     private Verificador verificador;
     private StringMapper stringMapper;
 
-
     @Override
     public AccionTerapeuticaDto buscarPorId(Long id) {
         AccionTerapeutica informacionAccionTerapeutica = devolverPorId(id);
@@ -43,6 +42,7 @@ public class AccionTerapeuticaService implements IAccionTerapeuticaService{
     @Override
     public AccionTerapeuticaDto guardar(AccionTerapeutica accionTerapeutica) {
         String nombre = accionTerapeutica.getNombre();
+
 
         if(nombre == null){
             throw new CampoNuloException("El nombre de la acción terapéutica no puede ser nulo");

@@ -2,6 +2,7 @@ package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.dto.DiagnosticoDto;
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
+import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.DiagnosticoMapper;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
@@ -9,6 +10,8 @@ import com.f_rafael.hospital_servicio.model.Diagnostico;
 import com.f_rafael.hospital_servicio.model.Signo;
 import com.f_rafael.hospital_servicio.model.Sintoma;
 import com.f_rafael.hospital_servicio.repository.IDiagnosticoRepository;
+import com.f_rafael.hospital_servicio.repository.ISignoRepository;
+import com.f_rafael.hospital_servicio.repository.ISintomaRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,8 @@ public class DiagnosticoService implements IDiagnosticoService{
     private IDiagnosticoRepository repository;
     private StringMapper stringMapper;
     private Verificador verificador;
+    private ISintomaRepository sintomaRepository;
+    private ISignoRepository signoRepository;
 
     @Override
     public DiagnosticoDto buscarPorId(Long id) {
@@ -38,14 +43,31 @@ public class DiagnosticoService implements IDiagnosticoService{
 
     @Override
     public DiagnosticoDto guardar(Diagnostico diagnostico) {
-
         String nombreDiagnostico = diagnostico.getNombre();
+        Set<Sintoma> sintomas = diagnostico.getSintomas();
+        Set<Signo> signos = diagnostico.getSignos();
 
         if(nombreDiagnostico == null){
             throw new CampoNuloException("El nombre del diagnóstico no puede ser nulo");
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreDiagnostico);
+
+        if(sintomas != null){
+            for(Sintoma s : sintomas){
+                if(!signoRepository.existsById(s.getId())){
+                    throw new DatoIncorrectoException("El id "+ (s.getId()) + " no corresponde a nigún síntoma de la base de daros");
+                }
+            }
+        }
+
+        if(signos != null){
+            for(Signo s : signos){
+                if(!signoRepository.existsById(s.getId())){
+                    throw new DatoIncorrectoException("El id "+(s.getId()) + " no corresponde a ningún signo de la base de datos");
+                }
+            }
+        }
 
         return mapper.obtenerDto(repository.save(diagnostico));
     }

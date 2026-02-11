@@ -1,10 +1,12 @@
 package com.f_rafael.hospital_servicio.service;
 
 import com.f_rafael.hospital_servicio.exception.CampoNuloException;
+import com.f_rafael.hospital_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.hospital_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.hospital_servicio.mapper.StringMapper;
 import com.f_rafael.hospital_servicio.model.EstudioMedico;
 import com.f_rafael.hospital_servicio.model.EstudioMedicoClasificacion;
+import com.f_rafael.hospital_servicio.repository.IEstudioMedicoClasificacionRepository;
 import com.f_rafael.hospital_servicio.repository.IEstudioMedicoRepository;
 import com.f_rafael.hospital_servicio.utils.Verificador;
 import lombok.AllArgsConstructor;
@@ -19,6 +21,7 @@ public class EstudioMedicoService implements IEstudioMedicoService{
     private IEstudioMedicoRepository repository;
     private StringMapper stringMapper;
     private Verificador verificador;
+    private IEstudioMedicoClasificacionRepository estudioMedicoClasificacionRepository;
 
     @Override
     public EstudioMedico buscarPorId(Long id) {
@@ -39,6 +42,10 @@ public class EstudioMedicoService implements IEstudioMedicoService{
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreEstudioMedico);
+
+        if(!estudioMedicoClasificacionRepository.existsById(estudioMedico.getClasificacion().getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna clasificación de estudio médico de la base de datos");
+        }
 
         return repository.save(estudioMedico);
     }

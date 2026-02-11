@@ -1,6 +1,7 @@
 package com.f_rafael.lugares_servicio.service;
 
 import com.f_rafael.lugares_servicio.exception.CampoNuloException;
+import com.f_rafael.lugares_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.lugares_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.lugares_servicio.mapper.StringMapper;
 import com.f_rafael.lugares_servicio.model.Pais;
@@ -46,6 +47,10 @@ public class ProvinciaService implements IProvinciaService{
 
         if(nombre == null || provincia.getPais() == null){
             throw new CampoNuloException("El nombre no puede ser nulo");
+        }
+
+        if(!paisRepository.existsById(provincia.getPais().getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ningún país en la base de datos");
         }
 
         return repository.save(provincia);

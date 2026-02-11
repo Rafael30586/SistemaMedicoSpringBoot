@@ -1,6 +1,7 @@
 package com.f_rafael.farmacia_servicio.service;
 
 import com.f_rafael.farmacia_servicio.exception.CampoNuloException;
+import com.f_rafael.farmacia_servicio.exception.DatoIncorrectoException;
 import com.f_rafael.farmacia_servicio.exception.EntidadNoEncontradaException;
 import com.f_rafael.farmacia_servicio.mapper.StringMapper;
 import com.f_rafael.farmacia_servicio.model.Dosis;
@@ -36,6 +37,10 @@ public class DosisService implements IDosisService{
 
         if(dosis.getCantidad() == null || dosis.getUnidad() == null || dosis.getIntervaloHoras() == null){
             throw new CampoNuloException("Hay tres campos en esta entidad que no pueden ser nulos");
+        }
+
+        if(!unidadDeMedidaRepository.existsById(dosis.getUnidad().getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna unidad de medida de la base de datos");
         }
 
         return repository.save(dosis);

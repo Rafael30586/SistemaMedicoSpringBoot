@@ -45,8 +45,9 @@ public class EmpleadoService implements IEmpleadoService{
         String segundoNombre = empleado.getSegundoNombre();
         String apellidoPaterno = empleado.getApellidoPaterno();
         String apellidoMaterno = empleado.getApellidoMaterno();
+        RolEmpleado rol = empleado.getRol();
 
-        if(empleado.getDni() == null || primerNombre == null || empleado.getRol() == null){
+        if(empleado.getDni() == null || primerNombre == null || rol == null){
             throw new CampoNuloException("Algunos campos de la entidad Empleado no pueden ser nulos");
         }
 
@@ -70,7 +71,7 @@ public class EmpleadoService implements IEmpleadoService{
 
         contactoClient.buscarDireccionPorId(empleado.getDomicilioId());
 
-        if(!rolEmpleadoRepository.existsById(empleado.getRol().getId())){
+        if(!rolEmpleadoRepository.existsById(rol.getId())){
             throw new DatoIncorrectoException("El id del rol no corresponde a ninguno de la base de datos");
         }
 

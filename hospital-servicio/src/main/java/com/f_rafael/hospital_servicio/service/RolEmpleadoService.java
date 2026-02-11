@@ -36,14 +36,15 @@ public class RolEmpleadoService implements IRolEmpleadoService{
     @Override
     public RolEmpleado guardar(RolEmpleado rolEmpleado) {
         String nombreRol = rolEmpleado.getNombre();
+        Sector sector = rolEmpleado.getSector();
 
-        if(nombreRol == null || rolEmpleado.getSector() == null){
+        if(nombreRol == null || sector == null){
             throw new CampoNuloException("Algunos campos de rol de empleado no pueden ser nulos");
         }
 
         verificador.soloLetrasMinusculasEspaciosYGuionesMedios(nombreRol);
 
-        if(!sectorRepository.existsById(rolEmpleado.getSector().getId())){
+        if(!sectorRepository.existsById(sector.getId())){
             throw new DatoIncorrectoException("El id asignado no corresponde a ningún sector de la base de datos");
         }
 

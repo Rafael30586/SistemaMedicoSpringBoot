@@ -41,14 +41,19 @@ public class DiagnosticoPacienteService implements IDiagnosticoPacienteService{
 
     @Override
     public DiagnosticoPacienteDto guardar(DiagnosticoPaciente diagnosticoPaciente) {
+        Diagnostico diagnostico = diagnosticoPaciente.getDiagnostico();
 
-        if(diagnosticoPaciente.getPacienteId() == null || diagnosticoPaciente.getDiagnostico() == null || diagnosticoPaciente.getInicio() == null){
+        if(diagnosticoPaciente.getPacienteId() == null || diagnostico == null || diagnosticoPaciente.getInicio() == null){
             throw new CampoNuloException("Algunos campos de diagnóstico para paciente no pueden ser nulos");
         }
 
         pacienteClient.buscarPacientePorId(diagnosticoPaciente.getPacienteId());
         diagnosticoRepository.findById(diagnosticoPaciente.getDiagnostico().getId()).orElseThrow(()-> new DatoIncorrectoException("El diagnóstico no coincide con ninguno en la base de datos."));
         verificador.esAnterior(diagnosticoPaciente.getInicio(),diagnosticoPaciente.getFin());
+
+        if(!diagnosticoRepository.existsById(diagnostico.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ningún diagnóstico de la base de datos");
+        }
 
         return mapper.obtenerDto(repository.save(diagnosticoPaciente));
     }

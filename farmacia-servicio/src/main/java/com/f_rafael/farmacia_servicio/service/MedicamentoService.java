@@ -21,7 +21,7 @@ import java.util.*;
 public class MedicamentoService implements IMedicamentoService{
 
     private IMedicamentoRepository repository;
-    // private IPrincipioActivoRepository principioActivoRepository;
+    private IPrincipioActivoRepository principioActivoRepository;
     private IFormaFarmaceuticaRepository formaFarmaceuticaRepository;
     private IAdministracionFarmacoRepository administracionFarmacoRepository;
     private IMarcaMedicamentoRepository marcaMedicamentoRepository;
@@ -41,10 +41,33 @@ public class MedicamentoService implements IMedicamentoService{
 
     @Override
     public MedicamentoDto guardar(Medicamento medicamento) {
+        Set<PrincipioActivo> principiosActivos = medicamento.getPrincipiosActivos();
+        FormaFarmaceutica formaFarmaceutica = medicamento.getFormaFarmaceutica();
+        AdministracionFarmaco administracion = medicamento.getAdministracion();
+        MarcaMedicamento marca = medicamento.getMarca();
 
-        if(medicamento.getPrincipiosActivos() == null || medicamento.getFormaFarmaceutica() == null || medicamento.getAdministracion() == null || medicamento.getMarca() == null){
+        if(principiosActivos == null || formaFarmaceutica == null || administracion == null || marca == null){
             throw new CampoNuloException("Hay campos que no pueden ser nulos");
         }
+
+        for(PrincipioActivo pa : principiosActivos){
+            if(!principioActivoRepository.existsById(pa.getId())){
+                throw new DatoIncorrectoException("Uno de los ids no corresponde a un principio activo de la base de datos");
+            }
+        }
+
+        if(!formaFarmaceuticaRepository.existsById(formaFarmaceutica.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna forma farmacéutica de la base de datos");
+        }
+
+        if(!administracionFarmacoRepository.existsById(administracion.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna forma de administración de la base d edatos");
+        }
+
+        if(!marcaMedicamentoRepository.existsById(marca.getId())){
+            throw new DatoIncorrectoException("El id no corresponde a ninguna marca de la base de datos");
+        }
+
         return mapper.obtenerDto(repository.save(medicamento));
     }
 
