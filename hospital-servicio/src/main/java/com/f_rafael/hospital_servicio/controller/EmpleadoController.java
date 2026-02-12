@@ -63,7 +63,7 @@ public class EmpleadoController {
         return ResponseEntity.ok(service.buscarPorRangoSalarial(minimo, maximo));
     }
 
-    @PostMapping // funciona
+    @PostMapping  // funciona
     public ResponseEntity<EmpleadoDto> guardar(@RequestBody Empleado empleado){
         return new ResponseEntity(service.guardar(empleado), HttpStatusCode.valueOf(201));
     }

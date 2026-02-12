@@ -27,7 +27,7 @@ public class LocalidadController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @PostMapping //funciona
+    @PostMapping // funciona
     public ResponseEntity<Localidad> guardar(@RequestBody Localidad localidad){
         return new ResponseEntity<>(service.guardar(localidad),HttpStatusCode.valueOf(201));
     }

@@ -61,7 +61,7 @@ public class MedicamentoService implements IMedicamentoService{
         }
 
         if(!administracionFarmacoRepository.existsById(administracion.getId())){
-            throw new DatoIncorrectoException("El id no corresponde a ninguna forma de administración de la base d edatos");
+            throw new DatoIncorrectoException("El id no corresponde a ninguna forma de administración de la base de datos");
         }
 
         if(!marcaMedicamentoRepository.existsById(marca.getId())){

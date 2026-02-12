@@ -55,7 +55,7 @@ public class TurnoCitaController {
         return ResponseEntity.ok(service.buscarPorProfesional(profesionalId));
     }
 
-    @PostMapping // funciona
+    @PostMapping
     public ResponseEntity<TurnoCitaDto> guardar(@RequestBody TurnoCita turnoCita){
         return new ResponseEntity<>(service.guardar(turnoCita), HttpStatusCode.valueOf(201));
     }

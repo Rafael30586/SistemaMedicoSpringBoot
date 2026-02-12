@@ -39,7 +39,7 @@ public class DireccionController {
         return ResponseEntity.ok(service.buscarPorProvincia(provincia));
     }
 
-    @PostMapping // Funciona
+    @PostMapping // funciona
     public ResponseEntity<Direccion> guardar(@RequestBody Direccion direccion){
         return new ResponseEntity<>(service.guardar(direccion),HttpStatusCode.valueOf(201));
     }
