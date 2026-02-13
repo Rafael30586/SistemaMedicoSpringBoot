@@ -111,3 +111,55 @@
 ##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre=
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id=
+
+## Farmacia
+
+### AccionTerapeutica
+
+#### Solcitudes GET
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
+
+#### Solicitudes POST
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+#### Solicitudes PUT
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+#### Solicitudes DELETE
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
+
+#### Solicitudes PATCH
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre=
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion 
+
+### AdministracionFarmaco
+
+#### Solicitudes GET
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
+
+#### Solicitudes POST
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
+
+#### Solicitudes PUT
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
+
+#### Solicitudes DELETE
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
+
+#### Solicitudes PATCH
+
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}/via?via=
