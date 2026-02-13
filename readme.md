@@ -1,1 +1,65 @@
-# Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En l microservicio de Paciente 
+# Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En el microservicio de paciente las entidades son: ObraSocial, Paciente, ResultadoDeEstudios, Sede, TurnoCita y TurnoEstudio. Para el microservicio de hospital las entidades son: CirugiaPaciente, Diagnostico, DiagnosticoPaciente, Empleado, EstudioMedico, EstudioMEdicoClasificacion, FisioterapiaPaciente, MedicamentoPaciente, PsicoterapiaPaciente, RadioTerpiaPaciente, RolEmpleado, Sector, Signo, Sintoma y TratamientoQuirurgico.
+
+## Contacto
+
+### Direccion
+
+#### Solicitudes GET
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad=
+
+##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia=
+
+#### Solicitudes POST
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+#### Solicitued PUT
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+#### Solicitudes DELETE
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}
+
+#### Solicitudes PATCH
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle=
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/altura?altura=
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento=
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id=
+
+### Localidad
+
+#### Solicitudes GET
+
+##### {CONTACTO-SERVICIO}/localidades/{id}
+
+##### {CONTACTO-SERVICIO}/localidades
+
+#### Solicitudes POST
+
+##### {CONTACTO-SERVICIO}/localidades
+
+#### Solicitudes PUT
+
+##### {CONTACTO-SERVICIO}/localidades
+
+#### Solicitudes DELETE
+
+##### {CONTACTO-SERVICIO}/localidades/{id}
+
+#### Solicitudes PATCH
+
+##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre=
+
+##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id=
+
+
