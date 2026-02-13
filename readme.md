@@ -62,4 +62,52 @@
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id=
 
+### Pais
 
+#### Solicitudes GET
+
+##### {CONTACTO-SERVICIO}/paises/{id}
+
+##### {CONTACTO-SERVICIO}/paises
+
+#### Solicitudes POST
+
+##### {CONTACTO-SERVICIO}/paises
+
+#### Solicitudes PUT
+
+##### {CONTACTO-SERVICIO}/paises
+
+#### Solicitudes DELETE
+
+##### {CONTACTO-SERVICIO}/paises/{id}
+
+#### Solicitudes PATCH
+
+##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre=
+
+### Provincia
+
+#### Solicitudes GET
+
+##### {CONTACTO-SERVICIO}/provincias
+
+##### {CONTACTO-SERVICIO}/provincias/{ID}
+
+#### Solicitudes POST
+
+##### {CONTACTO-SERVICIO}/provincias
+
+#### Solicitudes PUT
+
+##### {CONTACTO-SERVICIO}/provincias
+
+#### Solicitudes DELETE
+
+##### {CONTACTO-SERVICIO}/provincias/{id}
+
+#### Solicitudes PATCH
+
+##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre=
+
+##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id=
