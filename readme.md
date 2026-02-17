@@ -516,7 +516,7 @@
 
 ---
 
-### Solcitudes GET
+#### Solcitudes GET
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
@@ -528,35 +528,35 @@
 
 ---
 
-### Solicitudes POST
+#### Solicitudes POST
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
 --- 
 
-### Solicitudes PUT
+#### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
 ---
 
-### Soloicitudes DELETE
+#### Soloicitudes DELETE
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
 ---
 
-### Solicitudes PATCH
+#### Solicitudes PATCH
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombvre?nombre=
 
 ---
 
-## Paciente
+### Paciente
 
 ---
 
-### Solicitudes GET
+#### Solicitudes GET
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
@@ -580,25 +580,25 @@
 
 ---
 
-### Solicitudes POST
+#### Solicitudes POST
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
 ---
 
-### Solicitudes PUT
+#### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
 ---
 
-### Solicitudes DELETE
+#### Solicitudes DELETE
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
 ---
 
-### Solicitudes PATCH
+#### Solicitudes PATCH
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni=
 
@@ -623,3 +623,201 @@
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/domicilio?id-o-dni= &opcion= &direccion-id=
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/obra-social?id-o-dni= &opcion= &obra-social-id=
+
+---
+
+## ResultadosDeEstudios
+
+---
+
+#### Solicitudes GET
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/paciente?dni=
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/estudio?nombre-estudio=
+
+---
+
+#### Solicitudes POST
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+---
+
+#### Solicitudes PUT
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+---
+
+#### Solicitudes DELETE
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente= &opcion=
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/agregar-estudio?estudio-id=
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/quitar-estudio?estudio-id=
+
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/url-informe?url-informe=
+
+---
+
+### Sede
+
+---
+
+#### Solicitudes GET
+
+##### {PACIENTES-SERVICIO}/sedes/{id}
+
+##### {PACIENTES-SERVICIO}/sedes
+
+##### {PACIENTES-SERVICIO}/sedes/direccion?calle=
+
+##### {PACIENTES-SERVICIO}/sedes/{id}/telefono?telefono=
+
+---
+
+#### Solicitudes POST
+
+##### {PACIENTES-SERVICIO}/sedes
+
+---
+
+#### Solicitudes PUT
+
+##### {PACIENTES-SERVICIO}/sedes
+
+---
+
+#### Solicitudes DELETE
+
+##### {PACIENTES-SERVICIO}/sedes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id=
+
+##### {PACIENTES-SERVICIO}/sedes/{id}/agregar-telefono?telefono=
+
+##### {PACIENTES-SERVICIO}/sedes/{id}/quitar-telefono?telefono=
+
+##### {PACIENTES-SERVICIO}/sedes/{id}/obra-social?obra-social-id=
+
+---
+
+### TurnoCita
+
+---
+
+#### Solicitudes GET
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}
+
+##### {PACIENTES-SERVICIO}/turnos-cita
+
+##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde= &hasta=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/profesional?profesional-id=
+
+---
+
+#### Solicitudes POST
+
+##### {PACIENTES-SERVICIO}/turnos-cita
+
+---
+
+#### Solicitudes PUT
+
+##### {PACIENTES-SERVICIO}/turnos-cita
+
+---
+
+#### Solicitudes DELETE
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio= &fin=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura=
+
+---
+
+### TurnoEstudio
+
+---
+
+#### Solicitudes GET
+
+##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
+
+##### {PACIENTES-SERVICIO}/turnos-estudio
+
+##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde= &hasta=
+
+##### {PACIENTES-SERVICIO}/turnos-estudio/estudio?estudio-id=
+
+---
+
+#### Solicitudes POST
+
+##### {PACIENTES-SERVICIO}/turnos-estudio
+
+---
+
+#### Solicitudes PUT
+
+##### {PACIENTES-SERVICIO}/turnos-estudio
+
+---
+
+#### Solicitudes DELETE
+
+##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio= &fin=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado=
+
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura=
+
+##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id=
