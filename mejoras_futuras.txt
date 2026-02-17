@@ -12,3 +12,5 @@ Realizar búsqueda de turnos por cobertura.
 Implementar API gateway.
 
 Agregar paginación.
+
+Corregir algunos parámetros de los controladores para que tengan nombres màs simples.

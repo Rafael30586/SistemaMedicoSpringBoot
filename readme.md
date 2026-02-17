@@ -2,9 +2,15 @@
 
 ## Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En el microservicio de paciente las entidades son: ObraSocial, Paciente, ResultadoDeEstudios, Sede, TurnoCita y TurnoEstudio. Para el microservicio de hospital las entidades son: CirugiaPaciente, Diagnostico, DiagnosticoPaciente, Empleado, EstudioMedico, EstudioMEdicoClasificacion, FisioterapiaPaciente, MedicamentoPaciente, PsicoterapiaPaciente, RadioTerpiaPaciente, RolEmpleado, Sector, Signo, Sintoma y TratamientoQuirurgico.
 
+---
+
 ## Contacto
 
+---
+
 ### Direccion
+
+---
 
 #### Solicitudes GET
 
@@ -16,17 +22,25 @@
 
 ##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia=
 
+---
+
 #### Solicitudes POST
 
 ##### {CONTACTO-SERVICIO}/direcciones
+
+---
 
 #### Solicitued PUT
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
+---
+
 #### Solicitudes DELETE
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}
+
+---
 
 #### Solicitudes PATCH
 
@@ -37,6 +51,8 @@
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento=
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id=
+
+---
 
 ### Localidad
 
@@ -122,6 +138,8 @@
 
 ##### {CONTACTO-SERVICIO}/provincias/{ID}
 
+##### {CONTACTO-SERVICIO}/provincias/nombre?nombre=
+
 ---
 
 #### Solicitudes POST
@@ -164,6 +182,8 @@
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
 
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/nombre?nombre=
+
 ---
 
 #### Solicitudes POST
@@ -202,6 +222,8 @@
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/via?via=
+
 ---
 
 #### Solicitudes POST
@@ -237,6 +259,8 @@
 ##### {FARMACIA-SERVICIO}/dosis/{id}
 
 ##### {FARMACIA-SERVICIO}/dosis
+
+##### {FARMACIA-SERVICIO}/dosis/cantidad-unidad-intervalo?cantidad= &nombre-unidad= &intervalo=
 
 ---
 
@@ -278,6 +302,8 @@
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
+##### {FARMACIA-SERVICIO}/formas-farmaceuticas/nombre?nombre=
+
 ---
 
 #### Solicitudes POST
@@ -314,6 +340,8 @@
 
 ##### {FARMACIA-SERVICIO}/marcas
 
+##### {FARMACIA-SERVICIO}/marcas/nombre?nombre=
+
 ---
 
 #### Solcitudes POST 
@@ -349,6 +377,16 @@
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
 ##### {FARMACIA-SERVICIO}/medicamentos
+
+##### {FARMACIA-SERVICIO}/medicamentos/nombre?nombre=
+
+##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo=
+
+##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica=
+
+##### {FARMACIA-SERVICIO}/medicamentos/administracion?via=
+
+##### {FARMACIA-SERVICIO}/medicamentos/marca?nombre-marca=
 
 ---
 
@@ -396,6 +434,10 @@
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
+##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre=
+
+##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica=
+
 ---
 
 #### Solicitudes POST
@@ -433,6 +475,10 @@
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
+
+##### {FARMACIA-SERVICIO}/unidades-de-medida/nombre?nombre=
+
+##### {FARMACIA-SERVICIO}/unidades-de-medida/simbolo?simbolo=
 
 ---
 
@@ -473,6 +519,10 @@
 ### Solcitudes GET
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
+
+##### {PACIENTES-SERVICIO}/obras-sociales
+
+##### {PACIENTES-SERVICIO}/obras-sociales/nombre?nombre=
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
