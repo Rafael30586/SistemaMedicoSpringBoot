@@ -821,3 +821,57 @@
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura=
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id=
+
+---
+
+## Hospital
+
+---
+
+### CirugiaPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/cirugia?cirugia=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/periodo?desde= &hasta=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/cirugia?cirugia-id=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/fecha?fecha=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin=
