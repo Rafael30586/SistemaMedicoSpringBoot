@@ -1164,3 +1164,101 @@
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio=
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final=
+
+---
+
+### MedicamentoPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/principio-activo?principio-activo=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-inicio?desde= &hasta=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-final?desde= &hasta=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/medicamento?medicamento-id=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/dosis?dosis-id=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-final?fin=
+
+---
+
+### PsicoterpiaPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-inicio?desde= &hasta=
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-final?desde &hasta=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
+
+--- 
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin=
