@@ -1076,3 +1076,91 @@
 #### Solicitudes PATCH
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre=
+
+---
+
+### EstudioMedico
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/clasificacion?clasificacion=
+
+---
+
+#### Soplicitudes POST
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos
+
+---
+
+#### Solictudes DELETE
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
+
+---
+
+#### Solictudes PATCH
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion=
+
+---
+
+### FisioterapiaPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-inicio?desde= &hasta=
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-final?desde= &hasta=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final=
