@@ -875,3 +875,93 @@
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio=
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin=
+
+---
+
+### Diagnostico
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
+
+##### {HOSPITAL-SERVICIO}/diagnosticos
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/nombre?nombre=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/diagnosticos
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/diagnosticos
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-sintoma?sintoma-id=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-sintoma?sintoma-id=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-signo?signo-id=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-signo?signo-id=
+
+---
+
+### DiagnosticoPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/paciente?pacinete-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/diagnostico?diagnostico=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/diagnostico?diagnostico-id=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-final?fin=
