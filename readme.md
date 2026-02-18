@@ -965,3 +965,114 @@
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-inicio?inicio=
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-final?fin=
+
+---
+
+### Empleado
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}
+
+##### {HOSPITAL-SERVICIO}/empleados
+
+##### {HOSPITAL-SERVICIO}/empleados/dni?dni=
+
+##### {HOSPITAL-SERVICIO}/empleados/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/empleados/apellido?apellido=
+
+##### {HOSPITAL-SERVICIO}/empleados/email?email=
+
+##### {HOSPITAL-SERVICIO}/empleados/matricula?matricula=
+
+##### {HOSPITAL-SERVICIO}/empleados/rol?rol=
+
+##### {HOSPITAL-SERVICIO}/empleados/rango-salarial?minimo= &maximo=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/empleados
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/empleados
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/primer-nombre?primer-nombre=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/segundo-nombre?segundo-nombre=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-paterno?apellido-paterno=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-materno?apellido-materno=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/email?email=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/domicilio?domicilio-id=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/agregar-telefono?telefono=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/quitar-telefono?telefono=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/matricula?matricula=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/rol?rol-id=
+
+##### {HOSPITAL-SERVICIO}/empleados/{id}/salario?salario=
+
+---
+
+### EstudioMedicoClasificacion
+
+---
+
+#### Solictudes GET
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
+
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/nombre?nombre=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
+
+---
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
+
+---
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre=
