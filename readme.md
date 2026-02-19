@@ -1365,4 +1365,118 @@
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre=
 
+---
+
+### Signo
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/signos/{id}
+
+##### {HOSPITAL-SERVICIO}/signos
+
+##### {HOSPITAL-SERVICIO}/signos/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/signos/unidad?unidad=
+
+##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia=
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/signos
+
+#### Solictudes PUT
+
+##### {HOSPITAL-SERVICIO}/signos
+
+#### Solictudes DELETE
+
+##### {HOSPITAL-SERVICIO}/signos/{id}
+
+#### Solictudes PATCH
+
+##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/signos/{id}/valor-minimo?valor-minimo=
+
+##### {HOSPITAL-SERVICIO}/signos/{id}/valor-maximo?valor-maximo=
+
+##### {HOSPITAL-SERVICIO}/signos/{id}/unidad?unidad-id=
+
+##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion <!-- Request body -->
+
+---
+
+### Sintoma
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/sintomas/{id}
+
+##### {HOSPITAL-SERVICIO}/sintomas
+
+##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre=
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/sintomas
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/sintomas
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/sintomas/{id}
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre=
+
+---
+
+### TratamientoQuirurgico
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/descripcion?descripcion=
+
+---
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
+
+---
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
+
+---
+
+#### Solicitudes DELETE 
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
+
+---
+
+#### Solcitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion <!-- Request Body-->
+
 
