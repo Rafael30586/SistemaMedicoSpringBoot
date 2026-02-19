@@ -1262,3 +1262,107 @@
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio=
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin=
+
+---
+
+### RadioTerapiaPaciente
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-inicio?desde= &hasta=
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde= &hasta=
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
+
+#### Solcitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio=
+
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin=
+
+---
+
+### RolEmpleado
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
+
+##### {HOSPITAL-SERVICIO}/roles-empleado
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/nombre?nombre=
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector=
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/roles-empleado
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/roles-empleado
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/nombre?nombre
+
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector-id=
+
+---
+
+### Sector
+
+---
+
+#### Solicitudes GET
+
+##### {HOSPITAL-SERVICIO}/sectores/{id}
+
+##### {HOSPITAL-SERVICIO}/sectores
+
+##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre=
+
+#### Solicitudes POST
+
+##### {HOSPITAL-SERVICIO}/sectores
+
+#### Solicitudes PUT
+
+##### {HOSPITAL-SERVICIO}/sectores
+
+#### Solicitudes DELETE
+
+##### {HOSPITAL-SERVICIO}/sectores/{id}
+
+#### Solicitudes PATCH
+
+##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre=
+
+
