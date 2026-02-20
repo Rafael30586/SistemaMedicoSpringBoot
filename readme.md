@@ -355,11 +355,39 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    descripcion: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "antifebril",
+    "descripcion": "reduce la fiebre"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+    descripcion: string,
+}
+~~~
 
 ---
 
@@ -395,11 +423,36 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
+- **body:**
+
+~~~javascript
+{
+    via: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "via": "oftálmica",
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    via: string,
+}
+~~~
 
 ---
 
@@ -433,11 +486,44 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/dosis
 
+- **body:**
+
+~~~javascript
+{
+    cantidad: numero_decimal,
+    unidad: UnidadDeMedida,
+    intervaloHoras: numero_entero
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "cantidad": "2.0",
+    "unidad": {
+        "id":3
+    },
+    "intervaloHoras": 8,
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/dosis
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    cantidad: numero_decimal,
+    unidad: UnidadDeMedida,
+    intervaloHoras: numero_entero
+}
+~~~
 
 ---
 
