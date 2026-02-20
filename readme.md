@@ -71,11 +71,47 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
+- **body:**
+
+~~~javascript
+{
+    calle: string,
+    altura: numero_entero,
+    departamento: string,
+    localidad: Localdidad
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "calle": "san martín",
+    "altura": 5612,
+    "departemento": "1A",
+    "localidad":{
+        "id":4
+    }
+}
+~~~
+
 ---
 
 #### Solicitued PUT
 
 ##### {CONTACTO-SERVICIO}/direcciones
+
+- **body**
+
+~~~javascript
+{
+    id: numero_entero
+    calle: string,
+    altura: numero_entero,
+    departamento: string,
+    localidad: Localdidad
+}
+~~~
 
 ---
 
@@ -113,11 +149,42 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {CONTACTO-SERVICIO}/localidades
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    provincia: Provincia,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "san miguel",
+    "provicnia":{
+        "id":1
+    }
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {CONTACTO-SERVICIO}/localidades
+
+- **body:**
+
+~~~javascript
+{
+    id: nimero_entero
+    nombre: string,
+    provincia: Provincia
+}
+~~~
+
 
 ---
 
@@ -151,11 +218,36 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {CONTACTO-SERVICIO}/paises
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "argentina",
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {CONTACTO-SERVICIO}/paises
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+}
+~~~
 
 ---
 
@@ -189,11 +281,41 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {CONTACTO-SERVICIO}/provincias
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    pais: Pais
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "buenos aires",
+    "pais": {
+        "id":10
+    }
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {CONTACTO-SERVICIO}/provincias
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+    pais: Pais
+}
+~~~
 
 ---
 
