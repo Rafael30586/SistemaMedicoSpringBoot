@@ -561,11 +561,35 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "crema",
+}
+~~~
+
+
 ---
 
 ### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre:string
+}
+~~~
 
 ---
 
@@ -595,15 +619,41 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes POST 
+#### Solcitudes POST
 
 ##### {FARMACIA-SERVICIO}/marcas
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "cassará",
+}
+~~~
+
 
 ---
 
-#### Solcitudes PUT 
+#### Solcitudes PUT
 
 ##### {FARMACIA-SERVICIO}/marcas
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+}
+~~~
 
 ---
 
@@ -645,11 +695,61 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    principiosActivos: PrincipioActivo[],
+    formaFarmaceutica: FormaFarmaceutica,
+    administracion: AdministracionFarmaco,
+    marca: MarcaMedicamento
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "peptazol 40",
+    "principiosActivos":[
+        {
+            "id":3
+        },
+        {
+            "id":11
+        }
+    ],
+    "formaFarmaceutica": {
+        "id":16
+    },
+    "administracion":{
+        "id":2
+    },
+    "marca":{
+        "id":5
+    }
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/medicamentos
+
+- **body:**
+
+~~~javascript
+{   
+    id: numero_entero
+    nombre: string,
+    principiosActivos: PrincipioActivo[],
+    formaFarmaceutica: FormaFarmaceutica,
+    administracion: AdministracionFarmaco,
+    marca: MarcaMedicamento
+}
+~~~
 
 ---
 
@@ -695,11 +795,36 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "paracetamol",
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {FARMACIA-SERVICIO}/principios-activos
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+}
+~~~
 
 ---
 
@@ -737,11 +862,39 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    simbolo: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "miligramo",
+    "simobolo":"mg"
+}
+~~~
+
 ---
 
 #### Solcitudes PUT
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string,
+    simbolo: string
+}
+~~~
 
 ---
 
@@ -783,11 +936,36 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
+- **body:**
+
+~~~javascript
+{
+    nombre: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "osde",
+}
+~~~
+
 --- 
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+}
+~~~
 
 ---
 
@@ -835,11 +1013,71 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
+- **body:**
+
+~~~javascript
+{
+    dni: numero_entero,
+    primerNombre: string,
+    segundoNombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
+    email: string,
+    telefonos: string[],
+    fechaNacimiento: fecha
+    lugarNacimientoId: numero_entero,
+    direccionId: numero_entero,
+    obraSocial: ObraSocial
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "dni": 34910028,
+    "primerNombre":"miguel",
+    "segundoNombre": "alejandro",
+    "apellidoPaterno": "alvarez",
+    "apellidoMaterno": "dominguez",
+    "email": "miguel28@gmail.com",
+    "telefonos":[
+        "986-59201",
+        "28-9604-234"
+    ],
+    "fechaNacimiento":"09-04-1988",
+    "lugarNacimientoId": 3,
+    "direccionId":37,
+    "obraSocial": {
+        "id":5
+    }
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    dni: numero_entero,
+    primerNombre: string,
+    segundoNombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
+    email: string,
+    telefonos: string[],
+    fechaNacimiento: fecha
+    lugarNacimientoId: numero_entero,
+    direccionId: numero_entero,
+    obraSocial: ObraSocial
+}
+~~~
 
 ---
 
