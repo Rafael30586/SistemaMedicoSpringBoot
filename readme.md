@@ -1135,11 +1135,51 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
+- **body:**
+
+~~~javascript
+{
+    paciente: Paciente,
+    estudios: numero_entero[]
+    urlInform: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "paciente": {
+        "id":193
+    },
+    "estudios":[
+        {
+            "id":4
+        },
+        {
+            "id":12
+        }
+    ],
+    "urlInforme":"hostipal.com/informes/73291"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+- **body:**
+
+~~~javascript
+{   
+    id: numero_entero,
+    paciente: Paciente,
+    estudios: numero_entero[]
+    urlInform: string
+}
+~~~
 
 ---
 
@@ -1181,11 +1221,46 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/sedes
 
+- **body:**
+
+~~~javascript
+{
+    direccionId: numero_entero,
+    telefonos: string[]
+    obraSocial: ObraSocial
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "direccionId": 90,
+    "telefonos":[
+        "09-4866-201",
+        "94623-0917776",
+        "10923-67398"
+    ],
+    "obraSocial":{
+        "id":2
+    }
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/sedes
+
+~~~javascript
+{
+    id: numero_entero
+    direccionId: numero_entero,
+    telefonos: string[]
+    obraSocial: ObraSocial
+}
+~~~
 
 ---
 
@@ -1231,11 +1306,58 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
+
+- **body:**
+
+~~~javascript
+{
+    paciente: Paciente,
+    fechaSolicitud: fecha
+    fechaTurno: fecha,
+    inicio: hora,
+    fin: hora,
+    estado: Estado
+    cobertura: Cobertura
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "paciente":{
+        "id":78
+    },
+    "fechaSolicitud": "15-06-2025",
+    "fechaTurno": "30-06-2025",
+    "inicio": "10:00",
+    "fin": "10:45",
+    "estado": "EN_PROCESO",
+    "cobertura": "TOTAL"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
+
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    paciente: Paciente,
+    fechaSolicitud: fecha
+    fechaTurno: fecha,
+    inicio: hora,
+    fin: hora,
+    estado: Estado
+    cobertura: Cobertura
+}
+~~~
 
 ---
 
