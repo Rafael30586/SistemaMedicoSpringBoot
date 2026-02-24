@@ -2134,11 +2134,49 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    medicamentoId: numero_entero,
+    dosisId:numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId": 410,
+    "medicamentoId":32,
+    "dosisId":129,
+    "inicio": "01-02-2019",
+    "fin":"09-03-2024"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+
+- **body:**
+
+~~~javascript
+{
+    id: nuemro_entero
+    pacienteId: numero_entero,
+    medicamentoId: numero_entero,
+    dosisId:numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
 
 ---
 
@@ -2184,11 +2222,45 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
+
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId": 410,
+    "inicio": "25-06-2022",
+    "fin":"10-11-2024"
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
+
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
 
 --- 
 
@@ -2228,13 +2300,49 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
+
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId": 158,
+    "inicio": "10-08-2023",
+    "fin":"11-02-2025"
+}
+~~~
+---
+
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
+
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
+---
 #### Solcitudes DELETE
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
+
+---
 
 #### Solicitudes PATCH
 
@@ -2260,17 +2368,54 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector=
 
+---
+
 #### Solicitudes POST
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    sector: Sector
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "cirujano",
+    "sector":{
+        "id":12
+    }
+}
+~~~
+---
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
+
+- **body:**
+
+~~~javascript
+{
+    id:numero_entero
+    nombre: string,
+    sector: Sector
+}
+~~~
+---
+
 #### Solicitudes DELETE
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
+
+---
 
 #### Solicitudes PATCH
 
