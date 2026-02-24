@@ -1115,7 +1115,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-## ResultadosDeEstudios
+### ResultadosDeEstudios
 
 ---
 
@@ -1405,11 +1405,59 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
+- **body:**
+
+~~~javascript
+{
+    paciente: Paciente,
+    fechaSolicitud: fecha
+    fechaTurno: fecha,
+    inicio: hora,
+    fin: hora,
+    estado: Estado
+    cobertura: Cobertura,
+    estudioId: numero_entero
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "paciente":{
+        "id":13
+    },
+    "fechaSolicitud": "04-05-2024",
+    "fechaTurno": "30-05-2024",
+    "inicio": "15:30",
+    "fin": "16:00",
+    "estado": "CONCLUIDO",
+    "cobertura": "COSEGURO",
+    "estudioId":62
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    paciente: Paciente,
+    fechaSolicitud: fecha
+    fechaTurno: fecha,
+    inicio: hora,
+    fin: hora,
+    estado: Estado
+    cobertura: Cobertura
+}
+~~~
 
 ---
 
@@ -1461,11 +1509,49 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    cirugia: TratamientoQuirurgico 
+    fecha: fecha,
+    inicio: hora,
+    fin: hora
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId":39,
+    "cirugia":{
+        "id":5
+    },
+    "fecha":"10-09-2025",
+    "inicio":"12:00",
+    "fin":"15:00"
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    cirugia: TratamientoQuirurgico 
+    fecha: fecha,
+    inicio: hora,
+    fin: hora
+}
+~~~
 
 ---
 
@@ -1507,11 +1593,61 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    sintomas: Sintoma[] 
+    signos: Signo[]
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "gripe",
+    "sintomas":[
+        {
+            "id":12
+        },
+        {
+            "id":14
+        },
+        {
+            "id":25
+        }
+    ],
+    "signos":[
+        {
+            "id":13
+        },
+        {
+            "id":20
+        }
+    ]
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
+
+
+- **body:**
+
+~~~javascript
+{
+    id:numero_entero
+    nombre: string,
+    sintomas: Sintoma[] 
+    signos: Signo[]
+}
+~~~
 
 ---
 
@@ -1553,11 +1689,49 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
+
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    diagnostico: Diagnostico, 
+    inicio: fecha,
+    fin: fecha
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId": 10,
+    "diagnostico": {
+        "id":17
+    },
+    "inicio":"29-10-2020",
+    "fin":"12-04-2023"
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    pacienteId: numero_entero,
+    diagnostico: Diagnostico, 
+    inicio: fecha,
+    fin: fecha
+}
+~~~
 
 ---
 
@@ -1609,11 +1783,75 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
+
+- **body:**
+
+~~~javascript
+{
+    dni: numero_entero,
+    primerNombre: string, 
+    segundoNombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
+    email: string,
+    domicilioId: numero_entero,
+    telefonos: string[],
+    matriculaProfesional: string,
+    rol: RolEmpleado,
+    salario: numero_decimal
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "dni": 29010772,
+    "primerNombre": "mariano",
+    "segundoNombre": "gabriel",
+    "apellidoPaterno":"vazquez",
+    "apellidoMaterno": "gimenez",
+    "email": "gaby102@gmail.com",
+    "domicilioId": 92,
+    "telefonos":[
+        "08372-183",
+        "6939-08273-211"
+    ],
+    "matriculaProfesional": "A-720",
+    "rol":{
+        "id":13
+    },
+    "salario":500.50
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/empleados
+
+
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    dni: numero_entero,
+    primerNombre: string, 
+    segundoNombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
+    email: string,
+    domicilioId: numero_entero,
+    telefonos: string[],
+    matriculaProfesional: string,
+    rol: RolEmpleado,
+    salario: numero_decimal
+}
+~~~
 
 ---
 
@@ -1670,11 +1908,38 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
+
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "laboratorio",
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+}
+~~~
 
 ---
 
@@ -1710,11 +1975,44 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    clasificacion: EstudioMedicoClasificacion
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "electrocardiograma",,
+    "clasificacion":{
+        "id":6
+    }
+}
+~~~
+
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
+
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero
+    nombre: string,
+    clasificacion: EstudioMedicoClasificacion
+}
+~~~
 
 ---
 
@@ -1754,11 +2052,45 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
+
+- **body:**
+
+~~~javascript
+{
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "pacienteId": 71,
+    "inicio": "12-07-2021",
+    "fin":"20-10-2023"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
+
+
+- **body:**
+
+~~~javascript
+{
+    id: neumero_entero
+    pacienteId: numero_entero,
+    inicio: fecha,
+    fin:fecha
+}
+~~~
+
 
 ---
 
