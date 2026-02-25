@@ -2580,17 +2580,52 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre=
 
+---
+
 #### Solicitudes POST
 
 ##### {HOSPITAL-SERVICIO}/sintomas
+
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "náuseas"
+}
+~~~
+
+---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string
+}
+~~~
+
+---
+
 #### Solicitudes DELETE
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
+
+---
 
 #### Solicitudes PATCH
 
@@ -2618,11 +2653,40 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    descripcion: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "cirugía de cadera"
+}
+~~~
+
 ---
 
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
+
+
+- **body:**
+
+~~~javascript
+{
+    id: neumero_entero,
+    nombre: string,
+    descripcion: string
+}
+~~~
 
 ---
 
