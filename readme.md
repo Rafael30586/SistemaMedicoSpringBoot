@@ -4,7 +4,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-## Explicaciones sobre entidades
+## Explicaciones sobre entidades  
 
 ---
 
@@ -876,7 +876,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~json
 {
     "nombre": "miligramo",
-    "simobolo":"mg"
+    "simbolo":"mg"
 }
 ~~~
 
@@ -1546,7 +1546,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     pacienteId: numero_entero,
-    cirugia: TratamientoQuirurgico 
+    cirugia: TratamientoQuirurgico, 
     fecha: fecha,
     inicio: hora,
     fin: hora
@@ -1599,7 +1599,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     nombre: string,
-    sintomas: Sintoma[] 
+    sintomas: Sintoma[], 
     signos: Signo[]
 }
 ~~~
@@ -1642,9 +1642,9 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id:numero_entero
+    id:numero_entero,
     nombre: string,
-    sintomas: Sintoma[] 
+    sintomas: Sintoma[], 
     signos: Signo[]
 }
 ~~~
@@ -1725,7 +1725,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     pacienteId: numero_entero,
     diagnostico: Diagnostico, 
     inicio: fecha,
@@ -2084,7 +2084,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: neumero_entero
+    id: neumero_entero,
     pacienteId: numero_entero,
     inicio: fecha,
     fin:fecha
@@ -2169,7 +2169,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: nuemro_entero
+    id: nuemro_entero,
     pacienteId: numero_entero,
     medicamentoId: numero_entero,
     dosisId:numero_entero,
@@ -2255,7 +2255,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     pacienteId: numero_entero,
     inicio: fecha,
     fin:fecha
@@ -2404,7 +2404,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id:numero_entero
+    id:numero_entero,
     nombre: string,
     sector: Sector
 }
