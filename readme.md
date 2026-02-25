@@ -105,7 +105,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     calle: string,
     altura: numero_entero,
     departamento: string,
@@ -179,7 +179,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: nimero_entero
+    id: nimero_entero,
     nombre: string,
     provincia: Provincia
 }
@@ -244,8 +244,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    nombre: string,
+    id: numero_entero,
+    nombre: string
 }
 ~~~
 
@@ -311,7 +311,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     nombre: string,
     pais: Pais
 }
@@ -360,7 +360,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     nombre: string,
-    descripcion: string,
+    descripcion: string
 }
 ~~~
 
@@ -383,9 +383,9 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     nombre: string,
-    descripcion: string,
+    descripcion: string
 }
 ~~~
 
@@ -449,8 +449,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    via: string,
+    id: numero_entero,
+    via: string
 }
 ~~~
 
@@ -518,7 +518,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     cantidad: numero_decimal,
     unidad: UnidadDeMedida,
     intervaloHoras: numero_entero
@@ -627,7 +627,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    nombre: string,
+    nombre: string
 }
 ~~~
 
@@ -635,7 +635,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~json
 {
-    "nombre": "cassará",
+    "nombre": "cassará"
 }
 ~~~
 
@@ -650,8 +650,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    nombre: string,
+    id: numero_entero,
+    nombre: string
 }
 ~~~
 
@@ -742,7 +742,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {   
-    id: numero_entero
+    id: numero_entero,
     nombre: string,
     principiosActivos: PrincipioActivo[],
     formaFarmaceutica: FormaFarmaceutica,
@@ -799,7 +799,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    nombre: string,
+    nombre: string
 }
 ~~~
 
@@ -807,7 +807,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~json
 {
-    "nombre": "paracetamol",
+    "nombre": "paracetamol"
 }
 ~~~
 
@@ -821,8 +821,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    nombre: string,
+    id: numero_entero,
+    nombre: string
 }
 ~~~
 
@@ -948,7 +948,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~json
 {
-    "nombre": "osde",
+    "nombre": "osde"
 }
 ~~~
 
@@ -962,8 +962,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    nombre: string,
+    id: numero_entero,
+    nombre: string
 }
 ~~~
 
@@ -1064,7 +1064,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     dni: numero_entero,
     primerNombre: string,
     segundoNombre: string,
@@ -1140,7 +1140,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     paciente: Paciente,
-    estudios: numero_entero[]
+    estudios: numero_entero[],
     urlInform: string
 }
 ~~~
@@ -1152,14 +1152,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
     "paciente": {
         "id":193
     },
-    "estudios":[
-        {
-            "id":4
-        },
-        {
-            "id":12
-        }
-    ],
+    "estudios":[4,12],
     "urlInforme":"hostipal.com/informes/73291"
 }
 ~~~
@@ -1176,7 +1169,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 {   
     id: numero_entero,
     paciente: Paciente,
-    estudios: numero_entero[]
+    estudios: numero_entero[],
     urlInform: string
 }
 ~~~
@@ -1226,7 +1219,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     direccionId: numero_entero,
-    telefonos: string[]
+    telefonos: string[],
     obraSocial: ObraSocial
 }
 ~~~
@@ -1255,9 +1248,9 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     direccionId: numero_entero,
-    telefonos: string[]
+    telefonos: string[],
     obraSocial: ObraSocial
 }
 ~~~
@@ -1312,11 +1305,11 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     paciente: Paciente,
-    fechaSolicitud: fecha
+    fechaSolicitud: fecha,
     fechaTurno: fecha,
     inicio: hora,
     fin: hora,
-    estado: Estado
+    estado: Estado,
     cobertura: Cobertura
 }
 ~~~
@@ -1350,11 +1343,11 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 {
     id: numero_entero,
     paciente: Paciente,
-    fechaSolicitud: fecha
+    fechaSolicitud: fecha,
     fechaTurno: fecha,
     inicio: hora,
     fin: hora,
-    estado: Estado
+    estado: Estado,
     cobertura: Cobertura
 }
 ~~~
@@ -1410,11 +1403,11 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     paciente: Paciente,
-    fechaSolicitud: fecha
+    fechaSolicitud: fecha,
     fechaTurno: fecha,
     inicio: hora,
     fin: hora,
-    estado: Estado
+    estado: Estado,
     cobertura: Cobertura,
     estudioId: numero_entero
 }
@@ -1450,11 +1443,11 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 {
     id: numero_entero,
     paciente: Paciente,
-    fechaSolicitud: fecha
+    fechaSolicitud: fecha,
     fechaTurno: fecha,
     inicio: hora,
     fin: hora,
-    estado: Estado
+    estado: Estado,
     cobertura: Cobertura
 }
 ~~~
@@ -1514,7 +1507,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~javascript
 {
     pacienteId: numero_entero,
-    cirugia: TratamientoQuirurgico 
+    cirugia: TratamientoQuirurgico, 
     fecha: fecha,
     inicio: hora,
     fin: hora
@@ -1838,7 +1831,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     dni: numero_entero,
     primerNombre: string, 
     segundoNombre: string,
@@ -1922,7 +1915,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~json
 {
-    "nombre": "laboratorio",
+    "nombre": "laboratorio"
 }
 ~~~
 
@@ -1936,8 +1929,8 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
-    nombre: string,
+    id: numero_entero,
+    nombre: string
 }
 ~~~
 
@@ -1989,7 +1982,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~json
 {
-    "nombre": "electrocardiograma",,
+    "nombre": "electrocardiograma",
     "clasificacion":{
         "id":6
     }
@@ -2008,7 +2001,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ~~~javascript
 {
-    id: numero_entero
+    id: numero_entero,
     nombre: string,
     clasificacion: EstudioMedicoClasificacion
 }
@@ -2436,18 +2429,50 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ##### {HOSPITAL-SERVICIO}/sectores
 
 ##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre=
+---
 
 #### Solicitudes POST
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "recursos humanos"
+}
+~~~
+
+---
+
 #### Solicitudes PUT
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string
+}
+~~~
+
+---
+
 #### Solicitudes DELETE
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
+
+---
 
 #### Solicitudes PATCH
 
@@ -2471,17 +2496,63 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia=
 
+---
+
 #### Solicitudes POST
 
 ##### {HOSPITAL-SERVICIO}/signos
 
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    valorMinimo: numero_decimal,
+    valorMaximo: numero_decimal,
+    unidadId: numero_entero,
+    descripcion: string
+}
+~~~
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "hiperglucemia",
+    "valorMinimo":130,
+    "valorMaximo": null,
+    "unidadId":9,
+    "descripcion": "elevado nuvel de azúcar en sangre"
+}
+~~~
+
+---
 #### Solictudes PUT
 
 ##### {HOSPITAL-SERVICIO}/signos
 
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string,
+    valorMinimo: numero_decimal,
+    valorMaximo: numero_decimal,
+    unidadId: numero_entero,
+    descripcion: string
+}
+~~~
+
+---
+
 #### Solictudes DELETE
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
+
+---
 
 #### Solictudes PATCH
 
