@@ -14,8 +14,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 - Provincia: Puede ser la provincia o estado de un pais.
 
 - AccionTerapeutica: Es la acción benéfica que tiene un principio activo o medicamento en el cuerpo humano, ejemplos: antiinflamatorio, queratolítico, analgésico, antifebril, etc.
-- AdministracionFarmaco: Es la manea en la que se administra un fármaco al paceinte, ejemplos: intramuscular, oral, intratecal, nasal, sublingual, oftálmica, etc.
-- Dosis: Es una cantidad de fármaco administrada por cantidad de tiempo. Se tiene en cuenta la unidad usada (miligrmoas, mililitros, etc),  el intervalo de tiempo (por ejemplo, cada 8 horas), y la cantidad que se asocia a la unidad.
+- AdministracionFarmaco: Es la manera en la que se administra un fármaco al paciente, ejemplos: intramuscular, oral, intratecal, nasal, sublingual, oftálmica, etc.
+- Dosis: Es una cantidad de fármaco administrada por cantidad de tiempo. Se tiene en cuenta la unidad usada (miligramos, mililitros, etc),  el intervalo de tiempo (por ejemplo, cada 8 horas), y la cantidad que se asocia a la unidad.
 - FormaFaremaceutica: Es la forma en la que se presenta un medicamento, por ejemplo: crema, emulsión, jarabe, cápsulas, gel, polvo, etc.
 - MarcaMedicamento: Es la marca del medicamento.
 - Medicamento: Hace referencia a cada medicamento.
@@ -26,7 +26,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 - Paciente: Es un paciente que solicita servicios en el hospital.
 - ResultadoDeEstudios: Son los resultados de cada estudio realizado a cada paciente.
 - Sede: Es la dirección que le corresponde a cada sede de las obras sociales.
-- TurnoCita: Son los datos de un turno para un paciente que solicita un cita con un médico.
+- TurnoCita: Son los datos de un turno para un paciente que solicita una cita con un médico.
 - TurnoEstudio: Son los datos de un turno para un paciente que solicita la realización de un estudio médico.
 
 - CirugiaPaciente: Es una cirugía que se ha realizado un paciente.
@@ -34,11 +34,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 - DiagnosticoPaciente: Es el diagnóstico concreto que se ha dado a un paciente concreto.
 - Empleado: Son los datos de cada empleado del hospital.
 - EstudioMedico: Es cada estudio médico que pueden realizarse los pacientes, ejemplos: perfil renal, hemograma, electrocardiograma, etc.
-- EstudioMedicoClasificacion: Teien que ver con como se clasifican los diferentes estudios médicos, ejemplos: laboratorio, diagnóstico por imágenes, cardiológico, etc.
+- EstudioMedicoClasificacion: Tiene que ver con como se clasifican los diferentes estudios médicos, ejemplos: laboratorio, diagnóstico por imágenes, cardiológico, etc.
 - FisioterapiaPaciente: Es el tratamiento por fisioterapia que se ha realizado en un paciente.
 - MedicamentoPaciente: Es el tratamiento que se ha realizado en un paciente con un medicamento concreto.
 - PsicoterapiaPaciente: Es el tratamiento psicológico que se ha realizado en un paciente.
-- RadioTerapiaPaciente: Es un tratamiento de radioterapia realizado en un paciente concreto.
+- RadioterapiaPaciente: Es un tratamiento de radioterapia realizado en un paciente concreto.
 - RolEmpleado: Es el rol que puede tener cada empleado, por ejemplo: cirujano, cardiólogo, cocinero, secretario, etc.
 - Sector: Es el sector al que corresponde cada rol de los empleados, por ejemplo: medicina, limpieza, recursos humanso, gastronomía, etc.
 - Signo: Son los signos que pueden presentar los pacientes de acuerdo a su diagnóstico: hiperglucemia, fiebre, etc.
