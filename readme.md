@@ -61,9 +61,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
-##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad=
+##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad={x}
 
-##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia=
+##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
 
 ---
 
@@ -123,13 +123,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Direccion)
 
-##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle=
+##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle={x}
 
-##### {CONTACTO-SERVICIO}/direcciones/{id}/altura?altura=
+##### {CONTACTO-SERVICIO}/direcciones/{id}/altura?altura={x}
 
-##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento=
+##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento={x}
 
-##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id=
+##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id={x}
 
 ---
 
@@ -196,9 +196,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Localidad)
 
-##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre=
+##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre={x}
 
-##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id=
+##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id={x}
 
 ---
 
@@ -259,7 +259,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Pais)
 
-##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre=
+##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre={x}
 
 ---
 
@@ -273,7 +273,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/provincias/{ID}
 
-##### {CONTACTO-SERVICIO}/provincias/nombre?nombre=
+##### {CONTACTO-SERVICIO}/provincias/nombre?nombre={x}
 
 ---
 
@@ -327,9 +327,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Provincia)
 
-##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre=
+##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre={x}
 
-##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id=
+##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id={x}
 
 ---
 
@@ -347,7 +347,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
 
-##### {FARMACIA-SERVICIO}/acciones-terapeuticas/nombre?nombre=
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/nombre?nombre={x}
 
 ---
 
@@ -399,9 +399,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (AccionTerapeutica)
 
-##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre=
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion <!-- ¿Request Body?-->
 
 ---
 
@@ -415,7 +415,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
-##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/via?via=
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/via?via={x}
 
 ---
 
@@ -464,7 +464,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (AdministracionFarmaco)
 
-##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}/via?via=
+##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}/via?via={x}
 
 ---
 
@@ -478,7 +478,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis
 
-##### {FARMACIA-SERVICIO}/dosis/cantidad-unidad-intervalo?cantidad= &nombre-unidad= &intervalo=
+##### {FARMACIA-SERVICIO}/dosis/cantidad-unidad-intervalo?cantidad={x}&nombre-unidad={x}&intervalo={x}
 
 ---
 
@@ -535,11 +535,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Dosis)
 
-##### {FARMACIA-SERVICIO}/dosis/{id}/cantidad?cantidad=
+##### {FARMACIA-SERVICIO}/dosis/{id}/cantidad?cantidad={x}
 
-##### {FARMACIA-SERVICIO}/dosis/{id}/unidad?unidad-id
+##### {FARMACIA-SERVICIO}/dosis/{id}/unidad?unidad-id={x}
 
-##### {FARMACIA-SERVICIO}/dosis/{id}/intervalo?intervalo=
+##### {FARMACIA-SERVICIO}/dosis/{id}/intervalo?intervalo={x}
 
 ---
 
@@ -553,7 +553,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
-##### {FARMACIA-SERVICIO}/formas-farmaceuticas/nombre?nombre=
+##### {FARMACIA-SERVICIO}/formas-farmaceuticas/nombre?nombre={x}
 
 ---
 
@@ -601,7 +601,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (FormaFarmaceutica)
 
-##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}/nombre?nombre=
+##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}/nombre?nombre={x}
 
 ---
 
@@ -615,7 +615,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-##### {FARMACIA-SERVICIO}/marcas/nombre?nombre=
+##### {FARMACIA-SERVICIO}/marcas/nombre?nombre={x}
 
 ---
 
@@ -665,7 +665,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (MarcaMedicamento)
 
-##### {FARMACIA-SERVICIO}/marcas/{id}/nombre?nombre=
+##### {FARMACIA-SERVICIO}/marcas/{id}/nombre?nombre={x}
 
 ---
 
@@ -679,15 +679,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
-##### {FARMACIA-SERVICIO}/medicamentos/nombre?nombre=
+##### {FARMACIA-SERVICIO}/medicamentos/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo=
+##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica=
+##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/administracion?via=
+##### {FARMACIA-SERVICIO}/medicamentos/administracion?via={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/marca?nombre-marca=
+##### {FARMACIA-SERVICIO}/medicamentos/marca?nombre-marca={x}
 
 ---
 
@@ -761,17 +761,17 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Medicamento)
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/nombre?nombre=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/agregar-principio-activo?principio-activo-id=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/agregar-principio-activo?principio-activo-id={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/quitar-principio-activo?principio-activo-id=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/quitar-principio-activo?principio-activo-id={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/forma-farmaceutica?forma-farmaceutica-id=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/forma-farmaceutica?forma-farmaceutica-id={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/administracion?administracion-id=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/administracion?administracion-id={x}
 
-##### {FARMACIA-SERVICIO}/medicamentos/{id}/marca?marca-id=
+##### {FARMACIA-SERVICIO}/medicamentos/{id}/marca?marca-id={x}
 
 ---
 
@@ -785,9 +785,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre=
+##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica=
+##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica={x}
 
 ---
 
@@ -836,9 +836,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solocitudes PATCH (PrincipioActivo)
 
-##### {FARMACIA-SERVICIO}/principios-activos/{id}/agregar-accion-terapeutica?accion-terapeutica-id=
+##### {FARMACIA-SERVICIO}/principios-activos/{id}/agregar-accion-terapeutica?accion-terapeutica-id={x}
 
-##### {FARMACIA-SERVICIO}/principios-activos/{id}/quitar-accion-terapeutica?accion-terapeutica-id=
+##### {FARMACIA-SERVICIO}/principios-activos/{id}/quitar-accion-terapeutica?accion-terapeutica-id={x}
 
 ---
 
@@ -852,9 +852,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
-##### {FARMACIA-SERVICIO}/unidades-de-medida/nombre?nombre=
+##### {FARMACIA-SERVICIO}/unidades-de-medida/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/unidades-de-medida/simbolo?simbolo=
+##### {FARMACIA-SERVICIO}/unidades-de-medida/simbolo?simbolo={x}
 
 ---
 
@@ -906,9 +906,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (UnidadDeMedida)
 
-##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre=
+##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/simbolo?simbolo=
+##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/simbolo?simbolo={x}
 
 ---
 
@@ -926,7 +926,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-##### {PACIENTES-SERVICIO}/obras-sociales/nombre?nombre=
+##### {PACIENTES-SERVICIO}/obras-sociales/nombre?nombre={x}
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
@@ -977,7 +977,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (ObraSocial)
 
-##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombvre?nombre=
+##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombvre?nombre={x}
 
 ---
 
@@ -991,21 +991,21 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
-##### {PACIENTES-SERVICIO}/pacientes/dni?dni=
+##### {PACIENTES-SERVICIO}/pacientes/dni?dni={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/nombre?nombre=
+##### {PACIENTES-SERVICIO}/pacientes/nombre?nombre={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/apellido?apellido=
+##### {PACIENTES-SERVICIO}/pacientes/apellido?apellido={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/email?email=
+##### {PACIENTES-SERVICIO}/pacientes/email?email={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/telefono?numero-telefonico=
+##### {PACIENTES-SERVICIO}/pacientes/telefono?numero-telefonico={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?desde= &hasta=
+##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?desde={x}&hasta={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?localidad=
+##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?localidad={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/domicilio?calle=
+##### {PACIENTES-SERVICIO}/pacientes/domicilio?calle={x}
 
 ---
 
@@ -1089,29 +1089,29 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Paciente)
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/primer-nombre?id-o-dni= &opcion= &nombre=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/primer-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/segundo-nombre?id-o-dni= &opcion= &nombre=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/segundo-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-paterno?id-o-dni= &opcion= &apellido=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-paterno?id-o-dni={x}&opcion={x}&apellido={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-materno?id-o-dni= &opcion= &apellido=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-materno?id-o-dni={x}&opcion={x}&apellido={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/email?id-o-dni= &opcion= &email=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/email?id-o-dni={x}&opcion={x}&email={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/agregar-telefono?id-o-dni= &opcion= &telefono-para-agregar=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/quitar-telefono?id-o-dni= &opcion= &telefono-para-quitar=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/fecha-nacimiento?id-o-dni= &opcion= &fecha=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/fecha-nacimiento?id-o-dni={x}&opcion={x}&fecha={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/lugar-nacimiento?id-o-dni= &opcion &localidad-id=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/lugar-nacimiento?id-o-dni={x}&opcion={x}&localidad-id={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/domicilio?id-o-dni= &opcion= &direccion-id=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/domicilio?id-o-dni={x}&opcion={x}&direccion-id={x}
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/obra-social?id-o-dni= &opcion= &obra-social-id=
+##### {PACIENTES-SERVICIO}/pacientes/{id}/obra-social?id-o-dni={x}&opcion={x}&obra-social-id={x}
 
 ---
 
@@ -1125,9 +1125,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/paciente?dni=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/paciente?dni={x}
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/estudio?nombre-estudio=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/estudio?nombre-estudio={x}
 
 ---
 
@@ -1184,13 +1184,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (ResultadosDeEstudios)
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente= &opcion=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/agregar-estudio?estudio-id=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/agregar-estudio?estudio-id={x}
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/quitar-estudio?estudio-id=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/quitar-estudio?estudio-id={x}
 
-##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/url-informe?url-informe=
+##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/url-informe?url-informe={x}
 
 ---
 
@@ -1204,9 +1204,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-##### {PACIENTES-SERVICIO}/sedes/direccion?calle=
+##### {PACIENTES-SERVICIO}/sedes/direccion?calle={x}
 
-##### {PACIENTES-SERVICIO}/sedes/{id}/telefono?telefono=
+##### {PACIENTES-SERVICIO}/sedes/{id}/telefono?telefono={x}
 
 ---
 
@@ -1265,13 +1265,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Sede)
 
-##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id=
+##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id={x}
 
-##### {PACIENTES-SERVICIO}/sedes/{id}/agregar-telefono?telefono=
+##### {PACIENTES-SERVICIO}/sedes/{id}/agregar-telefono?telefono={x}
 
-##### {PACIENTES-SERVICIO}/sedes/{id}/quitar-telefono?telefono=
+##### {PACIENTES-SERVICIO}/sedes/{id}/quitar-telefono?telefono={x}
 
-##### {PACIENTES-SERVICIO}/sedes/{id}/obra-social?obra-social-id=
+##### {PACIENTES-SERVICIO}/sedes/{id}/obra-social?obra-social-id={x}
 
 ---
 
@@ -1285,13 +1285,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
-##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni=
+##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno=
+##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde= &hasta=
+##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/profesional?profesional-id=
+##### {PACIENTES-SERVICIO}/turnos-cita/profesional?profesional-id={x}
 
 ---
 
@@ -1362,15 +1362,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (TurnoCita)
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio= &fin=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
 
 ---
 
@@ -1384,13 +1384,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni=
+##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno=
+##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde= &hasta=
+##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
-##### {PACIENTES-SERVICIO}/turnos-estudio/estudio?estudio-id=
+##### {PACIENTES-SERVICIO}/turnos-estudio/estudio?estudio-id={x}
 
 ---
 
@@ -1462,17 +1462,17 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (TurnoEstudio)
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio= &fin=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
 
-##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura=
+##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
 
-##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id=
+##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id={x}
 
 ---
 
@@ -1490,11 +1490,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/cirugia?cirugia=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/cirugia?cirugia={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/periodo?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/periodo?desde={x}&hasta={x}
 
 ---
 
@@ -1556,15 +1556,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (CirugiaPaciente)
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/cirugia?cirugia-id=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/cirugia?cirugia-id={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/fecha?fecha=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/fecha?fecha={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin=
+##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin={x}
 
 ---
 
@@ -1578,7 +1578,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
-##### {HOSPITAL-SERVICIO}/diagnosticos/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/diagnosticos/nombre?nombre={x}
 
 ---
 
@@ -1652,13 +1652,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Diagnostico)
 
-##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-sintoma?sintoma-id=
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-sintoma?sintoma-id={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-sintoma?sintoma-id=
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-sintoma?sintoma-id={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-signo?signo-id=
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-signo?signo-id={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-signo?signo-id=
+##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-signo?signo-id={x}
 
 ---
 
@@ -1672,9 +1672,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/paciente?pacinete-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/paciente?pacinete-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/diagnostico?diagnostico=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/diagnostico?diagnostico={x}
 
 ---
 
@@ -1736,13 +1736,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (DiagnosticoPaciente)
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/diagnostico?diagnostico-id=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/diagnostico?diagnostico-id={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-final?fin=
+##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-final?fin={x}
 
 ---
 
@@ -1756,19 +1756,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
-##### {HOSPITAL-SERVICIO}/empleados/dni?dni=
+##### {HOSPITAL-SERVICIO}/empleados/dni?dni={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/empleados/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/apellido?apellido=
+##### {HOSPITAL-SERVICIO}/empleados/apellido?apellido={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/email?email=
+##### {HOSPITAL-SERVICIO}/empleados/email?email={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/matricula?matricula=
+##### {HOSPITAL-SERVICIO}/empleados/matricula?matricula={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/rol?rol=
+##### {HOSPITAL-SERVICIO}/empleados/rol?rol={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/rango-salarial?minimo= &maximo=
+##### {HOSPITAL-SERVICIO}/empleados/rango-salarial?minimo={x}&maximo={x}
 
 ---
 
@@ -1856,29 +1856,29 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Empleado)
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/primer-nombre?primer-nombre=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/primer-nombre?primer-nombre={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/segundo-nombre?segundo-nombre=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/segundo-nombre?segundo-nombre={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-paterno?apellido-paterno=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-paterno?apellido-paterno={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-materno?apellido-materno=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-materno?apellido-materno={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/email?email=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/email?email={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/domicilio?domicilio-id=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/domicilio?domicilio-id={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/agregar-telefono?telefono=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/agregar-telefono?telefono={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/quitar-telefono?telefono=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/quitar-telefono?telefono={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/matricula?matricula=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/matricula?matricula={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/rol?rol-id=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/rol?rol-id={x}
 
-##### {HOSPITAL-SERVICIO}/empleados/{id}/salario?salario=
+##### {HOSPITAL-SERVICIO}/empleados/{id}/salario?salario={x}
 
 ---
 
@@ -1893,7 +1893,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
 
-##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/nombre?nombre={x}
 
 ---
 
@@ -1944,7 +1944,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (EstudioMedicoClasificacion)
 
-##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre={x}
 
 ---
 
@@ -1958,9 +1958,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
-##### {HOSPITAL-SERVICIO}/estudios-medicos/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/estudios-medicos/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/estudios-medicos/clasificacion?clasificacion=
+##### {HOSPITAL-SERVICIO}/estudios-medicos/clasificacion?clasificacion={x}
 
 ---
 
@@ -2017,9 +2017,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solictudes PATCH (EstudioMedico)
 
-##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion=
+##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion={x}
 
 ---
 
@@ -2033,11 +2033,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-inicio?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-final?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
 ---
 
@@ -2095,11 +2095,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (FisioterapiaPaciente)
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final=
+##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final={x}
 
 ---
 
@@ -2113,13 +2113,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/principio-activo?principio-activo=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/principio-activo?principio-activo={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-inicio?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-final?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-final?desde={x}&hasta={x}
 
 ---
 
@@ -2181,15 +2181,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (MedicamentoPaciente)
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/medicamento?medicamento-id=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/medicamento?medicamento-id={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/dosis?dosis-id=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/dosis?dosis-id={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-final?fin=
+##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-final?fin={x}
 
 ---
 
@@ -2203,11 +2203,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-inicio?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-final?desde &hasta=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
 ---
 
@@ -2265,11 +2265,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (PsicoterpiaPaciente)
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin=
+##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin={x}
 
 ---
 
@@ -2283,11 +2283,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-inicio?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde= &hasta=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
 ---
 
@@ -2341,11 +2341,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (RadioTerapiaPaciente)
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin=
+##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin={x}
 
 ---
 
@@ -2359,9 +2359,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
-##### {HOSPITAL-SERVICIO}/roles-empleado/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/roles-empleado/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector=
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector={x}
 
 ---
 
@@ -2416,7 +2416,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/nombre?nombre
 
-##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector-id=
+##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector-id={x}
 
 ---
 
@@ -2430,7 +2430,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
-##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre={x}
 ---
 
 #### Solicitudes POST (Sector)
@@ -2478,7 +2478,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Sector)
 
-##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre={x}
 
 ---
 
@@ -2492,11 +2492,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/signos
 
-##### {HOSPITAL-SERVICIO}/signos/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/signos/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/signos/unidad?unidad=
+##### {HOSPITAL-SERVICIO}/signos/unidad?unidad={x}
 
-##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia=
+##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia={x}
 
 ---
 
@@ -2558,15 +2558,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solictudes PATCH (Signo)
 
-##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/signos/{id}/valor-minimo?valor-minimo=
+##### {HOSPITAL-SERVICIO}/signos/{id}/valor-minimo?valor-minimo={x}
 
-##### {HOSPITAL-SERVICIO}/signos/{id}/valor-maximo?valor-maximo=
+##### {HOSPITAL-SERVICIO}/signos/{id}/valor-maximo?valor-maximo={x}
 
-##### {HOSPITAL-SERVICIO}/signos/{id}/unidad?unidad-id=
+##### {HOSPITAL-SERVICIO}/signos/{id}/unidad?unidad-id={x}
 
-##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion <!-- Request body -->
+##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion
 
 - **body:**
 
@@ -2588,7 +2588,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
-##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre={x}
 
 ---
 
@@ -2639,7 +2639,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Sintoma)
 
-##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre={x}
 
 ---
 
@@ -2653,9 +2653,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
-##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/descripcion?descripcion=
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/descripcion?descripcion={x}
 
 ---
 
@@ -2708,10 +2708,12 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solcitudes PATCH (TratamientoQuirurgico)
 
-##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre=
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre={x}
 
-##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion <!-- Request Body-->
+##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion 
 
+
+- **body:**
 
 ~~~javascript
 {
