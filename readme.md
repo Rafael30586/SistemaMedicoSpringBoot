@@ -8,46 +8,46 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-Direccion: Es la dirección en la que se encuentra un domicilio, edificio, etc. Se compone de la calle, altura, departamento, etc.
-Localidad: Puede ser una ciudad, un pueblo, etc.
-Pais: Es el pais.
-Provincia: Puede ser la provincia o estado de un pais.
+- Direccion: Es la dirección en la que se encuentra un domicilio, edificio, etc. Se compone de la calle, altura, departamento, etc.
+- Localidad: Puede ser una ciudad, un pueblo, etc.
+- Pais: Es el pais.
+- Provincia: Puede ser la provincia o estado de un pais.
 
-AccionTerapeutica: Es la acción benéfica que tiene un principio activo o medicamento en el cuerpo humano, ejemplos: antiinflamatorio, queratolítico, analgésico, antifebril, etc.
-AdministracionFarmaco: Es la manea en la que se administra un fármaco al paceinte, ejemplos: intramuscular, oral, intratecal, nasal, sublingual, oftálmica, etc.
-Dosis: Es una cantidad de fármaco administrada por cantidad de tiempo. Se tiene en cuenta la unidad usada (miligrmoas, mililitros, etc),  el intervalo de tiempo (por ejemplo, cada 8 horas), y la cantidad que se asocia a la unidad.
-FormaFaremaceutica: Es la forma en la que se presenta un medicamento, por ejemplo: crema, emulsión, jarabe, cápsulas, gel, polvo, etc.
-MarcaMedicamento: Es la marca del medicamento.
-Medicamento: Hace referencia a cada medicamento.
-PrincipioActivo: Es el principio activo que se encuentra en los medicamentos.
-UnidadDeMedida: Es la unidad con la que se miden cantidades, ejemplos: miligramos, mililitros, gotas, etc.
+- AccionTerapeutica: Es la acción benéfica que tiene un principio activo o medicamento en el cuerpo humano, ejemplos: antiinflamatorio, queratolítico, analgésico, antifebril, etc.
+- AdministracionFarmaco: Es la manea en la que se administra un fármaco al paceinte, ejemplos: intramuscular, oral, intratecal, nasal, sublingual, oftálmica, etc.
+- Dosis: Es una cantidad de fármaco administrada por cantidad de tiempo. Se tiene en cuenta la unidad usada (miligrmoas, mililitros, etc),  el intervalo de tiempo (por ejemplo, cada 8 horas), y la cantidad que se asocia a la unidad.
+- FormaFaremaceutica: Es la forma en la que se presenta un medicamento, por ejemplo: crema, emulsión, jarabe, cápsulas, gel, polvo, etc.
+- MarcaMedicamento: Es la marca del medicamento.
+- Medicamento: Hace referencia a cada medicamento.
+- PrincipioActivo: Es el principio activo que se encuentra en los medicamentos.
+- UnidadDeMedida: Es la unidad con la que se miden cantidades, ejemplos: miligramos, mililitros, gotas, etc.
 
-ObraSocial: Es la obra social de un paciente.
-Paciente: Es un paciente que solicita servicios en el hospital.
-ResultadoDeEstudios: Son los resultados de cada estudio realizado a cada paciente.
-Sede: Es la dirección que le corresponde a cada sede de las obras sociales.
-TurnoCita: Son los datos de un turno para un paciente que solicita un cita con un médico.
-TurnoEstudio: Son los datos de un turno para un paciente que solicita la realización de un estudio médico.
+- ObraSocial: Es la obra social de un paciente.
+- Paciente: Es un paciente que solicita servicios en el hospital.
+- ResultadoDeEstudios: Son los resultados de cada estudio realizado a cada paciente.
+- Sede: Es la dirección que le corresponde a cada sede de las obras sociales.
+- TurnoCita: Son los datos de un turno para un paciente que solicita un cita con un médico.
+- TurnoEstudio: Son los datos de un turno para un paciente que solicita la realización de un estudio médico.
 
-CirugiaPaciente: Es una cirugía que se ha realizado un paciente.
-Diagnostico: Es el diagnóstico que puede recibir cada paciente, por ejemplo: gripe, diabetes, etc.
-DiagnosticoPaciente: Es el diagnóstico concreto que se ha dado a un paciente concreto.
-Empleado: Son los datos de cada empleado del hospital.
-EstudioMedico: Es cada estudio médico que pueden realizarse los pacientes, ejemplos: perfil renal, hemograma, electrocardiograma, etc.
-EstudioMedicoClasificacion: Teien que ver con como se clasifican los diferentes estudios médicos, ejemplos: laboratorio, diagnóstico por imágenes, cardiológico, etc.
-FisioterapiaPaciente: Es el tratamiento por fisioterapia que se ha realizado en un paciente.
-MedicamentoPaciente: Es el tratamiento que se ha realizado en un paciente con un medicamento concreto.
-PsicoterapiaPaciente: Es el tratamiento psicológico que se ha realizado en un paciente.
-RadioTerapiaPaciente: Es un tratamiento de radioterapia realizado en un paciente concreto.
-RolEmpleado: Es el rol que puede tener cada empleado, por ejemplo: cirujano, cardiólogo, cocinero, secretario, etc.
-Sector: Es el sector al que corresponde cada rol de los empleados, por ejemplo: medicina, limpieza, recursos humanso, gastronomía, etc.
-Signo: Son los signos que pueden presentar los pacientes de acuerdo a su diagnóstico: hiperglucemia, fiebre, etc.
-Sintoma: Son los sintomas que puede tener un paciente de acuerdo a su diagnóstico, por ejemplo: dolor de cabeza, nauseas, fatiga, etc.
-TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes, por ejemplo: cirugía a corazón abierto, cirugía de cadera, etc.
+- CirugiaPaciente: Es una cirugía que se ha realizado un paciente.
+- Diagnostico: Es el diagnóstico que puede recibir cada paciente, por ejemplo: gripe, diabetes, etc.
+- DiagnosticoPaciente: Es el diagnóstico concreto que se ha dado a un paciente concreto.
+- Empleado: Son los datos de cada empleado del hospital.
+- EstudioMedico: Es cada estudio médico que pueden realizarse los pacientes, ejemplos: perfil renal, hemograma, electrocardiograma, etc.
+- EstudioMedicoClasificacion: Teien que ver con como se clasifican los diferentes estudios médicos, ejemplos: laboratorio, diagnóstico por imágenes, cardiológico, etc.
+- FisioterapiaPaciente: Es el tratamiento por fisioterapia que se ha realizado en un paciente.
+- MedicamentoPaciente: Es el tratamiento que se ha realizado en un paciente con un medicamento concreto.
+- PsicoterapiaPaciente: Es el tratamiento psicológico que se ha realizado en un paciente.
+- RadioTerapiaPaciente: Es un tratamiento de radioterapia realizado en un paciente concreto.
+- RolEmpleado: Es el rol que puede tener cada empleado, por ejemplo: cirujano, cardiólogo, cocinero, secretario, etc.
+- Sector: Es el sector al que corresponde cada rol de los empleados, por ejemplo: medicina, limpieza, recursos humanso, gastronomía, etc.
+- Signo: Son los signos que pueden presentar los pacientes de acuerdo a su diagnóstico: hiperglucemia, fiebre, etc.
+- Sintoma: Son los sintomas que puede tener un paciente de acuerdo a su diagnóstico, por ejemplo: dolor de cabeza, nauseas, fatiga, etc.
+- TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes, por ejemplo: cirugía a corazón abierto, cirugía de cadera, etc.
 
 ---
 
-## Contacto
+## Microservicio de Contacto
 
 ---
 
@@ -55,7 +55,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}
 
@@ -67,7 +67,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
@@ -97,7 +97,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitued PUT
+#### Solicitued PUT (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
@@ -115,13 +115,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle=
 
@@ -137,7 +137,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Localidad) 
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}
 
@@ -145,7 +145,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades
 
@@ -171,7 +171,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades
 
@@ -188,13 +188,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre=
 
@@ -206,7 +206,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises/{id}
 
@@ -214,7 +214,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises
 
@@ -236,7 +236,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises
 
@@ -251,13 +251,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre=
 
@@ -267,7 +267,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Provincia) 
 
 ##### {CONTACTO-SERVICIO}/provincias
 
@@ -277,7 +277,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias
 
@@ -303,7 +303,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias
 
@@ -319,13 +319,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre=
 
@@ -333,7 +333,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-## Farmacia
+## Microservicio de Farmacia
 
 ---
 
@@ -341,7 +341,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes GET
+#### Solcitudes GET (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
@@ -351,7 +351,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
@@ -375,7 +375,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
@@ -391,13 +391,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre=
 
@@ -409,7 +409,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
 
@@ -419,7 +419,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
@@ -441,7 +441,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
@@ -456,13 +456,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}/via?via=
 
@@ -472,7 +472,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}
 
@@ -482,7 +482,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis
 
@@ -510,7 +510,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis
 
@@ -527,13 +527,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}/cantidad?cantidad=
 
@@ -547,7 +547,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}
 
@@ -557,7 +557,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
@@ -580,7 +580,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-### Solicitudes PUT
+### Solicitudes PUT (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
@@ -593,13 +593,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}/nombre?nombre=
 
@@ -609,7 +609,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
@@ -619,7 +619,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes POST
+#### Solcitudes POST (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas
 
@@ -642,7 +642,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes PUT
+#### Solcitudes PUT (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas
 
@@ -657,13 +657,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}/nombre?nombre=
 
@@ -673,7 +673,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
@@ -691,7 +691,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
@@ -734,7 +734,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
@@ -753,13 +753,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/nombre?nombre=
 
@@ -779,7 +779,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
@@ -791,7 +791,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
@@ -813,7 +813,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
@@ -828,13 +828,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
 ---
 
-#### Solocitudes PATCH
+#### Solocitudes PATCH (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}/agregar-accion-terapeutica?accion-terapeutica-id=
 
@@ -846,7 +846,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
@@ -858,7 +858,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
@@ -882,7 +882,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes PUT
+#### Solcitudes PUT (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
@@ -898,13 +898,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre=
 
@@ -912,7 +912,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-## PACIENTES
+## Microservicio de Pacientes
 
 ---
 
@@ -920,7 +920,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solcitudes GET
+#### Solcitudes GET (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
@@ -932,7 +932,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
@@ -954,7 +954,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 --- 
 
-#### Solicitudes PUT
+#### Solicitudes PUT (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
@@ -969,13 +969,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Soloicitudes DELETE
+#### Soloicitudes DELETE (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombvre?nombre=
 
@@ -985,7 +985,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
@@ -1009,7 +1009,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
@@ -1056,7 +1056,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
@@ -1081,13 +1081,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni=
 
@@ -1119,7 +1119,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
@@ -1131,7 +1131,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
@@ -1159,7 +1159,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
@@ -1176,13 +1176,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente= &opcion=
 
@@ -1198,7 +1198,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
@@ -1210,7 +1210,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes
 
@@ -1242,7 +1242,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes
 
@@ -1257,13 +1257,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id=
 
@@ -1279,7 +1279,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
@@ -1295,7 +1295,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
@@ -1332,7 +1332,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
@@ -1354,13 +1354,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
 
@@ -1378,7 +1378,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
@@ -1394,7 +1394,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
@@ -1433,7 +1433,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
@@ -1454,13 +1454,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente= &opcion=
 
@@ -1476,7 +1476,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-## Hospital
+## Microservicio de Hospital
 
 ---
 
@@ -1484,7 +1484,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
@@ -1498,7 +1498,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
@@ -1531,7 +1531,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
@@ -1548,13 +1548,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
 
@@ -1572,7 +1572,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
 
@@ -1582,7 +1582,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
@@ -1626,7 +1626,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
@@ -1644,13 +1644,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-sintoma?sintoma-id=
 
@@ -1666,7 +1666,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
 
@@ -1678,7 +1678,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
@@ -1710,7 +1710,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
@@ -1728,13 +1728,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
 
@@ -1750,7 +1750,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}
 
@@ -1772,7 +1772,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
@@ -1821,7 +1821,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
@@ -1848,13 +1848,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni=
 
@@ -1886,7 +1886,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solictudes GET
+#### Solictudes GET (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
@@ -1897,7 +1897,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
@@ -1921,7 +1921,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
@@ -1936,13 +1936,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre=
 
@@ -1952,7 +1952,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
@@ -1964,7 +1964,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Soplicitudes POST
+#### Soplicitudes POST (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
@@ -1992,7 +1992,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
@@ -2009,13 +2009,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solictudes DELETE
+#### Solictudes DELETE (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
 ---
 
-#### Solictudes PATCH
+#### Solictudes PATCH (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre=
 
@@ -2027,7 +2027,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
 
@@ -2041,7 +2041,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
@@ -2068,7 +2068,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
@@ -2087,13 +2087,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni= &opcion=
 
@@ -2107,7 +2107,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
@@ -2123,7 +2123,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
@@ -2153,7 +2153,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
@@ -2173,13 +2173,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
 
@@ -2197,7 +2197,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
@@ -2211,7 +2211,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
@@ -2239,7 +2239,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
@@ -2257,13 +2257,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 --- 
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
 
@@ -2277,7 +2277,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
@@ -2289,7 +2289,9 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde= &hasta=
 
-#### Solicitudes POST
+---
+
+#### Solicitudes POST (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
@@ -2315,7 +2317,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
@@ -2331,13 +2333,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~
 
 ---
-#### Solcitudes DELETE
+#### Solcitudes DELETE (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni= &opcion=
 
@@ -2351,7 +2353,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
@@ -2363,7 +2365,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
@@ -2388,7 +2390,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 }
 ~~~
 ---
-#### Solicitudes PUT
+#### Solicitudes PUT (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
@@ -2404,13 +2406,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/nombre?nombre
 
@@ -2422,7 +2424,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
@@ -2431,7 +2433,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre=
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
@@ -2454,7 +2456,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
@@ -2468,13 +2470,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre=
 
@@ -2484,7 +2486,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
@@ -2498,7 +2500,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos
 
@@ -2528,7 +2530,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 ~~~
 
 ---
-#### Solictudes PUT
+#### Solictudes PUT (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos
 
@@ -2548,13 +2550,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solictudes DELETE
+#### Solictudes DELETE (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
 ---
 
-#### Solictudes PATCH
+#### Solictudes PATCH (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre=
 
@@ -2566,13 +2568,21 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion <!-- Request body -->
 
+- **body:**
+
+~~~javascript
+{
+    texto: string
+}
+~~~
+
 ---
 
 ### Sintoma
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
@@ -2582,7 +2592,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
@@ -2605,7 +2615,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
@@ -2621,13 +2631,13 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE
+#### Solicitudes DELETE (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
 ---
 
-#### Solicitudes PATCH
+#### Solicitudes PATCH (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre=
 
@@ -2637,7 +2647,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes GET
+#### Solicitudes GET (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
@@ -2649,7 +2659,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes POST
+#### Solicitudes POST (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
@@ -2673,7 +2683,7 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes PUT
+#### Solicitudes PUT (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
@@ -2690,16 +2700,21 @@ TratamientoQuirurgico: Son las cirugías que pueden realizarse en los pacientes,
 
 ---
 
-#### Solicitudes DELETE 
+#### Solicitudes DELETE (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
 ---
 
-#### Solcitudes PATCH
+#### Solcitudes PATCH (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre=
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion <!-- Request Body-->
 
 
+~~~javascript
+{
+    texto: string
+}
+~~~
