@@ -59,17 +59,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}
 
+- Muestra una dirección buscando por id
+
 ##### {CONTACTO-SERVICIO}/direcciones
+
+- Muestra todas las direcciones de la base de datos
 
 ##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad={x}
 
+- Muestra todas las direcciones que se encuentren en una laocalidad específica
+
 ##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
+
+- Muestra todas las direcciones que se encuentren en una provicnia específica
 
 ---
 
-#### Solicitudes POST (Direccion)
+#### Solicitud POST (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones
+
+- Guarda una dirección
 
 - **body:**
 
@@ -97,9 +107,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitued PUT (Direccion)
+#### Solicitud PUT (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones
+
+- Edita una dirección de la base de datos
 
 - **body**
 
@@ -119,17 +131,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}
 
+- Borra una dirección de la base de datos
+
 ---
 
 #### Solicitudes PATCH (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle={x}
 
+- Modifica la calle de una dirección
+
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/altura?altura={x}
+
+- Modifica la altura de una dirección
 
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento={x}
 
+- Modifica el departamento de una dirección
+
 ##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id={x}
+
+- Modifica la localidad de una dirección
 
 ---
 
@@ -141,13 +163,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}
 
+- Muestra una localidad buscándola por id
+
 ##### {CONTACTO-SERVICIO}/localidades
+
+- Muestra todas las localidades de la base de datos
 
 ---
 
-#### Solicitudes POST (Localidad)
+#### Solicitud POST (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades
+
+- Guarda una localidad en la base de datos con los datos del "body"
 
 - **body:**
 
@@ -171,9 +199,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes PUT (Localidad)
+#### Solicitud PUT (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades
+
+- Modifica una localidad de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -188,9 +218,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes DELETE (Localidad)
+#### Solicitud DELETE (Localidad)
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}
+
+- Borra una localidad de acuerdo al id de la url
 
 ---
 
@@ -198,7 +230,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre={x}
 
+- Modifica el nombre de una localidad de acuerdo al id de la url
+
 ##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id={x}
+
+- Modifica la provicnia a la que perytenece una localidad de acuerdo al id de la url
 
 ---
 
@@ -210,13 +246,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/paises/{id}
 
+- Muestra los datos de un pais de la base de datos de acuerdo al id de la URL
+
 ##### {CONTACTO-SERVICIO}/paises
+
+- Muestra todos los paises de la base de datos
 
 ---
 
-#### Solicitudes POST (Pais)
+#### Solicitud POST (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises
+
+- Guarda un nuevo pais en la base de datos con los datos del "body" de la solicitud
 
 - **body:**
 
@@ -236,9 +278,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes PUT (Pais)
+#### Solicitud PUT (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises
+
+- Modifica un pais de la base de datos de usando los datos del "body" de la solicitud
 
 - **body:**
 
@@ -251,15 +295,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes DELETE (Pais)
+#### Solicitud DELETE (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises/{id}
+
+- Borra un pais de la base de datos de acuerdo al id de la URL
 
 ---
 
 #### Solicitudes PATCH (Pais)
 
 ##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre={x}
+
+- Modifica el nombre de un pais de la base de datos de acuerdo al id de la URL
 
 ---
 
@@ -271,15 +319,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/provincias
 
-##### {CONTACTO-SERVICIO}/provincias/{ID}
+- Muestra todas las provicnias de la base de datos
+
+##### {CONTACTO-SERVICIO}/provincias/{id}
+
+- Muestra una provincia de la base de datos de acuerdo al id de la URL
 
 ##### {CONTACTO-SERVICIO}/provincias/nombre?nombre={x}
 
+- Muestra una provincia de la base de datos buscándola por nombre
+
 ---
 
-#### Solicitudes POST (Provincia)
+#### Solicitud POST (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias
+
+- Guarda una provincia en la base de datos con los datos de "body" de la solicitud
 
 - **body:**
 
@@ -303,7 +359,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes PUT (Provincia)
+#### Solicitudes PUT (Provincia) <!-- Continuar desde acá-->
 
 ##### {CONTACTO-SERVICIO}/provincias
 
