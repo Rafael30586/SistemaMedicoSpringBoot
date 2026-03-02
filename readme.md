@@ -1207,7 +1207,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una obra social de acuerdo a lo establecido en la URL de la solciitud
+- Modifica el nombre de una obra social de acuerdo a lo establecido en la URL de la solicitud
 
 ---
 
@@ -1219,29 +1219,51 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
+- Muestra un apciente de la base de datos de acuerdo al id de la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes
+
+- Muestra todos los pacientes de la base de datos 
 
 ##### {PACIENTES-SERVICIO}/pacientes/dni?dni={x}
 
+- Muestra a un paciente de la base de datos de acuerod al DNI de la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes/nombre?nombre={x}
+
+- Muestra a los pacientes de la base de datos que posean el nombre establecido en la URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/apellido?apellido={x}
 
+- Muestra a los pacientes de la base de datos que posean el apellido establecido en la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes/email?email={x}
+
+- Muestra a un paciente de la base de datos de acuerdo al email de la URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/telefono?numero-telefonico={x}
 
+- Muestra a los pacientes de la base de datos que posean el número telefónico de la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?desde={x}&hasta={x}
+
+- Muestra a los pacientes de la base de datos cuya fecha de nacimeinto esté comprendida en el intervalo establecido en la URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?localidad={x}
 
+- Muestra a los pacientes cuya localidad de nacimiento sea la establecida en la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes/domicilio?calle={x}
+
+- Muestra a los pacientes de la base de datos cuyo domicilio se encientre en la calle de la URL
 
 ---
 
 #### Solicitudes POST (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes
+
+- Guarda un paciente en la base de datos de acuerdo a lo establecido en el body de la solicitud
 
 - **body:**
 
@@ -1290,6 +1312,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
+- Modifica un paciente de la base de datos de acuerdo a lo establecido en el body de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -1315,37 +1339,63 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
+- Borra un paciente de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (Paciente)
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni={x}
 
+- Modifica el DNI de un paciente de acuerdo a lo establecido en la URL
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/primer-nombre?id-o-dni={x}&opcion={x}&nombre={x}
+
+- Modifica el primer nombre de un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/segundo-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
+- Modifica el segundo nombre de un paciente buscándolo por id o DNI
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-paterno?id-o-dni={x}&opcion={x}&apellido={x}
+
+- Modifica el apellido paterno de un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-materno?id-o-dni={x}&opcion={x}&apellido={x}
 
+- Modifica el apellido materno de un paciente buscándolo por id o DNI
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/email?id-o-dni={x}&opcion={x}&email={x}
+
+- Modifica el email de un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
 
+- Agreaga un número telefónico a un paciente buscándolo por id o DNI
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
+
+- Quita un número telefónico a un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/fecha-nacimiento?id-o-dni={x}&opcion={x}&fecha={x}
 
+- Modifica la fecha de nacimiento de un paciente buscándolo por id o DNI
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/lugar-nacimiento?id-o-dni={x}&opcion={x}&localidad-id={x}
+
+- Modifica el lugar de nacimiento de un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/domicilio?id-o-dni={x}&opcion={x}&direccion-id={x}
 
+- Modifica el domicilio de un paciente buscándolo por id o DNI
+
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/obra-social?id-o-dni={x}&opcion={x}&obra-social-id={x}
+
+- Modifica la obra social de un paciente buscándolo por id o DNI
 
 ---
 
-### ResultadosDeEstudios
+### ResultadosDeEstudios <!-- Continuar desde acá -->
 
 ---
 
