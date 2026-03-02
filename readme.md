@@ -67,7 +67,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad={x}
 
-- Muestra todas las direcciones que se encuentren en una laocalidad específica
+- Muestra todas las direcciones que se encuentren en una localidad específica
 
 ##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
 
@@ -234,7 +234,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id={x}
 
-- Modifica la provicnia a la que perytenece una localidad de acuerdo al id de la url
+- Modifica la provincia a la que perytenece una localidad de acuerdo al id de la url
 
 ---
 
@@ -359,9 +359,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-#### Solicitudes PUT (Provincia) <!-- Continuar desde acá-->
+#### Solicitudes PUT (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias
+
+- Modifica una provincia
 
 - **body:**
 
@@ -379,13 +381,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}
 
+- Borra una provincia de la base de datos de acuerdo a su id
+
 ---
 
 #### Solicitudes PATCH (Provincia)
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre={x}
 
+- Modifica el nombre de una provincia buscándola por id
+
 ##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id={x}
+
+-Modifica el pais al que pertyenece una provincia asignándole el id del pais que corresponda
 
 ---
 
@@ -401,15 +409,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
+- Muestra todas las acciones terapéuticas de la base de datos
+
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
 
+- Muestra una acción terapéutica buscándola por su id
+
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/nombre?nombre={x}
+
+- Muestra un acción terapéutica buscándola por su nombre
 
 ---
 
 #### Solicitudes POST (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+- Guarda una acción terpéutica en la base de datos con los datos del body
 
 - **body:**
 
@@ -435,6 +451,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
+- Modifica una acción terapéutica de acuerdo al id que colocamos en el body
+
 - **body:**
 
 ~~~javascript
@@ -451,13 +469,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
 
+- Borra una acción terapéutica de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (AccionTerapeutica)
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre={x}
 
-##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion <!-- ¿Request Body?-->
+- Modifica el nombre de una acción terapéutica de acuerdo al id de la URL
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion 
+
+- Modifica la descripción de una acción terapéutica de acuerdo al id de la url y al texto del body
+
+- **body:**
+
+~~~javascript
+{
+    texto: string
+}
+~~~
 
 ---
 
@@ -469,15 +501,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
 
+- Muestra un administración de fármaco buscándola por el id
+
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
+- Muestra todas las administraciones de fármaco de la base de datos
+
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/via?via={x}
+
+- Muestra una administración de fármaco buscándola por la vía
 
 ---
 
 #### Solicitudes POST (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
+
+- Guarda una administración de fármaco nueva en la base de datos con la información del body de la solicitud
 
 - **body:**
 
@@ -501,6 +541,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
+- Modifica una administración de fármaco con la información del body de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -516,11 +558,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}
 
+- Borra una administración de fármaco de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (AdministracionFarmaco)
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco/{id}/via?via={x}
+
+- Modifica la vía de una administración de fármaco de acuerdo a los datos en la URL
 
 ---
 
@@ -532,15 +578,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}
 
+- Muestra una dosis de la base de datos buscándola por el id
+
 ##### {FARMACIA-SERVICIO}/dosis
 
+- Muestra todas las dosis de la base de datos
+
 ##### {FARMACIA-SERVICIO}/dosis/cantidad-unidad-intervalo?cantidad={x}&nombre-unidad={x}&intervalo={x}
+
+- Busca una dosis de la base de datos de acuerdo a los daots de la URL.
 
 ---
 
 #### Solicitudes POST (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis
+
+- Guarda una dosis en la base de datos de acuerdo a los datos del body
 
 - **body:**
 
@@ -570,6 +624,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis
 
+- Modifica una dosis de la base de datos de acuerdo a los datos del body
+
 - **body:**
 
 ~~~javascript
@@ -587,15 +643,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}
 
+- Borra una dosis de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (Dosis)
 
 ##### {FARMACIA-SERVICIO}/dosis/{id}/cantidad?cantidad={x}
 
+- Modifica la cantidad de la dosis de acuerdo a lo establecido en la URL
+
 ##### {FARMACIA-SERVICIO}/dosis/{id}/unidad?unidad-id={x}
 
+- Modifica la unidad de la dosis de acuerdo a lo establecido en la URL
+
 ##### {FARMACIA-SERVICIO}/dosis/{id}/intervalo?intervalo={x}
+
+- Modifica el intervalo de tiempo de la dosis de acuerdo a lo establecido en la URL
 
 ---
 
@@ -607,15 +671,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}
 
+- Muestra una forma farmacéutica de la base de datos buscándola por id
+
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
+- Muestra todas las formas farmacéuticas de la base de datos
+
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/nombre?nombre={x}
+
+- Muestra una forma farmacéutica de la base de datos buscándola por su nombre
 
 ---
 
 #### Solicitudes POST (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
+
+- Guarda una forma farmacéutica en la base de datos con los datos del body
 
 - **body:**
 
@@ -640,6 +712,10 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
+- Modifica una forma farmacértica de la base de datos de acuerdo a los datos del body 
+
+- **body:**
+
 ~~~javascript
 {
     id: numero_entero,
@@ -653,11 +729,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}
 
+- Borra una forma farmacéutica de la base de datos de acuerodo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (FormaFarmaceutica)
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}/nombre?nombre={x}
+
+- Modifica el nombre de una forma farmacéutica de acuerdo a lo establecido en la url
 
 ---
 
@@ -669,15 +749,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
+- Mesutra una marca de medicamento de la base de datos buscándola por id
+
 ##### {FARMACIA-SERVICIO}/marcas
 
+- Muestra todas las marcas de medicamento de la base de datos
+
 ##### {FARMACIA-SERVICIO}/marcas/nombre?nombre={x}
+
+- Muestra una marca de medicamento de la base de datos buscándola por nombre
 
 ---
 
 #### Solcitudes POST (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas
+
+- Guarda una marca de medicamento en la base de datos de acuerdo a los datos dl body
 
 - **body:**
 
@@ -702,6 +790,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas
 
+- Modifica una marca de medicamento de la base de datos de acuerdo a los datos del body
+
 - **body:**
 
 ~~~javascript
@@ -717,11 +807,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
+- Borra una marca de medicamento de la base de datos de acuerod al id de la URL
+
 ---
 
 #### Solicitudes PATCH (MarcaMedicamento)
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}/nombre?nombre={x}
+
+- Modifica el nombre de una marca de medicamento de acuerdo a lo establecido en la URL
 
 ---
 
@@ -733,23 +827,39 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
+- Muestra un medicamento de la base de datos buscándolo por id
+
 ##### {FARMACIA-SERVICIO}/medicamentos
+
+- Muestra todos los medicamentos de la base de datos
 
 ##### {FARMACIA-SERVICIO}/medicamentos/nombre?nombre={x}
 
+- Muestra un medicamento de la base de datos buscándolo por nombre
+
 ##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo={x}
+
+- Muestra todos los medicamentos que posean el principio activo establecido enn la URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica={x}
 
+- Muestra todos los medicamentos que posean la forma farmacéutica establecida en la URL
+
 ##### {FARMACIA-SERVICIO}/medicamentos/administracion?via={x}
 
+- Muestra todos los medicamentos que se admnistren por la vía establecida en la URL
+
 ##### {FARMACIA-SERVICIO}/medicamentos/marca?nombre-marca={x}
+
+- Muestra todos los medicamentos de la marca establecida en la URL
 
 ---
 
 #### Solicitudes POST (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos
+
+- Guarda en la base de datos un medicamento de acuerdo a lo establecido en el body de la solicitud
 
 - **body:**
 
@@ -794,6 +904,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
+- Modifica un medicamento de la base de datos de acuerdo a lo establecido en el body de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -813,21 +925,35 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
+- Borra un medicamento de la base de datos de acuerdo al id establecido en la URL
+
 ---
 
 #### Solicitudes PATCH (Medicamento)
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/nombre?nombre={x}
 
+- Modifica el nombre de un medicamento de la base de datos de acuerdo a los datos de la URL
+
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/agregar-principio-activo?principio-activo-id={x}
+
+- Agrega un principio activo a un medicamento de la base de datos de acuerdo a lo establecido en la URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/quitar-principio-activo?principio-activo-id={x}
 
+- Quita un principio activo de un medicamento de la base de datos de acuerdo a lo establecido en la URL 
+
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/forma-farmaceutica?forma-farmaceutica-id={x}
+
+- Modifica la forma farmacéutica de un medicamento de la base de datos de acuerdo a lo establecido en la URL  
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/administracion?administracion-id={x}
 
+- Modifica la vía de administración de un medicamento de acuerdo a lo establecido en la URL
+
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/marca?marca-id={x}
+
+- Modifica la marca de un medicamento de la base de datos de acuerdo a lo establecido en la URL
 
 ---
 
@@ -839,17 +965,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
+- Muestra un principio activo de la base de datos buscándolo por la URL
+
 ##### {FARMACIA-SERVICIO}/principios-activos
+
+- Muestra todos los principios activos de la base de datos
 
 ##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre={x}
 
+- Muestra un principio activo de la base de datos buscándolo por su nombre 
+
 ##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica={x}
+
+- Muestra todos los principios activos de la base de datos que contengan la acción terpaéutica estalbecida en la URL
 
 ---
 
 #### Solicitudes POST (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos
+
+- Guarda un principio activo en la base de datos de acuerdo a los datos establecidos en el body
 
 - **body:**
 
@@ -873,6 +1009,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
+- Modifica un principio activo de acuerdo  a los datos estblecidos en el body
+
 - **body:**
 
 ~~~javascript
@@ -888,13 +1026,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
+- Borra un principio activo de la base de datos de acuerdo al id establecido en la URL 
+
 ---
 
 #### Solocitudes PATCH (PrincipioActivo)
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}/agregar-accion-terapeutica?accion-terapeutica-id={x}
 
+- Agrega una acción terapéutica a un principio activo de acuerdo a lo establecido en la URL
+
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}/quitar-accion-terapeutica?accion-terapeutica-id={x}
+
+- Quita una acción terapéutica a un principio activo de acuerdo a lo establecido en la URL
 
 ---
 
@@ -906,17 +1050,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
+- Muestra una unidad de medida de la base de datos buscándola por id
+
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
+
+- Muestra todas las unidades de medida de la base de datos
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/nombre?nombre={x}
 
+- Muestra una udnidad de medida de la base de datos buscándola por su nombre
+
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/simbolo?simbolo={x}
+
+- Muestra una unidad de la base de datos buscándola por su símbolo
 
 ---
 
 #### Solicitudes POST (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
+
+- Guarda una undidad de medida en la base de datos de acuerdo a lo establecido en el body
 
 - **body:**
 
@@ -942,6 +1096,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
+- Modifica un unidad de medida de acuerdo a lo establecido en el body
+
 - **body:**
 
 ~~~javascript
@@ -958,13 +1114,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
+- Elimina una unidad de medida de la bsse de datos de acuerdo a lo establecido en la URL
+
 ---
 
 #### Solicitudes PATCH (UnidadDeMedida)
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre={x}
 
+- Modifica el  nombre de una unidad de medida de acuerod a lo estsblecdio en la URL
+
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/simbolo?simbolo={x}
+
+- Modifica el símbolo de una unidad de medida de acuerdo a lo establencido en la URL
 
 ---
 
@@ -980,17 +1142,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
+- Muestra un obra social buscándola por id
+
 ##### {PACIENTES-SERVICIO}/obras-sociales
+
+- Muestra todas las obras sociales de la base de datos
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/nombre?nombre={x}
 
-##### {PACIENTES-SERVICIO}/obras-sociales
+- Muestra una obra social de la base de datos buscándola por su nombre
 
 ---
 
 #### Solicitudes POST (ObraSocial)
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
+
+- Guarda una obra social en una base de datos de acuerod a lo establecido en el body de la solicitud
 
 - **body:**
 
@@ -1014,6 +1182,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
+- Modifica una obra social de la base de datos de acuerdo al body de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -1029,11 +1199,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
+- Borra una obra social de la base de datos de acuerod al id de la URL
+
 ---
 
 #### Solicitudes PATCH (ObraSocial)
 
-##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombvre?nombre={x}
+##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombre?nombre={x}
+
+- Modifica el nombre de una obra social de acuerdo a lo establecido en la URL de la solciitud
 
 ---
 
