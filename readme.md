@@ -1395,7 +1395,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### ResultadosDeEstudios <!-- Continuar desde acá -->
+### ResultadosDeEstudios 
 
 ---
 
@@ -1403,17 +1403,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
+- Muestra los resultados de estudios de un paciente de acuerdo al id de la URL
+
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+- Muestra todos los resultados de estudios de la base de datos
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/paciente?dni={x}
 
+- Muestra todos los resultados de estudios de un paciente buscando por su DNI
+
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/estudio?nombre-estudio={x}
+
+- Muestra resultados de estudios de la base de datos buscando por nombre de estudio
 
 ---
 
 #### Solicitudes POST (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
+
+- Guarda un conjunto de resultados de estudios de un paciente en la base de datos
 
 - **body:**
 
@@ -1443,6 +1453,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
+- Modifica un conjunto de resultados de estudios de un paciente de acuerdo al body de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -1460,17 +1472,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
+- Borra un conjunto de resultados de estudios de la base de datos de acuerdo al id de la solicitud
+
 ---
 
 #### Solicitudes PATCH (ResultadosDeEstudios)
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
+- Modifica el paciente de un conjunto de resultados de estudios de acuerdo a los datos de la URL
+
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/agregar-estudio?estudio-id={x}
+
+- Agrega un estudio a un conjunto de resultados de estudios de acuerdo a los datos de la URL de la solicitud
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/quitar-estudio?estudio-id={x}
 
+- Quita un estudio de un conjunto de resultados de estudios de acuerdo a los datos de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/url-informe?url-informe={x}
+
+- Modifica la URL del informe de un conjunto de resultados de estudios de acuerdo los datos de la URL de la solicitud
 
 ---
 
@@ -1482,17 +1504,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
+- Muestra una sede de la base de datos de acuerdo al id de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/sedes
+
+- Muestra todas las sedes de la base de datos
 
 ##### {PACIENTES-SERVICIO}/sedes/direccion?calle={x}
 
+- Muestra las sedes de la base de datos buscándolas por la calle
+0
 ##### {PACIENTES-SERVICIO}/sedes/{id}/telefono?telefono={x}
+
+- Muestra las sedes de la base de datos buscándolas por el teléfono
 
 ---
 
 #### Solicitudes POST (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes
+
+- Guarda una sede en la base de datos de acuerdo al body de la solicitud
 
 - **body:**
 
@@ -1526,6 +1558,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes
 
+- Modifica una sede de la base de datos de acuerdo al body de la solicitud
+
 ~~~javascript
 {
     id: numero_entero,
@@ -1541,17 +1575,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
+- Borra una sede de la base de datos de acuerod al id de la URL de la solicitud
+
 ---
 
 #### Solicitudes PATCH (Sede)
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id={x}
 
+- Modifica la dirección de una sede de la base de datos de acuerdo a los datos de la URL
+
 ##### {PACIENTES-SERVICIO}/sedes/{id}/agregar-telefono?telefono={x}
+
+- Agrega un número telefónico a una sede de la base de datos de acuerdo a los datos de la URL
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/quitar-telefono?telefono={x}
 
+- Quita un número telefónico a una sede de la base de datos de acuerdo a los datos de la URL
+
 ##### {PACIENTES-SERVICIO}/sedes/{id}/obra-social?obra-social-id={x}
+
+- Modifica la obra social de una sede de acuerdo a los datos de la URL de la solicitud
 
 ---
 
@@ -1563,15 +1607,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
+- Muestra los datos de un turno para una cita con un profesional según la id de la URL
+
 ##### {PACIENTES-SERVICIO}/turnos-cita
+
+- Muestra todos los turnos de citas con profesionales de la base de datos
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
+- Muestra los turnos de citas con profesionales buscando por DNI de paciente
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
+
+- Muestra los turnos de citas con profesionales buscando por fecha de turno
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
+- Muestra los turnos de citas con profesionales buscando por periodo de realización de cita
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/profesional?profesional-id={x}
+
+- Muestra los turnos de citas con profesionales buscando por id de profesional
 
 ---
 
@@ -1579,6 +1635,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
+- Guarda un turno en la base de datos de acuerdo a los datos del body de la solicitud
 
 - **body:**
 
@@ -1616,6 +1673,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
+- Modifica un turno de cita con un profesional de acuerdo a los datos del body de la soloicitud
 
 - **body:**
 
@@ -1638,19 +1696,31 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
+- Borra un turno de cita con un profesional de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (TurnoCita)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
+- Modifica el paciente de un turno de acuerdo a los datos de la URL
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
+
+- Modifica la fecha de solicitud de un turno con un profesional de acuerdo a los datos de la URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
+- Modifica el horario de un turno con un profesional de aucerdo a los datos de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
 
+- Modifica el estado en el que se encuentra un turno de una cita con un profesional de acuerdo a los datos de la URL
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
+
+- Modifica la cobertura que tiene un paciente en su cita con un profesional de acuerdo a los datos de la URL
 
 ---
 
