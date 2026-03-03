@@ -1732,21 +1732,35 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
+- Muestra los datros de un turno para realización de estudios de acuerdo al id de la URL
+
 ##### {PACIENTES-SERVICIO}/turnos-estudio
+
+- Muestra los datos de todos los turnos para realización de estudios de la base de datos 
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
+- Muestra los datos de los turnos para realización de estudios buscando por DNI de paciente
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
+
+- Muestra los datos de los turnos para realización de estudios buscando fecha de turno
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
+- Muestra los datos de los turnos para realización de estudios buscando por periodo de realización de estudios
+
 ##### {PACIENTES-SERVICIO}/turnos-estudio/estudio?estudio-id={x}
+
+- Muestra los datos de los turnos para realización de estudios buscando por estudio individual
 
 ---
 
 #### Solicitudes POST (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
+
+- Guarda un turno para realización de estudios en la base de datos de acuerdo a los datos del body de la solcitud
 
 - **body:**
 
@@ -1780,12 +1794,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 }
 ~~~
 
-
 ---
 
 #### Solicitudes PUT (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
+
+- Modifica los datos de un turno para la realización de estudios según los datos del "body" de la solicitud
 
 - **body:**
 
@@ -1808,21 +1823,35 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
+- Borra un turno para realización de estudios de la base de datos según los datos de la URL
+
 ---
 
 #### Solicitudes PATCH (TurnoEstudio)
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
+- Modifica el paciente de un turno para realización de estudios según los datos de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
+
+- Modifica la fecha de solicitud de un turno para realización de estudios según los datos de la URL de la solicitud
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
+- Modifica el horario de un turno para realización de estudios según los datos de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
+
+- Modifica el estado de un turno para realización de estudios según los datos de la URL de la solicitud
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
 
+- Modifica la cobertura para el paciente de un turno para realización de estudios según los datos de la URL de la solicitud
+
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id={x}
+
+- Modifica el estudio de un turno para realización de estudios según los datos de la URL de la solicitud
 
 ---
 
@@ -1838,19 +1867,31 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
+- Busca una cirugía realizada en un pacidente de acuerdo al id de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+- Muestra todas las cirugías realizadas en pacientes de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Muestra las cirugías realizadas en pacientes buscando por id o DNI de paciente
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/cirugia?cirugia={x}
 
+- Muestra las cirugías realizadas en pacientes buscando por tratamiento quirúrgico
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/periodo?desde={x}&hasta={x}
+
+- Muestra las cirugías realizadas en pacientes buscando por período
 
 ---
 
 #### Solicitudes POST (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
+
+- Guarda en la base de datos una cirugía realizada en un paciente de acuerdo a los datos del body de la solcitud
 
 - **body:**
 
@@ -1885,6 +1926,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
+- Modifica una cirugía realizada en un paciente de la base de datos de acuerdo al "body" de la solicitud
 
 ~~~javascript
 {
@@ -1902,19 +1944,31 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
+- Borra una cirugía realizada en un paciente de la base de datos de acuerDO al id de la URL
+
 ---
 
 #### Solicitudes PATCH (CirugiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/cirugia?cirugia-id={x}
+
+- Modifica el tratamiento quirúrgico de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/fecha?fecha={x}
 
+- Modifica la fecha de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio={x}
 
+- Modifica el horario de inicio de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin={x}
+
+- Modifica el horario de final de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
 
 ---
 
