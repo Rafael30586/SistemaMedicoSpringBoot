@@ -1980,9 +1980,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
 
+- Muestra un diagnóstico de la base de datos buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
+- Muestra todos los diagnósticos de la base de datos
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos/nombre?nombre={x}
+
+- Muestra un diagnóstico de la base de datos buscándolo por nombre
 
 ---
 
@@ -1990,6 +1996,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
+- Guarad un diagnóstico en la base de datos de acuerdo a los datos del body de la solicitud
 
 - **body:**
 
@@ -2034,6 +2041,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
+- Modifica un diagnóstico de la base de datos de acuerdo a los datos del body de la solicitud
 
 - **body:**
 
@@ -2052,17 +2060,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
 
+- Borra de la base de datos a un diagnóstico de acuerdo al id de la URL 
+
 ---
 
 #### Solicitudes PATCH (Diagnostico)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-sintoma?sintoma-id={x}
 
+- Agrega un síntoma a un diagnóstico de la base de datos de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-sintoma?sintoma-id={x}
+
+- Quita un síntoma a un diagnóstico de la base de datos de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-signo?signo-id={x}
 
+- Agrega un signo a un diagnóstico de la base de datos de acuerod a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-signo?signo-id={x}
+
+- Quita un síntoma a un diagnóstico de la base de datos de acuerod a los datos de la URL de la solicitud
 
 ---
 
@@ -2074,11 +2092,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
 
+- Muestra un diagnóstico realizado en un paciente buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
+
+- Muestra todos los diagnósticos realizados en pacientes de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/paciente?pacinete-id-o-dni={x}&opcion={x}
 
+- Muestra los diagnósticos realizados en un paciente
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/diagnostico?diagnostico={x}
+
+- Muestra los diagnósticos realizados en pacientes buscando por diagnóstico
 
 ---
 
@@ -2086,6 +2112,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
+- Guarda en la base de datos un diagnóstico realizado en un paciente de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2118,6 +2145,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes
 
+- Modifica los datos de un diagnóstico realizado en un paciente de acuerdo al "body" de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -2136,17 +2165,27 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}
 
+- Borra un diagnóstico realizado en un paciente de la base de datos de acuerdo al id de la URL de la solicitud
+
 ---
 
 #### Solicitudes PATCH (DiagnosticoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de un diagnóstico realizado en un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/diagnostico?diagnostico-id={x}
+
+- Modifica el diagnóstico de un diagnóstico realizado en un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-inicio?inicio={x}
 
+- Modifica la fecha de inicio de un diagnóstico realizado en un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/diagnosticos-pacientes/{id}/fecha-final?fin={x}
+
+- Modifica la fecha de final de un diagnóstico realizado en un paciente de acuerdo a los datos de la URL de la solicitud
 
 ---
 
@@ -2158,21 +2197,39 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}
 
+- Muestra a un empleado de la base de datos buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/empleados
+
+- Muestra a todos los empleados de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/empleados/dni?dni={x}
 
+- Muestra a un empleado de la base de datos buscándolo por DNI
+
 ##### {HOSPITAL-SERVICIO}/empleados/nombre?nombre={x}
+
+- Muestra a los empleados de la base de datos buscándolos por nombre
 
 ##### {HOSPITAL-SERVICIO}/empleados/apellido?apellido={x}
 
+- Muestra a los empleados de la base de datos buscándolos por apellido
+
 ##### {HOSPITAL-SERVICIO}/empleados/email?email={x}
+
+- Muestra a un empleado de la base de datos buscándolo por email
 
 ##### {HOSPITAL-SERVICIO}/empleados/matricula?matricula={x}
 
+- Muestra a un empleado de la base de datos buscándolo por matrícula profesional
+
 ##### {HOSPITAL-SERVICIO}/empleados/rol?rol={x}
 
+- Muestra a empleados de la base de datos buscándolos por rol
+
 ##### {HOSPITAL-SERVICIO}/empleados/rango-salarial?minimo={x}&maximo={x}
+
+- Muestra a empleados de la base de datos buscándolos por su salario
 
 ---
 
@@ -2180,6 +2237,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
+- Guarda a un empleado en la base de datos de acuerod a los datos del "body" de la solcitud
 
 - **body:**
 
@@ -2222,14 +2280,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 }
 ~~~
 
-
 ---
 
 #### Solicitudes PUT (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados
 
-
+- Modifica a un empleado de la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2256,33 +2313,59 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}
 
+- Borra a un empleado de la base de datos de acuerdo al id de la URL de la solicitud
+
 ---
 
 #### Solicitudes PATCH (Empleado)
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni={x}
 
+- Modifica el DNI de un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/primer-nombre?primer-nombre={x}
+
+- Modifica el primer de un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/segundo-nombre?segundo-nombre={x}
 
+- Modifica el segundo nombre de un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-paterno?apellido-paterno={x}
+
+- Modifica el apellido de un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-materno?apellido-materno={x}
 
+- Modifica el apellido materno de un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/email?email={x}
+
+- Modifica el email de un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/domicilio?domicilio-id={x}
 
+- Modifica el domicilio de un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/agregar-telefono?telefono={x}
+
+- Agrega un teléfono a un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/quitar-telefono?telefono={x}
 
+- Quita un número telefónico a un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/matricula?matricula={x}
+
+- Modifica la matrícula profesional de un paciente de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/rol?rol-id={x}
 
+- Modifica el rol de un paciente de acuerdo a los datos de la URL de la solicitud
+
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/salario?salario={x}
+
+- Modifica salario de un paciente de acuerdo a los datos de la URL de la solicitud
 
 ---
 
