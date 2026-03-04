@@ -2377,10 +2377,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
+- Muestra una clasificación de estudio médico buscándola por id
+
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
+- Muestra todas las clasificaciones de estudios médicos de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/nombre?nombre={x}
+
+- Muestra una clasificación de estudio médico buscándola por nombre
 
 ---
 
@@ -2388,7 +2393,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
-
+- Guarda una clasificación de estudio médico en la nase de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -2412,6 +2417,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
+- Modifica una clasificación de estudio médico de la base de datos de acuerdo al "body" de la solicitud
+
 - **body:**
 
 ~~~javascript
@@ -2427,11 +2434,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
+- Borra una clasificación de estudio médico de la base de edatos de acuerdo
+
 ---
 
 #### Solicitudes PATCH (EstudioMedicoClasificacion)
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre={x}
+
+- Modifica el nombre de una clasificación de estudio médico de acuerdo a los datos de la URL de la solicitud
 
 ---
 
@@ -2443,11 +2454,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
+- Muestra un estudio médico buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
+
+- Muestra todos los estudios médicos de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/nombre?nombre={x}
 
+- Muestra un estudio médico buscándolo por nombre
+
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/clasificacion?clasificacion={x}
+
+- Muestra estudios médicos de la bse de datos buscándolos por su clasificación
 
 ---
 
@@ -2455,6 +2474,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
+- Guarda un estudio médico en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -2483,6 +2503,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
+- Modifica un estudio médico de la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -2500,13 +2521,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
+- Borra un estudio médico de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solictudes PATCH (EstudioMedico)
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre={x}
 
+- Modifica el nombre de un estudio médico de acuerdo a los datos de la URL de la solicitud 
+
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion={x}
+
+- Modifica la clsificación de un estudio médico de acuerdo a los datos de la URL de la solicitud
 
 ---
 
@@ -2518,13 +2545,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
 
+- Muestra un tratamiento de fisioterapia realizado en un paciente buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
+
+- Muestra todos los tratamientos de fisioterpaia realizados en pacientes de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Muestra los tratamientos de fisioterapia realizados en pacientes de la base de datos buscándolos por id o DNI del paciente
+
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
+- Muestra los tratamientos de fisioterpaia realizados en pacientes buscando por fecha de inicio
+
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-final?desde={x}&hasta={x}
+
+- Muestra los tratamientos de fisioterpaia realizados en pacientes buscando por fecha de final
 
 ---
 
@@ -2532,6 +2569,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
+- Guarda un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2559,6 +2597,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
+- Modifica un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2571,12 +2610,13 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 }
 ~~~
 
-
 ---
 
 #### Solicitudes DELETE (FisioterapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
+
+- Borra un tratamiento de fisioterapia realizado en un paciente de acuerdo al id de la URL
 
 ---
 
@@ -2584,9 +2624,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
+- Modifica la fecha de inicio de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final={x}
+
+- Modifica la fecha de final de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
 
 ---
 
