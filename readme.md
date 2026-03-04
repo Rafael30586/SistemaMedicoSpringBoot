@@ -2958,11 +2958,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
+- Mesutra un rol de empleado buscando por id
+
 ##### {HOSPITAL-SERVICIO}/roles-empleado
+
+- Muestra todos los roles de empleados de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/nombre?nombre={x}
 
+- Muestra un rol de empleado buscando por nombre
+
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector={x}
+
+- Muestra roles de empleado de la base de datos buscando por sector
 
 ---
 
@@ -2970,6 +2978,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
+- Guarda un rol de empleado en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2995,6 +3004,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
+- Modifica un rol de empleado en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -3011,13 +3021,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
+- Borra un rol de empleado de la base de datos de acuerdo al id de la solicitud
+
 ---
 
 #### Solicitudes PATCH (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/nombre?nombre
 
+- Modifica el nombre de un rol de empleado de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector-id={x}
+
+- Modifica el sctor de un rol de empleado de acuerdo a los datos de la URL
 
 ---
 
@@ -3029,15 +3045,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
+- Muestra un sector de acuerdo al id de la URL
+
 ##### {HOSPITAL-SERVICIO}/sectores
 
+- Muestra todos los sectores de la base de datos
+
 ##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre={x}
+
+- Muestra un sector de la base de datos buscando por nombre
+
 ---
 
 #### Solicitudes POST (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
+- Guarda un sector en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3061,6 +3085,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
+- Modifica un sector en la base de datos de acuerdo al "body" de la solicitud
 
 ~~~javascript
 {
@@ -3075,11 +3100,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
+- Borra un sector de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (Sector)
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre={x}
+
+- Modifica el nombre de un sector de acuerdo a los datos de la URL
 
 ---
 
@@ -3091,13 +3120,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
+- Muestra un signo de la base de datos buscando por id
+
 ##### {HOSPITAL-SERVICIO}/signos
+
+- Muestra todos los signos de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/signos/nombre?nombre={x}
 
+- Muestra un signo de la base de datos buscando por nombre
+
 ##### {HOSPITAL-SERVICIO}/signos/unidad?unidad={x}
 
+- Muestra los signos de la base de datos buscando por el nombre de la unidad de medición
+
 ##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia={x}
+
+- Muestra signos de la base de datos buscando por secuencia de caracteres en la descripción
 
 ---
 
@@ -3105,6 +3144,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/signos
 
+- Guarda un signo en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3135,6 +3175,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/signos
 
+- Modifica un signo en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3155,19 +3196,31 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
+- Borra un signo en la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solictudes PATCH (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre={x}
 
+- Modifica el nombre de un signo de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/signos/{id}/valor-minimo?valor-minimo={x}
+
+- Modifica el valor mínimo de una medición de un signo de acuerdo a los datos de la URL
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/valor-maximo?valor-maximo={x}
 
+- Modifica el valor máximo de una medición de un signo de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/signos/{id}/unidad?unidad-id={x}
 
+- Modifica la unidad de medición de un signo de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion
+
+- Modifica el valor mínimo de una medición de un signo de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3187,9 +3240,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
+- Muestra un síntoma de la base de datos buscando por id
+
 ##### {HOSPITAL-SERVICIO}/sintomas
 
+- Muestra todos los síntomas de la base de datos
+
 ##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre={x}
+
+- Muestra un síntoma de la base de datos buscando por nombre
 
 ---
 
@@ -3197,6 +3256,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
+- Guarda un síntoma en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3220,6 +3280,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
+- Modifica un síntoma en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -3236,11 +3297,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
+- Borra un síntoma de la base de datos de acuerod al id de la URL
+
 ---
 
 #### Solicitudes PATCH (Sintoma)
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre={x}
+
+- Modifica el nombre de un síntoma de acuerdo a los datos de la URL
 
 ---
 
