@@ -2644,21 +2644,35 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
+- Muestra un tratamiento por medicamento realizado en un paciente buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+- Muestra todos los tratamientos por medicamento realizados en pacientes de la base de datos.
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Muestra los tratamientos por medicamento realizados en pacientes buscando por id o DNI del paciente
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/principio-activo?principio-activo={x}
+
+- Muestra los tratamientos por medicamento realizadoas en pacientes buscando por principio activo del medicamento
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-inicio?desde={x}&hasta={x}
 
+- Muestra los tratamientos por medicamento realizadoas en pacientes buscando por fecha de inicio
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-final?desde={x}&hasta={x}
+
+- Muestra los tratamientos por medicamento realizadoas en pacientes buscando por fecha de final
 
 ---
 
 #### Solicitudes POST (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
+
+- Guarda un tratamiento por medicamento realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2690,6 +2704,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
+- Modifica un tratamiento por medicamento realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2710,19 +2725,31 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
+- Borra un tratamiento por medicamento realizado en un paciente de la base de datos de acuerdo a la URL de la solcitud
+
 ---
 
 #### Solicitudes PATCH (MedicamentoPaciente)
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/medicamento?medicamento-id={x}
+
+- Modifica el medicamento de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/dosis?dosis-id={x}
 
+- Modifica la dosis de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-inicio?inicio={x}
 
+- Modifica la fecha de inicio de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-final?fin={x}
+
+- Modifica la fecha de final de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
 
 ---
 
@@ -2734,13 +2761,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
+- Muestra un tratamiento de psicoterpaia realizado en un paciente de acuerdo al id de la URL
+
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
+
+- Muestra todos los tratamientos de psicoterapia realizados en pacientes de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por id o DNI del paciente
+
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
+- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por fecha de inicio
+
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-final?desde={x}&hasta={x}
+
+- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por fecha de final
 
 ---
 
@@ -2748,6 +2785,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
+- Guarda un tratamiento de psicoterapia realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2776,6 +2814,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
+- Modifica un tratamiento de psicoterapia realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
+
 
 - **body:**
 
@@ -2794,15 +2834,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
+- Borra un tratamiento de psicoterpaia realizado en un paciente de la base de datos de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (PsicoterpiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
+- Modifica la fecha de inicio de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin={x}
+
+- Modifica la fecha de final de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
 
 ---
 
@@ -2814,13 +2862,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
+- Muestra un tratamiento de radioterapia realizado en un paciente buscando por id
+
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
+
+- Muestra todos los tratamientos de radioterapia realizados en pacientes
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Muestra los tratamientos de radioterapia realizados en pacientes buscando por id o DNI de paciente
+
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
+- Muestra los tratamientos de radioterapia realizados en pacientes buscando fecha de inicio
+
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde={x}&hasta={x}
+
+- Muestra los tratamientos de radioterapia realizados en pacientes buscando fecha de final
 
 ---
 
@@ -2828,6 +2886,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
+- Guarda un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2854,6 +2913,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
+- Modifica un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2870,15 +2930,23 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
+- Borra un tratamiento de fisioterpaia realizado en un paciente de acuerdo al id de la URL
+
 ---
 
 #### Solicitudes PATCH (RadioTerapiaPaciente)
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
+- Modifica el paciente de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
+- Modifica la fecha de inicio de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin={x}
+
+- Modifica la fecha de final de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
 
 ---
 
