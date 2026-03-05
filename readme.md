@@ -88,7 +88,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     calle: string,
     altura: numero_entero,
     departamento: string,
-    localidad: Localdidad
+    localidad: Localidad
 }
 ~~~
 
@@ -98,7 +98,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 {
     "calle": "san martín",
     "altura": 5612,
-    "departemento": "1A",
+    "departamento": "1A",
     "localidad":{
         "id":4
     }
@@ -121,7 +121,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     calle: string,
     altura: numero_entero,
     departamento: string,
-    localidad: Localdidad
+    localidad: Localidad
 }
 ~~~
 
@@ -191,7 +191,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 ~~~json
 {
     "nombre": "san miguel",
-    "provicnia":{
+    "provincia":{
         "id":1
     }
 }
@@ -209,7 +209,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    id: nimero_entero,
+    id: numero_entero,
     nombre: string,
     provincia: Provincia
 }
@@ -523,7 +523,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    via: string,
+    via: string
 }
 ~~~
 
@@ -531,7 +531,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~json
 {
-    "via": "oftálmica",
+    "via": "oftálmica"
 }
 ~~~
 
@@ -693,7 +693,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    nombre: string,
+    nombre: string
 }
 ~~~
 
@@ -701,7 +701,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~json
 {
-    "nombre": "crema",
+    "nombre": "crema"
 }
 ~~~
 
@@ -1276,7 +1276,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     apellidoMaterno: string,
     email: string,
     telefonos: string[],
-    fechaNacimiento: fecha
+    fechaNacimiento: fecha,
     lugarNacimientoId: numero_entero,
     direccionId: numero_entero,
     obraSocial: ObraSocial
@@ -1326,7 +1326,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     apellidoMaterno: string,
     email: string,
     telefonos: string[],
-    fechaNacimiento: fecha
+    fechaNacimiento: fecha,
     lugarNacimientoId: numero_entero,
     direccionId: numero_entero,
     obraSocial: ObraSocial
@@ -1431,7 +1431,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 {
     paciente: Paciente,
     estudios: numero_entero[],
-    urlInform: string
+    urlInforme: string
 }
 ~~~
 
@@ -1462,7 +1462,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     id: numero_entero,
     paciente: Paciente,
     estudios: numero_entero[],
-    urlInform: string
+    urlInforme: string
 }
 ~~~
 
@@ -2603,7 +2603,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    id: neumero_entero,
+    id: numero_entero,
     pacienteId: numero_entero,
     inicio: fecha,
     fin:fecha
@@ -2710,7 +2710,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    id: nuemro_entero,
+    id: numero_entero,
     pacienteId: numero_entero,
     medicamentoId: numero_entero,
     dosisId:numero_entero,
@@ -3370,7 +3370,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ~~~javascript
 {
-    id: neumero_entero,
+    id: numero_entero,
     nombre: string,
     descripcion: string
 }
