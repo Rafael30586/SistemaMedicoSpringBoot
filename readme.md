@@ -51,7 +51,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Direccion
+### Entidad Direccion
 
 ---
 
@@ -155,7 +155,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Localidad
+### Entidad Localidad
 
 ---
 
@@ -238,7 +238,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Pais
+### Entidad Pais
 
 ---
 
@@ -311,7 +311,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Provincia
+### Entidad Provincia
 
 ---
 
@@ -401,7 +401,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### AccionTerapeutica
+### Entidad AccionTerapeutica
 
 ---
 
@@ -493,7 +493,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### AdministracionFarmaco
+### Entidad AdministracionFarmaco
 
 ---
 
@@ -570,7 +570,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Dosis
+### Entidad Dosis
 
 ---
 
@@ -663,7 +663,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### FormaFarmaceutica
+### Entidad FormaFarmaceutica
 
 ---
 
@@ -741,7 +741,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### MarcaMedicamento
+### Entidad MarcaMedicamento
 
 ---
 
@@ -819,7 +819,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Medicamento
+### Entidad Medicamento
 
 ---
 
@@ -957,7 +957,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### PrincipioActivo
+### Entidad PrincipioActivo
 
 ---
 
@@ -1042,7 +1042,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### UnidadDeMedida
+### Entidad UnidadDeMedida
 
 ---
 
@@ -1134,7 +1134,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### ObraSocial
+### Entidad ObraSocial
 
 ---
 
@@ -1211,7 +1211,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Paciente
+### Entidad Paciente
 
 ---
 
@@ -1395,7 +1395,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### ResultadosDeEstudios 
+### Entidad ResultadosDeEstudios
 
 ---
 
@@ -1496,7 +1496,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Sede
+### Entidad Sede
 
 ---
 
@@ -1599,7 +1599,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### TurnoCita
+### Entidad TurnoCita
 
 ---
 
@@ -1724,7 +1724,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### TurnoEstudio
+### Entidad TurnoEstudio
 
 ---
 
@@ -1859,7 +1859,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### CirugiaPaciente
+### Entidad CirugiaPaciente
 
 ---
 
@@ -1972,7 +1972,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Diagnostico
+### Entidad Diagnostico
 
 ---
 
@@ -2084,7 +2084,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### DiagnosticoPaciente
+### Entidad DiagnosticoPaciente
 
 ---
 
@@ -2189,7 +2189,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Empleado
+### Entidad Empleado
 
 ---
 
@@ -2369,7 +2369,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### EstudioMedicoClasificacion
+### Entidad EstudioMedicoClasificacion
 
 ---
 
@@ -2446,7 +2446,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### EstudioMedico
+### Entidad EstudioMedico
 
 ---
 
@@ -2537,7 +2537,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### FisioterapiaPaciente
+### Entidad FisioterapiaPaciente
 
 ---
 
@@ -2636,7 +2636,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### MedicamentoPaciente
+### Entidad MedicamentoPaciente
 
 ---
 
@@ -2753,7 +2753,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### PsicoterpiaPaciente
+### Entidad PsicoterpiaPaciente
 
 ---
 
@@ -2816,7 +2816,6 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 - Modifica un tratamiento de psicoterapia realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
 
-
 - **body:**
 
 ~~~javascript
@@ -2828,7 +2827,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 }
 ~~~
 
---- 
+---
 
 #### Solicitudes DELETE (PsicoterpiaPaciente)
 
@@ -2854,7 +2853,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### RadioTerapiaPaciente
+### Entidad RadioTerapiaPaciente
 
 ---
 
@@ -2950,7 +2949,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### RolEmpleado
+### Entidad RolEmpleado
 
 ---
 
@@ -2999,7 +2998,9 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     }
 }
 ~~~
+
 ---
+
 #### Solicitudes PUT (RolEmpleado)
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
@@ -3037,7 +3038,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Sector
+### Entidad Sector
 
 ---
 
@@ -3112,7 +3113,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Signo
+### Entidad Signo
 
 ---
 
@@ -3171,6 +3172,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 ~~~
 
 ---
+
 #### Solictudes PUT (Signo)
 
 ##### {HOSPITAL-SERVICIO}/signos
@@ -3232,7 +3234,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### Sintoma
+### Entidad Sintoma
 
 ---
 
@@ -3309,7 +3311,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ---
 
-### TratamientoQuirurgico
+### Entidad TratamientoQuirurgico
 
 ---
 
