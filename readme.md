@@ -3317,11 +3317,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
+- Muestra un tratamiento quirúrgico de la base de datos buscándolo por id
+
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
+
+- Muestra todos los tratamientos quirúrgicos de la base de datos
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/nombre?nombre={x}
 
+- Muestra un tratamiento mquirúrgico buscándolo por nombre
+
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/descripcion?descripcion={x}
+
+- Muestra tratamientos quirúrgicos de la base de datos buscándolos por secuencia de caracteres en su descripción
 
 ---
 
@@ -3329,6 +3337,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
+- Guarda un tratamiento quirúrgico en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -3353,6 +3362,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
+- modifica un tratamiento quirúrgico en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -3370,14 +3380,19 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
+- Borra una tratamiento quirúrgico de la base de datos de acuerod al id de la URL
+
 ---
 
 #### Solcitudes PATCH (TratamientoQuirurgico)
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre={x}
 
+- Modifica el nombre de un tratamiento quirúrgico según los datos de la URL
+
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion 
 
+- Modifica la descripción de un tratamiento quirúrgico según los datos del "body" de la solicitud
 
 - **body:**
 
