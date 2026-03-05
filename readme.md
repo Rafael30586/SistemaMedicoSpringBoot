@@ -79,7 +79,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
-- Guarda una dirección
+- Guarda una dirección de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -111,7 +111,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
-- Edita una dirección de la base de datos
+- Edita una dirección de la base de datos de acuerdo al "body" de la solicitud
 
 - **body**
 
@@ -222,7 +222,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}
 
-- Borra una localidad de acuerdo al id de la url
+- Borra una localidad de acuerdo al id de la URL
 
 ---
 
@@ -230,11 +230,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una localidad de acuerdo al id de la url
+- Modifica el nombre de una localidad de acuerdo al id de la URL
 
 ##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id={x}
 
-- Modifica la provincia a la que perytenece una localidad de acuerdo al id de la url
+- Modifica la provincia a la que perytenece una localidad de acuerdo al id de la URL
 
 ---
 
@@ -393,7 +393,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id={x}
 
--Modifica el pais al que pertyenece una provincia asignándole el id del pais que corresponda
+- Modifica el pais al que pertyenece una provincia asignándole el id del pais que corresponda
 
 ---
 
@@ -425,7 +425,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
-- Guarda una acción terpéutica en la base de datos con los datos del body
+- Guarda una acción terpéutica en la base de datos con los datos del "body" de la solicitud
 
 - **body:**
 
@@ -451,7 +451,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas
 
-- Modifica una acción terapéutica de acuerdo al id que colocamos en el body
+- Modifica una acción terapéutica de acuerdo al id que colocamos en el "body" de la solicitud
 
 - **body:**
 
@@ -481,7 +481,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion 
 
-- Modifica la descripción de una acción terapéutica de acuerdo al id de la url y al texto del body
+- Modifica la descripción de una acción terapéutica de acuerdo al id de la URL y al texto del "body"
 
 - **body:**
 
@@ -517,7 +517,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
-- Guarda una administración de fármaco nueva en la base de datos con la información del body de la solicitud
+- Guarda una administración de fármaco nueva en la base de datos con la información del "body" de la solicitud
 
 - **body:**
 
@@ -541,7 +541,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/administraciones-de-farmaco
 
-- Modifica una administración de fármaco con la información del body de la solicitud
+- Modifica una administración de fármaco con la información del "body" de la solicitud
 
 - **body:**
 
@@ -586,7 +586,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis/cantidad-unidad-intervalo?cantidad={x}&nombre-unidad={x}&intervalo={x}
 
-- Busca una dosis de la base de datos de acuerdo a los daots de la URL.
+- Busca una dosis de la base de datos de acuerdo a los datos de la URL.
 
 ---
 
@@ -594,7 +594,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis
 
-- Guarda una dosis en la base de datos de acuerdo a los datos del body
+- Guarda una dosis en la base de datos de acuerdo a los datos del "body"
 
 - **body:**
 
@@ -624,7 +624,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/dosis
 
-- Modifica una dosis de la base de datos de acuerdo a los datos del body
+- Modifica una dosis de la base de datos de acuerdo a los datos del "body"
 
 - **body:**
 
@@ -687,7 +687,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
-- Guarda una forma farmacéutica en la base de datos con los datos del body
+- Guarda una forma farmacéutica en la base de datos con los datos del "body"
 
 - **body:**
 
@@ -712,7 +712,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas
 
-- Modifica una forma farmacértica de la base de datos de acuerdo a los datos del body 
+- Modifica una forma farmacértica de la base de datos de acuerdo a los datos del "body" 
 
 - **body:**
 
@@ -737,7 +737,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/formas-farmaceuticas/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una forma farmacéutica de acuerdo a lo establecido en la url
+- Modifica el nombre de una forma farmacéutica de acuerdo a lo establecido en la URL
 
 ---
 
@@ -765,7 +765,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-- Guarda una marca de medicamento en la base de datos de acuerdo a los datos dl body
+- Guarda una marca de medicamento en la base de datos de acuerdo a los datos del "body"
 
 - **body:**
 
@@ -790,7 +790,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-- Modifica una marca de medicamento de la base de datos de acuerdo a los datos del body
+- Modifica una marca de medicamento de la base de datos de acuerdo a los datos del "body"
 
 - **body:**
 
@@ -807,7 +807,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
-- Borra una marca de medicamento de la base de datos de acuerod al id de la URL
+- Borra una marca de medicamento de la base de datos de acuerdo al id de la URL
 
 ---
 
@@ -839,7 +839,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo={x}
 
-- Muestra todos los medicamentos que posean el principio activo establecido enn la URL
+- Muestra todos los medicamentos que posean el principio activo establecido en la URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica={x}
 
@@ -904,7 +904,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
-- Modifica un medicamento de la base de datos de acuerdo a lo establecido en el body de la solicitud
+- Modifica un medicamento de la base de datos de acuerdo a lo establecido en el "body" de la solicitud
 
 - **body:**
 
@@ -941,7 +941,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/quitar-principio-activo?principio-activo-id={x}
 
-- Quita un principio activo de un medicamento de la base de datos de acuerdo a lo establecido en la URL 
+- Quita un principio activo de un medicamento de la base de datos de acuerdo a lo establecido en la URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/forma-farmaceutica?forma-farmaceutica-id={x}
 
@@ -973,7 +973,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre={x}
 
-- Muestra un principio activo de la base de datos buscándolo por su nombre 
+- Muestra un principio activo de la base de datos buscándolo por su nombre
 
 ##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica={x}
 
@@ -985,7 +985,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-- Guarda un principio activo en la base de datos de acuerdo a los datos establecidos en el body
+- Guarda un principio activo en la base de datos de acuerdo a los datos establecidos en el "body"
 
 - **body:**
 
@@ -1009,7 +1009,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-- Modifica un principio activo de acuerdo  a los datos estblecidos en el body
+- Modifica un principio activo de acuerdo  a los datos estblecidos en el "body"
 
 - **body:**
 
@@ -1026,7 +1026,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
-- Borra un principio activo de la base de datos de acuerdo al id establecido en la URL 
+- Borra un principio activo de la base de datos de acuerdo al id establecido en la URL
 
 ---
 
@@ -1096,7 +1096,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
-- Modifica un unidad de medida de acuerdo a lo establecido en el body
+- Modifica un unidad de medida de acuerdo a lo establecido en el "body"
 
 - **body:**
 
@@ -1122,11 +1122,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre={x}
 
-- Modifica el  nombre de una unidad de medida de acuerod a lo estsblecdio en la URL
+- Modifica el nombre de una unidad de medida de acuerod a lo estsblecido en la URL
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/simbolo?simbolo={x}
 
-- Modifica el símbolo de una unidad de medida de acuerdo a lo establencido en la URL
+- Modifica el símbolo de una unidad de medida de acuerdo a lo establecido en la URL
 
 ---
 
@@ -1158,7 +1158,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-- Guarda una obra social en una base de datos de acuerod a lo establecido en el body de la solicitud
+- Guarda una obra social en una base de datos de acuerdo a lo establecido en el "body" de la solicitud
 
 - **body:**
 
@@ -1182,7 +1182,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-- Modifica una obra social de la base de datos de acuerdo al body de la solicitud
+- Modifica una obra social de la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -1199,7 +1199,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
-- Borra una obra social de la base de datos de acuerod al id de la URL
+- Borra una obra social de la base de datos de acuerdo al id de la URL
 
 ---
 
@@ -1223,11 +1223,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
-- Muestra todos los pacientes de la base de datos 
+- Muestra todos los pacientes de la base de datos
 
 ##### {PACIENTES-SERVICIO}/pacientes/dni?dni={x}
 
-- Muestra a un paciente de la base de datos de acuerod al DNI de la URL
+- Muestra a un paciente de la base de datos de acuerdo al DNI de la URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/nombre?nombre={x}
 
@@ -1247,7 +1247,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?desde={x}&hasta={x}
 
-- Muestra a los pacientes de la base de datos cuya fecha de nacimeinto esté comprendida en el intervalo establecido en la URL
+- Muestra a los pacientes de la base de datos cuya fecha de nacimiento esté comprendida en el intervalo establecido en la URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?localidad={x}
 
@@ -1255,7 +1255,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/domicilio?calle={x}
 
-- Muestra a los pacientes de la base de datos cuyo domicilio se encientre en la calle de la URL
+- Muestra a los pacientes de la base de datos cuyo domicilio se encuentre en la calle de la URL
 
 ---
 
@@ -1263,7 +1263,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
-- Guarda un paciente en la base de datos de acuerdo a lo establecido en el body de la solicitud
+- Guarda un paciente en la base de datos de acuerdo a lo establecido en el "body" de la solicitud
 
 - **body:**
 
@@ -1312,7 +1312,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
-- Modifica un paciente de la base de datos de acuerdo a lo establecido en el body de la solicitud
+- Modifica un paciente de la base de datos de acuerdo a lo establecido en el "body" de la solicitud
 
 - **body:**
 
@@ -1371,7 +1371,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
 
-- Agreaga un número telefónico a un paciente buscándolo por id o DNI
+- Agrega un número telefónico a un paciente buscándolo por id o DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
 
@@ -1453,7 +1453,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
-- Modifica un conjunto de resultados de estudios de un paciente de acuerdo al body de la solicitud
+- Modifica un conjunto de resultados de estudios de un paciente de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -1524,7 +1524,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-- Guarda una sede en la base de datos de acuerdo al body de la solicitud
+- Guarda una sede en la base de datos de acuerdo al "body" de la solicitud
 
 - **body:**
 
@@ -1558,7 +1558,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-- Modifica una sede de la base de datos de acuerdo al body de la solicitud
+- Modifica una sede de la base de datos de acuerdo al "body" de la solicitud
 
 ~~~javascript
 {
@@ -1575,7 +1575,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
-- Borra una sede de la base de datos de acuerod al id de la URL de la solicitud
+- Borra una sede de la base de datos de acuerdo al id de la URL de la solicitud
 
 ---
 
@@ -1673,7 +1673,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
-- Modifica un turno de cita con un profesional de acuerdo a los datos del body de la soloicitud
+- Modifica un turno de cita con un profesional de acuerdo a los datos del body de la solicitud
 
 - **body:**
 
@@ -1732,11 +1732,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
-- Muestra los datros de un turno para realización de estudios de acuerdo al id de la URL
+- Muestra los datos de un turno para realización de estudios de acuerdo al id de la URL
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-- Muestra los datos de todos los turnos para realización de estudios de la base de datos 
+- Muestra los datos de todos los turnos para realización de estudios de la base de datos
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
@@ -1760,7 +1760,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-- Guarda un turno para realización de estudios en la base de datos de acuerdo a los datos del body de la solcitud
+- Guarda un turno para realización de estudios en la base de datos de acuerdo a los datos del "body" de la solcitud
 
 - **body:**
 
@@ -1891,7 +1891,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
-- Guarda en la base de datos una cirugía realizada en un paciente de acuerdo a los datos del body de la solcitud
+- Guarda en la base de datos una cirugía realizada en un paciente de acuerdo a los datos del "body" de la solcitud
 
 - **body:**
 
@@ -1944,7 +1944,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
-- Borra una cirugía realizada en un paciente de la base de datos de acuerDO al id de la URL
+- Borra una cirugía realizada en un paciente de la base de datos de acuerdo al id de la URL
 
 ---
 
@@ -1996,7 +1996,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
-- Guarad un diagnóstico en la base de datos de acuerdo a los datos del body de la solicitud
+- Guarda un diagnóstico en la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2041,7 +2041,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos
 
-- Modifica un diagnóstico de la base de datos de acuerdo a los datos del body de la solicitud
+- Modifica un diagnóstico de la base de datos de acuerdo a los datos del "body" de la solicitud
 
 - **body:**
 
@@ -2060,7 +2060,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}
 
-- Borra de la base de datos a un diagnóstico de acuerdo al id de la URL 
+- Borra de la base de datos a un diagnóstico de acuerdo al id de la URL
 
 ---
 
@@ -2076,11 +2076,11 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/agregar-signo?signo-id={x}
 
-- Agrega un signo a un diagnóstico de la base de datos de acuerod a los datos de la URL de la solicitud
+- Agrega un signo a un diagnóstico de la base de datos de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/diagnosticos/{id}/quitar-signo?signo-id={x}
 
-- Quita un síntoma a un diagnóstico de la base de datos de acuerod a los datos de la URL de la solicitud
+- Quita un síntoma a un diagnóstico de la base de datos de acuerdo a los datos de la URL de la solicitud
 
 ---
 
@@ -2529,7 +2529,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un estudio médico de acuerdo a los datos de la URL de la solicitud 
+- Modifica el nombre de un estudio médico de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion={x}
 
@@ -2938,15 +2938,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
+- Modifica el paciente de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-- Modifica la fecha de inicio de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
+- Modifica la fecha de inicio de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin={x}
 
-- Modifica la fecha de final de un tratamiento de radioterapia realizado en un paciente de acuerod a los datos de la URL
+- Modifica la fecha de final de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
 
 ---
 
@@ -3297,7 +3297,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
-- Borra un síntoma de la base de datos de acuerod al id de la URL
+- Borra un síntoma de la base de datos de acuerdo al id de la URL
 
 ---
 
@@ -3380,7 +3380,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
-- Borra una tratamiento quirúrgico de la base de datos de acuerod al id de la URL
+- Borra una tratamiento quirúrgico de la base de datos de acuerdo al id de la URL
 
 ---
 
