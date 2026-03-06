@@ -3412,6 +3412,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 - En las solicitudes de tipo PUT se debe tener en cuenta que el id del "body" de la solicitud es el id del registro que se quiere modificar. En las solicitudes PATCH  ocurre algo similar, solo que el id del registro a modificar se encuentra en la URL de la solicitud.
 - En las entidades de TurnoCita y TurnoEstudio hay campos llamados Estado y Cobertura. Estos dos campos son tipos enumerados: el tipo enumerado EstadoTurno puede tener valores de EN_PROCESO, CONCLUIDO O CANCELADO; el tipo enumerado COBERTURA puede tener los valores NINGUNA, TOTAL o COSEGURO.
 - Los nombres en los "bodys" y URLs de las solicitudes, como por ejemplo, nombres propios de pacientes o empleados, nombres de lugares (provincias o paises), nombres de medicamentos, etc, deben estar en letra minúscula. El desarrollador frontend será el encargado de que los nombres se muestren con letras mayúsculas cuando corresponda.
+- Cuando se quiera buscar un registro de la base de datos en base a un campo que sea una cadena de caracteres con espacios vacíos, estos espacios en el argumento de la URL deberán ser reemplazados por un guión bajo cada uno (hay un caso así en el primer ejemplo de solicitud en la siguiente sección). Lo mismo ocurrirá cuando se quiera modificar un campo de un registro utilizando una solicitud de tipo patch: cuando el campo a modificar sea una cadena de caracteres, los espacios vacíos del argumento de la URL de la solicitud deberán ser reemplazados por guiones bajos.  
 
 ---
 ---
