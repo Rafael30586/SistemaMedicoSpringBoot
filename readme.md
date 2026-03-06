@@ -1345,51 +1345,51 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 #### Solicitudes PATCH (Paciente)
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/dni?dni={x}
+##### {PACIENTES-SERVICIO}/pacientes/dni?id={x}&dni={x}
 
 - Modifica el DNI de un paciente de acuerdo a lo establecido en la URL
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/primer-nombre?id-o-dni={x}&opcion={x}&nombre={x}
+##### {PACIENTES-SERVICIO}/pacientes/primer-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
 - Modifica el primer nombre de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/segundo-nombre?id-o-dni={x}&opcion={x}&nombre={x}
+##### {PACIENTES-SERVICIO}/pacientes/segundo-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
 - Modifica el segundo nombre de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-paterno?id-o-dni={x}&opcion={x}&apellido={x}
+##### {PACIENTES-SERVICIO}/pacientes/apellido-paterno?id-o-dni={x}&opcion={x}&apellido={x}
 
 - Modifica el apellido paterno de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/apellido-materno?id-o-dni={x}&opcion={x}&apellido={x}
+##### {PACIENTES-SERVICIO}/pacientes/apellido-materno?id-o-dni={x}&opcion={x}&apellido={x}
 
 - Modifica el apellido materno de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/email?id-o-dni={x}&opcion={x}&email={x}
+##### {PACIENTES-SERVICIO}/pacientes/email?id-o-dni={x}&opcion={x}&email={x}
 
 - Modifica el email de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
+##### {PACIENTES-SERVICIO}/pacientes/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
 
 - Agrega un número telefónico a un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
+##### {PACIENTES-SERVICIO}/pacientes/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
 
 - Quita un número telefónico a un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/fecha-nacimiento?id-o-dni={x}&opcion={x}&fecha={x}
+##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?id-o-dni={x}&opcion={x}&fecha={x}
 
 - Modifica la fecha de nacimiento de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/lugar-nacimiento?id-o-dni={x}&opcion={x}&localidad-id={x}
+##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?id-o-dni={x}&opcion={x}&localidad-id={x}
 
 - Modifica el lugar de nacimiento de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/domicilio?id-o-dni={x}&opcion={x}&direccion-id={x}
+##### {PACIENTES-SERVICIO}/pacientes/domicilio?id-o-dni={x}&opcion={x}&direccion-id={x}
 
 - Modifica el domicilio de un paciente buscándolo por id o DNI
 
-##### {PACIENTES-SERVICIO}/pacientes/{id}/obra-social?id-o-dni={x}&opcion={x}&obra-social-id={x}
+##### {PACIENTES-SERVICIO}/pacientes/obra-social?id-o-dni={x}&opcion={x}&obra-social-id={x}
 
 - Modifica la obra social de un paciente buscándolo por id o DNI
 
@@ -2321,51 +2321,51 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/dni?dni={x}
 
-- Modifica el DNI de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el DNI de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/primer-nombre?primer-nombre={x}
 
-- Modifica el primer de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el primer de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/segundo-nombre?segundo-nombre={x}
 
-- Modifica el segundo nombre de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el segundo nombre de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-paterno?apellido-paterno={x}
 
-- Modifica el apellido de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el apellido de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/apellido-materno?apellido-materno={x}
 
-- Modifica el apellido materno de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el apellido materno de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/email?email={x}
 
-- Modifica el email de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el email de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/domicilio?domicilio-id={x}
 
-- Modifica el domicilio de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el domicilio de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/agregar-telefono?telefono={x}
 
-- Agrega un teléfono a un paciente de acuerdo a los datos de la URL de la solicitud
+- Agrega un teléfono a un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/quitar-telefono?telefono={x}
 
-- Quita un número telefónico a un paciente de acuerdo a los datos de la URL de la solicitud
+- Quita un número telefónico a un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/matricula?matricula={x}
 
-- Modifica la matrícula profesional de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica la matrícula profesional de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/rol?rol-id={x}
 
-- Modifica el rol de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica el rol de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ##### {HOSPITAL-SERVICIO}/empleados/{id}/salario?salario={x}
 
-- Modifica salario de un paciente de acuerdo a los datos de la URL de la solicitud
+- Modifica salario de un empleado de acuerdo a los datos de la URL de la solicitud
 
 ---
 
