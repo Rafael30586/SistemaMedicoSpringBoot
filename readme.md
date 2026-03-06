@@ -71,7 +71,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
 
-- Muestra todas las direcciones que se encuentren en una provicnia específica
+- Muestra todas las direcciones que se encuentren en una provincia específica
 
 ---
 
@@ -3411,4 +3411,57 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 - En las solicitudes de tipo PUT se debe tener en cuenta que el id del "body" de la solicitud es el id del registro que se quiere modificar. En las solicitudes PATCH  ocurre algo similar, solo que el id del registro a modificar se encuentra en la URL de la solicitud.
 - En las entidades de TurnoCita y TurnoEstudio hay campos llamados Estado y Cobertura. Estos dos campos son tipos enumerados: el tipo enumerado EstadoTurno puede tener valores de EN_PROCESO, CONCLUIDO O CANCELADO; el tipo enumerado COBERTURA puede tener los valores NINGUNA, TOTAL o COSEGURO.
-- Los nombres en los "bodys" y URLs de las solicitudes, como por ejemplo, nombres propios de pacientes o empleados, nombres de lugares (provincias o paises), nombres de medicamentos, etc, deben estar en letra minúscula. El desarrollador frontend será el encargado de que los nombres se escriban con letras mayúsculas cuando corresponda.
+- Los nombres en los "bodys" y URLs de las solicitudes, como por ejemplo, nombres propios de pacientes o empleados, nombres de lugares (provincias o paises), nombres de medicamentos, etc, deben estar en letra minúscula. El desarrollador frontend será el encargado de que los nombres se muestren con letras mayúsculas cuando corresponda.
+
+---
+---
+
+## Ejemplos de solicitudes
+
+1. Mostrar todas las direcciones de la base de datos de la provincia de Santa fe:
+
+    - endpoint: .../direcciones/provincia?provincia=santa_fe
+
+2. Modificar la descripción de la acción terapéutica de id igual a 12
+
+    - endpoint: .../acciones-terapeuticas/12/descripcion
+
+    - body:
+
+    ~~~json
+    {
+       "texto": "inhibe el crecimiento de hongos"
+    }
+    ~~~
+
+3. Modificar el nombre de la forma farmacéutica con id igual a 3
+
+    - endpoint: .../formas-farmaceuticas/3/nombre?nombre=gel
+
+4. Modificar el primer nombre del paciente de DNI igual a 10928417
+
+    - endpoint: .../pacientes/primer-nombre?id-o-dni=10928417&opcion=dni&nombre=emiliano
+
+5. Agregar un teléfono al paciente de id igual a 401
+
+    - endpoint: .../pacientes/agregar-telefono?id-o-dni=401&opcion=id&telefono-para-aggregar=011-847-3820
+
+6. Modificar todos los campos del estudio médico de id igual a 29
+
+    - endpoint: .../estudios-medicos
+
+    - body: 
+
+    ~~~json
+    {
+        "id":29,
+        "nombre":"perfil lipídico",
+        "clasificacion":{
+            "id":2
+        }
+    }
+    ~~~
+
+7. Borrar el rol de emplaedo de id 5 de la base de datos
+
+    - endpoint: .../roles-empleado/5
