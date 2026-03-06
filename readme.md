@@ -3,6 +3,19 @@
 Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En el microservicio de paciente las entidades son: ObraSocial, Paciente, ResultadoDeEstudios, Sede, TurnoCita y TurnoEstudio. Para el microservicio de hospital las entidades son: CirugiaPaciente, Diagnostico, DiagnosticoPaciente, Empleado, EstudioMedico, EstudioMEdicoClasificacion, FisioterapiaPaciente, MedicamentoPaciente, PsicoterapiaPaciente, RadioTerpiaPaciente, RolEmpleado, Sector, Signo, Sintoma y TratamientoQuirurgico.
 
 ---
+---
+
+## Descarga del proyecto y ejecución de sus microservicios
+
+1. Crear un directorio en el dispositivo de trabajo (tu computadora);
+2. Clonar el proyecto del repositorio de GitHub https://github.com/Rafael30586/SistemaMedicoSpringBoot en el directorio creado en el punto anterior;
+3. Crear los archivos .env con los datos de conexión a base de datos en el directorio raíz de cada microservicio;
+4. Abrir cada microservicio por separado, cada uno en una ventana de IntelliJ IDEA;
+5. Ejecutarlos uno por uno;
+6. Comprobar su funcnionamiento con Postman o herramientas similares.
+
+---
+---
 
 ## Explicaciones sobre entidades  
 
