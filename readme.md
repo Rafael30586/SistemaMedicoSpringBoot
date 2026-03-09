@@ -17,12 +17,24 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ## Descarga del proyecto y ejecución de sus microservicios
 
+### Algunos requisitos para la ejecución del proyecto
+
+- Tener instalado IntelliJ IDEA
+- MySQL instalado en la computadora
+
+### Pasos a seguir
+
 1. Crear un directorio en el dispositivo de trabajo (tu computadora);
 2. Clonar el proyecto del repositorio de GitHub https://github.com/Rafael30586/SistemaMedicoSpringBoot en el directorio creado en el punto anterior;
 3. Crear los archivos .env con los datos de conexión a base de datos en el directorio raíz de cada microservicio;
 4. Abrir cada microservicio por separado, cada uno en una ventana de IntelliJ IDEA;
 5. Ejecutarlos uno por uno;
 6. Comprobar su funcionamiento con Postman o herramientas similares.
+
+### A tener en cuenta
+
+- El proyecto puede ser ejecutado con otros IDEs como Eclipse IDE o Apache NetBeans, pero el procedimiento puede variar.
+- Se puede utilizar algún otro gestor de base de datos diferente de MySQL cambiando algunas configuraciones.
 
 ---
 ---
