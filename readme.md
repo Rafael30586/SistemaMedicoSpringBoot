@@ -5,6 +5,16 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 ---
 ---
 
+## Índice
+
+1. Descarga del proyecto y ejecución de los microservicios
+2. Explicación sobre entidades
+3. Notas
+4. Ejemplos de solicitudes
+
+---
+---
+
 ## Descarga del proyecto y ejecución de sus microservicios
 
 1. Crear un directorio en el dispositivo de trabajo (tu computadora);
@@ -12,7 +22,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 3. Crear los archivos .env con los datos de conexión a base de datos en el directorio raíz de cada microservicio;
 4. Abrir cada microservicio por separado, cada uno en una ventana de IntelliJ IDEA;
 5. Ejecutarlos uno por uno;
-6. Comprobar su funcnionamiento con Postman o herramientas similares.
+6. Comprobar su funcionamiento con Postman o herramientas similares.
 
 ---
 ---
@@ -3425,7 +3435,8 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 - En las solicitudes de tipo PUT se debe tener en cuenta que el id del "body" de la solicitud es el id del registro que se quiere modificar. En las solicitudes PATCH  ocurre algo similar, solo que el id del registro a modificar se encuentra en la URL de la solicitud.
 - En las entidades de TurnoCita y TurnoEstudio hay campos llamados Estado y Cobertura. Estos dos campos son tipos enumerados: el tipo enumerado EstadoTurno puede tener valores de EN_PROCESO, CONCLUIDO O CANCELADO; el tipo enumerado COBERTURA puede tener los valores NINGUNA, TOTAL o COSEGURO.
 - Los nombres en los "bodys" y URLs de las solicitudes, como por ejemplo, nombres propios de pacientes o empleados, nombres de lugares (provincias o paises), nombres de medicamentos, etc, deben estar en letra minúscula. El desarrollador frontend será el encargado de que los nombres se muestren con letras mayúsculas cuando corresponda.
-- Cuando se quiera buscar un registro de la base de datos en base a un campo que sea una cadena de caracteres con espacios vacíos, estos espacios en el argumento de la URL deberán ser reemplazados por un guión bajo cada uno (hay un caso así en el primer ejemplo de solicitud en la siguiente sección). Lo mismo ocurrirá cuando se quiera modificar un campo de un registro utilizando una solicitud de tipo patch: cuando el campo a modificar sea una cadena de caracteres, los espacios vacíos del argumento de la URL de la solicitud deberán ser reemplazados por guiones bajos.  
+- Cuando se quiera buscar un registro de la base de datos en base a un campo que sea una cadena de caracteres con espacios vacíos, estos espacios en el argumento de la URL deberán ser reemplazados por un guión bajo cada uno (hay un caso así en el primer ejemplo de solicitud en la siguiente sección). Lo mismo ocurrirá cuando se quiera modificar un campo de un registro utilizando una solicitud de tipo patch: cuando el campo a modificar sea una cadena de caracteres, los espacios vacíos del argumento de la URL de la solicitud deberán ser reemplazados por guiones bajos.
+- Las fechas en los argumentos de las URLs deberán tener un formato yyyy-MM-dd, mientras que cuando las fechas estén en el "body" de una solicitud deberán tener un formato dd-MM-yyyy
 
 ---
 ---
@@ -3479,3 +3490,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 7. Borrar el rol de emplaedo de id 5 de la base de datos
 
     - endpoint: .../roles-empleado/5
+
+8. Modificar la fecha de final de el diagnóstico realizado en un paciente de id igual a 44 (el id no es del paciente, sinom de un diagnóstico realizado en un paciente como se vió en las entidades en una sección anterior)
+
+    - endpoint: .../diagnosticos-pacientes/44/fecha-final?fin=2024-05-23
