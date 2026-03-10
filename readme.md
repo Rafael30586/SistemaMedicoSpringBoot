@@ -1,6 +1,25 @@
+English
+---
+# Medical system
+
+This application has been developed with Java and Spring Boot using IntelliJ IDEA. It consists of four microservices: contacto (contact), farmacia (pharmacy), paciente (patient), and hospital (hospital).
+The contacto (contact) microservice has the following entities: Direccion (address), Localidad (city, town or village), Pais (country), and Provincia (province or state).
+The entities that compose the farmacia microservice are: AccionTerapeutica (therapeutic effect), AdministrcionFarmaco (drug administration), Dosis (dose), FormaFarmaceutica (pharmaceutical form), MarcaMedicamento (medicine brand), Medicamento (medicine), PrincipioActivo (active ingredient), and UnidadDeMedida (measurement unit).
+In the paciente microservice the entities are: ObraSocial (health insurance), Paciente (patient), ResultadoDeEstudios (examinations result), Sede (central office), TurnoCita (appointment turn), and TurnoEstudio (examination turn).
+For the hospital microservice the entities are: CirugiaPaciente (surgery-patient), Diagnostico (diagonsis), DiagnosticoPaciente (diagnosis-patient), Empleado (employee), EstudioMedico (medical examination), EstudioMedicoClasificacion (medical examination clasification), FisioterapiaPaciente (phisiotherapy-patient), MedicamentoPaciente (medicine-patient), PsicoterapiaPaciente (psychotherapy-patient), RadioTerpiaPaciente (radiotherapy-patient), RolEmpleado (employee role), Sector (sector), Signo (sign), Sintoma (symptom), and TratamientoQuirurgico (surgery). 
+
+
+
+
+---
+---
+---
+Español
+---
+
 # Sistema médico
 
-Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En el microservicio de paciente las entidades son: ObraSocial, Paciente, ResultadoDeEstudios, Sede, TurnoCita y TurnoEstudio. Para el microservicio de hospital las entidades son: CirugiaPaciente, Diagnostico, DiagnosticoPaciente, Empleado, EstudioMedico, EstudioMEdicoClasificacion, FisioterapiaPaciente, MedicamentoPaciente, PsicoterapiaPaciente, RadioTerpiaPaciente, RolEmpleado, Sector, Signo, Sintoma y TratamientoQuirurgico.
+Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ IDEA. Consiste en cuatro microservicios: contacto, farmacia, paciente y hospital. El microservicio de contacto tiene las siguentes entidades: Direccion, Localidad, Pais y Provincia. Las entidades que componen al microservicio de farmacia son: AccionTerapeutica, AdministrcionFarmaco, Dosis, FormaFarmaceutica, MarcaMedicamento, Medicamento, PrincipioActivo y UnidadDeMedida. En el microservicio de paciente las entidades son: ObraSocial, Paciente, ResultadoDeEstudios, Sede, TurnoCita y TurnoEstudio. Para el microservicio de hospital las entidades son: CirugiaPaciente, Diagnostico, DiagnosticoPaciente, Empleado, EstudioMedico, EstudioMedicoClasificacion, FisioterapiaPaciente, MedicamentoPaciente, PsicoterapiaPaciente, RadioTerpiaPaciente, RolEmpleado, Sector, Signo, Sintoma y TratamientoQuirurgico.
 
 ---
 ---
