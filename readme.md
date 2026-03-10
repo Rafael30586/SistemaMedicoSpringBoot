@@ -8,8 +8,39 @@ The entities that compose the farmacia microservice are: AccionTerapeutica (ther
 In the paciente microservice the entities are: ObraSocial (health insurance), Paciente (patient), ResultadoDeEstudios (examinations result), Sede (central office), TurnoCita (appointment turn), and TurnoEstudio (examination turn).
 For the hospital microservice the entities are: CirugiaPaciente (surgery-patient), Diagnostico (diagonsis), DiagnosticoPaciente (diagnosis-patient), Empleado (employee), EstudioMedico (medical examination), EstudioMedicoClasificacion (medical examination clasification), FisioterapiaPaciente (phisiotherapy-patient), MedicamentoPaciente (medicine-patient), PsicoterapiaPaciente (psychotherapy-patient), RadioTerpiaPaciente (radiotherapy-patient), RolEmpleado (employee role), Sector (sector), Signo (sign), Sintoma (symptom), and TratamientoQuirurgico (surgery). 
 
+---
+---
 
+## Index 
 
+1. Download of the project and exectution of the microservices
+2. Entities explanation
+3. Notes
+4. Request examples
+
+---
+---
+
+## Download of the project and exectution of the microservices
+
+### Some requisites for the execution of the project
+
+- Having IntelliJ IDEA installed
+- MySQL installed ingt eh computer
+
+### Steps to follow
+
+1. Make a directory in the working device (your computer);
+2. Clone the project from the GitHub repository https://github.com/Rafael30586/SistemaMedicoSpringBoot inside the directory from the previous item;
+3. Create .env files with the database connection data inside the root directory of each microservice;
+4. Open each microservice separatedly, each one on an IntelliJ IDEA window;
+5. Execute them one by one;
+6. Verify their functioning with Postman or similar tools.
+
+### To keep in mind
+
+- The project can be executed with other IDEs such as Eclipse IDE or Apache Neatbeans, but the procedure could be different.
+- You can use a different database manager tool changing some configurations.
 
 ---
 ---
