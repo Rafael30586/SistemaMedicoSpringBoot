@@ -49,9 +49,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-- Direccion (address): it´s the a ddress of people or a building like the street, number, etc.
+- Direccion (address): it's the a ddress of people or a building like the street, number, etc.
 - Localidad (location): It can be a city, a town or a village.
-- Pais (country): It´s a country like Argentina, United States, France, etc.
+- Pais (country): It's a country like Argentina, United States, France, etc.
 - Provincia (state or province): Can be the state or the province of a country.
 
 - AccionTerapeutica (therepeutic effect): It is the beneficial action that an active ingredient or medication has in the human body. Examples include: anti-inflammatory, keratolytic, analgesic, antipyretic, etc.
@@ -60,7 +60,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - FormaFaremaceutica (pharmaceutical form): It is the form in which a medication is presented, for example: cream, emulsion, syrup, capsules, gel, powder, etc.
 - MarcaMedicamento (medicine brand): It is the brand of a medicine.
 - Medicamento (medicine): It refers to each medication.
-- PrincipioActivo (active ingredient): It´s the active ingredient that you can find in a medicine.
+- PrincipioActivo (active ingredient): It's the active ingredient that you can find in a medicine.
 - UnidadDeMedida (measurement unit): It is the unit used to measure quantities; for example: milligrams, milliliters, drops, etc.
 
 - ObraSocial (health insurance): It is the health insurance of a patient.
@@ -87,6 +87,286 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - TratamientoQuirurgico (surgery): These are the surgeries that can be performed on patients, for example: open-heart surgery, hip surgery, etc.
 
 ---
+
+## Contacto (contact) microservice
+
+---
+
+### Direccion (address) entity
+
+---
+
+#### GET requests (Direccion)
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}
+
+- It shows one addresss searching by id
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+- It shows all the addresses from the database 
+
+##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad={x}
+
+- It shows all the addresses from a specific location 
+
+##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
+
+- Shows all addresses located in a specific province or state
+
+---
+
+#### POST requeests (Direccion)
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+- Saves an address according to the request body
+
+- **body:**
+
+~~~javascript
+{
+    calle: string,
+    altura: integer,
+    departamento: string,
+    localidad: Localidad
+}
+~~~
+
+- **Meaning of each attribute:**
+
+- Calle: street
+- Altura: number
+- Despartamento: department
+- Localidad: locality
+
+- **Example:**
+
+~~~json
+{
+    "calle": "san martín",
+    "altura": 5612,
+    "departamento": "1A",
+    "localidad":{
+        "id":4
+    }
+}
+~~~
+
+---
+
+#### PUT request (Direccion)
+
+##### {CONTACTO-SERVICIO}/direcciones
+
+- Edits an address in the database according to the request body
+
+- **body**
+
+~~~javascript
+{
+    id: integer,
+    calle: string,
+    altura: integer,
+    departamento: string,
+    localidad: Localidad
+}
+~~~
+
+---
+
+#### DELETE requests (Direccion)
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}
+
+- Deletes an address from the database
+
+---
+
+#### PATCH requests (Direccion)
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/calle?calle={x}
+
+- Modifies the street of an address
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/altura?altura={x}
+
+- Modifies the street number of an address
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/departamento?departamento={x}
+
+- Modifies the apartment/unit of an address
+
+##### {CONTACTO-SERVICIO}/direcciones/{id}/localidad?localidad-id={x}
+
+- Modifies the locality of an address
+
+---
+
+### Localidad (locality) entity
+
+---
+
+#### GET requests (Localidad)
+
+##### {CONTACTO-SERVICIO}/localidades/{id}
+
+- Shows a locality by searching it by id
+
+##### {CONTACTO-SERVICIO}/localidades
+
+- Shows all localities in the database
+
+---
+
+#### POST request (Localidad)
+
+##### {CONTACTO-SERVICIO}/localidades
+
+- Saves a locality in the database using the data from the request body
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    provincia: Provincia,
+}
+~~~
+
+- **meaning of each attribute: **
+- Nombre: name
+- provincia: province or state
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "san miguel",
+    "provincia":{
+        "id":1
+    }
+}
+~~~
+
+---
+
+#### PUT request (Localidad)
+
+##### {CONTACTO-SERVICIO}/localidades
+
+- Modifies a locality according to the request body
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string,
+    provincia: Provincia
+}
+~~~
+
+---
+
+#### DELETE request (Localidad)
+
+##### {CONTACTO-SERVICIO}/localidades/{id}
+
+- Deletes a locality according to the id in the URL
+
+---
+
+#### PATCH requests (Localidad)
+
+##### {CONTACTO-SERVICIO}/localidades/{id}/nombre?nombre={x}
+
+- Modifies the name of a locality according to the id in the URL
+
+##### {CONTACTO-SERVICIO}/localidades/{id}/provincia?provincia-id={x}
+
+- Modifies the province to which a locality belongs according to the id in the URL
+
+---
+
+### Pais (country) entity
+
+---
+
+#### GET requests (Pais)
+
+##### {CONTACTO-SERVICIO}/paises/{id}
+
+- Shows the data of a country in the database according to the id in the URL
+
+##### {CONTACTO-SERVICIO}/paises
+
+- Shows all countries in the database
+
+---
+
+#### POST requests (Pais)
+
+##### {CONTACTO-SERVICIO}/paises
+
+- Saves a new country in the database using the data from the request body
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+}
+~~~
+
+- **Meaning of each attribute:**
+- Nombre: name
+
+- **Example:**
+
+~~~json
+{
+    "nombre": "argentina",
+}
+~~~
+
+---
+
+#### PUT request (Pais)
+
+##### {CONTACTO-SERVICIO}/paises
+
+- Modifies a country in the database using the data from the request body
+
+- **body:**
+
+~~~javascript
+{
+    id: numero_entero,
+    nombre: string
+}
+~~~
+
+---
+
+#### DELETE request (Pais)
+
+##### {CONTACTO-SERVICIO}/paises/{id}
+
+- Deletes a country from the database according to the id in the URL
+
+---
+
+#### PATCH request (Pais)
+
+##### {CONTACTO-SERVICIO}/paises/{id}/nombre?nombre={x}
+
+- Modifies the name of a country in the database according to the id in the URL
+
+---
+
+
+
 
 
 ---
