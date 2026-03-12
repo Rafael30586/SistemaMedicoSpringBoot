@@ -44,6 +44,53 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 ---
+
+## Entities explanation
+
+---
+
+- Direccion (address): it´s the a ddress of people or a building like the street, number, etc.
+- Localidad (location): It can be a city, a town or a village.
+- Pais (country): It´s a country like Argentina, United States, France, etc.
+- Provincia (state or province): Can be the state or the province of a country.
+
+- AccionTerapeutica (therepeutic effect): It is the beneficial action that an active ingredient or medication has in the human body. Examples include: anti-inflammatory, keratolytic, analgesic, antipyretic, etc.
+- AdministracionFarmaco (drug administration): It is the way a drug is administered to a patient; for example: intramuscular, oral, intrathecal, nasal, sublingual, ophthalmic, etc.
+- Dosis (dose): It is an amount of a drug administered over a period of time. The unit used (milligrams, milliliters, etc.), the time interval (for example, every 8 hours), and the quantity associated with the unit are taken into account.
+- FormaFaremaceutica (pharmaceutical form): It is the form in which a medication is presented, for example: cream, emulsion, syrup, capsules, gel, powder, etc.
+- MarcaMedicamento (medicine brand): It is the brand of a medicine.
+- Medicamento (medicine): It refers to each medication.
+- PrincipioActivo (active ingredient): It´s the active ingredient that you can find in a medicine.
+- UnidadDeMedida (measurement unit): It is the unit used to measure quantities; for example: milligrams, milliliters, drops, etc.
+
+- ObraSocial (health insurance): It is the health insurance of a patient.
+- Paciente (patient): It is a patient who requests services at the hospital.
+- ResultadoDeEstudios (examinations result): These are the results of each study performed on each patient.
+- Sede (central office): It is the address that corresponds to each branch of the health insurance providers.
+- TurnoCita (appointment turn): These are the details of an appointment for a patient who requests a consultation with a doctor.
+- TurnoEstudio (examination turn): These are the details of an appointment for a patient who requests the performance of a medical study.
+
+- CirugiaPaciente (surgery-patient): It is a surgery that has been performed on a patient.
+- Diagnostico (diagnosis): It is the diagnosis that each patient may receive, for example: flu, diabetes, etc.
+- DiagnosticoPaciente (diagnosis-patient): It is the specific diagnosis that has been given to a specific patient.
+- Empleado (employee): These are the details of each hospital employee.
+- EstudioMedico (medical examination): It is each medical study that patients can undergo, for example: renal profile, blood count, electrocardiogram, etc.
+- EstudioMedicoClasificacion (medical examination clasification): It refers to how the different medical studies are classified, for example: laboratory, diagnostic imaging, cardiological, etc.
+- FisioterapiaPaciente (phisioterapy-patient): It is the physiotherapy treatment that has been performed on a patient.
+- MedicamentoPaciente (medicine-patient): It is the treatment that has been performed on a patient with a specific medication.
+- PsicoterapiaPaciente (psychotherapy-patient): It is the psychological treatment that has been performed on a patient.
+- RadioterapiaPaciente (radiotherapy-patient): It is a radiotherapy treatment performed on a specific patient.
+- RolEmpleado (employee role): It is the role that each employee may have, for example: surgeon, cardiologist, cook, secretary, etc.
+- Sector (sector): It is the sector to which each employee role belongs, for example: medicine, cleaning, human resources, gastronomy, etc.
+- Signo (sign): These are the signs that patients may present according to their diagnosis: hyperglycemia, fever, etc.
+- Sintoma (symptom): These are the symptoms that a patient may have according to their diagnosis, for example: headache, nausea, fatigue, etc.
+- TratamientoQuirurgico (surgery): These are the surgeries that can be performed on patients, for example: open-heart surgery, hip surgery, etc.
+
+---
+
+
+---
+---
 ---
 Español
 ---
