@@ -116,7 +116,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-#### POST requeests (Direccion)
+#### POST requests (Direccion)
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
@@ -234,7 +234,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
-- **meaning of each attribute: **
+- **meaning of each attribute:**
 - Nombre: name
 - provincia: province or state
 
@@ -242,7 +242,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~json
 {
-    "nombre": "san miguel",
+    "nombre": "new york",
     "provincia":{
         "id":1
     }
@@ -261,7 +261,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string,
     provincia: Provincia
 }
@@ -326,7 +326,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~json
 {
-    "nombre": "argentina",
+    "nombre": "sweden",
 }
 ~~~
 
@@ -342,7 +342,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -365,9 +365,202 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
+### Provincia (province or state) entity 
+
+---
+
+#### GET requests (Provincia)
+
+##### {CONTACTO-SERVICIO}/provincias
+
+- Shows all provinces/states or states in the database
+
+##### {CONTACTO-SERVICIO}/provincias/{id}
+
+- Shows a province/state from the database according to the id in the URL
+
+##### {CONTACTO-SERVICIO}/provincias/nombre?nombre={x}
+
+- Shows a province/state from the database by searching it by name
+
+---
+
+#### POST request (Provincia)
+
+##### {CONTACTO-SERVICIO}/provincias
+
+- Saves a province/state in the database using the data from the request body
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    pais: Pais
+}
+~~~
+
+-**Meaning of each attribute:**
+
+- Nombre: name
+- Pais: country
+
+- **Ejemplo:**
+
+~~~json
+{
+    "nombre": "florida",
+    "pais": {
+        "id":10
+    }
+}
+~~~
+
+---
+
+#### PUT request (Provincia)
+
+##### {CONTACTO-SERVICIO}/provincias
+
+- Modifies a province/state
+
+- **body:**
+
+~~~javascript
+{
+    id: integer,
+    nombre: string,
+    pais: Pais
+}
+~~~
+
+---
+
+#### Solicitudes DELETE (Provincia)
+
+##### {CONTACTO-SERVICIO}/provincias/{id}
+
+- Deletes a province/state from the database according to its id
+
+---
+
+#### PATCH requests (Provincia)
+
+##### {CONTACTO-SERVICIO}/provincias/{id}/nombre?nombre={x}
+
+- Modifies the name of a province/state by searching it by id
+
+##### {CONTACTO-SERVICIO}/provincias/{id}/pais?pais-id={x}
+
+- Modifies the country to which a province/state belongs by assigning the corresponding country id
+
+---
+
+## Farmacia (pharmacy) microservice
+
+---
+
+### AccionTerapeutica (therapeutic effect) entity
+
+---
+
+#### Solcitudes GET (AccionTerapeutica)
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+- Shows all therapeutic actions in the database
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
+
+- Shows a therapeutic action by searching it by its id
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/nombre?nombre={x}
+
+- Shows a therapeutic action by searching it by its name
+
+---
+
+#### Solicitudes POST (AccionTerapeutica)
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+- Saves a therapeutic action in the database using the data from the request body
+
+- **body:**
+
+~~~javascript
+{
+    nombre: string,
+    descripcion: string
+}
+~~~
+
+- **Meaning of each attribute:**
+- Nombre: name
+- Descripcion: description
+
+- **Example:**
+
+~~~json
+{
+    "nombre": "antifebrile",
+    "descripcion": "reduces fever"
+}
+~~~
+
+---
+
+#### Solicitudes PUT (AccionTerapeutica)
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas
+
+- Modifies a therapeutic action according to the id provided in the request body
+
+- **body:**
+
+~~~javascript
+{
+    id: integer,
+    nombre: string,
+    descripcion: string
+}
+~~~
+
+---
+
+#### Solicitudes DELETE (AccionTerapeutica)
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}
+
+- Deletes a therapeutic action according to the id in the URL
+
+---
+
+#### Solicitudes PATCH (AccionTerapeutica)
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/nombre?nombre={x}
+
+- Modifies the name of a therapeutic action according to the id in the URL
+
+##### {FARMACIA-SERVICIO}/acciones-terapeuticas/{id}/descripcion 
+
+- Modifies the description of a therapeutic action according to the id in the URL and the text in the request body
+
+- **body:**
+
+~~~javascript
+{
+    texto: string
+}
+~~~
+
+- **Meaning of each atribute:**
+- Texto: text
+
+---
 
 
-
+<!-- Continuar desde AdministracionFarmaco -->
 
 ---
 ---
