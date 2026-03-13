@@ -1196,11 +1196,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-## Microservicio de Pacientes
+## Patients micrsoservice
 
 ---
 
-### Entidad ObraSocial
+### ObraSocial (health insurance) entity
 
 ---
 
@@ -1208,15 +1208,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
-- Muestra una obra social buscándola por id
+- Shows a health insurance provider by searching it by id
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-- Muestra todas las obras sociales de la base de datos
+- Shows all health insurance providers in the database
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/nombre?nombre={x}
 
-- Muestra una obra social de la base de datos buscándola por su nombre
+- Shows a health insurance provider from the database by searching it by its name
 
 ---
 
@@ -1224,7 +1224,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-- Guarda una obra social en una base de datos de acuerdo a lo establecido en el "body" de la solicitud
+- Saves a health insurance provider in the database according to what is specified in the request body
 
 - **body:**
 
@@ -1248,7 +1248,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/obras-sociales
 
-- Modifica una obra social de la base de datos de acuerdo al "body" de la solicitud
+- Modifies a health insurance provider in the database according to the request body
 
 - **body:**
 
@@ -1265,7 +1265,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}
 
-- Borra una obra social de la base de datos de acuerdo al id de la URL
+- Deletes a health insurance provider from the database according to the id in the URL
 
 ---
 
@@ -1273,11 +1273,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/obras-sociales/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una obra social de acuerdo a lo establecido en la URL de la solicitud
+- Modifies the name of a health insurance provider according to what is specified in the request URL
 
 ---
 
-### Entidad Paciente
+### Paciente (patient) entity
 
 ---
 
@@ -1285,43 +1285,43 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
-- Muestra un paciente de la base de datos de acuerdo al id de la URL
+- Shows a patient from the database according to the id in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
-- Muestra todos los pacientes de la base de datos
+- Shows all patients in the database
 
 ##### {PACIENTES-SERVICIO}/pacientes/dni?dni={x}
 
-- Muestra a un paciente de la base de datos de acuerdo al DNI de la URL
+- Shows a patient from the database according to the DNI specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/nombre?nombre={x}
 
-- Muestra a los pacientes de la base de datos que posean el nombre establecido en la URL
+- Shows the patients in the database who have the name specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/apellido?apellido={x}
 
-- Muestra a los pacientes de la base de datos que posean el apellido establecido en la URL
+- Shows the patients in the database who have the last name specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/email?email={x}
 
-- Muestra a un paciente de la base de datos de acuerdo al email de la URL
+- Shows a patient from the database according to the email specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/telefono?numero-telefonico={x}
 
-- Muestra a los pacientes de la base de datos que posean el número telefónico de la URL
+- Shows the patients in the database who have the phone number specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?desde={x}&hasta={x}
 
-- Muestra a los pacientes de la base de datos cuya fecha de nacimiento esté comprendida en el intervalo establecido en la URL
+- Shows the patients in the database whose birth date is within the interval specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?localidad={x}
 
-- Muestra a los pacientes cuya localidad de nacimiento sea la establecida en la URL
+- Shows the patients whose place of birth corresponds to the locality specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/domicilio?calle={x}
 
-- Muestra a los pacientes de la base de datos cuyo domicilio se encuentre en la calle de la URL
+- Shows the patients in the database whose address is located on the street specified in the URL
 
 ---
 
@@ -1329,7 +1329,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/pacientes
 
-- Guarda un paciente en la base de datos de acuerdo a lo establecido en el "body" de la solicitud
+- Saves a patient in the database according to what is specified in the request body
 
 - **body:**
 
@@ -1378,7 +1378,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
-- Modifica un paciente de la base de datos de acuerdo a lo establecido en el "body" de la solicitud
+- Modifies a patient in the database according to what is specified in the request body
 
 - **body:**
 
@@ -1405,7 +1405,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/pacientes/{id}
 
-- Borra un paciente de la base de datos de acuerdo al id de la URL
+- Deletes a patient from the database according to the id in the URL
 
 ---
 
@@ -1413,55 +1413,55 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/pacientes/dni?id={x}&dni={x}
 
-- Modifica el DNI de un paciente de acuerdo a lo establecido en la URL
+- Modifies the DNI of a patient according to what is specified in the URL
 
 ##### {PACIENTES-SERVICIO}/pacientes/primer-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
-- Modifica el primer nombre de un paciente buscándolo por id o DNI
+- Modifies the first name of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/segundo-nombre?id-o-dni={x}&opcion={x}&nombre={x}
 
-- Modifica el segundo nombre de un paciente buscándolo por id o DNI
+- Modifies the second name of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/apellido-paterno?id-o-dni={x}&opcion={x}&apellido={x}
 
-- Modifica el apellido paterno de un paciente buscándolo por id o DNI
+- Modifies the paternal last name of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/apellido-materno?id-o-dni={x}&opcion={x}&apellido={x}
 
-- Modifica el apellido materno de un paciente buscándolo por id o DNI
+- Modifies the maternal last name of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/email?id-o-dni={x}&opcion={x}&email={x}
 
-- Modifica el email de un paciente buscándolo por id o DNI
+- Modifies the email of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/agregar-telefono?id-o-dni={x}&opcion={x}&telefono-para-agregar={x}
 
-- Agrega un número telefónico a un paciente buscándolo por id o DNI
+- Adds a phone number to a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/quitar-telefono?id-o-dni={x}&opcion={x}&telefono-para-quitar={x}
 
-- Quita un número telefónico a un paciente buscándolo por id o DNI
+- Removes a phone number from a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/fecha-nacimiento?id-o-dni={x}&opcion={x}&fecha={x}
 
-- Modifica la fecha de nacimiento de un paciente buscándolo por id o DNI
+- Modifies the birth date of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/lugar-nacimiento?id-o-dni={x}&opcion={x}&localidad-id={x}
 
-- Modifica el lugar de nacimiento de un paciente buscándolo por id o DNI
+- Modifies the place of birth of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/domicilio?id-o-dni={x}&opcion={x}&direccion-id={x}
 
-- Modifica el domicilio de un paciente buscándolo por id o DNI
+- Modifies the address of a patient by searching it by id or DNI
 
 ##### {PACIENTES-SERVICIO}/pacientes/obra-social?id-o-dni={x}&opcion={x}&obra-social-id={x}
 
-- Modifica la obra social de un paciente buscándolo por id o DNI
+- Modifies the health insurance of a patient by searching it by id or DNI
 
 ---
 
-### Entidad ResultadosDeEstudios
+### ResultadosDeEstudios (examinations results) entity
 
 ---
 
@@ -1469,19 +1469,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
-- Muestra los resultados de estudios de un paciente de acuerdo al id de la URL
+- Shows the examination results of a patient according to the id in the URL
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
-- Muestra todos los resultados de estudios de la base de datos
+- Shows all examination results in the database
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/paciente?dni={x}
 
-- Muestra todos los resultados de estudios de un paciente buscando por su DNI
+- Shows all examination results of a patient by searching with their DNI
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/estudio?nombre-estudio={x}
 
-- Muestra resultados de estudios de la base de datos buscando por nombre de estudio
+- Shows examination results in the database by searching by examination name
 
 ---
 
@@ -1489,7 +1489,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
-- Guarda un conjunto de resultados de estudios de un paciente en la base de datos
+- Saves a set of examination results of a patient in the database
 
 - **body:**
 
@@ -1519,7 +1519,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios
 
-- Modifica un conjunto de resultados de estudios de un paciente de acuerdo al "body" de la solicitud
+- Modifies a set of examination results of a patient according to the request body
 
 - **body:**
 
@@ -1538,7 +1538,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}
 
-- Borra un conjunto de resultados de estudios de la base de datos de acuerdo al id de la solicitud
+- Deletes a set of examination results from the database according to the id in the request
 
 ---
 
@@ -1546,23 +1546,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-- Modifica el paciente de un conjunto de resultados de estudios de acuerdo a los datos de la URL
+- Modifies the patient of a set of examination results according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/agregar-estudio?estudio-id={x}
 
-- Agrega un estudio a un conjunto de resultados de estudios de acuerdo a los datos de la URL de la solicitud
+- Adds an examination to a set of examination results according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/quitar-estudio?estudio-id={x}
 
-- Quita un estudio de un conjunto de resultados de estudios de acuerdo a los datos de la URL de la solicitud
+- Removes an examination from a set of examination results according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/resultados-de-estudios/{id}/url-informe?url-informe={x}
 
-- Modifica la URL del informe de un conjunto de resultados de estudios de acuerdo los datos de la URL de la solicitud
+- Modifies the report URL of a set of examination results according to the data in the request URL
 
 ---
 
-### Entidad Sede
+### Sede (central office) entity
 
 ---
 
@@ -1570,19 +1570,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
-- Muestra una sede de la base de datos de acuerdo al id de la URL de la solicitud
+- Shows a central office from the database according to the id in the request URL
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-- Muestra todas las sedes de la base de datos
+- Shows all central offices in the database
 
 ##### {PACIENTES-SERVICIO}/sedes/direccion?calle={x}
 
-- Muestra las sedes de la base de datos buscándolas por la calle
+- Shows the central offices in the database by searching them by street
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/telefono?telefono={x}
 
-- Muestra las sedes de la base de datos buscándolas por el teléfono
+- Shows the central offices in the database by searching them by phone number
 
 ---
 
@@ -1590,7 +1590,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-- Guarda una sede en la base de datos de acuerdo al "body" de la solicitud
+- Saves a central office in the database according to the request body
 
 - **body:**
 
@@ -1624,7 +1624,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/sedes
 
-- Modifica una sede de la base de datos de acuerdo al "body" de la solicitud
+- Modifies a central office in the database according to the request body
 
 ~~~javascript
 {
@@ -1641,7 +1641,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}
 
-- Borra una sede de la base de datos de acuerdo al id de la URL de la solicitud
+- Deletes a central office from the database according to the id in the request URL
 
 ---
 
@@ -1649,23 +1649,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/direccion?direccion-id={x}
 
-- Modifica la dirección de una sede de la base de datos de acuerdo a los datos de la URL
+- Modifies the address of a central office in the database according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/agregar-telefono?telefono={x}
 
-- Agrega un número telefónico a una sede de la base de datos de acuerdo a los datos de la URL
+- Adds a phone number to a central office in the database according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/quitar-telefono?telefono={x}
 
-- Quita un número telefónico a una sede de la base de datos de acuerdo a los datos de la URL
+- Removes a phone number from a central office in the database according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/sedes/{id}/obra-social?obra-social-id={x}
 
-- Modifica la obra social de una sede de acuerdo a los datos de la URL de la solicitud
+- Modifies the health insurance provider of a central office according to the data in the request URL
 
 ---
 
-### Entidad TurnoCita
+### Entidad TurnoCita 
 
 ---
 
