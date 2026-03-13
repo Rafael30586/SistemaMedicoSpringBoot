@@ -815,15 +815,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
-- Muestra una marca de medicamento de la base de datos buscándola por id
+- Shows a medication brand from the database by searching it by id
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-- Muestra todas las marcas de medicamento de la base de datos
+- Shows all medication brands in the database
 
 ##### {FARMACIA-SERVICIO}/marcas/nombre?nombre={x}
 
-- Muestra una marca de medicamento de la base de datos buscándola por nombre
+- Shows a medication brand from the database by searching it by name
 
 ---
 
@@ -831,7 +831,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-- Guarda una marca de medicamento en la base de datos de acuerdo a los datos del "body"
+- Saves a medication brand in the database according to the data in the request body
 
 - **body:**
 
@@ -856,7 +856,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/marcas
 
-- Modifica una marca de medicamento de la base de datos de acuerdo a los datos del "body"
+- Modifies a medication brand in the database according to the data in the request body
 
 - **body:**
 
@@ -873,7 +873,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}
 
-- Borra una marca de medicamento de la base de datos de acuerdo al id de la URL
+- Deletes a medication brand from the database according to the id in the URL
 
 ---
 
@@ -881,11 +881,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/marcas/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una marca de medicamento de acuerdo a lo establecido en la URL
+- Modifies the name of a medication brand according to what is specified in the URL
 
 ---
 
-### Entidad Medicamento
+### Medicamento (medicine) entity
 
 ---
 
@@ -893,31 +893,31 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
-- Muestra un medicamento de la base de datos buscándolo por id
+- Shows a medication from the database by searching it by id
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
-- Muestra todos los medicamentos de la base de datos
+- Shows all medications in the database
 
 ##### {FARMACIA-SERVICIO}/medicamentos/nombre?nombre={x}
 
-- Muestra un medicamento de la base de datos buscándolo por nombre
+- Shows a medication from the database by searching it by name
 
 ##### {FARMACIA-SERVICIO}/medicamentos/principio-activo?nombre-principio-activo={x}
 
-- Muestra todos los medicamentos que posean el principio activo establecido en la URL
+- Shows all medications that contain the active ingredient specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/forma-farmaceutica?nombre-forma-farmaceutica={x}
 
-- Muestra todos los medicamentos que posean la forma farmacéutica establecida en la URL
+- Shows all medications that have the pharmaceutical form specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/administracion?via={x}
 
-- Muestra todos los medicamentos que se admnistren por la vía establecida en la URL
+- Shows all medications that are administered through the route specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/marca?nombre-marca={x}
 
-- Muestra todos los medicamentos de la marca establecida en la URL
+- Shows all medications belonging to the brand specified in the URL
 
 ---
 
@@ -925,7 +925,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
-- Guarda en la base de datos un medicamento de acuerdo a lo establecido en el body de la solicitud
+- Saves a medication in the database according to what is specified in the request body
 
 - **body:**
 
@@ -970,7 +970,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/medicamentos
 
-- Modifica un medicamento de la base de datos de acuerdo a lo establecido en el "body" de la solicitud
+- Modifies a medication in the database according to what is specified in the request body
 
 - **body:**
 
@@ -991,7 +991,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}
 
-- Borra un medicamento de la base de datos de acuerdo al id establecido en la URL
+- Deletes a medication from the database according to the id specified in the URL
 
 ---
 
@@ -999,31 +999,31 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un medicamento de la base de datos de acuerdo a los datos de la URL
+- Modifies the name of a medication in the database according to the data in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/agregar-principio-activo?principio-activo-id={x}
 
-- Agrega un principio activo a un medicamento de la base de datos de acuerdo a lo establecido en la URL
+- Adds an active ingredient to a medication in the database according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/quitar-principio-activo?principio-activo-id={x}
 
-- Quita un principio activo de un medicamento de la base de datos de acuerdo a lo establecido en la URL
+- Removes an active ingredient from a medication in the database according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/forma-farmaceutica?forma-farmaceutica-id={x}
 
-- Modifica la forma farmacéutica de un medicamento de la base de datos de acuerdo a lo establecido en la URL  
+- Modifies the pharmaceutical form of a medication in the database according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/administracion?administracion-id={x}
 
-- Modifica la vía de administración de un medicamento de acuerdo a lo establecido en la URL
+- Modifies the administration route of a medication according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/medicamentos/{id}/marca?marca-id={x}
 
-- Modifica la marca de un medicamento de la base de datos de acuerdo a lo establecido en la URL
+- Modifies the brand of a medication in the database according to what is specified in the URL
 
 ---
 
-### Entidad PrincipioActivo
+### PrincipioActivo (active ingredient) entity
 
 ---
 
@@ -1031,19 +1031,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
-- Muestra un principio activo de la base de datos buscándolo por la URL
+- Shows an active ingredient from the database by searching it by the id in the URL
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-- Muestra todos los principios activos de la base de datos
+- Shows all active ingredients in the database
 
 ##### {FARMACIA-SERVICIO}/principios-activos/nombre?nombre={x}
 
-- Muestra un principio activo de la base de datos buscándolo por su nombre
+- Shows an active ingredient from the database by searching it by its name
 
 ##### {FARMACIA-SERVICIO}/principios-activos/accion-terapeutica?nombre-accion-terapeutica={x}
 
-- Muestra todos los principios activos de la base de datos que contengan la acción terapéutica establecida en la URL
+- Shows all active ingredients in the database that contain the therapeutic action specified in the URL
 
 ---
 
@@ -1051,7 +1051,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-- Guarda un principio activo en la base de datos de acuerdo a los datos establecidos en el "body"
+- Saves an active ingredient in the database according to the data specified in the request body
 
 - **body:**
 
@@ -1075,7 +1075,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/principios-activos
 
-- Modifica un principio activo de acuerdo  a los datos establecidos en el "body"
+- Modifies an active ingredient according to the data specified in the request body
 
 - **body:**
 
@@ -1092,7 +1092,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}
 
-- Borra un principio activo de la base de datos de acuerdo al id establecido en la URL
+- Deletes an active ingredient from the database according to the id specified in the URL
 
 ---
 
@@ -1100,15 +1100,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}/agregar-accion-terapeutica?accion-terapeutica-id={x}
 
-- Agrega una acción terapéutica a un principio activo de acuerdo a lo establecido en la URL
+- Adds a therapeutic action to an active ingredient according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/principios-activos/{id}/quitar-accion-terapeutica?accion-terapeutica-id={x}
 
-- Quita una acción terapéutica a un principio activo de acuerdo a lo establecido en la URL
+- Removes a therapeutic action from an active ingredient according to what is specified in the URL
 
 ---
 
-### Entidad UnidadDeMedida
+### UnidadDeMedida (measurement unit) entity
 
 ---
 
@@ -1116,19 +1116,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
-- Muestra una unidad de medida de la base de datos buscándola por id
+- Shows a measurement unit from the database by searching it by id
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
-- Muestra todas las unidades de medida de la base de datos
+- Shows all measurement units in the database
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/nombre?nombre={x}
 
-- Muestra una unidad de medida de la base de datos buscándola por su nombre
+- Shows a measurement unit from the database by searching it by its name
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/simbolo?simbolo={x}
 
-- Muestra una unidad de la base de datos buscándola por su símbolo
+- Shows a measurement unit from the database by searching it by its symbol
 
 ---
 
@@ -1136,7 +1136,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
-- Guarda una unidad de medida en la base de datos de acuerdo a lo establecido en el body
+- Saves a measurement unit in the database according to what is specified in the request body
 
 - **body:**
 
@@ -1162,7 +1162,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida
 
-- Modifica un unidad de medida de acuerdo a lo establecido en el "body"
+- Modifies a measurement unit according to what is specified in the request body
 
 - **body:**
 
@@ -1180,7 +1180,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}
 
-- Elimina una unidad de medida de la base de datos de acuerdo a lo establecido en la URL
+- Deletes a measurement unit from the database according to what is specified in the URL
 
 ---
 
@@ -1188,11 +1188,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una unidad de medida de acuerdo a lo estsblecido en la URL
+- Modifies the name of a measurement unit according to what is specified in the URL
 
 ##### {FARMACIA-SERVICIO}/unidades-de-medida/{id}/simbolo?simbolo={x}
 
-- Modifica el símbolo de una unidad de medida de acuerdo a lo establecido en la URL
+- Modifies the symbol of a measurement unit according to what is specified in the URL
 
 ---
 
