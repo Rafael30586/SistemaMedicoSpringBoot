@@ -1673,27 +1673,27 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
-- Muestra los datos de un turno para una cita con un profesional según la id de la URL
+- Shows the data of an appointment with a professional according to the id in the URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
-- Muestra todos los turnos de citas con profesionales de la base de datos
+- Shows all appointments with professionals in the database
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
-- Muestra los turnos de citas con profesionales buscando por DNI de paciente
+- Shows appointments with professionals by searching with the patient's DNI
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
 
-- Muestra los turnos de citas con profesionales buscando por fecha de turno
+- Shows appointments with professionals by searching by appointment date
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
-- Muestra los turnos de citas con profesionales buscando por periodo de realización de cita
+- Shows appointments with professionals by searching by the appointment period
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/profesional?profesional-id={x}
 
-- Muestra los turnos de citas con profesionales buscando por id de profesional
+- Shows appointments with professionals by searching by the professional id
 
 ---
 
@@ -1701,7 +1701,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
-- Guarda un turno en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Saves an appointment in the database according to the data in the request body
 
 - **body:**
 
@@ -1739,7 +1739,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita
 
-- Modifica un turno de cita con un profesional de acuerdo a los datos del body de la solicitud
+- Modifies an appointment with a professional according to the data in the request body
 
 - **body:**
 
@@ -1762,7 +1762,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}
 
-- Borra un turno de cita con un profesional de la base de datos de acuerdo al id de la URL
+- Deletes an appointment with a professional from the database according to the id in the URL
 
 ---
 
@@ -1770,23 +1770,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-- Modifica el paciente de un turno de acuerdo a los datos de la URL
+- Modifies the patient of an appointment according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
 
-- Modifica la fecha de solicitud de un turno con un profesional de acuerdo a los datos de la URL
+- Modifies the request date of an appointment with a professional according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
-- Modifica el horario de un turno con un profesional de acuerdo a los datos de la URL de la solicitud
+- Modifies the schedule of an appointment with a professional according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
 
-- Modifica el estado en el que se encuentra un turno de una cita con un profesional de acuerdo a los datos de la URL
+- Modifies the status of an appointment with a professional according to the data in the URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
 
-- Modifica la cobertura que tiene un paciente en su cita con un profesional de acuerdo a los datos de la URL
+- Modifies the coverage that a patient has in their appointment with a professional according to the data in the URL
 
 ---
 
@@ -1798,27 +1798,27 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
-- Muestra los datos de un turno para realización de estudios de acuerdo al id de la URL
+- Shows the data of an appointment for an examination according to the id in the URL
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-- Muestra los datos de todos los turnos para realización de estudios de la base de datos
+- Shows the data of all examination appointments in the database
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/paciente?dni={x}
 
-- Muestra los datos de los turnos para realización de estudios buscando por DNI de paciente
+- Shows the data of examination appointments by searching with the patient's DNI
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/fecha-turno?fecha-turno={x}
 
-- Muestra los datos de los turnos para realización de estudios buscando fecha de turno
+- Shows the data of examination appointments by searching by appointment date
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/periodo?desde={x}&hasta={x}
 
-- Muestra los datos de los turnos para realización de estudios buscando por periodo de realización de estudios
+- Shows the data of examination appointments by searching by the examination period
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/estudio?estudio-id={x}
 
-- Muestra los datos de los turnos para realización de estudios buscando por estudio individual
+- Shows the data of examination appointments by searching by a specific examination
 
 ---
 
@@ -1826,7 +1826,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-- Guarda un turno para realización de estudios en la base de datos de acuerdo a los datos del "body" de la solcitud
+- Saves an examination appointment in the database according to the data in the request body
 
 - **body:**
 
@@ -1866,7 +1866,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio
 
-- Modifica los datos de un turno para la realización de estudios según los datos del "body" de la solicitud
+- Modifies the data of an examination appointment according to the data in the request body
 
 - **body:**
 
@@ -1889,7 +1889,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}
 
-- Borra un turno para realización de estudios de la base de datos según los datos de la URL
+- Deletes an examination appointment from the database according to the data in the URL
 
 ---
 
@@ -1897,27 +1897,27 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/paciente?id-o-dni-paciente={x}&opcion={x}
 
-- Modifica el paciente de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the patient of an examination appointment according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/fecha-solicitud?fecha-solicitud={x}
 
-- Modifica la fecha de solicitud de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the request date of an examination appointment according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/horario?inicio={x}&fin={x}
 
-- Modifica el horario de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the schedule of an examination appointment according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/estado?estado={x}
 
-- Modifica el estado de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the status of an examination appointment according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-cita/{id}/cobertura?cobertura={x}
 
-- Modifica la cobertura para el paciente de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the coverage for the patient of an examination appointment according to the data in the request URL
 
 ##### {PACIENTES-SERVICIO}/turnos-estudio/{id}/estudio?estudio-id={x}
 
-- Modifica el estudio de un turno para realización de estudios según los datos de la URL de la solicitud
+- Modifies the examination of an examination appointment according to the data in the request URL
 
 ---
 
@@ -1933,23 +1933,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
-- Busca una cirugía realizada en un pacidente de acuerdo al id de la solicitud
+- Searches for a surgery performed on a patient according to the id in the request
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
-- Muestra todas las cirugías realizadas en pacientes de la base de datos
+- Shows all surgeries performed on patients in the database
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Muestra las cirugías realizadas en pacientes buscando por id o DNI de paciente
+- Shows the surgeries performed on patients by searching with the patient id or DNI
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/cirugia?cirugia={x}
 
-- Muestra las cirugías realizadas en pacientes buscando por tratamiento quirúrgico
+- Shows the surgeries performed on patients by searching by surgical treatment
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/periodo?desde={x}&hasta={x}
 
-- Muestra las cirugías realizadas en pacientes buscando por período
+- Shows the surgeries performed on patients by searching by period
 
 ---
 
@@ -1957,7 +1957,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
-- Guarda en la base de datos una cirugía realizada en un paciente de acuerdo a los datos del "body" de la solcitud
+- Saves a surgery performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -1992,7 +1992,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes
 
-- Modifica una cirugía realizada en un paciente de la base de datos de acuerdo al "body" de la solicitud
+- Modifies a surgery performed on a patient in the database according to the request body
 
 ~~~javascript
 {
@@ -2010,7 +2010,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}
 
-- Borra una cirugía realizada en un paciente de la base de datos de acuerdo al id de la URL
+- Deletes a surgery performed on a patient from the database according to the id in the URL
 
 ---
 
@@ -2018,23 +2018,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+- Modifies the patient of a surgery performed on a patient according to the request URL
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/cirugia?cirugia-id={x}
 
-- Modifica el tratamiento quirúrgico de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+- Modifies the surgical treatment of a surgery performed on a patient according to the request URL
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/fecha?fecha={x}
 
-- Modifica la fecha de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+- Modifies the date of a surgery performed on a patient according to the request URL
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hora-inicio?inicio={x}
 
-- Modifica el horario de inicio de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+- Modifies the start time of a surgery performed on a patient according to the request URL
 
 ##### {HOSPITAL-SERVICIO}/cirugias-pacientes/{id}/hota-final?fin={x}
 
-- Modifica el horario de final de una cirugía realizada en un paciente de acuerdo a la URL de la solicitud
+- Modifies the end time of a surgery performed on a patient according to the request URL
 
 ---
 
