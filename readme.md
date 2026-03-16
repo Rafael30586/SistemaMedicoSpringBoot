@@ -3023,19 +3023,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
-- Mesutra un rol de empleado buscando por id
+- Shows an employee role by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
-- Muestra todos los roles de empleados de la base de datos
+- Shows all employee roles in the database
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/nombre?nombre={x}
 
-- Muestra un rol de empleado buscando por nombre
+- Shows an employee role by searching by its name
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector={x}
 
-- Muestra roles de empleado de la base de datos buscando por sector
+- Shows employee roles in the database by searching by sector
 
 ---
 
@@ -3043,7 +3043,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
-- Guarda un rol de empleado en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Saves an employee role in the database according to the data in the request body
 
 - **body:**
 
@@ -3071,7 +3071,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado
 
-- Modifica un rol de empleado en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Modifies an employee role in the database according to the data in the request body
 
 - **body:**
 
@@ -3088,7 +3088,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}
 
-- Borra un rol de empleado de la base de datos de acuerdo al id de la solicitud
+- Deletes an employee role from the database according to the id in the request
 
 ---
 
@@ -3096,11 +3096,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/nombre?nombre
 
-- Modifica el nombre de un rol de empleado de acuerdo a los datos de la URL
+- Modifies the name of an employee role according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/roles-empleado/{id}/sector?sector-id={x}
 
-- Modifica el sctor de un rol de empleado de acuerdo a los datos de la URL
+- Modifies the sector of an employee role according to the data in the request URL
 
 ---
 
@@ -3112,15 +3112,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
-- Muestra un sector de acuerdo al id de la URL
+- Shows a sector according to the id in the URL
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
-- Muestra todos los sectores de la base de datos
+- Shows all sectors in the database
 
 ##### {HOSPITAL-SERVICIO}/sectores/nombre?nombre={x}
 
-- Muestra un sector de la base de datos buscando por nombre
+- Shows a sector from the database by searching by its name
 
 ---
 
@@ -3128,7 +3128,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
-- Guarda un sector en la base de datos de acuerdo al "body" de la solicitud
+- Saves a sector in the database according to the data in the request body
 
 - **body:**
 
@@ -3152,7 +3152,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sectores
 
-- Modifica un sector en la base de datos de acuerdo al "body" de la solicitud
+- Modifies a sector in the database according to the data in the request body
 
 ~~~javascript
 {
@@ -3167,7 +3167,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}
 
-- Borra un sector de la base de datos de acuerdo al id de la URL
+- Deletes a sector from the database according to the id in the URL
 
 ---
 
@@ -3175,7 +3175,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sectores/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un sector de acuerdo a los datos de la URL
+- Modifies the name of a sector according to the data in the request URL
 
 ---
 
@@ -3187,23 +3187,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
-- Muestra un signo de la base de datos buscando por id
+- Shows a sign from the database by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/signos
 
-- Muestra todos los signos de la base de datos
+- Shows all signs in the database
 
 ##### {HOSPITAL-SERVICIO}/signos/nombre?nombre={x}
 
-- Muestra un signo de la base de datos buscando por nombre
+- Shows a sign from the database by searching by its name
 
 ##### {HOSPITAL-SERVICIO}/signos/unidad?unidad={x}
 
-- Muestra los signos de la base de datos buscando por el nombre de la unidad de medición
+- Shows signs from the database by searching by the name of the measurement unit
 
 ##### {HOSPITAL-SERVICIO}/signos/descripcion?secuencia={x}
 
-- Muestra signos de la base de datos buscando por secuencia de caracteres en la descripción
+- Shows signs from the database by searching by a sequence of characters in the description
 
 ---
 
@@ -3211,7 +3211,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/signos
 
-- Guarda un signo en la base de datos de acuerdo al "body" de la solicitud
+- Saves a sign in the database according to the data in the request body
 
 - **body:**
 
@@ -3243,7 +3243,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/signos
 
-- Modifica un signo en la base de datos de acuerdo al "body" de la solicitud
+- Modifies a sign in the database according to the data in the request body
 
 - **body:**
 
@@ -3264,7 +3264,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}
 
-- Borra un signo en la base de datos de acuerdo al id de la URL
+- Deletes a sign from the database according to the id in the URL
 
 ---
 
@@ -3272,23 +3272,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un signo de acuerdo a los datos de la URL
+- Modifies the name of a sign according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/valor-minimo?valor-minimo={x}
 
-- Modifica el valor mínimo de una medición de un signo de acuerdo a los datos de la URL
+- Modifies the minimum value of a sign measurement according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/valor-maximo?valor-maximo={x}
 
-- Modifica el valor máximo de una medición de un signo de acuerdo a los datos de la URL
+- Modifies the maximum value of a sign measurement according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/unidad?unidad-id={x}
 
-- Modifica la unidad de medición de un signo de acuerdo a los datos de la URL
+- Modifies the measurement unit of a sign according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/signos/{id}/descripcion
 
-- Modifica el valor mínimo de una medición de un signo de acuerdo al "body" de la solicitud
+- Modifies the description of a sign according to the data in the request body
 
 - **body:**
 
@@ -3300,7 +3300,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-### Entidad Sintoma
+### Entidad Sintoma <!-- Continuar desdde acá -->
 
 ---
 
