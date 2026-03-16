@@ -2443,15 +2443,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
-- Muestra una clasificación de estudio médico buscándola por id
+- Shows a medical study classification by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
-- Muestra todas las clasificaciones de estudios médicos de la base de datos
+- Shows all medical study classifications in the database
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/nombre?nombre={x}
 
-- Muestra una clasificación de estudio médico buscándola por nombre
+- Shows a medical study classification by searching by its name
 
 ---
 
@@ -2459,7 +2459,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
-- Guarda una clasificación de estudio médico en la base de datos de acuerdo al "body" de la solicitud
+- Saves a medical study classification in the database according to the data in the request body
 
 - **body:**
 
@@ -2483,7 +2483,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos
 
-- Modifica una clasificación de estudio médico de la base de datos de acuerdo al "body" de la solicitud
+- Modifies a medical study classification in the database according to the data in the request body
 
 - **body:**
 
@@ -2500,7 +2500,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}
 
-- Borra una clasificación de estudio médico de la base de datos de acuerdo
+- Deletes a medical study classification from the database according to the id in the request URL
 
 ---
 
@@ -2508,7 +2508,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/clasificacion-estudios-medicos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de una clasificación de estudio médico de acuerdo a los datos de la URL de la solicitud
+- Modifies the name of a medical study classification according to the data in the request URL
 
 ---
 
@@ -2520,19 +2520,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
-- Muestra un estudio médico buscándolo por id
+- Shows a medical study by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
-- Muestra todos los estudios médicos de la base de datos
+- Shows all medical studies in the database
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/nombre?nombre={x}
 
-- Muestra un estudio médico buscándolo por nombre
+- Shows a medical study by searching by its name
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/clasificacion?clasificacion={x}
 
-- Muestra estudios médicos de la base de datos buscándolos por su clasificación
+- Shows medical studies from the database by searching by their classification
 
 ---
 
@@ -2540,7 +2540,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
-- Guarda un estudio médico en la base de datos de acuerdo al "body" de la solicitud
+- Saves a medical study in the database according to the data in the request body
 
 - **body:**
 
@@ -2569,7 +2569,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos
 
-- Modifica un estudio médico de la base de datos de acuerdo al "body" de la solicitud
+- Modifies a medical study in the database according to the data in the request body
 
 - **body:**
 
@@ -2587,7 +2587,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}
 
-- Borra un estudio médico de la base de datos de acuerdo al id de la URL
+- Deletes a medical study from the database according to the id in the URL
 
 ---
 
@@ -2595,11 +2595,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un estudio médico de acuerdo a los datos de la URL de la solicitud
+- Modifies the name of a medical study according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/estudios-medicos/{id}/cladificacion?clasificacion={x}
 
-- Modifica la clasificación de un estudio médico de acuerdo a los datos de la URL de la solicitud
+- Modifies the classification of a medical study according to the data in the request URL
 
 ---
 
@@ -2611,23 +2611,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
 
-- Muestra un tratamiento de fisioterapia realizado en un paciente buscándolo por id
+- Shows a physiotherapy treatment performed on a patient by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
-- Muestra todos los tratamientos de fisioterpaia realizados en pacientes de la base de datos
+- Shows all physiotherapy treatments performed on patients in the database
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Muestra los tratamientos de fisioterapia realizados en pacientes de la base de datos buscándolos por id o DNI del paciente
+- Shows physiotherapy treatments performed on patients by searching by the patient's id or DNI
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-- Muestra los tratamientos de fisioterpaia realizados en pacientes buscando por fecha de inicio
+- Shows physiotherapy treatments performed on patients by searching by start date
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
-- Muestra los tratamientos de fisioterpaia realizados en pacientes buscando por fecha de final
+- Shows physiotherapy treatments performed on patients by searching by end date
 
 ---
 
@@ -2635,7 +2635,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
-- Guarda un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
+- Saves a physiotherapy treatment performed on a patient according to the data in the request body
 
 - **body:**
 
@@ -2663,7 +2663,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes
 
-- Modifica un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
+- Modifies a physiotherapy treatment performed on a patient according to the data in the request body
 
 - **body:**
 
@@ -2682,7 +2682,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}
 
-- Borra un tratamiento de fisioterapia realizado en un paciente de acuerdo al id de la URL
+- Deletes a physiotherapy treatment performed on a patient according to the id in the URL
 
 ---
 
@@ -2690,15 +2690,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the patient of a physiotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-- Modifica la fecha de inicio de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the start date of a physiotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/fisioterapias-pacientes/{id}/fecha-final?final={x}
 
-- Modifica la fecha de final de un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the end date of a physiotherapy treatment performed on a patient according to the data in the request URL
 
 ---
 
