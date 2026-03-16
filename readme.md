@@ -2710,27 +2710,27 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
-- Muestra un tratamiento por medicamento realizado en un paciente buscándolo por id
+- Shows a medication treatment performed on a patient by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
-- Muestra todos los tratamientos por medicamento realizados en pacientes de la base de datos.
+- Shows all medication treatments performed on patients in the database
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Muestra los tratamientos por medicamento realizados en pacientes buscando por id o DNI del paciente
+- Shows medication treatments performed on patients by searching by the patient's id or DNI
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/principio-activo?principio-activo={x}
 
-- Muestra los tratamientos por medicamento realizados en pacientes buscando por principio activo del medicamento
+- Shows medication treatments performed on patients by searching by the active ingredient of the medication
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-- Muestra los tratamientos por medicamento realizados en pacientes buscando por fecha de inicio
+- Shows medication treatments performed on patients by searching by start date
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/fecha-final?desde={x}&hasta={x}
 
-- Muestra los tratamientos por medicamento realizados en pacientes buscando por fecha de final
+- Shows medication treatments performed on patients by searching by end date
 
 ---
 
@@ -2738,7 +2738,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
-- Guarda un tratamiento por medicamento realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Saves a medication treatment performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -2770,7 +2770,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes
 
-- Modifica un tratamiento por medicamento realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Modifies a medication treatment performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -2791,7 +2791,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}
 
-- Borra un tratamiento por medicamento realizado en un paciente de la base de datos de acuerdo a la URL de la solcitud
+- Deletes a medication treatment performed on a patient from the database according to the request URL
 
 ---
 
@@ -2799,23 +2799,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the patient of a medication treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/medicamento?medicamento-id={x}
 
-- Modifica el medicamento de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the medication of a medication treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/dosis?dosis-id={x}
 
-- Modifica la dosis de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the dosage of a medication treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-inicio?inicio={x}
 
-- Modifica la fecha de inicio de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the start date of a medication treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/medicamentos-pacientes/{id}/fecha-final?fin={x}
 
-- Modifica la fecha de final de un tratamiento por medicamento realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the end date of a medication treatment performed on a patient according to the data in the request URL
 
 ---
 
@@ -2827,23 +2827,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
-- Muestra un tratamiento de psicoterpaia realizado en un paciente de acuerdo al id de la URL
+- Shows a psychotherapy treatment performed on a patient according to the id in the URL
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
-- Muestra todos los tratamientos de psicoterapia realizados en pacientes de la base de datos
+- Shows all psychotherapy treatments performed on patients in the database
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por id o DNI del paciente
+- Shows psychotherapy treatments performed on patients by searching by the patient's id or DNI
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por fecha de inicio
+- Shows psychotherapy treatments performed on patients by searching by start date
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
-- Muestra los tratamientos de psicoterapia realizados en pacientes buscando por fecha de final
+- Shows psychotherapy treatments performed on patients by searching by end date
 
 ---
 
@@ -2851,7 +2851,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
-- Guarda un tratamiento de psicoterapia realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Saves a psychotherapy treatment performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -2880,7 +2880,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes
 
-- Modifica un tratamiento de psicoterapia realizado en un paciente en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Modifies a psychotherapy treatment performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -2899,7 +2899,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}
 
-- Borra un tratamiento de psicoterpaia realizado en un paciente de la base de datos de acuerdo al id de la URL
+- Deletes a psychotherapy treatment performed on a patient from the database according to the id in the URL
 
 ---
 
@@ -2907,15 +2907,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the patient of a psychotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-- Modifica la fecha de inicio de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the start date of a psychotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/psicoterapias-pacientes/{id}/fecha-final?fin={x}
 
-- Modifica la fecha de final de un tratamiento de psicoterpia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the end date of a psychotherapy treatment performed on a patient according to the data in the request URL
 
 ---
 
@@ -2927,23 +2927,23 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
-- Muestra un tratamiento de radioterapia realizado en un paciente buscando por id
+- Shows a radiotherapy treatment performed on a patient by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
-- Muestra todos los tratamientos de radioterapia realizados en pacientes
+- Shows all radiotherapy treatments performed on patients in the database
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Muestra los tratamientos de radioterapia realizados en pacientes buscando por id o DNI de paciente
+- Shows radiotherapy treatments performed on patients by searching by the patient's id or DNI
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-inicio?desde={x}&hasta={x}
 
-- Muestra los tratamientos de radioterapia realizados en pacientes buscando fecha de inicio
+- Shows radiotherapy treatments performed on patients by searching by start date
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/fecha-final?desde={x}&hasta={x}
 
-- Muestra los tratamientos de radioterapia realizados en pacientes buscando fecha de final
+- Shows radiotherapy treatments performed on patients by searching by end date
 
 ---
 
@@ -2951,7 +2951,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
-- Guarda un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
+- Saves a radiotherapy treatment performed on a patient in the database according to the data in the request body
 
 - **body:**
 
@@ -2978,7 +2978,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes
 
-- Modifica un tratamiento de fisioterapia realizado en un paciente de acuerdo a los datos del "body" de la solicitud
+- Modifies a radiotherapy treatment performed on a patient according to the data in the request body
 
 - **body:**
 
@@ -2995,7 +2995,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}
 
-- Borra un tratamiento de fisioterpaia realizado en un paciente de acuerdo al id de la URL
+- Deletes a radiotherapy treatment performed on a patient according to the id in the URL
 
 ---
 
@@ -3003,15 +3003,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/paciente?paciente-id-o-dni={x}&opcion={x}
 
-- Modifica el paciente de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the patient of a radiotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-inicio?inicio={x}
 
-- Modifica la fecha de inicio de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the start date of a radiotherapy treatment performed on a patient according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/radioterapias-pacientes/{id}/fecha-final?fin={x}
 
-- Modifica la fecha de final de un tratamiento de radioterapia realizado en un paciente de acuerdo a los datos de la URL
+- Modifies the end date of a radiotherapy treatment performed on a patient according to the data in the request URL
 
 ---
 
