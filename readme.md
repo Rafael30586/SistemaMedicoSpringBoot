@@ -133,14 +133,14 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
-- **Meaning of each attribute:**
+- **meaning of each attribute:**
 
 - Calle: street
 - Altura: number
 - Despartamento: department
 - Localidad: locality
 
-- **Example:**
+- **example:**
 
 ~~~json
 {
@@ -236,7 +236,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - **meaning of each attribute:**
 - Nombre: name
-- provincia: province or state
+- Provincia: province or state
 
 - **Example:**
 
@@ -593,6 +593,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- via : via
+
 - **Ejemplo:**
 
 ~~~json
@@ -672,7 +676,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
--**meaning of each attribute:**
+- **meaning of each attribute:**
+
+- cantidad: quantity
+- unidad: unit
+- intervaloHoras: hours interval
 
 - **example:**
 
@@ -765,6 +773,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- nombre: name
+
 - **Ejemplo:**
 
 ~~~json
@@ -842,6 +854,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
     nombre: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+
 
 - **Ejemplo:**
 
@@ -940,6 +957,14 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
     marca: MarcaMedicamento
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- principiosActivos: active ingredients
+- formaFarmaceutica: pharmaceutical form
+- administracion: administration
+- marca: brand
 
 - **Ejemplo:**
 
@@ -1063,6 +1088,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
+- **meaning of each attribute:**
+
+nombre: name
+
 - **Ejemplo:**
 
 ~~~json
@@ -1148,6 +1177,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
     simbolo: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- simbolo: symbol
 
 - **Ejemplo:**
 
@@ -1235,6 +1269,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
     nombre: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
 
 - **Ejemplo:**
 
@@ -1350,6 +1388,20 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
     obraSocial: ObraSocial
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- dni: document identity number
+- primerNombre: first name
+- segundoNombre: second name
+- apellidoPaterno: paternal last name 
+- apellidoMaterno: maternal last name
+- email: email
+- telefonos: telephone numbers
+- fechaNacimiento: birthdate
+- lugarNacimiento: birthplace
+- direccionId: address id
+- obraSocial: health insurance
 
 - **Ejemplo:**
 
