@@ -238,7 +238,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - Nombre: name
 - provincia: province or state
 
-- **Ejemplo:**
+- **Example:**
 
 ~~~json
 {
@@ -666,13 +666,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    cantidad: numero_decimal,
+    cantidad: float,
     unidad: UnidadDeMedida,
-    intervaloHoras: numero_entero
+    intervaloHoras: integer
 }
 ~~~
 
-- **Ejemplo:**
+-**meaning of each attribute:**
+
+- **example:**
 
 ~~~json
 {
@@ -696,10 +698,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    cantidad: numero_decimal,
+    id: integer,
+    cantidad: float,
     unidad: UnidadDeMedida,
-    intervaloHoras: numero_entero
+    intervaloHoras: integer
 }
 ~~~
 
@@ -784,7 +786,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre:string
 }
 ~~~
@@ -862,7 +864,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -976,7 +978,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {   
-    id: numero_entero,
+    id: integer,
     nombre: string,
     principiosActivos: PrincipioActivo[],
     formaFarmaceutica: FormaFarmaceutica,
@@ -1081,7 +1083,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -1168,7 +1170,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string,
     simbolo: string
 }
@@ -1254,7 +1256,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -1335,16 +1337,16 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    dni: numero_entero,
+    dni: integer,
     primerNombre: string,
     segundoNombre: string,
     apellidoPaterno: string,
     apellidoMaterno: string,
     email: string,
     telefonos: string[],
-    fechaNacimiento: fecha,
-    lugarNacimientoId: numero_entero,
-    direccionId: numero_entero,
+    fechaNacimiento: date,
+    lugarNacimientoId: integer,
+    direccionId: integer,
     obraSocial: ObraSocial
 }
 ~~~
@@ -1384,17 +1386,17 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    dni: numero_entero,
+    id: integer,
+    dni: integer,
     primerNombre: string,
     segundoNombre: string,
     apellidoPaterno: string,
     apellidoMaterno: string,
     email: string,
     telefonos: string[],
-    fechaNacimiento: fecha,
-    lugarNacimientoId: numero_entero,
-    direccionId: numero_entero,
+    fechaNacimiento: date,
+    lugarNacimientoId: integer,
+    direccionId: integer,
     obraSocial: ObraSocial
 }
 ~~~
@@ -1496,7 +1498,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~javascript
 {
     paciente: Paciente,
-    estudios: numero_entero[],
+    estudios: integer[],
     urlInforme: string
 }
 ~~~
@@ -1525,9 +1527,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {   
-    id: numero_entero,
+    id: integer,
     paciente: Paciente,
-    estudios: numero_entero[],
+    estudios: integer[],
     urlInforme: string
 }
 ~~~
@@ -1596,7 +1598,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    direccionId: numero_entero,
+    direccionId: integer,
     telefonos: string[],
     obraSocial: ObraSocial
 }
@@ -1628,8 +1630,8 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    direccionId: numero_entero,
+    id: integer,
+    direccionId: integer,
     telefonos: string[],
     obraSocial: ObraSocial
 }
@@ -1708,10 +1710,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~javascript
 {
     paciente: Paciente,
-    fechaSolicitud: fecha,
-    fechaTurno: fecha,
-    inicio: hora,
-    fin: hora,
+    fechaSolicitud: date,
+    fechaTurno: date,
+    inicio: time,
+    fin: time,
     estado: Estado,
     cobertura: Cobertura
 }
@@ -1833,13 +1835,13 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~javascript
 {
     paciente: Paciente,
-    fechaSolicitud: fecha,
-    fechaTurno: fecha,
-    inicio: hora,
-    fin: hora,
+    fechaSolicitud: date,
+    fechaTurno: date,
+    inicio: time,
+    fin: time,
     estado: Estado,
     cobertura: Cobertura,
-    estudioId: numero_entero
+    estudioId: integer
 }
 ~~~
 
@@ -1872,12 +1874,12 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     paciente: Paciente,
-    fechaSolicitud: fecha,
-    fechaTurno: fecha,
-    inicio: hora,
-    fin: hora,
+    fechaSolicitud: date,
+    fechaTurno: date,
+    inicio: time,
+    fin: time,
     estado: Estado,
     cobertura: Cobertura
 }
@@ -1963,11 +1965,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
+    pacienteId: integer,
     cirugia: TratamientoQuirurgico, 
-    fecha: fecha,
-    inicio: hora,
-    fin: hora
+    fecha: date,
+    inicio: time,
+    fin: time
 }
 ~~~
 
@@ -1996,11 +1998,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
+    pacienteId: integer,
     cirugia: TratamientoQuirurgico, 
-    fecha: fecha,
-    inicio: hora,
-    fin: hora
+    fecha: date,
+    inicio: time,
+    fin: time
 }
 ~~~
 
@@ -2113,7 +2115,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id:numero_entero,
+    id:integer,
     nombre: string,
     sintomas: Sintoma[], 
     signos: Signo[]
@@ -2184,10 +2186,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
+    pacienteId: integer,
     diagnostico: Diagnostico, 
-    inicio: fecha,
-    fin: fecha
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2217,11 +2219,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    pacienteId: numero_entero,
+    id: integer,
+    pacienteId: integer,
     diagnostico: Diagnostico, 
-    inicio: fecha,
-    fin: fecha
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2309,17 +2311,17 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    dni: numero_entero,
+    dni: integer,
     primerNombre: string, 
     segundoNombre: string,
     apellidoPaterno: string,
     apellidoMaterno: string,
     email: string,
-    domicilioId: numero_entero,
+    domicilioId: integer,
     telefonos: string[],
     matriculaProfesional: string,
     rol: RolEmpleado,
-    salario: numero_decimal
+    salario: float
 }
 ~~~
 
@@ -2358,18 +2360,18 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    dni: numero_entero,
+    id: integer,
+    dni: integer,
     primerNombre: string, 
     segundoNombre: string,
     apellidoPaterno: string,
     apellidoMaterno: string,
     email: string,
-    domicilioId: numero_entero,
+    domicilioId: ninteger,
     telefonos: string[],
     matriculaProfesional: string,
     rol: RolEmpleado,
-    salario: numero_decimal
+    salario: float
 }
 ~~~
 
@@ -2489,7 +2491,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -2575,7 +2577,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string,
     clasificacion: EstudioMedicoClasificacion
 }
@@ -2641,9 +2643,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2669,10 +2671,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    id: integer,
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2744,11 +2746,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
-    medicamentoId: numero_entero,
-    dosisId:numero_entero,
-    inicio: fecha,
-    fin:fecha
+    pacienteId: integer,
+    medicamentoId: integer,
+    dosisId:integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2776,12 +2778,12 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    pacienteId: numero_entero,
-    medicamentoId: numero_entero,
-    dosisId:numero_entero,
-    inicio: fecha,
-    fin:fecha
+    id: integer,
+    pacienteId: integer,
+    medicamentoId: integer,
+    dosisId:integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2857,9 +2859,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2886,10 +2888,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    id: integer,
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2957,9 +2959,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -2984,9 +2986,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    pacienteId: numero_entero,
-    inicio: fecha,
-    fin:fecha
+    pacienteId: integer,
+    inicio: date,
+    fin: date
 }
 ~~~
 
@@ -3077,7 +3079,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id:numero_entero,
+    id: integer,
     nombre: string,
     sector: Sector
 }
@@ -3156,7 +3158,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -3218,9 +3220,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~javascript
 {
     nombre: string,
-    valorMinimo: numero_decimal,
-    valorMaximo: numero_decimal,
-    unidadId: numero_entero,
+    valorMinimo: float,
+    valorMaximo: float,
+    unidadId: integer,
     descripcion: string
 }
 ~~~
@@ -3249,11 +3251,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string,
-    valorMinimo: numero_decimal,
-    valorMaximo: numero_decimal,
-    unidadId: numero_entero,
+    valorMinimo: float,
+    valorMaximo: float,
+    unidadId: integer,
     descripcion: string
 }
 ~~~
@@ -3354,7 +3356,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string
 }
 ~~~
@@ -3436,7 +3438,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     nombre: string,
     descripcion: string
 }
