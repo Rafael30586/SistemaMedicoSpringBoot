@@ -3300,7 +3300,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-### Entidad Sintoma <!-- Continuar desdde acá -->
+### Entidad Sintoma 
 
 ---
 
@@ -3308,15 +3308,15 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
-- Muestra un síntoma de la base de datos buscando por id
+- Shows a symptom from the database by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
-- Muestra todos los síntomas de la base de datos
+- Shows all symptoms in the database
 
 ##### {HOSPITAL-SERVICIO}/sintomas/nombre?nombre={x}
 
-- Muestra un síntoma de la base de datos buscando por nombre
+- Shows a symptom from the database by searching by its name
 
 ---
 
@@ -3324,7 +3324,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
-- Guarda un síntoma en la base de datos de acuerdo al "body" de la solicitud
+- Saves a symptom in the database according to the data in the request body
 
 - **body:**
 
@@ -3348,7 +3348,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sintomas
 
-- Modifica un síntoma en la base de datos de acuerdo al "body" de la solicitud
+- Modifies a symptom in the database according to the data in the request body
 
 - **body:**
 
@@ -3365,7 +3365,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}
 
-- Borra un síntoma de la base de datos de acuerdo al id de la URL
+- Deletes a symptom from the database according to the id in the URL
 
 ---
 
@@ -3373,7 +3373,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/sintomas/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un síntoma de acuerdo a los datos de la URL
+- Modifies the name of a symptom according to the data in the request URL
 
 ---
 
@@ -3385,19 +3385,19 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
-- Muestra un tratamiento quirúrgico de la base de datos buscándolo por id
+- Shows a surgical treatment from the database by searching with its id
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
-- Muestra todos los tratamientos quirúrgicos de la base de datos
+- Shows all surgical treatments in the database
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/nombre?nombre={x}
 
-- Muestra un tratamiento quirúrgico buscándolo por nombre
+- Shows a surgical treatment by searching by its name
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/descripcion?descripcion={x}
 
-- Muestra tratamientos quirúrgicos de la base de datos buscándolos por secuencia de caracteres en su descripción
+- Shows surgical treatments from the database by searching by a sequence of characters in their description
 
 ---
 
@@ -3405,7 +3405,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
-- Guarda un tratamiento quirúrgico en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Saves a surgical treatment in the database according to the data in the request body
 
 - **body:**
 
@@ -3430,7 +3430,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos
 
-- Modifica un tratamiento quirúrgico en la base de datos de acuerdo a los datos del "body" de la solicitud
+- Modifies a surgical treatment in the database according to the data in the request body
 
 - **body:**
 
@@ -3448,7 +3448,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}
 
-- Borra una tratamiento quirúrgico de la base de datos de acuerdo al id de la URL
+- Deletes a surgical treatment from the database according to the id in the URL
 
 ---
 
@@ -3456,11 +3456,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/nombre?nombre={x}
 
-- Modifica el nombre de un tratamiento quirúrgico según los datos de la URL
+- Modifies the name of a surgical treatment according to the data in the request URL
 
 ##### {HOSPITAL-SERVICIO}/tratamientos-quirurgicos/{id}/descripcion 
 
-- Modifica la descripción de un tratamiento quirúrgico según los datos del "body" de la solicitud
+- Modifies the description of a surgical treatment according to the data in the request body
 
 - **body:**
 
