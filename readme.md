@@ -1555,6 +1555,12 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- paciente: patient
+- estudios: medical examinations ids
+- urlInforme: report URL 
+
 - **Ejemplo:**
 
 ~~~json
@@ -1655,6 +1661,12 @@ nombre: name
     obraSocial: ObraSocial
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- direccionId: address id
+- telefonos: telephone numbers
+- obraSocial: health insurance
 
 - **Ejemplo:**
 
@@ -1770,6 +1782,16 @@ nombre: name
     cobertura: Cobertura
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- paciente: patient
+- fechaSolicitud: date request
+- fechaTurno: appointment date
+- inicio: beginning
+- fin: end
+- estado: status
+- cobertura: coverage
 
 - **Ejemplo:**
 
@@ -1896,6 +1918,17 @@ nombre: name
     estudioId: integer
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- paciente: patient
+- fechaSolicitud: date request
+- fechaTurno: appointment date
+- inicio: beginning
+- fin: end
+- estado: status
+- cobertura: coverage
+- estudioId: examination id
 
 - **Ejemplo:**
 
@@ -2025,6 +2058,14 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- cirugia: surgery
+- fecha: date
+- inicio: beginning
+- fin: end
+
 - **Ejemplo:**
 
 ~~~json
@@ -2127,6 +2168,12 @@ nombre: name
     signos: Signo[]
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- sintomas: symptoms
+- signos: signs
 
 - **Ejemplo:**
 
@@ -2244,6 +2291,13 @@ nombre: name
     fin: date
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- diagnosticoId: diagnosis id
+- inicio: beginning
+- fin: end
 
 - **Ejemplo:**
 
@@ -2376,6 +2430,20 @@ nombre: name
     salario: float
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- dni: national identification document
+- primerNombre: first name
+- segundoNombre: second name
+- apellidoPaterno: paternal last name
+- apellidoMaterno: maternal last name
+- email: email
+- domicilioId: address id
+- telefonos: telephone numbers
+- matriculaProfesional: professional licence
+- rol: role
+- salario: salary
 
 - **Ejemplo:**
 
