@@ -2591,6 +2591,10 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- nombre: name
+
 - **Ejemplo:**
 
 ~~~json
@@ -2672,6 +2676,11 @@ nombre: name
     clasificacion: EstudioMedicoClasificacion
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- cladificacion: clasification
 
 - **Ejemplo:**
 
@@ -2768,6 +2777,12 @@ nombre: name
     fin: date
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- inicio: beginning
+- fin: end 
 
 - **Ejemplo:**
 
@@ -2873,6 +2888,14 @@ nombre: name
     fin: date
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- medicamentoId: medicine id
+- dosisId: dose id
+- inicio: beginning
+- fin: end
 
 - **Ejemplo:**
 
@@ -2985,6 +3008,12 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- inicio: beginning
+- fin: end
+
 - **Ejemplo:**
 
 ~~~json
@@ -3085,6 +3114,12 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- pacienteId: patient id
+- inicio: beginnig
+- fin: end
+
 - **Ejemplo:**
 
 ~~~json
@@ -3176,6 +3211,11 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- nombre: name
+- sector: sector
+
 - **Ejemplo:**
 
 ~~~json
@@ -3259,6 +3299,10 @@ nombre: name
     nombre: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
 
 - **Ejemplo:**
 
@@ -3346,6 +3390,14 @@ nombre: name
     descripcion: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- valorMinimo: minimun value
+- valorMaximo: maximun value
+- unidadId: unit id
+- descripcion: description
 
 - **Ejemplo:**
 
@@ -3456,6 +3508,10 @@ nombre: name
 }
 ~~~
 
+- **meaning of each attribute:**
+
+- nombre: name
+
 - **Ejemplo:**
 
 ~~~json
@@ -3537,6 +3593,11 @@ nombre: name
     descripcion: string
 }
 ~~~
+
+- **meaning of each attribute:**
+
+- nombre: name
+- descripcion: description
 
 - **Ejemplo:**
 
