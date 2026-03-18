@@ -135,9 +135,9 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - **meaning of each attribute:**
 
-- Calle: street
-- Altura: number
-- Despartamento: department
+- calle: street
+- altura: number
+- despartamento: department
 - Localidad: locality
 
 - **example:**
@@ -235,10 +235,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~
 
 - **meaning of each attribute:**
-- Nombre: name
-- Provincia: province or state
+- nombre: name
+- provincia: province or state
 
-- **Example:**
+- **example:**
 
 ~~~json
 {
@@ -322,7 +322,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - **Meaning of each attribute:**
 - Nombre: name
 
-- **Example:**
+- **example:**
 
 ~~~json
 {
@@ -402,10 +402,10 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 -**Meaning of each attribute:**
 
-- Nombre: name
-- Pais: country
+- nombre: name
+- pais: country
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -495,11 +495,12 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
-- **Meaning of each attribute:**
-- Nombre: name
-- Descripcion: description
+- **meaning of each attribute:**
 
-- **Example:**
+- nombre: name
+- descripcion: description
+
+- **example:**
 
 ~~~json
 {
@@ -554,7 +555,8 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
-- **Meaning of each atribute:**
+- **meaning of each atribute:**
+
 - Texto: text
 
 ---
@@ -597,7 +599,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - via : via
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -777,7 +779,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -860,7 +862,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - nombre: name
 
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -966,7 +968,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - administracion: administration
 - marca: brand
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1092,7 +1094,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1183,7 +1185,7 @@ nombre: name
 - nombre: name
 - simbolo: symbol
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1274,7 +1276,7 @@ nombre: name
 
 - nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1403,7 +1405,7 @@ nombre: name
 - direccionId: address id
 - obraSocial: health insurance
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1561,7 +1563,7 @@ nombre: name
 - estudios: medical examinations ids
 - urlInforme: report URL 
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1668,7 +1670,7 @@ nombre: name
 - telefonos: telephone numbers
 - obraSocial: health insurance
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1793,7 +1795,7 @@ nombre: name
 - estado: status
 - cobertura: coverage
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -1930,7 +1932,7 @@ nombre: name
 - cobertura: coverage
 - estudioId: examination id
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2066,7 +2068,7 @@ nombre: name
 - inicio: beginning
 - fin: end
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2175,7 +2177,7 @@ nombre: name
 - sintomas: symptoms
 - signos: signs
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2299,7 +2301,7 @@ nombre: name
 - inicio: beginning
 - fin: end
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2445,7 +2447,7 @@ nombre: name
 - rol: role
 - salario: salary
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2595,7 +2597,7 @@ nombre: name
 
 - nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2682,7 +2684,7 @@ nombre: name
 - nombre: name
 - cladificacion: clasification
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2784,7 +2786,7 @@ nombre: name
 - inicio: beginning
 - fin: end 
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -2897,7 +2899,7 @@ nombre: name
 - inicio: beginning
 - fin: end
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3014,7 +3016,7 @@ nombre: name
 - inicio: beginning
 - fin: end
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3120,7 +3122,7 @@ nombre: name
 - inicio: beginnig
 - fin: end
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3216,7 +3218,7 @@ nombre: name
 - nombre: name
 - sector: sector
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3304,7 +3306,7 @@ nombre: name
 
 - nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3399,7 +3401,7 @@ nombre: name
 - unidadId: unit id
 - descripcion: description
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3512,7 +3514,7 @@ nombre: name
 
 - nombre: name
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3599,7 +3601,7 @@ nombre: name
 - nombre: name
 - descripcion: description
 
-- **Ejemplo:**
+- **example:**
 
 ~~~json
 {
@@ -3652,6 +3654,10 @@ nombre: name
     texto: string
 }
 ~~~
+
+-**meaning of each attribute:**
+
+texto: text
 
 ---
 ---
