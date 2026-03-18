@@ -144,11 +144,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~json
 {
-    "calle": "san martín",
-    "altura": 5612,
-    "departamento": "1A",
+    "calle": "washington street",
+    "altura": 340,
+    "departamento": "2S",
     "localidad":{
-        "id":4
+        "id":16
     }
 }
 ~~~
@@ -244,7 +244,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 {
     "nombre": "new york",
     "provincia":{
-        "id":1
+        "id":23
     }
 }
 ~~~
@@ -320,6 +320,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~
 
 - **Meaning of each attribute:**
+
 - Nombre: name
 
 - **example:**
@@ -400,7 +401,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 }
 ~~~
 
--**Meaning of each attribute:**
+-**meaning of each attribute:**
 
 - nombre: name
 - pais: country
@@ -603,7 +604,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~json
 {
-    "via": "oftálmica"
+    "via": "ophtalmic"
 }
 ~~~
 
@@ -783,7 +784,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~json
 {
-    "nombre": "crema"
+    "nombre": "cream"
 }
 ~~~
 
@@ -1098,7 +1099,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "paracetamol"
+    "nombre": "acetaminophen"
 }
 ~~~
 
@@ -1189,7 +1190,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "miligramo",
+    "nombre": "miligram",
     "simbolo":"mg"
 }
 ~~~
@@ -1280,7 +1281,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "osde"
+    "nombre": "aetna"
 }
 ~~~
 
@@ -1571,7 +1572,7 @@ nombre: name
         "id":193
     },
     "estudios":[4,12],
-    "urlInforme":"hostipal.com/informes/73291"
+    "urlInforme":"hospital.com/informes/73291"
 }
 ~~~
 
@@ -2181,7 +2182,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "gripe",
+    "nombre": "flu",
     "sintomas":[
         {
             "id":12
@@ -2489,7 +2490,7 @@ nombre: name
     apellidoPaterno: string,
     apellidoMaterno: string,
     email: string,
-    domicilioId: ninteger,
+    domicilioId: integer,
     telefonos: string[],
     matriculaProfesional: string,
     rol: RolEmpleado,
@@ -2601,7 +2602,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "laboratorio"
+    "nombre": "laboratory"
 }
 ~~~
 
@@ -2688,7 +2689,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "electrocardiograma",
+    "nombre": "electrocardiogram",
     "clasificacion":{
         "id":6
     }
@@ -3222,7 +3223,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "cirujano",
+    "nombre": "surgeon",
     "sector":{
         "id":12
     }
@@ -3310,7 +3311,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "recursos humanos"
+    "nombre": "human resources"
 }
 ~~~
 
@@ -3405,11 +3406,11 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "hiperglucemia",
+    "nombre": "hyperglycemia",
     "valorMinimo":130,
     "valorMaximo": null,
     "unidadId":9,
-    "descripcion": "elevado nuvel de azúcar en sangre"
+    "descripcion": "high blood sugar level"
 }
 ~~~
 
@@ -3518,7 +3519,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "náuseas"
+    "nombre": "nausea"
 }
 ~~~
 
@@ -3605,7 +3606,7 @@ nombre: name
 
 ~~~json
 {
-    "nombre": "cirugía de cadera"
+    "nombre": "hip surgery"
 }
 ~~~
 
