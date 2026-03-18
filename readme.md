@@ -3675,6 +3675,60 @@ texto: text
 
 - Dates in URL arguments must follow the format yyyy-MM-dd, while dates in the request "body" must follow the format dd-MM-yyyy.
 
+## Request examples
+
+1. Show all addresses in the database from the state of North Carolina:
+
+    - endpoint: .../direcciones/provincia?provincia=north_carolina
+
+2. Modify the description of the therapeutic action with id equal to 12:
+
+    - endpoint: .../acciones-terapeuticas/12/descripcion
+
+    - body:
+
+    ~~~json
+    {
+       "texto": "inhibits the groth of fungi"
+    }
+    ~~~
+
+3. Modify the name of the pharmaceutical form with id equal to 3:
+
+    - endpoint: .../formas-farmaceuticas/3/nombre?nombre=gel
+
+4. Modify the first name of the patient with DNI equal to 10928417:
+
+    - endpoint: .../pacientes/primer-nombre?id-o-dni=10928417&opcion=dni&nombre=emiliano
+
+5. Add a phone number to the patient with id equal to 401:
+
+    - endpoint: .../pacientes/agregar-telefono?id-o-dni=401&opcion=id&telefono-para-aggregar=011-847-3820
+
+6. Modify all fields of the medical study with id equal to 29:
+
+    - endpoint: .../estudios-medicos
+
+    - body: 
+
+    ~~~json
+    {
+        "id":29,
+        "nombre":"lipid profile",
+        "clasificacion":{
+            "id":2
+        }
+    }
+    ~~~
+
+7. Delete the employee role with id 5 from the database:
+
+    - endpoint: .../roles-empleado/5
+
+8. Modify the end date of the diagnosis performed on a patient with id equal to 44 (the id does not belong to the patient, but to a diagnosis performed on a patient, as seen in the entities in a previous section):
+
+    - endpoint: .../diagnosticos-pacientes/44/fecha-final?fin=2024-05-23
+
 
 
 ---
