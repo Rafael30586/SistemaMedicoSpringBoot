@@ -3663,6 +3663,18 @@ texto: text
 ---
 ---
 
+## Notes
+
+- In PUT requests, it must be taken into account that the id in the request "body" is the id of the record to be modified. In PATCH requests, something similar occurs, except that the id of the record to be modified is found in the request URL.
+
+- In the TurnoCita and TurnoEstudio entities, there are fields called Estado and Cobertura. These two fields are enumerated types: the EstadoTurno enum can have the values EN_PROCESO (in proccess), CONCLUIDO (concluded), or CANCELADO (cancelled); the COBERTURA enum can have the values NINGUNA (none), TOTAL (total), or COSEGURO (coninsurance).
+
+- The names in the request "bodies" and URLs, such as patient or employee names, place names (provinces or countries), medication names, etc., must be in lowercase. The frontend developer will be responsible for displaying names with uppercase letters when appropriate.
+
+- When searching for a database record based on a field that is a string containing spaces, those spaces in the URL argument must be replaced with underscores (there is an example of this in the first request example in the next section). The same applies when modifying a field using a PATCH request: if the field is a string, spaces in the URL argument must be replaced with underscores.
+
+- Dates in URL arguments must follow the format yyyy-MM-dd, while dates in the request "body" must follow the format dd-MM-yyyy.
+
 
 
 ---
