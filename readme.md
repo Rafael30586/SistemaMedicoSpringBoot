@@ -13,7 +13,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ## Index 
 
-1. Download of the project and exectution of the microservices
+1. Download of the project and execution of the microservices
 2. Entities explanation
 3. Notes
 4. Request examples
@@ -21,12 +21,12 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ---
 ---
 
-## Download of the project and exectution of the microservices
+## Download of the project and execution of the microservices
 
 ### Some requisites for the execution of the project
 
 - Having IntelliJ IDEA installed
-- MySQL installed ingt eh computer
+- MySQL installed in the computer
 
 ### Steps to follow
 
@@ -49,12 +49,12 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ---
 
-- Direccion (address): it's the a ddress of people or a building like the street, number, etc.
+- Direccion (address): it's the address of people or a building like the street, number, etc.
 - Localidad (location): It can be a city, a town or a village.
 - Pais (country): It's a country like Argentina, United States, France, etc.
 - Provincia (state or province): Can be the state or the province of a country.
 
-- AccionTerapeutica (therepeutic effect): It is the beneficial action that an active ingredient or medication has in the human body. Examples include: anti-inflammatory, keratolytic, analgesic, antipyretic, etc.
+- AccionTerapeutica (therapeutic effect): It is the beneficial action that an active ingredient or medication has in the human body. Examples include: anti-inflammatory, keratolytic, analgesic, antipyretic, etc.
 - AdministracionFarmaco (drug administration): It is the way a drug is administered to a patient; for example: intramuscular, oral, intrathecal, nasal, sublingual, ophthalmic, etc.
 - Dosis (dose): It is an amount of a drug administered over a period of time. The unit used (milligrams, milliliters, etc.), the time interval (for example, every 8 hours), and the quantity associated with the unit are taken into account.
 - FormaFaremaceutica (pharmaceutical form): It is the form in which a medication is presented, for example: cream, emulsion, syrup, capsules, gel, powder, etc.
@@ -76,7 +76,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 - Empleado (employee): These are the details of each hospital employee.
 - EstudioMedico (medical examination): It is each medical study that patients can undergo, for example: renal profile, blood count, electrocardiogram, etc.
 - EstudioMedicoClasificacion (medical examination clasification): It refers to how the different medical studies are classified, for example: laboratory, diagnostic imaging, cardiological, etc.
-- FisioterapiaPaciente (phisioterapy-patient): It is the physiotherapy treatment that has been performed on a patient.
+- FisioterapiaPaciente (phisiotherapy-patient): It is the physiotherapy treatment that has been performed on a patient.
 - MedicamentoPaciente (medicine-patient): It is the treatment that has been performed on a patient with a specific medication.
 - PsicoterapiaPaciente (psychotherapy-patient): It is the psychological treatment that has been performed on a patient.
 - RadioterapiaPaciente (radiotherapy-patient): It is a radiotherapy treatment performed on a specific patient.
@@ -137,7 +137,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - calle: street
 - altura: number
-- despartamento: department
+- departamento: department
 - Localidad: locality
 
 - **example:**
@@ -598,7 +598,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 - **meaning of each attribute:**
 
-- via : via
+- via: via
 
 - **example:**
 
@@ -620,7 +620,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     via: string
 }
 ~~~
@@ -1397,7 +1397,7 @@ nombre: name
 - dni: document identity number
 - primerNombre: first name
 - segundoNombre: second name
-- apellidoPaterno: paternal last name 
+- apellidoPaterno: paternal last name
 - apellidoMaterno: maternal last name
 - email: email
 - telefonos: telephone numbers
@@ -1562,7 +1562,7 @@ nombre: name
 
 - paciente: patient
 - estudios: medical examinations ids
-- urlInforme: report URL 
+- urlInforme: report URL
 
 - **example:**
 
@@ -1572,7 +1572,7 @@ nombre: name
         "id":193
     },
     "estudios":[4,12],
-    "urlInforme":"hospital.com/informes/73291"
+    "urlInforme":"hospital.com/reports/73291"
 }
 ~~~
 
@@ -1824,12 +1824,12 @@ nombre: name
 
 ~~~javascript
 {
-    id: numero_entero,
+    id: integer,
     paciente: Paciente,
-    fechaSolicitud: fecha,
-    fechaTurno: fecha,
-    inicio: hora,
-    fin: hora,
+    fechaSolicitud: date,
+    fechaTurno: date,
+    inicio: time,
+    fin: time,
     estado: Estado,
     cobertura: Cobertura
 }
@@ -2586,7 +2586,7 @@ nombre: name
 
 - Saves a medical study classification in the database according to the data in the request body
 
-- **body:**
+- **body:**  
 
 ~~~javascript
 {
@@ -2683,7 +2683,7 @@ nombre: name
 - **meaning of each attribute:**
 
 - nombre: name
-- cladificacion: clasification
+- clasificacion: clasification
 
 - **example:**
 
