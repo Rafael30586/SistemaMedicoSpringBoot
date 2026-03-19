@@ -104,11 +104,11 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ##### {CONTACTO-SERVICIO}/direcciones
 
-- It shows all the addresses from the database 
+- It shows all the addresses from the database
 
 ##### {CONTACTO-SERVICIO}/direcciones/localidad?localidad={x}
 
-- It shows all the addresses from a specific location 
+- It shows all the addresses from a specific location
 
 ##### {CONTACTO-SERVICIO}/direcciones/provincia?provincia={x}
 
@@ -235,6 +235,7 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 ~~~
 
 - **meaning of each attribute:**
+
 - nombre: name
 - provincia: province or state
 
@@ -3679,9 +3680,13 @@ texto: text
 
 1. Show all addresses in the database from the state of North Carolina:
 
+    - method: GET 
+
     - endpoint: .../direcciones/provincia?provincia=north_carolina
 
 2. Modify the description of the therapeutic action with id equal to 12:
+
+    - method: PATCH
 
     - endpoint: .../acciones-terapeuticas/12/descripcion
 
@@ -3695,17 +3700,25 @@ texto: text
 
 3. Modify the name of the pharmaceutical form with id equal to 3:
 
+    - method: PATCH
+
     - endpoint: .../formas-farmaceuticas/3/nombre?nombre=gel
 
 4. Modify the first name of the patient with DNI equal to 10928417:
+
+    - method: PATCH
 
     - endpoint: .../pacientes/primer-nombre?id-o-dni=10928417&opcion=dni&nombre=emiliano
 
 5. Add a phone number to the patient with id equal to 401:
 
+    - method: PATCH
+
     - endpoint: .../pacientes/agregar-telefono?id-o-dni=401&opcion=id&telefono-para-aggregar=011-847-3820
 
 6. Modify all fields of the medical study with id equal to 29:
+
+    - method: PUT
 
     - endpoint: .../estudios-medicos
 
@@ -3723,9 +3736,13 @@ texto: text
 
 7. Delete the employee role with id 5 from the database:
 
+    - method: DELETE
+
     - endpoint: .../roles-empleado/5
 
 8. Modify the end date of the diagnosis performed on a patient with id equal to 44 (the id does not belong to the patient, but to a diagnosis performed on a patient, as seen in the entities in a previous section):
+
+    - method: PATCH
 
     - endpoint: .../diagnosticos-pacientes/44/fecha-final?fin=2024-05-23
 
@@ -6941,7 +6958,7 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
     "valorMinimo":130,
     "valorMaximo": null,
     "unidadId":9,
-    "descripcion": "elevado nuvel de azúcar en sangre"
+    "descripcion": "elevado nivel de azúcar en sangre"
 }
 ~~~
 
@@ -7196,11 +7213,15 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 1. Mostrar todas las direcciones de la base de datos de la provincia de Santa fe:
 
-    - endpoint: .../direcciones/provincia?provincia=santa_fe
+    - método: GET
+
+    - endpoint: .../direcciones/provincia?provincia=santa_fe    
 
 2. Modificar la descripción de la acción terapéutica de id igual a 12
 
-    - endpoint: .../acciones-terapeuticas/12/descripcion
+    - método: PATCH
+
+    - endpoint: .../acciones-terapeuticas/12/descripcion    
 
     - body:
 
@@ -7212,17 +7233,25 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 3. Modificar el nombre de la forma farmacéutica con id igual a 3
 
-    - endpoint: .../formas-farmaceuticas/3/nombre?nombre=gel
+    - método: PATCH
+
+    - endpoint: .../formas-farmaceuticas/3/nombre?nombre=gel   
 
 4. Modificar el primer nombre del paciente de DNI igual a 10928417
+
+    - método: PATCH
 
     - endpoint: .../pacientes/primer-nombre?id-o-dni=10928417&opcion=dni&nombre=emiliano
 
 5. Agregar un teléfono al paciente de id igual a 401
 
+    - método: PATCH
+
     - endpoint: .../pacientes/agregar-telefono?id-o-dni=401&opcion=id&telefono-para-aggregar=011-847-3820
 
 6. Modificar todos los campos del estudio médico de id igual a 29
+
+    - método: PUT
 
     - endpoint: .../estudios-medicos
 
@@ -7240,8 +7269,12 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 7. Borrar el rol de emplaedo de id 5 de la base de datos
 
+    - método: DELETE
+
     - endpoint: .../roles-empleado/5
 
-8. Modificar la fecha de final de el diagnóstico realizado en un paciente de id igual a 44 (el id no es del paciente, sinom de un diagnóstico realizado en un paciente como se vió en las entidades en una sección anterior)
+8. Modificar la fecha de final de el diagnóstico realizado en un paciente de id igual a 44 (el id no es del paciente, sino de un diagnóstico realizado en un paciente como se vió en las entidades en una sección anterior)
+
+    - método: PATCH
 
     - endpoint: .../diagnosticos-pacientes/44/fecha-final?fin=2024-05-23
