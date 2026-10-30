@@ -25,17 +25,16 @@ For the hospital microservice the entities are: CirugiaPaciente (surgery-patient
 
 ### Some requisites for the execution of the project
 
-- Having IntelliJ IDEA installed
+- Postman installed
 - MySQL installed in the computer
 
 ### Steps to follow
 
-1. Make a directory in the working device (your computer);
-2. Clone the project from the GitHub repository https://github.com/Rafael30586/SistemaMedicoSpringBoot inside the directory from the previous item;
-3. Create .env files with the database connection data inside the root directory of each microservice;
-4. Open each microservice separatedly, each one on an IntelliJ IDEA window;
-5. Execute them one by one;
-6. Verify their functioning with Postman or similar tools.
+1. Open the terminal (Git Bash, for example) in a folder of your choice. Please note that the project will be downloaded into the selected folder.;
+2. Run the following command in the selected folder: git clone https://github.com/Rafael30586/SistemaMedicoSpringBoot.git;
+3. Create a .env file in the root directory of each microservice using the .env.template as a model;
+4. The project consists of five microservices: eureka-servidor, contacto-servicio, farmacia-servicio, hospital-servicio, and pacientes-servicio. Open each microservice's folder using a separate terminal instance and execute the following command: mvn spring-boot:run;
+5. Once the command has been executed in each microservice, they will remain running, waiting to receive HTTP requests, which you can send using Postman
 
 ### To keep in mind
 
@@ -3775,17 +3774,17 @@ Esta aplicación ha sido desarrollada con Java y Spring boot utilizando IntelliJ
 
 ### Algunos requisitos para la ejecución del proyecto
 
-- Tener instalado IntelliJ IDEA
-- MySQL instalado en la computadora
+- Postman instalado
+- MySQL instalado
 
 ### Pasos a seguir
 
-1. Crear un directorio en el dispositivo de trabajo (tu computadora);
-2. Clonar el proyecto del repositorio de GitHub https://github.com/Rafael30586/SistemaMedicoSpringBoot en el directorio creado en el punto anterior;
-3. Crear los archivos .env con los datos de conexión a base de datos en el directorio raíz de cada microservicio;
-4. Abrir cada microservicio por separado, cada uno en una ventana de IntelliJ IDEA;
-5. Ejecutarlos uno por uno;
-6. Comprobar su funcionamiento con Postman o herramientas similares.
+1. Abrir la terminal (puede ser git bash) en una carpeta a elección (tenga en cuenta que en esa carpeta elegida será donde se descargue el proyecto);
+2. Utilizar el siguiente comando: git clone https://github.com/Rafael30586/SistemaMedicoSpringBoot.git en la carpeta elegida;
+3. Crear un archivo .env en el directorio raiz de cada microservicio utilizando como modelo el archivo .env.template
+4. En el proyecto hay cinco microservicios: eureka-servidor, contacto-servicio, farmacia-servicio, hospital-servicio y pacientes servicio. Entrar a cada una de las carpetas mediante distintas instancias de la terminal y ejecutar el comando mvn spring-boot:run;
+5. Una vez ejecutado el comando en cada uno de los microservicios, estos permanecerán en ejecución esperando a recibir solicitudes HTTP que usted podrá enviar con postman;
+
 
 ### A tener en cuenta
 
